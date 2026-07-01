@@ -1,0 +1,29 @@
+{
+  "generatedAt": "2026-06-30T14:17:39.869Z",
+  "game": "Pokemon Champions",
+  "source": {
+    "dex": "@pkmn/dex",
+    "dexVersion": "0.10.11",
+    "dataVersion": "0.10.11",
+    "generation": 9
+  },
+  "championsRules": {
+    "level": 50,
+    "ivs": "abolished; calculated as fixed 31",
+    "statPoints": {
+      "perStatMax": 32,
+      "totalMax": 66
+    },
+    "statFormula": {
+      "hp": "floor((base * 2 + 31 + statPoints * 2) * 50 / 100) + 60",
+      "other": "floor((floor((base * 2 + 31 + statPoints * 2) * 50 / 100) + 5) * natureModifier)"
+    }
+  },
+  "counts": {
+    "pokemon": 1417,
+    "moves": 951,
+    "abilities": 316,
+    "items": 580,
+    "natures": 25
+  }
+}

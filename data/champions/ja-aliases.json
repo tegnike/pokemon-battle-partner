@@ -1,0 +1,225 @@
+{
+  "pokemon": {
+    "garchomp": [
+      "ガブリアス"
+    ],
+    "garchompmega": [
+      "メガガブリアス"
+    ],
+    "primarina": [
+      "アシレーヌ"
+    ],
+    "metagross": [
+      "メタグロス"
+    ],
+    "metagrossmega": [
+      "メガメタグロス"
+    ],
+    "rotomwash": [
+      "ウォッシュロトム",
+      "水ロトム",
+      "ミトム"
+    ],
+    "meowscarada": [
+      "マスカーニャ"
+    ],
+    "hydreigon": [
+      "サザンドラ"
+    ],
+    "dragonite": [
+      "カイリュー"
+    ],
+    "mimikyu": [
+      "ミミッキュ"
+    ],
+    "archaludon": [
+      "ブリジュラス",
+      "ブリジラス"
+    ],
+    "swampert": [
+      "ラグラージ"
+    ],
+    "swampertmega": [
+      "メガラグラージ"
+    ],
+    "raichu": [
+      "ライチュウ"
+    ],
+    "raichualola": [
+      "アローラライチュウ"
+    ],
+    "raichumegax": [
+      "メガライチュウX",
+      "メガライチューX"
+    ],
+    "raichumegay": [
+      "メガライチュウY",
+      "メガライチューY"
+    ],
+    "corviknight": [
+      "アーマーガア"
+    ],
+    "tinglu": [
+      "ディンルー"
+    ],
+    "annihilape": [
+      "コノヨザル"
+    ],
+    "dragapult": [
+      "ドラパルト"
+    ],
+    "hippowdon": [
+      "カバルドン"
+    ],
+    "pelipper": [
+      "ペリッパー"
+    ],
+    "stunfisk": [
+      "マッギョ"
+    ],
+    "gengar": [
+      "ゲンガー"
+    ],
+    "blaziken": [
+      "バシャーモ"
+    ],
+    "blazikenmega": [
+      "メガバシャーモ"
+    ],
+    "lopunny": [
+      "ミミロップ"
+    ],
+    "lopunnymega": [
+      "メガミミロップ"
+    ],
+    "ninetalesalola": [
+      "アローラキュウコン"
+    ],
+    "bellibolt": [
+      "ハラバリー",
+      "ハラバリ",
+      "アラバリ"
+    ],
+    "staraptor": [
+      "ムクホーク"
+    ],
+    "staraptormega": [
+      "メガムクホーク"
+    ]
+  },
+  "moves": {
+    "earthquake": [
+      "じしん"
+    ],
+    "dragonclaw": [
+      "ドラゴンクロー"
+    ],
+    "rocktomb": [
+      "がんせきふうじ"
+    ],
+    "stealthrock": [
+      "ステルスロック"
+    ],
+    "sparklingaria": [
+      "うたかたのアリア"
+    ],
+    "moonblast": [
+      "ムーンフォース"
+    ],
+    "icebeam": [
+      "れいとうビーム"
+    ],
+    "energyball": [
+      "エナジーボール"
+    ],
+    "ironhead": [
+      "アイアンヘッド"
+    ],
+    "bulletpunch": [
+      "バレットパンチ"
+    ],
+    "hammerarm": [
+      "アームハンマー"
+    ],
+    "thunderpunch": [
+      "かみなりパンチ"
+    ],
+    "hydropump": [
+      "ハイドロポンプ"
+    ],
+    "thunderbolt": [
+      "10まんボルト",
+      "10万ボルト"
+    ],
+    "willowisp": [
+      "おにび"
+    ],
+    "voltswitch": [
+      "ボルトチェンジ"
+    ],
+    "flowertrick": [
+      "トリックフラワー"
+    ],
+    "knockoff": [
+      "はたきおとす"
+    ],
+    "tripleaxel": [
+      "トリプルアクセル"
+    ],
+    "suckerpunch": [
+      "ふいうち"
+    ],
+    "dracometeor": [
+      "りゅうせいぐん"
+    ],
+    "darkpulse": [
+      "あくのはどう"
+    ],
+    "flamethrower": [
+      "かえんほうしゃ"
+    ],
+    "earthpower": [
+      "だいちのちから"
+    ]
+  },
+  "abilities": {
+    "roughskin": [
+      "さめはだ"
+    ],
+    "torrent": [
+      "げきりゅう"
+    ],
+    "clearbody": [
+      "クリアボディ"
+    ],
+    "toughclaws": [
+      "かたいツメ"
+    ],
+    "levitate": [
+      "ふゆう"
+    ],
+    "protean": [
+      "へんげんじざい"
+    ]
+  },
+  "items": {
+    "focussash": [
+      "きあいのタスキ"
+    ],
+    "expertbelt": [
+      "たつじんのおび"
+    ],
+    "metagrossite": [
+      "メタグロスナイト"
+    ],
+    "leftovers": [
+      "たべのこし"
+    ],
+    "lifeorb": [
+      "いのちのたま"
+    ],
+    "choicescarf": [
+      "こだわりスカーフ"
+    ]
+  }
+}

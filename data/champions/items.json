@@ -1,0 +1,6796 @@
+[
+  {
+    "id": "masterball",
+    "num": 1,
+    "name": "Master Ball",
+    "shortDesc": "The best Ball with the ultimate performance. It will catch any wild Pokemon.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "ultraball",
+    "num": 2,
+    "name": "Ultra Ball",
+    "shortDesc": "An ultra-performance Ball that provides a higher catch rate than a Great Ball.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "greatball",
+    "num": 3,
+    "name": "Great Ball",
+    "shortDesc": "A high-performance Ball that provides a higher catch rate than a Poke Ball.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "pokeball",
+    "num": 4,
+    "name": "Poke Ball",
+    "shortDesc": "A device for catching wild Pokemon. It is designed as a capsule system.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "safariball",
+    "num": 5,
+    "name": "Safari Ball",
+    "shortDesc": "A special Poke Ball that is used only in the Safari Zone and Great Marsh.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "netball",
+    "num": 6,
+    "name": "Net Ball",
+    "shortDesc": "A Poke Ball that works especially well on Water- and Bug-type Pokemon.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "diveball",
+    "num": 7,
+    "name": "Dive Ball",
+    "shortDesc": "A Poke Ball that works especially well on Pokemon that live underwater.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "nestball",
+    "num": 8,
+    "name": "Nest Ball",
+    "shortDesc": "A Poke Ball that works especially well on weaker Pokemon in the wild.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "repeatball",
+    "num": 9,
+    "name": "Repeat Ball",
+    "shortDesc": "A Poke Ball that works well on Pokemon species that were previously caught.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "timerball",
+    "num": 10,
+    "name": "Timer Ball",
+    "shortDesc": "A Poke Ball that becomes better the more turns there are in a battle.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "luxuryball",
+    "num": 11,
+    "name": "Luxury Ball",
+    "shortDesc": "A comfortable Poke Ball that makes a caught wild Pokemon quickly grow friendly.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "premierball",
+    "num": 12,
+    "name": "Premier Ball",
+    "shortDesc": "A rare Poke Ball that has been crafted to commemorate an event.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "duskball",
+    "num": 13,
+    "name": "Dusk Ball",
+    "shortDesc": "A Poke Ball that makes it easier to catch wild Pokemon at night or in caves.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "healball",
+    "num": 14,
+    "name": "Heal Ball",
+    "shortDesc": "A remedial Poke Ball that restores the caught Pokemon's HP and status problem.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "quickball",
+    "num": 15,
+    "name": "Quick Ball",
+    "shortDesc": "A Poke Ball that provides a better catch rate at the start of a wild encounter.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "cherishball",
+    "num": 16,
+    "name": "Cherish Ball",
+    "shortDesc": "A rare Poke Ball that has been crafted to commemorate an occasion.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Unobtainable",
+    "aliasesJa": []
+  },
+  {
+    "id": "berryjuice",
+    "num": 43,
+    "name": "Berry Juice",
+    "shortDesc": "Restores 20 HP when at 1/2 max HP or less. Single use.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "sunstone",
+    "num": 80,
+    "name": "Sun Stone",
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "moonstone",
+    "num": 81,
+    "name": "Moon Stone",
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "firestone",
+    "num": 82,
+    "name": "Fire Stone",
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "thunderstone",
+    "num": 83,
+    "name": "Thunder Stone",
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "waterstone",
+    "num": 84,
+    "name": "Water Stone",
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "leafstone",
+    "num": 85,
+    "name": "Leaf Stone",
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "rootfossil",
+    "num": 99,
+    "name": "Root Fossil",
+    "shortDesc": "Can be revived into Lileep.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "clawfossil",
+    "num": 100,
+    "name": "Claw Fossil",
+    "shortDesc": "Can be revived into Anorith.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "helixfossil",
+    "num": 101,
+    "name": "Helix Fossil",
+    "shortDesc": "Can be revived into Omanyte.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "domefossil",
+    "num": 102,
+    "name": "Dome Fossil",
+    "shortDesc": "Can be revived into Kabuto.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "oldamber",
+    "num": 103,
+    "name": "Old Amber",
+    "shortDesc": "Can be revived into Aerodactyl.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "armorfossil",
+    "num": 104,
+    "name": "Armor Fossil",
+    "shortDesc": "Can be revived into Shieldon.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "skullfossil",
+    "num": 105,
+    "name": "Skull Fossil",
+    "shortDesc": "Can be revived into Cranidos.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "rarebone",
+    "num": 106,
+    "name": "Rare Bone",
+    "shortDesc": "No competitive use other than when used with Fling.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "shinystone",
+    "num": 107,
+    "name": "Shiny Stone",
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "duskstone",
+    "num": 108,
+    "name": "Dusk Stone",
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "dawnstone",
+    "num": 109,
+    "name": "Dawn Stone",
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "ovalstone",
+    "num": 110,
+    "name": "Oval Stone",
+    "shortDesc": "Evolves Happiny into Chansey when held and leveled up during the day.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "griseousorb",
+    "num": 112,
+    "name": "Griseous Orb",
+    "shortDesc": "If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 60
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "dousedrive",
+    "num": 116,
+    "name": "Douse Drive",
+    "shortDesc": "Holder's Techno Blast is Water type.",
+    "fling": {
+      "basePower": 70
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "shockdrive",
+    "num": 117,
+    "name": "Shock Drive",
+    "shortDesc": "Holder's Techno Blast is Electric type.",
+    "fling": {
+      "basePower": 70
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "burndrive",
+    "num": 118,
+    "name": "Burn Drive",
+    "shortDesc": "Holder's Techno Blast is Fire type.",
+    "fling": {
+      "basePower": 70
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "chilldrive",
+    "num": 119,
+    "name": "Chill Drive",
+    "shortDesc": "Holder's Techno Blast is Ice type.",
+    "fling": {
+      "basePower": 70
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "adamantorb",
+    "num": 135,
+    "name": "Adamant Orb",
+    "shortDesc": "If held by a Dialga, its Steel- and Dragon-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 60
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "lustrousorb",
+    "num": 136,
+    "name": "Lustrous Orb",
+    "shortDesc": "If held by a Palkia, its Water- and Dragon-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 60
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "mail",
+    "num": 137,
+    "name": "Mail",
+    "shortDesc": "Cannot be given to or taken from a Pokemon, except by Covet/Knock Off/Thief.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "cheriberry",
+    "num": 149,
+    "name": "Cheri Berry",
+    "shortDesc": "Holder cures itself if it is paralyzed. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "przcureberry",
+    "num": 149,
+    "name": "PRZ Cure Berry",
+    "shortDesc": "(Gen 2) Holder cures itself if it is paralyzed. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "chestoberry",
+    "num": 150,
+    "name": "Chesto Berry",
+    "shortDesc": "Holder wakes up if it is asleep. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "mintberry",
+    "num": 150,
+    "name": "Mint Berry",
+    "shortDesc": "(Gen 2) Holder wakes up if it is asleep. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "pechaberry",
+    "num": 151,
+    "name": "Pecha Berry",
+    "shortDesc": "Holder is cured if it is poisoned. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "psncureberry",
+    "num": 151,
+    "name": "PSN Cure Berry",
+    "shortDesc": "(Gen 2) Holder is cured if it is poisoned. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "iceberry",
+    "num": 152,
+    "name": "Ice Berry",
+    "shortDesc": "(Gen 2) Holder is cured if it is burned. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "rawstberry",
+    "num": 152,
+    "name": "Rawst Berry",
+    "shortDesc": "Holder is cured if it is burned. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "aspearberry",
+    "num": 153,
+    "name": "Aspear Berry",
+    "shortDesc": "Holder is cured if it is frozen. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "burntberry",
+    "num": 153,
+    "name": "Burnt Berry",
+    "shortDesc": "(Gen 2) Holder is cured if it is frozen. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "leppaberry",
+    "num": 154,
+    "name": "Leppa Berry",
+    "shortDesc": "Restores 10 PP to the first of the holder's moves to reach 0 PP. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "mysteryberry",
+    "num": 154,
+    "name": "Mystery Berry",
+    "shortDesc": "(Gen 2) Restores 5 PP to the first of the holder's moves to reach 0 PP. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "berry",
+    "num": 155,
+    "name": "Berry",
+    "shortDesc": "(Gen 2) Restores 10 HP when at 1/2 max HP or less. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "oranberry",
+    "num": 155,
+    "name": "Oran Berry",
+    "shortDesc": "Restores 10 HP when at 1/2 max HP or less. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "bitterberry",
+    "num": 156,
+    "name": "Bitter Berry",
+    "shortDesc": "(Gen 2) Holder is cured if it is confused. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "persimberry",
+    "num": 156,
+    "name": "Persim Berry",
+    "shortDesc": "Holder is cured if it is confused. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "lumberry",
+    "num": 157,
+    "name": "Lum Berry",
+    "shortDesc": "Holder cures itself if it has a non-volatile status or is confused. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "miracleberry",
+    "num": 157,
+    "name": "Miracle Berry",
+    "shortDesc": "(Gen 2) Holder cures itself if it is confused or has a status condition. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "goldberry",
+    "num": 158,
+    "name": "Gold Berry",
+    "shortDesc": "(Gen 2) Restores 30 HP when at 1/2 max HP or less. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "sitrusberry",
+    "num": 158,
+    "name": "Sitrus Berry",
+    "shortDesc": "Restores 1/4 max HP when at 1/2 max HP or less. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "figyberry",
+    "num": 159,
+    "name": "Figy Berry",
+    "shortDesc": "Restores 1/3 max HP at 1/4 max HP or less; confuses if -Atk Nature. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "wikiberry",
+    "num": 160,
+    "name": "Wiki Berry",
+    "shortDesc": "Restores 1/3 max HP at 1/4 max HP or less; confuses if -SpA Nature. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "magoberry",
+    "num": 161,
+    "name": "Mago Berry",
+    "shortDesc": "Restores 1/3 max HP at 1/4 max HP or less; confuses if -Spe Nature. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "aguavberry",
+    "num": 162,
+    "name": "Aguav Berry",
+    "shortDesc": "Restores 1/3 max HP at 1/4 max HP or less; confuses if -SpD Nature. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "iapapaberry",
+    "num": 163,
+    "name": "Iapapa Berry",
+    "shortDesc": "Restores 1/3 max HP at 1/4 max HP or less; confuses if -Def Nature. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "razzberry",
+    "num": 164,
+    "name": "Razz Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "blukberry",
+    "num": 165,
+    "name": "Bluk Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "nanabberry",
+    "num": 166,
+    "name": "Nanab Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "wepearberry",
+    "num": 167,
+    "name": "Wepear Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "pinapberry",
+    "num": 168,
+    "name": "Pinap Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "pomegberry",
+    "num": 169,
+    "name": "Pomeg Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "kelpsyberry",
+    "num": 170,
+    "name": "Kelpsy Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "qualotberry",
+    "num": 171,
+    "name": "Qualot Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "hondewberry",
+    "num": 172,
+    "name": "Hondew Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "grepaberry",
+    "num": 173,
+    "name": "Grepa Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "tamatoberry",
+    "num": 174,
+    "name": "Tamato Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "cornnberry",
+    "num": 175,
+    "name": "Cornn Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "magostberry",
+    "num": 176,
+    "name": "Magost Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "rabutaberry",
+    "num": 177,
+    "name": "Rabuta Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "nomelberry",
+    "num": 178,
+    "name": "Nomel Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "spelonberry",
+    "num": 179,
+    "name": "Spelon Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "pamtreberry",
+    "num": 180,
+    "name": "Pamtre Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "watmelberry",
+    "num": 181,
+    "name": "Watmel Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "durinberry",
+    "num": 182,
+    "name": "Durin Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "belueberry",
+    "num": 183,
+    "name": "Belue Berry",
+    "shortDesc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "occaberry",
+    "num": 184,
+    "name": "Occa Berry",
+    "shortDesc": "Halves damage taken from a supereffective Fire-type attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "passhoberry",
+    "num": 185,
+    "name": "Passho Berry",
+    "shortDesc": "Halves damage taken from a supereffective Water-type attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "wacanberry",
+    "num": 186,
+    "name": "Wacan Berry",
+    "shortDesc": "Halves damage taken from a supereffective Electric-type attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "rindoberry",
+    "num": 187,
+    "name": "Rindo Berry",
+    "shortDesc": "Halves damage taken from a supereffective Grass-type attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "yacheberry",
+    "num": 188,
+    "name": "Yache Berry",
+    "shortDesc": "Halves damage taken from a supereffective Ice-type attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "chopleberry",
+    "num": 189,
+    "name": "Chople Berry",
+    "shortDesc": "Halves damage taken from a supereffective Fighting-type attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "kebiaberry",
+    "num": 190,
+    "name": "Kebia Berry",
+    "shortDesc": "Halves damage taken from a supereffective Poison-type attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "shucaberry",
+    "num": 191,
+    "name": "Shuca Berry",
+    "shortDesc": "Halves damage taken from a supereffective Ground-type attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "cobaberry",
+    "num": 192,
+    "name": "Coba Berry",
+    "shortDesc": "Halves damage taken from a supereffective Flying-type attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "payapaberry",
+    "num": 193,
+    "name": "Payapa Berry",
+    "shortDesc": "Halves damage taken from a supereffective Psychic-type attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "tangaberry",
+    "num": 194,
+    "name": "Tanga Berry",
+    "shortDesc": "Halves damage taken from a supereffective Bug-type attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "chartiberry",
+    "num": 195,
+    "name": "Charti Berry",
+    "shortDesc": "Halves damage taken from a supereffective Rock-type attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "kasibberry",
+    "num": 196,
+    "name": "Kasib Berry",
+    "shortDesc": "Halves damage taken from a supereffective Ghost-type attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "habanberry",
+    "num": 197,
+    "name": "Haban Berry",
+    "shortDesc": "Halves damage taken from a supereffective Dragon-type attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "colburberry",
+    "num": 198,
+    "name": "Colbur Berry",
+    "shortDesc": "Halves damage taken from a supereffective Dark-type attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "babiriberry",
+    "num": 199,
+    "name": "Babiri Berry",
+    "shortDesc": "Halves damage taken from a supereffective Steel-type attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "chilanberry",
+    "num": 200,
+    "name": "Chilan Berry",
+    "shortDesc": "Halves damage taken from a Normal-type attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "liechiberry",
+    "num": 201,
+    "name": "Liechi Berry",
+    "shortDesc": "Raises holder's Attack by 1 stage when at 1/4 max HP or less. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "ganlonberry",
+    "num": 202,
+    "name": "Ganlon Berry",
+    "shortDesc": "Raises holder's Defense by 1 stage when at 1/4 max HP or less. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "salacberry",
+    "num": 203,
+    "name": "Salac Berry",
+    "shortDesc": "Raises holder's Speed by 1 stage when at 1/4 max HP or less. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "petayaberry",
+    "num": 204,
+    "name": "Petaya Berry",
+    "shortDesc": "Raises holder's Sp. Atk by 1 stage when at 1/4 max HP or less. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "apicotberry",
+    "num": 205,
+    "name": "Apicot Berry",
+    "shortDesc": "Raises holder's Sp. Def by 1 stage when at 1/4 max HP or less. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "lansatberry",
+    "num": 206,
+    "name": "Lansat Berry",
+    "shortDesc": "Holder gains the Focus Energy effect when at 1/4 max HP or less. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "starfberry",
+    "num": 207,
+    "name": "Starf Berry",
+    "shortDesc": "Raises a random stat by 2 when at 1/4 max HP or less (not acc/eva). Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "enigmaberry",
+    "num": 208,
+    "name": "Enigma Berry",
+    "shortDesc": "Restores 1/4 max HP after holder is hit by a supereffective move. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "micleberry",
+    "num": 209,
+    "name": "Micle Berry",
+    "shortDesc": "Holder's next move has 1.2x accuracy when at 1/4 max HP or less. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "custapberry",
+    "num": 210,
+    "name": "Custap Berry",
+    "shortDesc": "Holder moves first in its priority bracket when at 1/4 max HP or less. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "jabocaberry",
+    "num": 211,
+    "name": "Jaboca Berry",
+    "shortDesc": "If holder is hit by a physical move, attacker loses 1/8 of its max HP. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "rowapberry",
+    "num": 212,
+    "name": "Rowap Berry",
+    "shortDesc": "If holder is hit by a special move, attacker loses 1/8 of its max HP. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "brightpowder",
+    "num": 213,
+    "name": "Bright Powder",
+    "shortDesc": "The accuracy of attacks against the holder is 0.9x.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "whiteherb",
+    "num": 214,
+    "name": "White Herb",
+    "shortDesc": "Restores all lowered stat stages to 0 when one is less than 0. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "machobrace",
+    "num": 215,
+    "name": "Macho Brace",
+    "shortDesc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+    "fling": {
+      "basePower": 60
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "quickclaw",
+    "num": 217,
+    "name": "Quick Claw",
+    "shortDesc": "Each turn, holder has a 20% chance to move first in its priority bracket.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "mentalherb",
+    "num": 219,
+    "name": "Mental Herb",
+    "shortDesc": "Cures holder of Attract, Disable, Encore, Heal Block, Taunt, Torment. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "choiceband",
+    "num": 220,
+    "name": "Choice Band",
+    "shortDesc": "Holder's Attack is 1.5x, but it can only select the first move it executes.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "kingsrock",
+    "num": 221,
+    "name": "King's Rock",
+    "shortDesc": "Holder's attacks without a chance to flinch gain a 10% chance to flinch.",
+    "fling": {
+      "basePower": 30,
+      "volatileStatus": "flinch"
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "silverpowder",
+    "num": 222,
+    "name": "Silver Powder",
+    "shortDesc": "Holder's Bug-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "souldew",
+    "num": 225,
+    "name": "Soul Dew",
+    "shortDesc": "If held by a Latias/Latios, its Dragon- and Psychic-type moves have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "deepseatooth",
+    "num": 226,
+    "name": "Deep Sea Tooth",
+    "shortDesc": "If held by a Clamperl, its Sp. Atk is doubled.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "deepseascale",
+    "num": 227,
+    "name": "Deep Sea Scale",
+    "shortDesc": "If held by a Clamperl, its Sp. Def is doubled.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "focusband",
+    "num": 230,
+    "name": "Focus Band",
+    "shortDesc": "Holder has a 10% chance to survive an attack that would KO it with 1 HP.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "scopelens",
+    "num": 232,
+    "name": "Scope Lens",
+    "shortDesc": "Holder's critical hit ratio is raised by 1 stage.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "metalcoat",
+    "num": 233,
+    "name": "Metal Coat",
+    "shortDesc": "Holder's Steel-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "leftovers",
+    "num": 234,
+    "name": "Leftovers",
+    "shortDesc": "At the end of every turn, holder restores 1/16 of its max HP.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": [
+      "たべのこし"
+    ]
+  },
+  {
+    "id": "dragonscale",
+    "num": 235,
+    "name": "Dragon Scale",
+    "shortDesc": "Evolves Seadra into Kingdra when traded.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "lightball",
+    "num": 236,
+    "name": "Light Ball",
+    "shortDesc": "If held by a Pikachu, its Attack and Sp. Atk are doubled.",
+    "fling": {
+      "basePower": 30,
+      "status": "par"
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "softsand",
+    "num": 237,
+    "name": "Soft Sand",
+    "shortDesc": "Holder's Ground-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "hardstone",
+    "num": 238,
+    "name": "Hard Stone",
+    "shortDesc": "Holder's Rock-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "miracleseed",
+    "num": 239,
+    "name": "Miracle Seed",
+    "shortDesc": "Holder's Grass-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "blackglasses",
+    "num": 240,
+    "name": "Black Glasses",
+    "shortDesc": "Holder's Dark-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "blackbelt",
+    "num": 241,
+    "name": "Black Belt",
+    "shortDesc": "Holder's Fighting-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "magnet",
+    "num": 242,
+    "name": "Magnet",
+    "shortDesc": "Holder's Electric-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "mysticwater",
+    "num": 243,
+    "name": "Mystic Water",
+    "shortDesc": "Holder's Water-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "sharpbeak",
+    "num": 244,
+    "name": "Sharp Beak",
+    "shortDesc": "Holder's Flying-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "poisonbarb",
+    "num": 245,
+    "name": "Poison Barb",
+    "shortDesc": "Holder's Poison-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 70,
+      "status": "psn"
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "nevermeltice",
+    "num": 246,
+    "name": "Never-Melt Ice",
+    "shortDesc": "Holder's Ice-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "spelltag",
+    "num": 247,
+    "name": "Spell Tag",
+    "shortDesc": "Holder's Ghost-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "twistedspoon",
+    "num": 248,
+    "name": "Twisted Spoon",
+    "shortDesc": "Holder's Psychic-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "charcoal",
+    "num": 249,
+    "name": "Charcoal",
+    "shortDesc": "Holder's Fire-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "dragonfang",
+    "num": 250,
+    "name": "Dragon Fang",
+    "shortDesc": "Holder's Dragon-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 70
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "pinkbow",
+    "num": 251,
+    "name": "Pink Bow",
+    "shortDesc": "(Gen 2) Holder's Normal-type attacks have 1.1x power.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "polkadotbow",
+    "num": 251,
+    "name": "Polkadot Bow",
+    "shortDesc": "(Gen 2) Holder's Normal-type attacks have 1.1x power.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "silkscarf",
+    "num": 251,
+    "name": "Silk Scarf",
+    "shortDesc": "Holder's Normal-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "upgrade",
+    "num": 252,
+    "name": "Up-Grade",
+    "shortDesc": "Evolves Porygon into Porygon2 when traded.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "shellbell",
+    "num": 253,
+    "name": "Shell Bell",
+    "shortDesc": "After an attack, holder gains 1/8 of the damage in HP dealt to other Pokemon.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "seaincense",
+    "num": 254,
+    "name": "Sea Incense",
+    "shortDesc": "Holder's Water-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "laxincense",
+    "num": 255,
+    "name": "Lax Incense",
+    "shortDesc": "The accuracy of attacks against the holder is 0.9x.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "luckypunch",
+    "num": 256,
+    "name": "Lucky Punch",
+    "shortDesc": "If held by a Chansey, its critical hit ratio is raised by 2 stages.",
+    "fling": {
+      "basePower": 40
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "metalpowder",
+    "num": 257,
+    "name": "Metal Powder",
+    "shortDesc": "If held by a Ditto that hasn't Transformed, its Defense is doubled.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "thickclub",
+    "num": 258,
+    "name": "Thick Club",
+    "shortDesc": "If held by a Cubone or a Marowak, its Attack is doubled.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "leek",
+    "num": 259,
+    "name": "Leek",
+    "shortDesc": "If held by a Farfetch’d or Sirfetch’d, its critical hit ratio is raised by 2 stages.",
+    "fling": {
+      "basePower": 60
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "stick",
+    "num": 259,
+    "name": "Stick",
+    "shortDesc": "If held by a Farfetch’d, its critical hit ratio is raised by 2 stages.",
+    "fling": {
+      "basePower": 60
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "widelens",
+    "num": 265,
+    "name": "Wide Lens",
+    "shortDesc": "The accuracy of attacks by the holder is 1.1x.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "muscleband",
+    "num": 266,
+    "name": "Muscle Band",
+    "shortDesc": "Holder's physical attacks have 1.1x power.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "wiseglasses",
+    "num": 267,
+    "name": "Wise Glasses",
+    "shortDesc": "Holder's special attacks have 1.1x power.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "expertbelt",
+    "num": 268,
+    "name": "Expert Belt",
+    "shortDesc": "Holder's attacks that are super effective against the target do 1.2x damage.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": [
+      "たつじんのおび"
+    ]
+  },
+  {
+    "id": "lightclay",
+    "num": 269,
+    "name": "Light Clay",
+    "shortDesc": "Holder's use of Aurora Veil, Light Screen, or Reflect lasts 8 turns instead of 5.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "lifeorb",
+    "num": 270,
+    "name": "Life Orb",
+    "shortDesc": "Holder's attacks do 1.3x damage, and it loses 1/10 its max HP after the attack.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": [
+      "いのちのたま"
+    ]
+  },
+  {
+    "id": "powerherb",
+    "num": 271,
+    "name": "Power Herb",
+    "shortDesc": "Holder's two-turn moves complete in one turn (except Sky Drop). Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "toxicorb",
+    "num": 272,
+    "name": "Toxic Orb",
+    "shortDesc": "At the end of every turn, this item attempts to badly poison the holder.",
+    "fling": {
+      "basePower": 30,
+      "status": "tox"
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "flameorb",
+    "num": 273,
+    "name": "Flame Orb",
+    "shortDesc": "At the end of every turn, this item attempts to burn the holder.",
+    "fling": {
+      "basePower": 30,
+      "status": "brn"
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "quickpowder",
+    "num": 274,
+    "name": "Quick Powder",
+    "shortDesc": "If held by a Ditto that hasn't Transformed, its Speed is doubled.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "focussash",
+    "num": 275,
+    "name": "Focus Sash",
+    "shortDesc": "If holder's HP is full, will survive an attack that would KO it with 1 HP. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": [
+      "きあいのタスキ"
+    ]
+  },
+  {
+    "id": "zoomlens",
+    "num": 276,
+    "name": "Zoom Lens",
+    "shortDesc": "The accuracy of attacks by the holder is 1.2x if it moves after its target.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "metronome",
+    "num": 277,
+    "name": "Metronome",
+    "shortDesc": "Damage of moves used on consecutive turns is increased. Max 2x after 5 turns.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "ironball",
+    "num": 278,
+    "name": "Iron Ball",
+    "shortDesc": "Holder is grounded, Speed halved. If Flying type, takes neutral Ground damage.",
+    "fling": {
+      "basePower": 130
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "laggingtail",
+    "num": 279,
+    "name": "Lagging Tail",
+    "shortDesc": "Holder moves last in its priority bracket.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "destinyknot",
+    "num": 280,
+    "name": "Destiny Knot",
+    "shortDesc": "If holder becomes infatuated, the other Pokemon also becomes infatuated.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "blacksludge",
+    "num": 281,
+    "name": "Black Sludge",
+    "shortDesc": "Each turn, if holder is a Poison type, restores 1/16 max HP; loses 1/8 if not.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "icyrock",
+    "num": 282,
+    "name": "Icy Rock",
+    "shortDesc": "Holder's use of Snowscape lasts 8 turns instead of 5.",
+    "fling": {
+      "basePower": 40
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "smoothrock",
+    "num": 283,
+    "name": "Smooth Rock",
+    "shortDesc": "Holder's use of Sandstorm lasts 8 turns instead of 5.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "heatrock",
+    "num": 284,
+    "name": "Heat Rock",
+    "shortDesc": "Holder's use of Sunny Day lasts 8 turns instead of 5.",
+    "fling": {
+      "basePower": 60
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "damprock",
+    "num": 285,
+    "name": "Damp Rock",
+    "shortDesc": "Holder's use of Rain Dance lasts 8 turns instead of 5.",
+    "fling": {
+      "basePower": 60
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "gripclaw",
+    "num": 286,
+    "name": "Grip Claw",
+    "shortDesc": "Holder's partial-trapping moves always last 7 turns.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "choicescarf",
+    "num": 287,
+    "name": "Choice Scarf",
+    "shortDesc": "Holder's Speed is 1.5x, but it can only select the first move it executes.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": [
+      "こだわりスカーフ"
+    ]
+  },
+  {
+    "id": "stickybarb",
+    "num": 288,
+    "name": "Sticky Barb",
+    "shortDesc": "Each turn, holder loses 1/8 max HP. An attacker making contact can receive it.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "powerbracer",
+    "num": 289,
+    "name": "Power Bracer",
+    "shortDesc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+    "fling": {
+      "basePower": 70
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "powerbelt",
+    "num": 290,
+    "name": "Power Belt",
+    "shortDesc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+    "fling": {
+      "basePower": 70
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "powerlens",
+    "num": 291,
+    "name": "Power Lens",
+    "shortDesc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+    "fling": {
+      "basePower": 70
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "powerband",
+    "num": 292,
+    "name": "Power Band",
+    "shortDesc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+    "fling": {
+      "basePower": 70
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "poweranklet",
+    "num": 293,
+    "name": "Power Anklet",
+    "shortDesc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+    "fling": {
+      "basePower": 70
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "powerweight",
+    "num": 294,
+    "name": "Power Weight",
+    "shortDesc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+    "fling": {
+      "basePower": 70
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "shedshell",
+    "num": 295,
+    "name": "Shed Shell",
+    "shortDesc": "Holder cannot be prevented from choosing to switch out by any effect.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "bigroot",
+    "num": 296,
+    "name": "Big Root",
+    "shortDesc": "Holder gains 1.3x HP from draining/Aqua Ring/Ingrain/Leech Seed/Strength Sap.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "choicespecs",
+    "num": 297,
+    "name": "Choice Specs",
+    "shortDesc": "Holder's Sp. Atk is 1.5x, but it can only select the first move it executes.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "flameplate",
+    "num": 298,
+    "name": "Flame Plate",
+    "shortDesc": "Holder's Fire-type attacks have 1.2x power. Judgment is Fire type.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "splashplate",
+    "num": 299,
+    "name": "Splash Plate",
+    "shortDesc": "Holder's Water-type attacks have 1.2x power. Judgment is Water type.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "zapplate",
+    "num": 300,
+    "name": "Zap Plate",
+    "shortDesc": "Holder's Electric-type attacks have 1.2x power. Judgment is Electric type.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "meadowplate",
+    "num": 301,
+    "name": "Meadow Plate",
+    "shortDesc": "Holder's Grass-type attacks have 1.2x power. Judgment is Grass type.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "icicleplate",
+    "num": 302,
+    "name": "Icicle Plate",
+    "shortDesc": "Holder's Ice-type attacks have 1.2x power. Judgment is Ice type.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "fistplate",
+    "num": 303,
+    "name": "Fist Plate",
+    "shortDesc": "Holder's Fighting-type attacks have 1.2x power. Judgment is Fighting type.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "toxicplate",
+    "num": 304,
+    "name": "Toxic Plate",
+    "shortDesc": "Holder's Poison-type attacks have 1.2x power. Judgment is Poison type.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "earthplate",
+    "num": 305,
+    "name": "Earth Plate",
+    "shortDesc": "Holder's Ground-type attacks have 1.2x power. Judgment is Ground type.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "skyplate",
+    "num": 306,
+    "name": "Sky Plate",
+    "shortDesc": "Holder's Flying-type attacks have 1.2x power. Judgment is Flying type.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "mindplate",
+    "num": 307,
+    "name": "Mind Plate",
+    "shortDesc": "Holder's Psychic-type attacks have 1.2x power. Judgment is Psychic type.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "insectplate",
+    "num": 308,
+    "name": "Insect Plate",
+    "shortDesc": "Holder's Bug-type attacks have 1.2x power. Judgment is Bug type.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "stoneplate",
+    "num": 309,
+    "name": "Stone Plate",
+    "shortDesc": "Holder's Rock-type attacks have 1.2x power. Judgment is Rock type.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "spookyplate",
+    "num": 310,
+    "name": "Spooky Plate",
+    "shortDesc": "Holder's Ghost-type attacks have 1.2x power. Judgment is Ghost type.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "dracoplate",
+    "num": 311,
+    "name": "Draco Plate",
+    "shortDesc": "Holder's Dragon-type attacks have 1.2x power. Judgment is Dragon type.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "dreadplate",
+    "num": 312,
+    "name": "Dread Plate",
+    "shortDesc": "Holder's Dark-type attacks have 1.2x power. Judgment is Dark type.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "ironplate",
+    "num": 313,
+    "name": "Iron Plate",
+    "shortDesc": "Holder's Steel-type attacks have 1.2x power. Judgment is Steel type.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "oddincense",
+    "num": 314,
+    "name": "Odd Incense",
+    "shortDesc": "Holder's Psychic-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "rockincense",
+    "num": 315,
+    "name": "Rock Incense",
+    "shortDesc": "Holder's Rock-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "fullincense",
+    "num": 316,
+    "name": "Full Incense",
+    "shortDesc": "Holder moves last in its priority bracket.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "waveincense",
+    "num": 317,
+    "name": "Wave Incense",
+    "shortDesc": "Holder's Water-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "roseincense",
+    "num": 318,
+    "name": "Rose Incense",
+    "shortDesc": "Holder's Grass-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "protector",
+    "num": 321,
+    "name": "Protector",
+    "shortDesc": "Evolves Rhydon into Rhyperior when traded.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "electirizer",
+    "num": 322,
+    "name": "Electirizer",
+    "shortDesc": "Evolves Electabuzz into Electivire when traded.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "magmarizer",
+    "num": 323,
+    "name": "Magmarizer",
+    "shortDesc": "Evolves Magmar into Magmortar when traded.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "dubiousdisc",
+    "num": 324,
+    "name": "Dubious Disc",
+    "shortDesc": "Evolves Porygon2 into Porygon-Z when traded.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "reapercloth",
+    "num": 325,
+    "name": "Reaper Cloth",
+    "shortDesc": "Evolves Dusclops into Dusknoir when traded.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "razorclaw",
+    "num": 326,
+    "name": "Razor Claw",
+    "shortDesc": "Holder's critical hit ratio is raised by 1 stage.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "razorfang",
+    "num": 327,
+    "name": "Razor Fang",
+    "shortDesc": "Holder's attacks without a chance to flinch gain a 10% chance to flinch.",
+    "fling": {
+      "basePower": 30,
+      "volatileStatus": "flinch"
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "fastball",
+    "num": 492,
+    "name": "Fast Ball",
+    "shortDesc": "A Poke Ball that makes it easier to catch Pokemon which are quick to run away.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "levelball",
+    "num": 493,
+    "name": "Level Ball",
+    "shortDesc": "A Poke Ball for catching Pokemon that are a lower level than your own.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "lureball",
+    "num": 494,
+    "name": "Lure Ball",
+    "shortDesc": "A Poke Ball for catching Pokemon hooked by a Rod when fishing.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "heavyball",
+    "num": 495,
+    "name": "Heavy Ball",
+    "shortDesc": "A Poke Ball for catching very heavy Pokemon.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "loveball",
+    "num": 496,
+    "name": "Love Ball",
+    "shortDesc": "Poke Ball for catching Pokemon that are the opposite gender of your Pokemon.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "friendball",
+    "num": 497,
+    "name": "Friend Ball",
+    "shortDesc": "A Poke Ball that makes caught Pokemon more friendly.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "moonball",
+    "num": 498,
+    "name": "Moon Ball",
+    "shortDesc": "A Poke Ball for catching Pokemon that evolve using the Moon Stone.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "sportball",
+    "num": 499,
+    "name": "Sport Ball",
+    "shortDesc": "A special Poke Ball for the Bug-Catching Contest.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "parkball",
+    "num": 500,
+    "name": "Park Ball",
+    "shortDesc": "A special Poke Ball for the Pal Park.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Unobtainable",
+    "aliasesJa": []
+  },
+  {
+    "id": "redorb",
+    "num": 534,
+    "name": "Red Orb",
+    "shortDesc": "If held by a Groudon, this item triggers its Primal Reversion in battle.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "blueorb",
+    "num": 535,
+    "name": "Blue Orb",
+    "shortDesc": "If held by a Kyogre, this item triggers its Primal Reversion in battle.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "prismscale",
+    "num": 537,
+    "name": "Prism Scale",
+    "shortDesc": "Evolves Feebas into Milotic when traded.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "eviolite",
+    "num": 538,
+    "name": "Eviolite",
+    "shortDesc": "If holder's species can evolve, its Defense and Sp. Def are 1.5x.",
+    "fling": {
+      "basePower": 40
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "floatstone",
+    "num": 539,
+    "name": "Float Stone",
+    "shortDesc": "Holder's weight is halved.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "rockyhelmet",
+    "num": 540,
+    "name": "Rocky Helmet",
+    "shortDesc": "If holder is hit by a contact move, the attacker loses 1/6 of its max HP.",
+    "fling": {
+      "basePower": 60
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "airballoon",
+    "num": 541,
+    "name": "Air Balloon",
+    "shortDesc": "Holder is immune to Ground-type attacks. Pops when holder is hit.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "redcard",
+    "num": 542,
+    "name": "Red Card",
+    "shortDesc": "If holder survives a hit, attacker is forced to switch to a random ally. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "ringtarget",
+    "num": 543,
+    "name": "Ring Target",
+    "shortDesc": "The holder's type immunities granted solely by its typing are negated.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "bindingband",
+    "num": 544,
+    "name": "Binding Band",
+    "shortDesc": "Holder's partial-trapping moves deal 1/6 max HP per turn instead of 1/8.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "absorbbulb",
+    "num": 545,
+    "name": "Absorb Bulb",
+    "shortDesc": "Raises holder's Sp. Atk by 1 stage if hit by a Water-type attack. Single use.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "cellbattery",
+    "num": 546,
+    "name": "Cell Battery",
+    "shortDesc": "Raises holder's Attack by 1 if hit by an Electric-type attack. Single use.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "ejectbutton",
+    "num": 547,
+    "name": "Eject Button",
+    "shortDesc": "If holder survives a hit, it immediately switches out to a chosen ally. Single use.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "firegem",
+    "num": 548,
+    "name": "Fire Gem",
+    "shortDesc": "Holder's first successful Fire-type attack will have 1.3x power. Single use.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "watergem",
+    "num": 549,
+    "name": "Water Gem",
+    "shortDesc": "Holder's first successful Water-type attack will have 1.3x power. Single use.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "electricgem",
+    "num": 550,
+    "name": "Electric Gem",
+    "shortDesc": "Holder's first successful Electric-type attack will have 1.3x power. Single use.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "grassgem",
+    "num": 551,
+    "name": "Grass Gem",
+    "shortDesc": "Holder's first successful Grass-type attack will have 1.3x power. Single use.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "icegem",
+    "num": 552,
+    "name": "Ice Gem",
+    "shortDesc": "Holder's first successful Ice-type attack will have 1.3x power. Single use.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "fightinggem",
+    "num": 553,
+    "name": "Fighting Gem",
+    "shortDesc": "Holder's first successful Fighting-type attack will have 1.3x power. Single use.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "poisongem",
+    "num": 554,
+    "name": "Poison Gem",
+    "shortDesc": "Holder's first successful Poison-type attack will have 1.3x power. Single use.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "groundgem",
+    "num": 555,
+    "name": "Ground Gem",
+    "shortDesc": "Holder's first successful Ground-type attack will have 1.3x power. Single use.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "flyinggem",
+    "num": 556,
+    "name": "Flying Gem",
+    "shortDesc": "Holder's first successful Flying-type attack will have 1.3x power. Single use.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "psychicgem",
+    "num": 557,
+    "name": "Psychic Gem",
+    "shortDesc": "Holder's first successful Psychic-type attack will have 1.3x power. Single use.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "buggem",
+    "num": 558,
+    "name": "Bug Gem",
+    "shortDesc": "Holder's first successful Bug-type attack will have 1.3x power. Single use.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "rockgem",
+    "num": 559,
+    "name": "Rock Gem",
+    "shortDesc": "Holder's first successful Rock-type attack will have 1.3x power. Single use.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "ghostgem",
+    "num": 560,
+    "name": "Ghost Gem",
+    "shortDesc": "Holder's first successful Ghost-type attack will have 1.3x power. Single use.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "dragongem",
+    "num": 561,
+    "name": "Dragon Gem",
+    "shortDesc": "Holder's first successful Dragon-type attack will have 1.3x power. Single use.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "darkgem",
+    "num": 562,
+    "name": "Dark Gem",
+    "shortDesc": "Holder's first successful Dark-type attack will have 1.3x power. Single use.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "steelgem",
+    "num": 563,
+    "name": "Steel Gem",
+    "shortDesc": "Holder's first successful Steel-type attack will have 1.3x power. Single use.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "normalgem",
+    "num": 564,
+    "name": "Normal Gem",
+    "shortDesc": "Holder's first successful Normal-type attack will have 1.3x power. Single use.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "prettyfeather",
+    "num": 571,
+    "name": "Pretty Feather",
+    "shortDesc": "Though this feather is beautiful, it's just a regular feather and has no effect.",
+    "fling": {
+      "basePower": 20
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "coverfossil",
+    "num": 572,
+    "name": "Cover Fossil",
+    "shortDesc": "Can be revived into Tirtouga.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "plumefossil",
+    "num": 573,
+    "name": "Plume Fossil",
+    "shortDesc": "Can be revived into Archen.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "dreamball",
+    "num": 576,
+    "name": "Dream Ball",
+    "shortDesc": "A Poke Ball that makes it easier to catch wild Pokémon while they're asleep.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "bignugget",
+    "num": 581,
+    "name": "Big Nugget",
+    "shortDesc": "A big nugget of pure gold that gives off a lustrous gleam.",
+    "fling": {
+      "basePower": 130
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "weaknesspolicy",
+    "num": 639,
+    "name": "Weakness Policy",
+    "shortDesc": "If holder is hit super effectively, raises Attack, Sp. Atk by 2 stages. Single use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "assaultvest",
+    "num": 640,
+    "name": "Assault Vest",
+    "shortDesc": "Holder's Sp. Def is 1.5x, but it can only select damaging moves.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "pixieplate",
+    "num": 644,
+    "name": "Pixie Plate",
+    "shortDesc": "Holder's Fairy-type attacks have 1.2x power. Judgment is Fairy type.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "whippeddream",
+    "num": 646,
+    "name": "Whipped Dream",
+    "shortDesc": "Evolves Swirlix into Slurpuff when traded.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "sachet",
+    "num": 647,
+    "name": "Sachet",
+    "shortDesc": "Evolves Spritzee into Aromatisse when traded.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "luminousmoss",
+    "num": 648,
+    "name": "Luminous Moss",
+    "shortDesc": "Raises holder's Sp. Def by 1 stage if hit by a Water-type attack. Single use.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "snowball",
+    "num": 649,
+    "name": "Snowball",
+    "shortDesc": "Raises holder's Attack by 1 if hit by an Ice-type attack. Single use.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "safetygoggles",
+    "num": 650,
+    "name": "Safety Goggles",
+    "shortDesc": "Holder is immune to powder moves and damage from Sandstorm or Hail.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "gengarite",
+    "num": 656,
+    "name": "Gengarite",
+    "shortDesc": "If held by a Gengar, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "gardevoirite",
+    "num": 657,
+    "name": "Gardevoirite",
+    "shortDesc": "If held by a Gardevoir, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "ampharosite",
+    "num": 658,
+    "name": "Ampharosite",
+    "shortDesc": "If held by an Ampharos, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "venusaurite",
+    "num": 659,
+    "name": "Venusaurite",
+    "shortDesc": "If held by a Venusaur, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "charizarditex",
+    "num": 660,
+    "name": "Charizardite X",
+    "shortDesc": "If held by a Charizard, this item allows it to Mega Evolve into Mega Charizard X.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "blastoisinite",
+    "num": 661,
+    "name": "Blastoisinite",
+    "shortDesc": "If held by a Blastoise, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "mewtwonitex",
+    "num": 662,
+    "name": "Mewtwonite X",
+    "shortDesc": "If held by a Mewtwo, this item allows it to Mega Evolve into Mega Mewtwo X in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "mewtwonitey",
+    "num": 663,
+    "name": "Mewtwonite Y",
+    "shortDesc": "If held by a Mewtwo, this item allows it to Mega Evolve into Mega Mewtwo Y in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "blazikenite",
+    "num": 664,
+    "name": "Blazikenite",
+    "shortDesc": "If held by a Blaziken, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "medichamite",
+    "num": 665,
+    "name": "Medichamite",
+    "shortDesc": "If held by a Medicham, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "houndoominite",
+    "num": 666,
+    "name": "Houndoominite",
+    "shortDesc": "If held by a Houndoom, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "aggronite",
+    "num": 667,
+    "name": "Aggronite",
+    "shortDesc": "If held by an Aggron, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "banettite",
+    "num": 668,
+    "name": "Banettite",
+    "shortDesc": "If held by a Banette, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tyranitarite",
+    "num": 669,
+    "name": "Tyranitarite",
+    "shortDesc": "If held by a Tyranitar, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "scizorite",
+    "num": 670,
+    "name": "Scizorite",
+    "shortDesc": "If held by a Scizor, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "pinsirite",
+    "num": 671,
+    "name": "Pinsirite",
+    "shortDesc": "If held by a Pinsir, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "aerodactylite",
+    "num": 672,
+    "name": "Aerodactylite",
+    "shortDesc": "If held by an Aerodactyl, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "lucarionite",
+    "num": 673,
+    "name": "Lucarionite",
+    "shortDesc": "If held by a Lucario, this item allows it to Mega Evolve into Mega Lucario in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "abomasite",
+    "num": 674,
+    "name": "Abomasite",
+    "shortDesc": "If held by an Abomasnow, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "kangaskhanite",
+    "num": 675,
+    "name": "Kangaskhanite",
+    "shortDesc": "If held by a Kangaskhan, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "gyaradosite",
+    "num": 676,
+    "name": "Gyaradosite",
+    "shortDesc": "If held by a Gyarados, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "absolite",
+    "num": 677,
+    "name": "Absolite",
+    "shortDesc": "If held by an Absol, this item allows it to Mega Evolve into Mega Absol in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "charizarditey",
+    "num": 678,
+    "name": "Charizardite Y",
+    "shortDesc": "If held by a Charizard, this item allows it to Mega Evolve into Mega Charizard Y.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "alakazite",
+    "num": 679,
+    "name": "Alakazite",
+    "shortDesc": "If held by an Alakazam, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "heracronite",
+    "num": 680,
+    "name": "Heracronite",
+    "shortDesc": "If held by a Heracross, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "mawilite",
+    "num": 681,
+    "name": "Mawilite",
+    "shortDesc": "If held by a Mawile, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "manectite",
+    "num": 682,
+    "name": "Manectite",
+    "shortDesc": "If held by a Manectric, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "garchompite",
+    "num": 683,
+    "name": "Garchompite",
+    "shortDesc": "If held by a Garchomp, this item allows it to Mega Evolve into Mega Garchomp.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "latiasite",
+    "num": 684,
+    "name": "Latiasite",
+    "shortDesc": "If held by a Latias, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "latiosite",
+    "num": 685,
+    "name": "Latiosite",
+    "shortDesc": "If held by a Latios, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "roseliberry",
+    "num": 686,
+    "name": "Roseli Berry",
+    "shortDesc": "Halves damage taken from a supereffective Fairy-type attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "keeberry",
+    "num": 687,
+    "name": "Kee Berry",
+    "shortDesc": "Raises holder's Defense by 1 stage after it is hit by a physical attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "marangaberry",
+    "num": 688,
+    "name": "Maranga Berry",
+    "shortDesc": "Raises holder's Sp. Def by 1 stage after it is hit by a special attack. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": true,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "jawfossil",
+    "num": 710,
+    "name": "Jaw Fossil",
+    "shortDesc": "Can be revived into Tyrunt.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "sailfossil",
+    "num": 711,
+    "name": "Sail Fossil",
+    "shortDesc": "Can be revived into Amaura.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "fairygem",
+    "num": 715,
+    "name": "Fairy Gem",
+    "shortDesc": "Holder's first successful Fairy-type attack will have 1.3x power. Single use.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "swampertite",
+    "num": 752,
+    "name": "Swampertite",
+    "shortDesc": "If held by a Swampert, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "sceptilite",
+    "num": 753,
+    "name": "Sceptilite",
+    "shortDesc": "If held by a Sceptile, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "sablenite",
+    "num": 754,
+    "name": "Sablenite",
+    "shortDesc": "If held by a Sableye, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "altarianite",
+    "num": 755,
+    "name": "Altarianite",
+    "shortDesc": "If held by an Altaria, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "galladite",
+    "num": 756,
+    "name": "Galladite",
+    "shortDesc": "If held by a Gallade, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "audinite",
+    "num": 757,
+    "name": "Audinite",
+    "shortDesc": "If held by an Audino, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "metagrossite",
+    "num": 758,
+    "name": "Metagrossite",
+    "shortDesc": "If held by a Metagross, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": [
+      "メタグロスナイト"
+    ]
+  },
+  {
+    "id": "sharpedonite",
+    "num": 759,
+    "name": "Sharpedonite",
+    "shortDesc": "If held by a Sharpedo, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "slowbronite",
+    "num": 760,
+    "name": "Slowbronite",
+    "shortDesc": "If held by a Slowbro, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "steelixite",
+    "num": 761,
+    "name": "Steelixite",
+    "shortDesc": "If held by a Steelix, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "pidgeotite",
+    "num": 762,
+    "name": "Pidgeotite",
+    "shortDesc": "If held by a Pidgeot, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "glalitite",
+    "num": 763,
+    "name": "Glalitite",
+    "shortDesc": "If held by a Glalie, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "diancite",
+    "num": 764,
+    "name": "Diancite",
+    "shortDesc": "If held by a Diancie, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "cameruptite",
+    "num": 767,
+    "name": "Cameruptite",
+    "shortDesc": "If held by a Camerupt, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "lopunnite",
+    "num": 768,
+    "name": "Lopunnite",
+    "shortDesc": "If held by a Lopunny, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "salamencite",
+    "num": 769,
+    "name": "Salamencite",
+    "shortDesc": "If held by a Salamence, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "beedrillite",
+    "num": 770,
+    "name": "Beedrillite",
+    "shortDesc": "If held by a Beedrill, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "normaliumz",
+    "num": 776,
+    "name": "Normalium Z",
+    "shortDesc": "If holder has a Normal move, this item allows it to use a Normal Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "firiumz",
+    "num": 777,
+    "name": "Firium Z",
+    "shortDesc": "If holder has a Fire move, this item allows it to use a Fire Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "wateriumz",
+    "num": 778,
+    "name": "Waterium Z",
+    "shortDesc": "If holder has a Water move, this item allows it to use a Water Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "electriumz",
+    "num": 779,
+    "name": "Electrium Z",
+    "shortDesc": "If holder has an Electric move, this item allows it to use an Electric Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "grassiumz",
+    "num": 780,
+    "name": "Grassium Z",
+    "shortDesc": "If holder has a Grass move, this item allows it to use a Grass Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "iciumz",
+    "num": 781,
+    "name": "Icium Z",
+    "shortDesc": "If holder has an Ice move, this item allows it to use an Ice Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "fightiniumz",
+    "num": 782,
+    "name": "Fightinium Z",
+    "shortDesc": "If holder has a Fighting move, this item allows it to use a Fighting Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "poisoniumz",
+    "num": 783,
+    "name": "Poisonium Z",
+    "shortDesc": "If holder has a Poison move, this item allows it to use a Poison Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "groundiumz",
+    "num": 784,
+    "name": "Groundium Z",
+    "shortDesc": "If holder has a Ground move, this item allows it to use a Ground Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "flyiniumz",
+    "num": 785,
+    "name": "Flyinium Z",
+    "shortDesc": "If holder has a Flying move, this item allows it to use a Flying Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "psychiumz",
+    "num": 786,
+    "name": "Psychium Z",
+    "shortDesc": "If holder has a Psychic move, this item allows it to use a Psychic Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "buginiumz",
+    "num": 787,
+    "name": "Buginium Z",
+    "shortDesc": "If holder has a Bug move, this item allows it to use a Bug Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "rockiumz",
+    "num": 788,
+    "name": "Rockium Z",
+    "shortDesc": "If holder has a Rock move, this item allows it to use a Rock Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "ghostiumz",
+    "num": 789,
+    "name": "Ghostium Z",
+    "shortDesc": "If holder has a Ghost move, this item allows it to use a Ghost Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "dragoniumz",
+    "num": 790,
+    "name": "Dragonium Z",
+    "shortDesc": "If holder has a Dragon move, this item allows it to use a Dragon Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "darkiniumz",
+    "num": 791,
+    "name": "Darkinium Z",
+    "shortDesc": "If holder has a Dark move, this item allows it to use a Dark Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "steeliumz",
+    "num": 792,
+    "name": "Steelium Z",
+    "shortDesc": "If holder has a Steel move, this item allows it to use a Steel Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "fairiumz",
+    "num": 793,
+    "name": "Fairium Z",
+    "shortDesc": "If holder has a Fairy move, this item allows it to use a Fairy Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "pikaniumz",
+    "num": 794,
+    "name": "Pikanium Z",
+    "shortDesc": "If held by a Pikachu with Volt Tackle, it can use Catastropika.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "bottlecap",
+    "num": 795,
+    "name": "Bottle Cap",
+    "shortDesc": "Used for Hyper Training. One of a Pokemon's stats is calculated with an IV of 31.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "goldbottlecap",
+    "num": 796,
+    "name": "Gold Bottle Cap",
+    "shortDesc": "Used for Hyper Training. All of a Pokemon's stats are calculated with an IV of 31.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "decidiumz",
+    "num": 798,
+    "name": "Decidium Z",
+    "shortDesc": "If held by a Decidueye with Spirit Shackle, it can use Sinister Arrow Raid.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "inciniumz",
+    "num": 799,
+    "name": "Incinium Z",
+    "shortDesc": "If held by an Incineroar with Darkest Lariat, it can use Malicious Moonsault.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "primariumz",
+    "num": 800,
+    "name": "Primarium Z",
+    "shortDesc": "If held by a Primarina with Sparkling Aria, it can use Oceanic Operetta.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tapuniumz",
+    "num": 801,
+    "name": "Tapunium Z",
+    "shortDesc": "If held by a Tapu with Nature's Madness, it can use Guardian of Alola.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "marshadiumz",
+    "num": 802,
+    "name": "Marshadium Z",
+    "shortDesc": "If held by Marshadow with Spectral Thief, it can use Soul-Stealing 7-Star Strike.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "aloraichiumz",
+    "num": 803,
+    "name": "Aloraichium Z",
+    "shortDesc": "If held by an Alolan Raichu with Thunderbolt, it can use Stoked Sparksurfer.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "snorliumz",
+    "num": 804,
+    "name": "Snorlium Z",
+    "shortDesc": "If held by a Snorlax with Giga Impact, it can use Pulverizing Pancake.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "eeviumz",
+    "num": 805,
+    "name": "Eevium Z",
+    "shortDesc": "If held by an Eevee with Last Resort, it can use Extreme Evoboost.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "mewniumz",
+    "num": 806,
+    "name": "Mewnium Z",
+    "shortDesc": "If held by a Mew with Psychic, it can use Genesis Supernova.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "pikashuniumz",
+    "num": 836,
+    "name": "Pikashunium Z",
+    "shortDesc": "If held by cap Pikachu with Thunderbolt, it can use 10,000,000 Volt Thunderbolt.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "adrenalineorb",
+    "num": 846,
+    "name": "Adrenaline Orb",
+    "shortDesc": "Raises holder's Speed by 1 stage if it gets affected by Intimidate. Single use.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "icestone",
+    "num": 849,
+    "name": "Ice Stone",
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "beastball",
+    "num": 851,
+    "name": "Beast Ball",
+    "shortDesc": "A special Poke Ball designed to catch Ultra Beasts.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "terrainextender",
+    "num": 879,
+    "name": "Terrain Extender",
+    "shortDesc": "Holder's use of Electric/Grassy/Misty/Psychic Terrain lasts 8 turns instead of 5.",
+    "fling": {
+      "basePower": 60
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "protectivepads",
+    "num": 880,
+    "name": "Protective Pads",
+    "shortDesc": "Holder's moves are protected from adverse contact effects, except Pickpocket.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "electricseed",
+    "num": 881,
+    "name": "Electric Seed",
+    "shortDesc": "If the terrain is Electric Terrain, raises holder's Defense by 1 stage. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "psychicseed",
+    "num": 882,
+    "name": "Psychic Seed",
+    "shortDesc": "If the terrain is Psychic Terrain, raises holder's Sp. Def by 1 stage. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "mistyseed",
+    "num": 883,
+    "name": "Misty Seed",
+    "shortDesc": "If the terrain is Misty Terrain, raises holder's Sp. Def by 1 stage. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "grassyseed",
+    "num": 884,
+    "name": "Grassy Seed",
+    "shortDesc": "If the terrain is Grassy Terrain, raises holder's Defense by 1 stage. Single use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "fightingmemory",
+    "num": 904,
+    "name": "Fighting Memory",
+    "shortDesc": "Holder's Multi-Attack is Fighting type.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "flyingmemory",
+    "num": 905,
+    "name": "Flying Memory",
+    "shortDesc": "Holder's Multi-Attack is Flying type.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "poisonmemory",
+    "num": 906,
+    "name": "Poison Memory",
+    "shortDesc": "Holder's Multi-Attack is Poison type.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "groundmemory",
+    "num": 907,
+    "name": "Ground Memory",
+    "shortDesc": "Holder's Multi-Attack is Ground type.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "rockmemory",
+    "num": 908,
+    "name": "Rock Memory",
+    "shortDesc": "Holder's Multi-Attack is Rock type.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "bugmemory",
+    "num": 909,
+    "name": "Bug Memory",
+    "shortDesc": "Holder's Multi-Attack is Bug type.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "ghostmemory",
+    "num": 910,
+    "name": "Ghost Memory",
+    "shortDesc": "Holder's Multi-Attack is Ghost type.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "steelmemory",
+    "num": 911,
+    "name": "Steel Memory",
+    "shortDesc": "Holder's Multi-Attack is Steel type.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "firememory",
+    "num": 912,
+    "name": "Fire Memory",
+    "shortDesc": "Holder's Multi-Attack is Fire type.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "watermemory",
+    "num": 913,
+    "name": "Water Memory",
+    "shortDesc": "Holder's Multi-Attack is Water type.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "grassmemory",
+    "num": 914,
+    "name": "Grass Memory",
+    "shortDesc": "Holder's Multi-Attack is Grass type.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "electricmemory",
+    "num": 915,
+    "name": "Electric Memory",
+    "shortDesc": "Holder's Multi-Attack is Electric type.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "psychicmemory",
+    "num": 916,
+    "name": "Psychic Memory",
+    "shortDesc": "Holder's Multi-Attack is Psychic type.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "icememory",
+    "num": 917,
+    "name": "Ice Memory",
+    "shortDesc": "Holder's Multi-Attack is Ice type.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "dragonmemory",
+    "num": 918,
+    "name": "Dragon Memory",
+    "shortDesc": "Holder's Multi-Attack is Dragon type.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "darkmemory",
+    "num": 919,
+    "name": "Dark Memory",
+    "shortDesc": "Holder's Multi-Attack is Dark type.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "fairymemory",
+    "num": 920,
+    "name": "Fairy Memory",
+    "shortDesc": "Holder's Multi-Attack is Fairy type.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "solganiumz",
+    "num": 921,
+    "name": "Solganium Z",
+    "shortDesc": "Solgaleo or Dusk Mane Necrozma with Sunsteel Strike can use a special Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "lunaliumz",
+    "num": 922,
+    "name": "Lunalium Z",
+    "shortDesc": "Lunala or Dawn Wings Necrozma with Moongeist Beam can use a special Z-Move.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "ultranecroziumz",
+    "num": 923,
+    "name": "Ultranecrozium Z",
+    "shortDesc": "Dusk Mane/Dawn Wings Necrozma: Ultra Burst, then Z-Move w/ Photon Geyser.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "mimikiumz",
+    "num": 924,
+    "name": "Mimikium Z",
+    "shortDesc": "If held by a Mimikyu with Play Rough, it can use Let's Snuggle Forever.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "lycaniumz",
+    "num": 925,
+    "name": "Lycanium Z",
+    "shortDesc": "If held by a Lycanroc forme with Stone Edge, it can use Splintered Stormshards.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "kommoniumz",
+    "num": 926,
+    "name": "Kommonium Z",
+    "shortDesc": "If held by a Kommo-o with Clanging Scales, it can use Clangorous Soulblaze.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "rustedsword",
+    "num": 1103,
+    "name": "Rusted Sword",
+    "shortDesc": "If held by a Zacian, this item changes its forme to Crowned Sword.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "rustedshield",
+    "num": 1104,
+    "name": "Rusted Shield",
+    "shortDesc": "If held by a Zamazenta, this item changes its forme to Crowned Shield.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "fossilizedbird",
+    "num": 1105,
+    "name": "Fossilized Bird",
+    "shortDesc": "Can revive into Dracozolt with Fossilized Drake or Arctozolt with Fossilized Dino.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "fossilizedfish",
+    "num": 1106,
+    "name": "Fossilized Fish",
+    "shortDesc": "Can revive into Dracovish with Fossilized Drake or Arctovish with Fossilized Dino.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "fossilizeddrake",
+    "num": 1107,
+    "name": "Fossilized Drake",
+    "shortDesc": "Can revive into Dracozolt with Fossilized Bird or Dracovish with Fossilized Fish.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "fossilizeddino",
+    "num": 1108,
+    "name": "Fossilized Dino",
+    "shortDesc": "Can revive into Arctovish with Fossilized Fish or Arctozolt with Fossilized Bird.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "strawberrysweet",
+    "num": 1109,
+    "name": "Strawberry Sweet",
+    "shortDesc": "Evolves Milcery into Alcremie when held and spun around.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "lovesweet",
+    "num": 1110,
+    "name": "Love Sweet",
+    "shortDesc": "Evolves Milcery into Alcremie when held and spun around.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "berrysweet",
+    "num": 1111,
+    "name": "Berry Sweet",
+    "shortDesc": "Evolves Milcery into Alcremie when held and spun around.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "cloversweet",
+    "num": 1112,
+    "name": "Clover Sweet",
+    "shortDesc": "Evolves Milcery into Alcremie when held and spun around.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "flowersweet",
+    "num": 1113,
+    "name": "Flower Sweet",
+    "shortDesc": "Evolves Milcery into Alcremie when held and spun around.",
+    "fling": {
+      "basePower": 0
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "starsweet",
+    "num": 1114,
+    "name": "Star Sweet",
+    "shortDesc": "Evolves Milcery into Alcremie when held and spun around.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "ribbonsweet",
+    "num": 1115,
+    "name": "Ribbon Sweet",
+    "shortDesc": "Evolves Milcery into Alcremie when held and spun around.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "sweetapple",
+    "num": 1116,
+    "name": "Sweet Apple",
+    "shortDesc": "Evolves Applin into Appletun when used.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "tartapple",
+    "num": 1117,
+    "name": "Tart Apple",
+    "shortDesc": "Evolves Applin into Flapple when used.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "throatspray",
+    "num": 1118,
+    "name": "Throat Spray",
+    "shortDesc": "Raises holder's Special Attack by 1 stage after it uses a sound move. Single use.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "ejectpack",
+    "num": 1119,
+    "name": "Eject Pack",
+    "shortDesc": "If the holder's stat stages are lowered, it switches to a chosen ally. Single use.",
+    "fling": {
+      "basePower": 50
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "heavydutyboots",
+    "num": 1120,
+    "name": "Heavy-Duty Boots",
+    "shortDesc": "When switching in, the holder is unaffected by hazards on its side of the field.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "blunderpolicy",
+    "num": 1121,
+    "name": "Blunder Policy",
+    "shortDesc": "If the holder misses due to accuracy, its Speed is raised by 2 stages. Single use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "roomservice",
+    "num": 1122,
+    "name": "Room Service",
+    "shortDesc": "If Trick Room is active, the holder's Speed is lowered by 1 stage. Single use.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "utilityumbrella",
+    "num": 1123,
+    "name": "Utility Umbrella",
+    "shortDesc": "The holder ignores rain- and sun-based effects.",
+    "fling": {
+      "basePower": 60
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "tr00",
+    "num": 1130,
+    "name": "TR00",
+    "shortDesc": "Teaches certain Pokemon the move Swords Dance. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr01",
+    "num": 1131,
+    "name": "TR01",
+    "shortDesc": "Teaches certain Pokemon the move Body Slam. One use.",
+    "fling": {
+      "basePower": 85
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr02",
+    "num": 1132,
+    "name": "TR02",
+    "shortDesc": "Teaches certain Pokemon the move Flamethrower. One use.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr03",
+    "num": 1133,
+    "name": "TR03",
+    "shortDesc": "Teaches certain Pokemon the move Hydro Pump. One use.",
+    "fling": {
+      "basePower": 110
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr04",
+    "num": 1134,
+    "name": "TR04",
+    "shortDesc": "Teaches certain Pokemon the move Surf. One use.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr05",
+    "num": 1135,
+    "name": "TR05",
+    "shortDesc": "Teaches certain Pokemon the move Ice Beam. One use.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr06",
+    "num": 1136,
+    "name": "TR06",
+    "shortDesc": "Teaches certain Pokemon the move Blizzard. One use.",
+    "fling": {
+      "basePower": 110
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr07",
+    "num": 1137,
+    "name": "TR07",
+    "shortDesc": "Teaches certain Pokemon the move Low Kick. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr08",
+    "num": 1138,
+    "name": "TR08",
+    "shortDesc": "Teaches certain Pokemon the move Thunderbolt. One use.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr09",
+    "num": 1139,
+    "name": "TR09",
+    "shortDesc": "Teaches certain Pokemon the move Thunder. One use.",
+    "fling": {
+      "basePower": 110
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr10",
+    "num": 1140,
+    "name": "TR10",
+    "shortDesc": "Teaches certain Pokemon the move Earthquake. One use.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr11",
+    "num": 1141,
+    "name": "TR11",
+    "shortDesc": "Teaches certain Pokemon the move Psychic. One use.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr12",
+    "num": 1142,
+    "name": "TR12",
+    "shortDesc": "Teaches certain Pokemon the move Agility. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr13",
+    "num": 1143,
+    "name": "TR13",
+    "shortDesc": "Teaches certain Pokemon the move Focus Energy. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr14",
+    "num": 1144,
+    "name": "TR14",
+    "shortDesc": "Teaches certain Pokemon the move Metronome. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr15",
+    "num": 1145,
+    "name": "TR15",
+    "shortDesc": "Teaches certain Pokemon the move Fire Blast. One use.",
+    "fling": {
+      "basePower": 110
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr16",
+    "num": 1146,
+    "name": "TR16",
+    "shortDesc": "Teaches certain Pokemon the move Waterfall. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr17",
+    "num": 1147,
+    "name": "TR17",
+    "shortDesc": "Teaches certain Pokemon the move Amnesia. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr18",
+    "num": 1148,
+    "name": "TR18",
+    "shortDesc": "Teaches certain Pokemon the move Leech Life. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr19",
+    "num": 1149,
+    "name": "TR19",
+    "shortDesc": "Teaches certain Pokemon the move Tri Attack. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr20",
+    "num": 1150,
+    "name": "TR20",
+    "shortDesc": "Teaches certain Pokemon the move Substitute. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr21",
+    "num": 1151,
+    "name": "TR21",
+    "shortDesc": "Teaches certain Pokemon the move Reversal. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr22",
+    "num": 1152,
+    "name": "TR22",
+    "shortDesc": "Teaches certain Pokemon the move Sludge Bomb. One use.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr23",
+    "num": 1153,
+    "name": "TR23",
+    "shortDesc": "Teaches certain Pokemon the move Spikes. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr24",
+    "num": 1154,
+    "name": "TR24",
+    "shortDesc": "Teaches certain Pokemon the move Outrage. One use.",
+    "fling": {
+      "basePower": 120
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr25",
+    "num": 1155,
+    "name": "TR25",
+    "shortDesc": "Teaches certain Pokemon the move Psyshock. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr26",
+    "num": 1156,
+    "name": "TR26",
+    "shortDesc": "Teaches certain Pokemon the move Endure. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr27",
+    "num": 1157,
+    "name": "TR27",
+    "shortDesc": "Teaches certain Pokemon the move Sleep Talk. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr28",
+    "num": 1158,
+    "name": "TR28",
+    "shortDesc": "Teaches certain Pokemon the move Megahorn. One use.",
+    "fling": {
+      "basePower": 120
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr29",
+    "num": 1159,
+    "name": "TR29",
+    "shortDesc": "Teaches certain Pokemon the move Baton Pass. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr30",
+    "num": 1160,
+    "name": "TR30",
+    "shortDesc": "Teaches certain Pokemon the move Encore. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr31",
+    "num": 1161,
+    "name": "TR31",
+    "shortDesc": "Teaches certain Pokemon the move Iron Tail. One use.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr32",
+    "num": 1162,
+    "name": "TR32",
+    "shortDesc": "Teaches certain Pokemon the move Crunch. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr33",
+    "num": 1163,
+    "name": "TR33",
+    "shortDesc": "Teaches certain Pokemon the move Shadow Ball. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr34",
+    "num": 1164,
+    "name": "TR34",
+    "shortDesc": "Teaches certain Pokemon the move Future Sight. One use.",
+    "fling": {
+      "basePower": 120
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr35",
+    "num": 1165,
+    "name": "TR35",
+    "shortDesc": "Teaches certain Pokemon the move Uproar. One use.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr36",
+    "num": 1166,
+    "name": "TR36",
+    "shortDesc": "Teaches certain Pokemon the move Heat Wave. One use.",
+    "fling": {
+      "basePower": 95
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr37",
+    "num": 1167,
+    "name": "TR37",
+    "shortDesc": "Teaches certain Pokemon the move Taunt. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr38",
+    "num": 1168,
+    "name": "TR38",
+    "shortDesc": "Teaches certain Pokemon the move Trick. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr39",
+    "num": 1169,
+    "name": "TR39",
+    "shortDesc": "Teaches certain Pokemon the move Superpower. One use.",
+    "fling": {
+      "basePower": 120
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr40",
+    "num": 1170,
+    "name": "TR40",
+    "shortDesc": "Teaches certain Pokemon the move Skill Swap. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr41",
+    "num": 1171,
+    "name": "TR41",
+    "shortDesc": "Teaches certain Pokemon the move Blaze Kick. One use.",
+    "fling": {
+      "basePower": 85
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr42",
+    "num": 1172,
+    "name": "TR42",
+    "shortDesc": "Teaches certain Pokemon the move Hyper Voice. One use.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr43",
+    "num": 1173,
+    "name": "TR43",
+    "shortDesc": "Teaches certain Pokemon the move Overheat. One use.",
+    "fling": {
+      "basePower": 130
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr44",
+    "num": 1174,
+    "name": "TR44",
+    "shortDesc": "Teaches certain Pokemon the move Cosmic Power. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr45",
+    "num": 1175,
+    "name": "TR45",
+    "shortDesc": "Teaches certain Pokemon the move Muddy Water. One use.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr46",
+    "num": 1176,
+    "name": "TR46",
+    "shortDesc": "Teaches certain Pokemon the move Iron Defense. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr47",
+    "num": 1177,
+    "name": "TR47",
+    "shortDesc": "Teaches certain Pokemon the move Dragon Claw. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr48",
+    "num": 1178,
+    "name": "TR48",
+    "shortDesc": "Teaches certain Pokemon the move Bulk Up. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr49",
+    "num": 1179,
+    "name": "TR49",
+    "shortDesc": "Teaches certain Pokemon the move Calm Mind. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr50",
+    "num": 1180,
+    "name": "TR50",
+    "shortDesc": "Teaches certain Pokemon the move Leaf Blade. One use.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr51",
+    "num": 1181,
+    "name": "TR51",
+    "shortDesc": "Teaches certain Pokemon the move Dragon Dance. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr52",
+    "num": 1182,
+    "name": "TR52",
+    "shortDesc": "Teaches certain Pokemon the move Gyro Ball. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr53",
+    "num": 1183,
+    "name": "TR53",
+    "shortDesc": "Teaches certain Pokemon the move Close Combat. One use.",
+    "fling": {
+      "basePower": 120
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr54",
+    "num": 1184,
+    "name": "TR54",
+    "shortDesc": "Teaches certain Pokemon the move Toxic Spikes. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr55",
+    "num": 1185,
+    "name": "TR55",
+    "shortDesc": "Teaches certain Pokemon the move Flare Blitz. One use.",
+    "fling": {
+      "basePower": 120
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr56",
+    "num": 1186,
+    "name": "TR56",
+    "shortDesc": "Teaches certain Pokemon the move Aura Sphere. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr57",
+    "num": 1187,
+    "name": "TR57",
+    "shortDesc": "Teaches certain Pokemon the move Poison Jab. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr58",
+    "num": 1188,
+    "name": "TR58",
+    "shortDesc": "Teaches certain Pokemon the move Dark Pulse. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr59",
+    "num": 1189,
+    "name": "TR59",
+    "shortDesc": "Teaches certain Pokemon the move Seed Bomb. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr60",
+    "num": 1190,
+    "name": "TR60",
+    "shortDesc": "Teaches certain Pokemon the move X-Scissor. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr61",
+    "num": 1191,
+    "name": "TR61",
+    "shortDesc": "Teaches certain Pokemon the move Bug Buzz. One use.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr62",
+    "num": 1192,
+    "name": "TR62",
+    "shortDesc": "Teaches certain Pokemon the move Dragon Pulse. One use.",
+    "fling": {
+      "basePower": 85
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr63",
+    "num": 1193,
+    "name": "TR63",
+    "shortDesc": "Teaches certain Pokemon the move Power Gem. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr64",
+    "num": 1194,
+    "name": "TR64",
+    "shortDesc": "Teaches certain Pokemon the move Focus Blast. One use.",
+    "fling": {
+      "basePower": 120
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr65",
+    "num": 1195,
+    "name": "TR65",
+    "shortDesc": "Teaches certain Pokemon the move Energy Ball. One use.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr66",
+    "num": 1196,
+    "name": "TR66",
+    "shortDesc": "Teaches certain Pokemon the move Brave Bird. One use.",
+    "fling": {
+      "basePower": 120
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr67",
+    "num": 1197,
+    "name": "TR67",
+    "shortDesc": "Teaches certain Pokemon the move Earth Power. One use.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr68",
+    "num": 1198,
+    "name": "TR68",
+    "shortDesc": "Teaches certain Pokemon the move Nasty Plot. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr69",
+    "num": 1199,
+    "name": "TR69",
+    "shortDesc": "Teaches certain Pokemon the move Zen Headbutt. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr70",
+    "num": 1200,
+    "name": "TR70",
+    "shortDesc": "Teaches certain Pokemon the move Flash Cannon. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr71",
+    "num": 1201,
+    "name": "TR71",
+    "shortDesc": "Teaches certain Pokemon the move Leaf Storm. One use.",
+    "fling": {
+      "basePower": 130
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr72",
+    "num": 1202,
+    "name": "TR72",
+    "shortDesc": "Teaches certain Pokemon the move Power Whip. One use.",
+    "fling": {
+      "basePower": 120
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr73",
+    "num": 1203,
+    "name": "TR73",
+    "shortDesc": "Teaches certain Pokemon the move Gunk Shot. One use.",
+    "fling": {
+      "basePower": 120
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr74",
+    "num": 1204,
+    "name": "TR74",
+    "shortDesc": "Teaches certain Pokemon the move Iron Head. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr75",
+    "num": 1205,
+    "name": "TR75",
+    "shortDesc": "Teaches certain Pokemon the move Stone Edge. One use.",
+    "fling": {
+      "basePower": 100
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr76",
+    "num": 1206,
+    "name": "TR76",
+    "shortDesc": "Teaches certain Pokemon the move Stealth Rock. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr77",
+    "num": 1207,
+    "name": "TR77",
+    "shortDesc": "Teaches certain Pokemon the move Grass Knot. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr78",
+    "num": 1208,
+    "name": "TR78",
+    "shortDesc": "Teaches certain Pokemon the move Sludge Wave. One use.",
+    "fling": {
+      "basePower": 95
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr79",
+    "num": 1209,
+    "name": "TR79",
+    "shortDesc": "Teaches certain Pokemon the move Heavy Slam. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr80",
+    "num": 1210,
+    "name": "TR80",
+    "shortDesc": "Teaches certain Pokemon the move Electro Ball. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr81",
+    "num": 1211,
+    "name": "TR81",
+    "shortDesc": "Teaches certain Pokemon the move Foul Play. One use.",
+    "fling": {
+      "basePower": 95
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr82",
+    "num": 1212,
+    "name": "TR82",
+    "shortDesc": "Teaches certain Pokemon the move Stored Power. One use.",
+    "fling": {
+      "basePower": 20
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr83",
+    "num": 1213,
+    "name": "TR83",
+    "shortDesc": "Teaches certain Pokemon the move Ally Switch. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr84",
+    "num": 1214,
+    "name": "TR84",
+    "shortDesc": "Teaches certain Pokemon the move Scald. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr85",
+    "num": 1215,
+    "name": "TR85",
+    "shortDesc": "Teaches certain Pokemon the move Work Up. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr86",
+    "num": 1216,
+    "name": "TR86",
+    "shortDesc": "Teaches certain Pokemon the move Wild Charge. One use.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr87",
+    "num": 1217,
+    "name": "TR87",
+    "shortDesc": "Teaches certain Pokemon the move Drill Run. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr88",
+    "num": 1218,
+    "name": "TR88",
+    "shortDesc": "Teaches certain Pokemon the move Heat Crash. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr89",
+    "num": 1219,
+    "name": "TR89",
+    "shortDesc": "Teaches certain Pokemon the move Hurricane. One use.",
+    "fling": {
+      "basePower": 110
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr90",
+    "num": 1220,
+    "name": "TR90",
+    "shortDesc": "Teaches certain Pokemon the move Play Rough. One use.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr91",
+    "num": 1221,
+    "name": "TR91",
+    "shortDesc": "Teaches certain Pokemon the move Venom Drench. One use.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr92",
+    "num": 1222,
+    "name": "TR92",
+    "shortDesc": "Teaches certain Pokemon the move Dazzling Gleam. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr93",
+    "num": 1223,
+    "name": "TR93",
+    "shortDesc": "Teaches certain Pokemon the move Darkest Lariat. One use.",
+    "fling": {
+      "basePower": 85
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr94",
+    "num": 1224,
+    "name": "TR94",
+    "shortDesc": "Teaches certain Pokemon the move High Horsepower. One use.",
+    "fling": {
+      "basePower": 95
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr95",
+    "num": 1225,
+    "name": "TR95",
+    "shortDesc": "Teaches certain Pokemon the move Throat Chop. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr96",
+    "num": 1226,
+    "name": "TR96",
+    "shortDesc": "Teaches certain Pokemon the move Pollen Puff. One use.",
+    "fling": {
+      "basePower": 90
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr97",
+    "num": 1227,
+    "name": "TR97",
+    "shortDesc": "Teaches certain Pokemon the move Psychic Fangs. One use.",
+    "fling": {
+      "basePower": 85
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr98",
+    "num": 1228,
+    "name": "TR98",
+    "shortDesc": "Teaches certain Pokemon the move Liquidation. One use.",
+    "fling": {
+      "basePower": 85
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "tr99",
+    "num": 1229,
+    "name": "TR99",
+    "shortDesc": "Teaches certain Pokemon the move Body Press. One use.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Past",
+    "aliasesJa": []
+  },
+  {
+    "id": "crackedpot",
+    "num": 1253,
+    "name": "Cracked Pot",
+    "shortDesc": "Evolves Sinistea into Polteageist when used.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "chippedpot",
+    "num": 1254,
+    "name": "Chipped Pot",
+    "shortDesc": "Evolves Sinistea-Antique into Polteageist-Antique when used.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "galaricacuff",
+    "num": 1582,
+    "name": "Galarica Cuff",
+    "shortDesc": "Evolves Galarian Slowpoke into Galarian Slowbro when used.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "galaricawreath",
+    "num": 1592,
+    "name": "Galarica Wreath",
+    "shortDesc": "Evolves Galarian Slowpoke into Galarian Slowking when used.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "adamantcrystal",
+    "num": 1777,
+    "name": "Adamant Crystal",
+    "shortDesc": "If held by a Dialga, its Steel- and Dragon-type attacks have 1.2x power.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "lustrousglobe",
+    "num": 1778,
+    "name": "Lustrous Globe",
+    "shortDesc": "If held by a Palkia, its Water- and Dragon-type attacks have 1.2x power.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "griseouscore",
+    "num": 1779,
+    "name": "Griseous Core",
+    "shortDesc": "If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "strangeball",
+    "num": 1785,
+    "name": "Strange Ball",
+    "shortDesc": "Placeholder if caught in Poke Ball not in current game.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": "Unobtainable",
+    "aliasesJa": []
+  },
+  {
+    "id": "maliciousarmor",
+    "num": 1861,
+    "name": "Malicious Armor",
+    "shortDesc": "Evolves Charcadet into Ceruledge when used.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "boosterenergy",
+    "num": 1880,
+    "name": "Booster Energy",
+    "shortDesc": "Activates the Protosynthesis or Quark Drive Abilities. Single use.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "abilityshield",
+    "num": 1881,
+    "name": "Ability Shield",
+    "shortDesc": "Holder's Ability cannot be changed, suppressed, or ignored by any effect.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "clearamulet",
+    "num": 1882,
+    "name": "Clear Amulet",
+    "shortDesc": "Prevents other Pokemon from lowering the holder's stat stages.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "mirrorherb",
+    "num": 1883,
+    "name": "Mirror Herb",
+    "shortDesc": "When an opposing Pokemon raises a stat stage, the holder copies it. Single use.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "punchingglove",
+    "num": 1884,
+    "name": "Punching Glove",
+    "shortDesc": "Holder's punch-based attacks have 1.1x power and do not make contact.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "covertcloak",
+    "num": 1885,
+    "name": "Covert Cloak",
+    "shortDesc": "Holder is not affected by the secondary effect of another Pokemon's attack.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "loadeddice",
+    "num": 1886,
+    "name": "Loaded Dice",
+    "shortDesc": "Holder's moves that hit 2-5 times hit 4-5 times; Population Bomb hits 4-10 times.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "auspiciousarmor",
+    "num": 2344,
+    "name": "Auspicious Armor",
+    "shortDesc": "Evolves Charcadet into Armarouge when used.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "fairyfeather",
+    "num": 2401,
+    "name": "Fairy Feather",
+    "shortDesc": "Holder's Fairy-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 10
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "syrupyapple",
+    "num": 2402,
+    "name": "Syrupy Apple",
+    "shortDesc": "Evolves Applin into Dipplin when used.",
+    "fling": {
+      "basePower": 30
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "unremarkableteacup",
+    "num": 2403,
+    "name": "Unremarkable Teacup",
+    "shortDesc": "Evolves Poltchageist into Sinistcha when used.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "masterpieceteacup",
+    "num": 2404,
+    "name": "Masterpiece Teacup",
+    "shortDesc": "Evolves Poltchageist-Artisan into Sinistcha-Masterpiece when used.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "cornerstonemask",
+    "num": 2406,
+    "name": "Cornerstone Mask",
+    "shortDesc": "Ogerpon-Cornerstone: 1.2x power attacks; Terastallize to gain Embody Aspect.",
+    "fling": {
+      "basePower": 60
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "wellspringmask",
+    "num": 2407,
+    "name": "Wellspring Mask",
+    "shortDesc": "Ogerpon-Wellspring: 1.2x power attacks; Terastallize to gain Embody Aspect.",
+    "fling": {
+      "basePower": 60
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "hearthflamemask",
+    "num": 2408,
+    "name": "Hearthflame Mask",
+    "shortDesc": "Ogerpon-Hearthflame: 1.2x power attacks; Terastallize to gain Embody Aspect.",
+    "fling": {
+      "basePower": 60
+    },
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "metalalloy",
+    "num": 2482,
+    "name": "Metal Alloy",
+    "shortDesc": "Evolves Duraludon into Archaludon when used.",
+    "fling": null,
+    "isBerry": false,
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "clefablite",
+    "num": 2559,
+    "name": "Clefablite",
+    "shortDesc": "If held by a Clefable, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "victreebelite",
+    "num": 2560,
+    "name": "Victreebelite",
+    "shortDesc": "If held by a Victreebel, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "starminite",
+    "num": 2561,
+    "name": "Starminite",
+    "shortDesc": "If held by a Starmie, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "dragoninite",
+    "num": 2562,
+    "name": "Dragoninite",
+    "shortDesc": "If held by a Dragonite, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "meganiumite",
+    "num": 2563,
+    "name": "Meganiumite",
+    "shortDesc": "If held by a Meganium, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "feraligite",
+    "num": 2564,
+    "name": "Feraligite",
+    "shortDesc": "If held by a Feraligatr, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "skarmorite",
+    "num": 2565,
+    "name": "Skarmorite",
+    "shortDesc": "If held by a Skarmory, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "froslassite",
+    "num": 2566,
+    "name": "Froslassite",
+    "shortDesc": "If held by a Froslass, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "heatranite",
+    "num": 2567,
+    "name": "Heatranite",
+    "shortDesc": "If held by a Heatran, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "darkranite",
+    "num": 2568,
+    "name": "Darkranite",
+    "shortDesc": "If held by a Darkrai, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "emboarite",
+    "num": 2569,
+    "name": "Emboarite",
+    "shortDesc": "If held by an Emboar, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "excadrite",
+    "num": 2570,
+    "name": "Excadrite",
+    "shortDesc": "If held by an Excadrill, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "scolipite",
+    "num": 2571,
+    "name": "Scolipite",
+    "shortDesc": "If held by a Scolipede, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "scraftinite",
+    "num": 2572,
+    "name": "Scraftinite",
+    "shortDesc": "If held by a Scrafty, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "eelektrossite",
+    "num": 2573,
+    "name": "Eelektrossite",
+    "shortDesc": "If held by an Eelektross, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "chandelurite",
+    "num": 2574,
+    "name": "Chandelurite",
+    "shortDesc": "If held by a Chandelure, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "chesnaughtite",
+    "num": 2575,
+    "name": "Chesnaughtite",
+    "shortDesc": "If held by a Chesnaught, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "delphoxite",
+    "num": 2576,
+    "name": "Delphoxite",
+    "shortDesc": "If held by a Delphox, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "greninjite",
+    "num": 2577,
+    "name": "Greninjite",
+    "shortDesc": "If held by a Greninja, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "pyroarite",
+    "num": 2578,
+    "name": "Pyroarite",
+    "shortDesc": "If held by a Pyroar, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "floettite",
+    "num": 2579,
+    "name": "Floettite",
+    "shortDesc": "If held by an Eternal Flower Floette, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "malamarite",
+    "num": 2580,
+    "name": "Malamarite",
+    "shortDesc": "If held by a Malamar, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "barbaracite",
+    "num": 2581,
+    "name": "Barbaracite",
+    "shortDesc": "If held by a Barbaracle, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "dragalgite",
+    "num": 2582,
+    "name": "Dragalgite",
+    "shortDesc": "If held by a Dragalge, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "hawluchanite",
+    "num": 2583,
+    "name": "Hawluchanite",
+    "shortDesc": "If held by a Hawlucha, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "zygardite",
+    "num": 2584,
+    "name": "Zygardite",
+    "shortDesc": "If held by a Zygarde in Complete Forme, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "drampanite",
+    "num": 2585,
+    "name": "Drampanite",
+    "shortDesc": "If held by a Drampa, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "zeraorite",
+    "num": 2586,
+    "name": "Zeraorite",
+    "shortDesc": "If held by a Zeraora, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "falinksite",
+    "num": 2587,
+    "name": "Falinksite",
+    "shortDesc": "If held by a Falinks, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "raichunitex",
+    "num": 2635,
+    "name": "Raichunite X",
+    "shortDesc": "If held by a Raichu, this item allows it to Mega Evolve into Mega Raichu X in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "raichunitey",
+    "num": 2636,
+    "name": "Raichunite Y",
+    "shortDesc": "If held by a Raichu, this item allows it to Mega Evolve into Mega Raichu Y in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "chimechite",
+    "num": 2637,
+    "name": "Chimechite",
+    "shortDesc": "If held by a Chimecho, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "absolitez",
+    "num": 2638,
+    "name": "Absolite Z",
+    "shortDesc": "If held by an Absol, this item allows it to Mega Evolve into Mega Absol Z in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "staraptite",
+    "num": 2639,
+    "name": "Staraptite",
+    "shortDesc": "If held by a Staraptor, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "garchompitez",
+    "num": 2640,
+    "name": "Garchompite Z",
+    "shortDesc": "If held by a Garchomp, this item allows it to Mega Evolve into Mega Garchomp Z.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "lucarionitez",
+    "num": 2641,
+    "name": "Lucarionite Z",
+    "shortDesc": "If held by a Lucario, this item allows it to Mega Evolve into Mega Lucario Z in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "golurkite",
+    "num": 2642,
+    "name": "Golurkite",
+    "shortDesc": "If held by a Golurk, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "meowsticite",
+    "num": 2643,
+    "name": "Meowsticite",
+    "shortDesc": "If held by a Meowstic, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "crabominite",
+    "num": 2644,
+    "name": "Crabominite",
+    "shortDesc": "If held by a Crabominable, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "golisopite",
+    "num": 2645,
+    "name": "Golisopite",
+    "shortDesc": "If held by a Golisopod, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "magearnite",
+    "num": 2646,
+    "name": "Magearnite",
+    "shortDesc": "If held by a Magearna, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "scovillainite",
+    "num": 2647,
+    "name": "Scovillainite",
+    "shortDesc": "If held by a Scovillain, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "baxcalibrite",
+    "num": 2648,
+    "name": "Baxcalibrite",
+    "shortDesc": "If held by a Baxcalibur, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "tatsugirinite",
+    "num": 2649,
+    "name": "Tatsugirinite",
+    "shortDesc": "If held by a Tatsugiri, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "glimmoranite",
+    "num": 2650,
+    "name": "Glimmoranite",
+    "shortDesc": "If held by a Glimmora, this item allows it to Mega Evolve in battle.",
+    "fling": {
+      "basePower": 80
+    },
+    "isBerry": false,
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  }
+]

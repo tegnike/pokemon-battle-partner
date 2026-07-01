@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.env
+tmp/
+data/battles/*.jsonl
+data/battles/*.png
+data/audio/
+data/memory/
+data/battle-sessions/

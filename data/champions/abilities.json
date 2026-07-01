@@ -1,0 +1,2542 @@
+[
+  {
+    "id": "stench",
+    "num": 1,
+    "name": "Stench",
+    "shortDesc": "This Pokemon's attacks without a chance to flinch gain a 10% chance to flinch.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "drizzle",
+    "num": 2,
+    "name": "Drizzle",
+    "shortDesc": "On switch-in, this Pokemon summons Rain Dance.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "speedboost",
+    "num": 3,
+    "name": "Speed Boost",
+    "shortDesc": "This Pokemon's Speed is raised 1 stage at the end of each full turn on the field.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "battlearmor",
+    "num": 4,
+    "name": "Battle Armor",
+    "shortDesc": "This Pokemon cannot be struck by a critical hit.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "sturdy",
+    "num": 5,
+    "name": "Sturdy",
+    "shortDesc": "If this Pokemon is at full HP, it survives one hit with at least 1 HP. Immune to OHKO.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "damp",
+    "num": 6,
+    "name": "Damp",
+    "shortDesc": "Prevents Explosion/Mind Blown/Misty Explosion/Self-Destruct/Aftermath while active.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "limber",
+    "num": 7,
+    "name": "Limber",
+    "shortDesc": "This Pokemon cannot be paralyzed. Gaining this Ability while paralyzed cures it.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "sandveil",
+    "num": 8,
+    "name": "Sand Veil",
+    "shortDesc": "If Sandstorm is active, this Pokemon's evasiveness is 1.25x; immunity to Sandstorm.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "static",
+    "num": 9,
+    "name": "Static",
+    "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "voltabsorb",
+    "num": 10,
+    "name": "Volt Absorb",
+    "shortDesc": "This Pokemon heals 1/4 of its max HP when hit by Electric moves; Electric immunity.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "waterabsorb",
+    "num": 11,
+    "name": "Water Absorb",
+    "shortDesc": "This Pokemon heals 1/4 of its max HP when hit by Water moves; Water immunity.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "oblivious",
+    "num": 12,
+    "name": "Oblivious",
+    "shortDesc": "This Pokemon cannot be infatuated or taunted. Immune to Intimidate.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "cloudnine",
+    "num": 13,
+    "name": "Cloud Nine",
+    "shortDesc": "While this Pokemon is active, the effects of weather conditions are disabled.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "compoundeyes",
+    "num": 14,
+    "name": "Compound Eyes",
+    "shortDesc": "This Pokemon's moves have their accuracy multiplied by 1.3.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "insomnia",
+    "num": 15,
+    "name": "Insomnia",
+    "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "colorchange",
+    "num": 16,
+    "name": "Color Change",
+    "shortDesc": "This Pokemon's type changes to the type of a move it's hit by, unless it has the type.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "immunity",
+    "num": 17,
+    "name": "Immunity",
+    "shortDesc": "This Pokemon cannot be poisoned. Gaining this Ability while poisoned cures it.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "flashfire",
+    "num": 18,
+    "name": "Flash Fire",
+    "shortDesc": "This Pokemon's Fire attacks do 1.5x damage if hit by one Fire move; Fire immunity.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "shielddust",
+    "num": 19,
+    "name": "Shield Dust",
+    "shortDesc": "This Pokemon is not affected by the secondary effect of another Pokemon's attack.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "owntempo",
+    "num": 20,
+    "name": "Own Tempo",
+    "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "suctioncups",
+    "num": 21,
+    "name": "Suction Cups",
+    "shortDesc": "This Pokemon cannot be forced to switch out by another Pokemon's attack or item.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "intimidate",
+    "num": 22,
+    "name": "Intimidate",
+    "shortDesc": "On switch-in, this Pokemon lowers the Attack of opponents by 1 stage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "shadowtag",
+    "num": 23,
+    "name": "Shadow Tag",
+    "shortDesc": "Prevents foes from choosing to switch unless they also have this Ability.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "roughskin",
+    "num": 24,
+    "name": "Rough Skin",
+    "shortDesc": "Pokemon making contact with this Pokemon lose 1/8 of their max HP.",
+    "isNonstandard": null,
+    "aliasesJa": [
+      "さめはだ"
+    ]
+  },
+  {
+    "id": "wonderguard",
+    "num": 25,
+    "name": "Wonder Guard",
+    "shortDesc": "This Pokemon can only be damaged by supereffective moves and indirect damage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "levitate",
+    "num": 26,
+    "name": "Levitate",
+    "shortDesc": "This Pokemon is immune to Ground; Gravity/Ingrain/Smack Down/Iron Ball nullify it.",
+    "isNonstandard": null,
+    "aliasesJa": [
+      "ふゆう"
+    ]
+  },
+  {
+    "id": "effectspore",
+    "num": 27,
+    "name": "Effect Spore",
+    "shortDesc": "30% chance of poison/paralysis/sleep on others making contact with this Pokemon.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "synchronize",
+    "num": 28,
+    "name": "Synchronize",
+    "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "clearbody",
+    "num": 29,
+    "name": "Clear Body",
+    "shortDesc": "Prevents other Pokemon from lowering this Pokemon's stat stages.",
+    "isNonstandard": null,
+    "aliasesJa": [
+      "クリアボディ"
+    ]
+  },
+  {
+    "id": "naturalcure",
+    "num": 30,
+    "name": "Natural Cure",
+    "shortDesc": "This Pokemon has its non-volatile status condition cured when it switches out.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "lightningrod",
+    "num": 31,
+    "name": "Lightning Rod",
+    "shortDesc": "This Pokemon draws Electric moves to itself to raise Sp. Atk by 1; Electric immunity.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "serenegrace",
+    "num": 32,
+    "name": "Serene Grace",
+    "shortDesc": "This Pokemon's moves have their secondary effect chance doubled.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "swiftswim",
+    "num": 33,
+    "name": "Swift Swim",
+    "shortDesc": "If Rain Dance is active, this Pokemon's Speed is doubled.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "chlorophyll",
+    "num": 34,
+    "name": "Chlorophyll",
+    "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "illuminate",
+    "num": 35,
+    "name": "Illuminate",
+    "shortDesc": "This Pokemon's accuracy can't be lowered by others; ignores their evasiveness stat.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "trace",
+    "num": 36,
+    "name": "Trace",
+    "shortDesc": "On switch-in, or when it can, this Pokemon copies a random adjacent foe's Ability.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "hugepower",
+    "num": 37,
+    "name": "Huge Power",
+    "shortDesc": "This Pokemon's Attack is doubled.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "poisonpoint",
+    "num": 38,
+    "name": "Poison Point",
+    "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be poisoned.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "innerfocus",
+    "num": 39,
+    "name": "Inner Focus",
+    "shortDesc": "This Pokemon cannot be made to flinch. Immune to Intimidate.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "magmaarmor",
+    "num": 40,
+    "name": "Magma Armor",
+    "shortDesc": "This Pokemon cannot be frozen. Gaining this Ability while frozen cures it.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "waterveil",
+    "num": 41,
+    "name": "Water Veil",
+    "shortDesc": "This Pokemon cannot be burned. Gaining this Ability while burned cures it.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "magnetpull",
+    "num": 42,
+    "name": "Magnet Pull",
+    "shortDesc": "Prevents opposing Steel-type Pokemon from choosing to switch out.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "soundproof",
+    "num": 43,
+    "name": "Soundproof",
+    "shortDesc": "This Pokemon is immune to sound-based moves, unless it used the move.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "raindish",
+    "num": 44,
+    "name": "Rain Dish",
+    "shortDesc": "If Rain Dance is active, this Pokemon heals 1/16 of its max HP each turn.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "sandstream",
+    "num": 45,
+    "name": "Sand Stream",
+    "shortDesc": "On switch-in, this Pokemon summons Sandstorm.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "pressure",
+    "num": 46,
+    "name": "Pressure",
+    "shortDesc": "If this Pokemon is the target of a foe's move, that move loses one additional PP.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "thickfat",
+    "num": 47,
+    "name": "Thick Fat",
+    "shortDesc": "Fire-/Ice-type moves against this Pokemon deal damage with a halved offensive stat.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "earlybird",
+    "num": 48,
+    "name": "Early Bird",
+    "shortDesc": "This Pokemon's sleep counter drops by 2 instead of 1.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "flamebody",
+    "num": 49,
+    "name": "Flame Body",
+    "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be burned.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "runaway",
+    "num": 50,
+    "name": "Run Away",
+    "shortDesc": "No competitive use.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "keeneye",
+    "num": 51,
+    "name": "Keen Eye",
+    "shortDesc": "This Pokemon's accuracy can't be lowered by others; ignores their evasiveness stat.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "hypercutter",
+    "num": 52,
+    "name": "Hyper Cutter",
+    "shortDesc": "Prevents other Pokemon from lowering this Pokemon's Attack stat stage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "pickup",
+    "num": 53,
+    "name": "Pickup",
+    "shortDesc": "If this Pokemon has no item, it finds one used by an adjacent Pokemon this turn.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "truant",
+    "num": 54,
+    "name": "Truant",
+    "shortDesc": "This Pokemon skips every other turn instead of using a move.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "hustle",
+    "num": 55,
+    "name": "Hustle",
+    "shortDesc": "This Pokemon's Attack is 1.5x and accuracy of its physical attacks is 0.8x.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "cutecharm",
+    "num": 56,
+    "name": "Cute Charm",
+    "shortDesc": "30% chance of infatuating Pokemon of the opposite gender if they make contact.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "plus",
+    "num": 57,
+    "name": "Plus",
+    "shortDesc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Sp. Atk is 1.5x.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "minus",
+    "num": 58,
+    "name": "Minus",
+    "shortDesc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Sp. Atk is 1.5x.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "forecast",
+    "num": 59,
+    "name": "Forecast",
+    "shortDesc": "Castform's type changes to the current weather condition's type, except Sandstorm.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "stickyhold",
+    "num": 60,
+    "name": "Sticky Hold",
+    "shortDesc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "shedskin",
+    "num": 61,
+    "name": "Shed Skin",
+    "shortDesc": "This Pokemon has a 33% chance to have its status cured at the end of each turn.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "guts",
+    "num": 62,
+    "name": "Guts",
+    "shortDesc": "If this Pokemon is statused, its Attack is 1.5x; ignores burn halving physical damage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "marvelscale",
+    "num": 63,
+    "name": "Marvel Scale",
+    "shortDesc": "If this Pokemon has a non-volatile status condition, its Defense is multiplied by 1.5.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "liquidooze",
+    "num": 64,
+    "name": "Liquid Ooze",
+    "shortDesc": "This Pokemon damages those draining HP from it for as much as they would heal.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "overgrow",
+    "num": 65,
+    "name": "Overgrow",
+    "shortDesc": "At 1/3 or less of its max HP, this Pokemon's offensive stat is 1.5x with Grass attacks.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "blaze",
+    "num": 66,
+    "name": "Blaze",
+    "shortDesc": "At 1/3 or less of its max HP, this Pokemon's offensive stat is 1.5x with Fire attacks.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "torrent",
+    "num": 67,
+    "name": "Torrent",
+    "shortDesc": "At 1/3 or less of its max HP, this Pokemon's offensive stat is 1.5x with Water attacks.",
+    "isNonstandard": null,
+    "aliasesJa": [
+      "げきりゅう"
+    ]
+  },
+  {
+    "id": "swarm",
+    "num": 68,
+    "name": "Swarm",
+    "shortDesc": "At 1/3 or less of its max HP, this Pokemon's offensive stat is 1.5x with Bug attacks.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "rockhead",
+    "num": 69,
+    "name": "Rock Head",
+    "shortDesc": "This Pokemon does not take recoil damage besides Struggle/Life Orb/crash damage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "drought",
+    "num": 70,
+    "name": "Drought",
+    "shortDesc": "On switch-in, this Pokemon summons Sunny Day.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "arenatrap",
+    "num": 71,
+    "name": "Arena Trap",
+    "shortDesc": "Prevents opposing Pokemon from choosing to switch out unless they are airborne.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "vitalspirit",
+    "num": 72,
+    "name": "Vital Spirit",
+    "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "whitesmoke",
+    "num": 73,
+    "name": "White Smoke",
+    "shortDesc": "Prevents other Pokemon from lowering this Pokemon's stat stages.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "purepower",
+    "num": 74,
+    "name": "Pure Power",
+    "shortDesc": "This Pokemon's Attack is doubled.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "shellarmor",
+    "num": 75,
+    "name": "Shell Armor",
+    "shortDesc": "This Pokemon cannot be struck by a critical hit.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "airlock",
+    "num": 76,
+    "name": "Air Lock",
+    "shortDesc": "While this Pokemon is active, the effects of weather conditions are disabled.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "tangledfeet",
+    "num": 77,
+    "name": "Tangled Feet",
+    "shortDesc": "This Pokemon's evasiveness is doubled as long as it is confused.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "motordrive",
+    "num": 78,
+    "name": "Motor Drive",
+    "shortDesc": "This Pokemon's Speed is raised 1 stage if hit by an Electric move; Electric immunity.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "rivalry",
+    "num": 79,
+    "name": "Rivalry",
+    "shortDesc": "This Pokemon's attacks do 1.25x on same gender targets; 0.75x on opposite gender.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "steadfast",
+    "num": 80,
+    "name": "Steadfast",
+    "shortDesc": "If this Pokemon flinches, its Speed is raised by 1 stage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "snowcloak",
+    "num": 81,
+    "name": "Snow Cloak",
+    "shortDesc": "If Snow is active, this Pokemon's evasiveness is 1.25x.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "gluttony",
+    "num": 82,
+    "name": "Gluttony",
+    "shortDesc": "This Pokemon eats Berries at 1/2 max HP or less instead of their usual 1/4 max HP.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "angerpoint",
+    "num": 83,
+    "name": "Anger Point",
+    "shortDesc": "If this Pokemon (not its substitute) takes a critical hit, its Attack is raised 12 stages.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "unburden",
+    "num": 84,
+    "name": "Unburden",
+    "shortDesc": "Speed is doubled on held item loss; boost is lost if it switches, gets new item/Ability.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "heatproof",
+    "num": 85,
+    "name": "Heatproof",
+    "shortDesc": "Fire damage against this Pokemon is dealt with 1/2 offensive stat; 1/2 burn damage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "simple",
+    "num": 86,
+    "name": "Simple",
+    "shortDesc": "When one of this Pokemon's stat stages is raised or lowered, the amount is doubled.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "dryskin",
+    "num": 87,
+    "name": "Dry Skin",
+    "shortDesc": "This Pokemon is healed 1/4 by Water, 1/8 by Rain; is hurt 1.25x by Fire, 1/8 by Sun.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "download",
+    "num": 88,
+    "name": "Download",
+    "shortDesc": "On switch-in, Attack or Sp. Atk is raised 1 stage based on the foes' weaker Defense.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "ironfist",
+    "num": 89,
+    "name": "Iron Fist",
+    "shortDesc": "This Pokemon's punch-based attacks have 1.2x power. Sucker Punch is not boosted.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "poisonheal",
+    "num": 90,
+    "name": "Poison Heal",
+    "shortDesc": "This Pokemon is healed by 1/8 of its max HP each turn when poisoned; no HP loss.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "adaptability",
+    "num": 91,
+    "name": "Adaptability",
+    "shortDesc": "This Pokemon's same-type attack bonus (STAB) is 2 instead of 1.5.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "skilllink",
+    "num": 92,
+    "name": "Skill Link",
+    "shortDesc": "This Pokemon's multi-hit attacks always hit the maximum number of times.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "hydration",
+    "num": 93,
+    "name": "Hydration",
+    "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "solarpower",
+    "num": 94,
+    "name": "Solar Power",
+    "shortDesc": "If Sunny Day is active, this Pokemon's Sp. Atk is 1.5x; loses 1/8 max HP per turn.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "quickfeet",
+    "num": 95,
+    "name": "Quick Feet",
+    "shortDesc": "If this Pokemon is statused, its Speed is 1.5x; ignores Speed drop from paralysis.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "normalize",
+    "num": 96,
+    "name": "Normalize",
+    "shortDesc": "This Pokemon's moves are changed to be Normal type and have 1.2x power.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "sniper",
+    "num": 97,
+    "name": "Sniper",
+    "shortDesc": "If this Pokemon strikes with a critical hit, the damage is multiplied by 1.5.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "magicguard",
+    "num": 98,
+    "name": "Magic Guard",
+    "shortDesc": "This Pokemon can only be damaged by direct attacks.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "noguard",
+    "num": 99,
+    "name": "No Guard",
+    "shortDesc": "Every move used by or against this Pokemon will always hit.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "stall",
+    "num": 100,
+    "name": "Stall",
+    "shortDesc": "This Pokemon moves last among Pokemon using the same or greater priority moves.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "technician",
+    "num": 101,
+    "name": "Technician",
+    "shortDesc": "This Pokemon's moves of 60 power or less have 1.5x power, including Struggle.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "leafguard",
+    "num": 102,
+    "name": "Leaf Guard",
+    "shortDesc": "If Sunny Day is active, this Pokemon cannot be statused and Rest will fail for it.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "klutz",
+    "num": 103,
+    "name": "Klutz",
+    "shortDesc": "This Pokemon's held item has no effect, except Macho Brace. Fling cannot be used.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "moldbreaker",
+    "num": 104,
+    "name": "Mold Breaker",
+    "shortDesc": "This Pokemon's moves and their effects ignore the Abilities of other Pokemon.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "superluck",
+    "num": 105,
+    "name": "Super Luck",
+    "shortDesc": "This Pokemon's critical hit ratio is raised by 1 stage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "aftermath",
+    "num": 106,
+    "name": "Aftermath",
+    "shortDesc": "If this Pokemon is KOed with a contact move, that move's user loses 1/4 its max HP.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "anticipation",
+    "num": 107,
+    "name": "Anticipation",
+    "shortDesc": "On switch-in, this Pokemon shudders if any foe has a supereffective or OHKO move.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "forewarn",
+    "num": 108,
+    "name": "Forewarn",
+    "shortDesc": "On switch-in, this Pokemon is alerted to the foes' move with the highest power.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "unaware",
+    "num": 109,
+    "name": "Unaware",
+    "shortDesc": "This Pokemon ignores other Pokemon's stat stages when taking or doing damage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "tintedlens",
+    "num": 110,
+    "name": "Tinted Lens",
+    "shortDesc": "This Pokemon's attacks that are not very effective on a target deal double damage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "filter",
+    "num": 111,
+    "name": "Filter",
+    "shortDesc": "This Pokemon receives 3/4 damage from supereffective attacks.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "slowstart",
+    "num": 112,
+    "name": "Slow Start",
+    "shortDesc": "On switch-in, this Pokemon's Attack and Speed are halved for 5 turns.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "scrappy",
+    "num": 113,
+    "name": "Scrappy",
+    "shortDesc": "Fighting, Normal moves hit Ghost. Immune to Intimidate.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "stormdrain",
+    "num": 114,
+    "name": "Storm Drain",
+    "shortDesc": "This Pokemon draws Water moves to itself to raise Sp. Atk by 1; Water immunity.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "icebody",
+    "num": 115,
+    "name": "Ice Body",
+    "shortDesc": "If Snow is active, this Pokemon heals 1/16 of its max HP each turn.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "solidrock",
+    "num": 116,
+    "name": "Solid Rock",
+    "shortDesc": "This Pokemon receives 3/4 damage from supereffective attacks.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "snowwarning",
+    "num": 117,
+    "name": "Snow Warning",
+    "shortDesc": "On switch-in, this Pokemon summons Snow.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "honeygather",
+    "num": 118,
+    "name": "Honey Gather",
+    "shortDesc": "No competitive use.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "frisk",
+    "num": 119,
+    "name": "Frisk",
+    "shortDesc": "On switch-in, this Pokemon identifies the held items of all opposing Pokemon.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "reckless",
+    "num": 120,
+    "name": "Reckless",
+    "shortDesc": "This Pokemon's attacks with recoil or crash damage have 1.2x power; not Struggle.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "multitype",
+    "num": 121,
+    "name": "Multitype",
+    "shortDesc": "If this Pokemon is an Arceus, its type changes to match its held Plate.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "flowergift",
+    "num": 122,
+    "name": "Flower Gift",
+    "shortDesc": "If user is Cherrim and Sunny Day is active, it and allies' Attack and Sp. Def are 1.5x.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "baddreams",
+    "num": 123,
+    "name": "Bad Dreams",
+    "shortDesc": "Causes sleeping foes to lose 1/8 of their max HP at the end of each turn.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "pickpocket",
+    "num": 124,
+    "name": "Pickpocket",
+    "shortDesc": "If this Pokemon has no item and is hit by a contact move, it steals the attacker's item.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "sheerforce",
+    "num": 125,
+    "name": "Sheer Force",
+    "shortDesc": "This Pokemon's attacks with secondary effects have 1.3x power; nullifies the effects.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "contrary",
+    "num": 126,
+    "name": "Contrary",
+    "shortDesc": "If this Pokemon has a stat stage raised it is lowered instead, and vice versa.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "unnerve",
+    "num": 127,
+    "name": "Unnerve",
+    "shortDesc": "While this Pokemon is active, it prevents opposing Pokemon from using their Berries.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "defiant",
+    "num": 128,
+    "name": "Defiant",
+    "shortDesc": "This Pokemon's Attack is raised by 2 for each of its stats that is lowered by a foe.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "defeatist",
+    "num": 129,
+    "name": "Defeatist",
+    "shortDesc": "While this Pokemon has 1/2 or less of its max HP, its Attack and Sp. Atk are halved.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "cursedbody",
+    "num": 130,
+    "name": "Cursed Body",
+    "shortDesc": "If this Pokemon is hit by an attack, there is a 30% chance that move gets disabled.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "healer",
+    "num": 131,
+    "name": "Healer",
+    "shortDesc": "30% chance this Pokemon's ally has its status cured at the end of each turn.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "friendguard",
+    "num": 132,
+    "name": "Friend Guard",
+    "shortDesc": "This Pokemon's allies receive 3/4 damage from other Pokemon's attacks.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "weakarmor",
+    "num": 133,
+    "name": "Weak Armor",
+    "shortDesc": "If a physical attack hits this Pokemon, Defense is lowered by 1, Speed is raised by 2.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "heavymetal",
+    "num": 134,
+    "name": "Heavy Metal",
+    "shortDesc": "This Pokemon's weight is doubled.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "lightmetal",
+    "num": 135,
+    "name": "Light Metal",
+    "shortDesc": "This Pokemon's weight is halved.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "multiscale",
+    "num": 136,
+    "name": "Multiscale",
+    "shortDesc": "If this Pokemon is at full HP, damage taken from attacks is halved.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "toxicboost",
+    "num": 137,
+    "name": "Toxic Boost",
+    "shortDesc": "While this Pokemon is poisoned, its physical attacks have 1.5x power.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "flareboost",
+    "num": 138,
+    "name": "Flare Boost",
+    "shortDesc": "While this Pokemon is burned, its special attacks have 1.5x power.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "harvest",
+    "num": 139,
+    "name": "Harvest",
+    "shortDesc": "If last item used is a Berry, 50% chance to restore it each end of turn. 100% in Sun.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "telepathy",
+    "num": 140,
+    "name": "Telepathy",
+    "shortDesc": "This Pokemon does not take damage from attacks made by its allies.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "moody",
+    "num": 141,
+    "name": "Moody",
+    "shortDesc": "Boosts a random stat (except accuracy/evasion) +2 and another stat -1 every turn.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "overcoat",
+    "num": 142,
+    "name": "Overcoat",
+    "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "poisontouch",
+    "num": 143,
+    "name": "Poison Touch",
+    "shortDesc": "This Pokemon's contact moves have a 30% chance of poisoning.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "regenerator",
+    "num": 144,
+    "name": "Regenerator",
+    "shortDesc": "This Pokemon restores 1/3 of its maximum HP, rounded down, when it switches out.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "bigpecks",
+    "num": 145,
+    "name": "Big Pecks",
+    "shortDesc": "Prevents other Pokemon from lowering this Pokemon's Defense stat stage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "sandrush",
+    "num": 146,
+    "name": "Sand Rush",
+    "shortDesc": "If Sandstorm is active, this Pokemon's Speed is doubled; immunity to Sandstorm.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "wonderskin",
+    "num": 147,
+    "name": "Wonder Skin",
+    "shortDesc": "Status moves with accuracy checks are 50% accurate when used on this Pokemon.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "analytic",
+    "num": 148,
+    "name": "Analytic",
+    "shortDesc": "This Pokemon's attacks have 1.3x power if it is the last to move in a turn.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "illusion",
+    "num": 149,
+    "name": "Illusion",
+    "shortDesc": "This Pokemon appears as the last Pokemon in the party until it takes direct damage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "imposter",
+    "num": 150,
+    "name": "Imposter",
+    "shortDesc": "On switch-in, this Pokemon Transforms into the opposing Pokemon that is facing it.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "infiltrator",
+    "num": 151,
+    "name": "Infiltrator",
+    "shortDesc": "Moves ignore substitutes and foe's Reflect/Light Screen/Safeguard/Mist/Aurora Veil.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "mummy",
+    "num": 152,
+    "name": "Mummy",
+    "shortDesc": "Pokemon making contact with this Pokemon have their Ability changed to Mummy.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "moxie",
+    "num": 153,
+    "name": "Moxie",
+    "shortDesc": "This Pokemon's Attack is raised by 1 stage if it attacks and KOes another Pokemon.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "justified",
+    "num": 154,
+    "name": "Justified",
+    "shortDesc": "This Pokemon's Attack is raised by 1 stage after it is damaged by a Dark-type move.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "rattled",
+    "num": 155,
+    "name": "Rattled",
+    "shortDesc": "Speed is raised 1 stage if hit by a Bug-, Dark-, or Ghost-type attack, or Intimidated.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "magicbounce",
+    "num": 156,
+    "name": "Magic Bounce",
+    "shortDesc": "This Pokemon blocks certain Status moves and bounces them back to the user.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "sapsipper",
+    "num": 157,
+    "name": "Sap Sipper",
+    "shortDesc": "This Pokemon's Attack is raised 1 stage if hit by a Grass move; Grass immunity.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "prankster",
+    "num": 158,
+    "name": "Prankster",
+    "shortDesc": "This Pokemon's Status moves have priority raised by 1, but Dark types are immune.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "sandforce",
+    "num": 159,
+    "name": "Sand Force",
+    "shortDesc": "This Pokemon's Ground/Rock/Steel attacks do 1.3x in Sandstorm; immunity to it.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "ironbarbs",
+    "num": 160,
+    "name": "Iron Barbs",
+    "shortDesc": "Pokemon making contact with this Pokemon lose 1/8 of their max HP.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "zenmode",
+    "num": 161,
+    "name": "Zen Mode",
+    "shortDesc": "If Darmanitan, at end of turn changes Mode to Standard if > 1/2 max HP, else Zen.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "victorystar",
+    "num": 162,
+    "name": "Victory Star",
+    "shortDesc": "This Pokemon and its allies' moves have their accuracy multiplied by 1.1.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "turboblaze",
+    "num": 163,
+    "name": "Turboblaze",
+    "shortDesc": "This Pokemon's moves and their effects ignore the Abilities of other Pokemon.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "teravolt",
+    "num": 164,
+    "name": "Teravolt",
+    "shortDesc": "This Pokemon's moves and their effects ignore the Abilities of other Pokemon.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "aromaveil",
+    "num": 165,
+    "name": "Aroma Veil",
+    "shortDesc": "Protects user/allies from Attract, Disable, Encore, Heal Block, Taunt, and Torment.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "flowerveil",
+    "num": 166,
+    "name": "Flower Veil",
+    "shortDesc": "This side's Grass types can't have stats lowered or status inflicted by other Pokemon.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "cheekpouch",
+    "num": 167,
+    "name": "Cheek Pouch",
+    "shortDesc": "If this Pokemon eats a Berry, it restores 1/3 of its max HP after the Berry's effect.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "protean",
+    "num": 168,
+    "name": "Protean",
+    "shortDesc": "This Pokemon's type changes to the type of the move it is using. Once per switch-in.",
+    "isNonstandard": null,
+    "aliasesJa": [
+      "へんげんじざい"
+    ]
+  },
+  {
+    "id": "furcoat",
+    "num": 169,
+    "name": "Fur Coat",
+    "shortDesc": "This Pokemon's Defense is doubled.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "magician",
+    "num": 170,
+    "name": "Magician",
+    "shortDesc": "If this Pokemon has no item, it steals the item off a Pokemon it hits with an attack.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "bulletproof",
+    "num": 171,
+    "name": "Bulletproof",
+    "shortDesc": "This Pokemon is immune to bullet moves.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "competitive",
+    "num": 172,
+    "name": "Competitive",
+    "shortDesc": "This Pokemon's Sp. Atk is raised by 2 for each of its stats that is lowered by a foe.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "strongjaw",
+    "num": 173,
+    "name": "Strong Jaw",
+    "shortDesc": "This Pokemon's bite-based attacks have 1.5x power. Bug Bite is not boosted.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "refrigerate",
+    "num": 174,
+    "name": "Refrigerate",
+    "shortDesc": "This Pokemon's Normal-type moves become Ice type and have 1.2x power.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "sweetveil",
+    "num": 175,
+    "name": "Sweet Veil",
+    "shortDesc": "This Pokemon and its allies cannot fall asleep; those already asleep do not wake up.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "stancechange",
+    "num": 176,
+    "name": "Stance Change",
+    "shortDesc": "If Aegislash, changes Forme to Blade before attacks and Shield before King's Shield.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "galewings",
+    "num": 177,
+    "name": "Gale Wings",
+    "shortDesc": "If this Pokemon is at full HP, its Flying-type moves have their priority increased by 1.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "megalauncher",
+    "num": 178,
+    "name": "Mega Launcher",
+    "shortDesc": "This Pokemon's pulse moves have 1.5x power. Heal Pulse heals 3/4 target's max HP.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "grasspelt",
+    "num": 179,
+    "name": "Grass Pelt",
+    "shortDesc": "If Grassy Terrain is active, this Pokemon's Defense is multiplied by 1.5.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "symbiosis",
+    "num": 180,
+    "name": "Symbiosis",
+    "shortDesc": "If an ally uses its item, this Pokemon gives its item to that ally immediately.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "toughclaws",
+    "num": 181,
+    "name": "Tough Claws",
+    "shortDesc": "This Pokemon's contact moves have their power multiplied by 1.3.",
+    "isNonstandard": null,
+    "aliasesJa": [
+      "かたいツメ"
+    ]
+  },
+  {
+    "id": "pixilate",
+    "num": 182,
+    "name": "Pixilate",
+    "shortDesc": "This Pokemon's Normal-type moves become Fairy type and have 1.2x power.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "gooey",
+    "num": 183,
+    "name": "Gooey",
+    "shortDesc": "Pokemon making contact with this Pokemon have their Speed lowered by 1 stage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "aerilate",
+    "num": 184,
+    "name": "Aerilate",
+    "shortDesc": "This Pokemon's Normal-type moves become Flying type and have 1.2x power.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "parentalbond",
+    "num": 185,
+    "name": "Parental Bond",
+    "shortDesc": "This Pokemon's damaging moves hit twice. The second hit has its damage quartered.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "darkaura",
+    "num": 186,
+    "name": "Dark Aura",
+    "shortDesc": "While this Pokemon is active, a Dark move used by any Pokemon has 1.33x power.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "fairyaura",
+    "num": 187,
+    "name": "Fairy Aura",
+    "shortDesc": "While this Pokemon is active, a Fairy move used by any Pokemon has 1.33x power.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "aurabreak",
+    "num": 188,
+    "name": "Aura Break",
+    "shortDesc": "While this Pokemon is active, the Dark Aura and Fairy Aura power modifier is 0.75x.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "primordialsea",
+    "num": 189,
+    "name": "Primordial Sea",
+    "shortDesc": "On switch-in, heavy rain begins until this Ability is not active in battle.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "desolateland",
+    "num": 190,
+    "name": "Desolate Land",
+    "shortDesc": "On switch-in, extremely harsh sunlight begins until this Ability is not active in battle.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "deltastream",
+    "num": 191,
+    "name": "Delta Stream",
+    "shortDesc": "On switch-in, strong winds begin until this Ability is not active in battle.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "stamina",
+    "num": 192,
+    "name": "Stamina",
+    "shortDesc": "This Pokemon's Defense is raised by 1 stage after it is damaged by a move.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "wimpout",
+    "num": 193,
+    "name": "Wimp Out",
+    "shortDesc": "This Pokemon switches out when it reaches 1/2 or less of its maximum HP.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "emergencyexit",
+    "num": 194,
+    "name": "Emergency Exit",
+    "shortDesc": "This Pokemon switches out when it reaches 1/2 or less of its maximum HP.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "watercompaction",
+    "num": 195,
+    "name": "Water Compaction",
+    "shortDesc": "This Pokemon's Defense is raised 2 stages after it is damaged by a Water-type move.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "merciless",
+    "num": 196,
+    "name": "Merciless",
+    "shortDesc": "This Pokemon's attacks are critical hits if the target is poisoned.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "shieldsdown",
+    "num": 197,
+    "name": "Shields Down",
+    "shortDesc": "If Minior, switch-in/end of turn it changes to Core at 1/2 max HP or less, else Meteor.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "stakeout",
+    "num": 198,
+    "name": "Stakeout",
+    "shortDesc": "This Pokemon's offensive stat is doubled against a target that switched in this turn.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "waterbubble",
+    "num": 199,
+    "name": "Water Bubble",
+    "shortDesc": "This Pokemon's Water power is 2x; it can't be burned; Fire power against it is halved.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "steelworker",
+    "num": 200,
+    "name": "Steelworker",
+    "shortDesc": "This Pokemon's offensive stat is multiplied by 1.5 while using a Steel-type attack.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "berserk",
+    "num": 201,
+    "name": "Berserk",
+    "shortDesc": "This Pokemon's Sp. Atk is raised by 1 when it reaches 1/2 or less of its max HP.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "slushrush",
+    "num": 202,
+    "name": "Slush Rush",
+    "shortDesc": "If Snow is active, this Pokemon's Speed is doubled.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "longreach",
+    "num": 203,
+    "name": "Long Reach",
+    "shortDesc": "This Pokemon's attacks do not make contact with the target.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "liquidvoice",
+    "num": 204,
+    "name": "Liquid Voice",
+    "shortDesc": "This Pokemon's sound-based moves become Water type.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "triage",
+    "num": 205,
+    "name": "Triage",
+    "shortDesc": "This Pokemon's healing moves have their priority increased by 3.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "galvanize",
+    "num": 206,
+    "name": "Galvanize",
+    "shortDesc": "This Pokemon's Normal-type moves become Electric type and have 1.2x power.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "surgesurfer",
+    "num": 207,
+    "name": "Surge Surfer",
+    "shortDesc": "If Electric Terrain is active, this Pokemon's Speed is doubled.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "schooling",
+    "num": 208,
+    "name": "Schooling",
+    "shortDesc": "If user is Wishiwashi, changes to School Form if it has > 1/4 max HP, else Solo Form.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "disguise",
+    "num": 209,
+    "name": "Disguise",
+    "shortDesc": "(Mimikyu only) The first hit it takes is blocked, and it takes 1/8 HP damage instead.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "battlebond",
+    "num": 210,
+    "name": "Battle Bond",
+    "shortDesc": "After KOing a Pokemon: raises Attack, Sp. Atk, Speed by 1 stage. Once per battle.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "powerconstruct",
+    "num": 211,
+    "name": "Power Construct",
+    "shortDesc": "If Zygarde 10%/50%, changes to Complete if at 1/2 max HP or less at end of turn.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "corrosion",
+    "num": 212,
+    "name": "Corrosion",
+    "shortDesc": "This Pokemon can poison or badly poison a Pokemon regardless of its typing.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "comatose",
+    "num": 213,
+    "name": "Comatose",
+    "shortDesc": "This Pokemon cannot be statused, and is considered to be asleep.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "queenlymajesty",
+    "num": 214,
+    "name": "Queenly Majesty",
+    "shortDesc": "This Pokemon and its allies are protected from opposing priority moves.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "innardsout",
+    "num": 215,
+    "name": "Innards Out",
+    "shortDesc": "If this Pokemon is KOed with a move, that move's user loses an equal amount of HP.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "dancer",
+    "num": 216,
+    "name": "Dancer",
+    "shortDesc": "After another Pokemon uses a dance move, this Pokemon uses the same move.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "battery",
+    "num": 217,
+    "name": "Battery",
+    "shortDesc": "This Pokemon's allies have the power of their special attacks multiplied by 1.3.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "fluffy",
+    "num": 218,
+    "name": "Fluffy",
+    "shortDesc": "This Pokemon takes 1/2 damage from contact moves, 2x damage from Fire moves.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "dazzling",
+    "num": 219,
+    "name": "Dazzling",
+    "shortDesc": "This Pokemon and its allies are protected from opposing priority moves.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "soulheart",
+    "num": 220,
+    "name": "Soul-Heart",
+    "shortDesc": "This Pokemon's Special Attack is raised by 1 stage when another Pokemon faints.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "tanglinghair",
+    "num": 221,
+    "name": "Tangling Hair",
+    "shortDesc": "Pokemon making contact with this Pokemon have their Speed lowered by 1 stage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "receiver",
+    "num": 222,
+    "name": "Receiver",
+    "shortDesc": "This Pokemon copies the Ability of an ally that faints.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "powerofalchemy",
+    "num": 223,
+    "name": "Power of Alchemy",
+    "shortDesc": "This Pokemon copies the Ability of an ally that faints.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "beastboost",
+    "num": 224,
+    "name": "Beast Boost",
+    "shortDesc": "This Pokemon's highest stat is raised by 1 if it attacks and KOes another Pokemon.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "rkssystem",
+    "num": 225,
+    "name": "RKS System",
+    "shortDesc": "If this Pokemon is a Silvally, its type changes to match its held Memory.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "electricsurge",
+    "num": 226,
+    "name": "Electric Surge",
+    "shortDesc": "On switch-in, this Pokemon summons Electric Terrain.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "psychicsurge",
+    "num": 227,
+    "name": "Psychic Surge",
+    "shortDesc": "On switch-in, this Pokemon summons Psychic Terrain.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "mistysurge",
+    "num": 228,
+    "name": "Misty Surge",
+    "shortDesc": "On switch-in, this Pokemon summons Misty Terrain.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "grassysurge",
+    "num": 229,
+    "name": "Grassy Surge",
+    "shortDesc": "On switch-in, this Pokemon summons Grassy Terrain.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "fullmetalbody",
+    "num": 230,
+    "name": "Full Metal Body",
+    "shortDesc": "Prevents other Pokemon from lowering this Pokemon's stat stages.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "shadowshield",
+    "num": 231,
+    "name": "Shadow Shield",
+    "shortDesc": "If this Pokemon is at full HP, damage taken from attacks is halved.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "prismarmor",
+    "num": 232,
+    "name": "Prism Armor",
+    "shortDesc": "This Pokemon receives 3/4 damage from supereffective attacks.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "neuroforce",
+    "num": 233,
+    "name": "Neuroforce",
+    "shortDesc": "This Pokemon's attacks that are super effective against the target do 1.25x damage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "intrepidsword",
+    "num": 234,
+    "name": "Intrepid Sword",
+    "shortDesc": "On switch-in, this Pokemon's Attack is raised by 1 stage. Once per battle.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "dauntlessshield",
+    "num": 235,
+    "name": "Dauntless Shield",
+    "shortDesc": "On switch-in, this Pokemon's Defense is raised by 1 stage. Once per battle.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "libero",
+    "num": 236,
+    "name": "Libero",
+    "shortDesc": "This Pokemon's type changes to the type of the move it is using. Once per switch-in.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "ballfetch",
+    "num": 237,
+    "name": "Ball Fetch",
+    "shortDesc": "No competitive use.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "cottondown",
+    "num": 238,
+    "name": "Cotton Down",
+    "shortDesc": "If this Pokemon is hit, it lowers the Speed of all other Pokemon on the field 1 stage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "propellertail",
+    "num": 239,
+    "name": "Propeller Tail",
+    "shortDesc": "This Pokemon's moves cannot be redirected to a different target by any effect.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "mirrorarmor",
+    "num": 240,
+    "name": "Mirror Armor",
+    "shortDesc": "If this Pokemon's stat stages would be lowered, the attacker's are lowered instead.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "gulpmissile",
+    "num": 241,
+    "name": "Gulp Missile",
+    "shortDesc": "When hit after Surf/Dive, attacker takes 1/4 max HP and -1 Defense or paralysis.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "stalwart",
+    "num": 242,
+    "name": "Stalwart",
+    "shortDesc": "This Pokemon's moves cannot be redirected to a different target by any effect.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "steamengine",
+    "num": 243,
+    "name": "Steam Engine",
+    "shortDesc": "This Pokemon's Speed is raised by 6 stages after it is damaged by Fire/Water moves.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "punkrock",
+    "num": 244,
+    "name": "Punk Rock",
+    "shortDesc": "This Pokemon receives 1/2 damage from sound moves. Its own have 1.3x power.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "sandspit",
+    "num": 245,
+    "name": "Sand Spit",
+    "shortDesc": "When this Pokemon is hit by an attack, the effect of Sandstorm begins.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "icescales",
+    "num": 246,
+    "name": "Ice Scales",
+    "shortDesc": "This Pokemon receives 1/2 damage from special attacks.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "ripen",
+    "num": 247,
+    "name": "Ripen",
+    "shortDesc": "When this Pokemon eats certain Berries, the effects are doubled.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "iceface",
+    "num": 248,
+    "name": "Ice Face",
+    "shortDesc": "If Eiscue, the first physical hit it takes deals 0 damage. Effect is restored in Snow.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "powerspot",
+    "num": 249,
+    "name": "Power Spot",
+    "shortDesc": "This Pokemon's allies have the power of their moves multiplied by 1.3.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "mimicry",
+    "num": 250,
+    "name": "Mimicry",
+    "shortDesc": "This Pokemon's types change to match the Terrain. Type reverts when Terrain ends.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "screencleaner",
+    "num": 251,
+    "name": "Screen Cleaner",
+    "shortDesc": "On switch-in, the effects of Aurora Veil, Light Screen, and Reflect end for both sides.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "steelyspirit",
+    "num": 252,
+    "name": "Steely Spirit",
+    "shortDesc": "This Pokemon and its allies' Steel-type moves have their power multiplied by 1.5.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "perishbody",
+    "num": 253,
+    "name": "Perish Body",
+    "shortDesc": "Making contact with this Pokemon starts the Perish Song effect for it and the attacker.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "wanderingspirit",
+    "num": 254,
+    "name": "Wandering Spirit",
+    "shortDesc": "Pokemon making contact with this Pokemon have their Ability swapped with this one.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "gorillatactics",
+    "num": 255,
+    "name": "Gorilla Tactics",
+    "shortDesc": "This Pokemon's Attack is 1.5x, but it can only select the first move it executes.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "neutralizinggas",
+    "num": 256,
+    "name": "Neutralizing Gas",
+    "shortDesc": "While this Pokemon is active, Abilities have no effect.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "pastelveil",
+    "num": 257,
+    "name": "Pastel Veil",
+    "shortDesc": "This Pokemon and its allies cannot be poisoned. On switch-in, cures poisoned allies.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "hungerswitch",
+    "num": 258,
+    "name": "Hunger Switch",
+    "shortDesc": "If Morpeko, it changes between Full Belly and Hangry Mode at the end of each turn.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "quickdraw",
+    "num": 259,
+    "name": "Quick Draw",
+    "shortDesc": "This Pokemon has a 30% chance to move first in its priority bracket with attacking moves.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "unseenfist",
+    "num": 260,
+    "name": "Unseen Fist",
+    "shortDesc": "This Pokemon's contact moves ignore the target's protection, except Max Guard.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "curiousmedicine",
+    "num": 261,
+    "name": "Curious Medicine",
+    "shortDesc": "On switch-in, this Pokemon's allies have their stat stages reset to 0.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "transistor",
+    "num": 262,
+    "name": "Transistor",
+    "shortDesc": "This Pokemon's offensive stat is multiplied by 1.3 while using an Electric-type attack.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "dragonsmaw",
+    "num": 263,
+    "name": "Dragon's Maw",
+    "shortDesc": "This Pokemon's offensive stat is multiplied by 1.5 while using a Dragon-type attack.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "chillingneigh",
+    "num": 264,
+    "name": "Chilling Neigh",
+    "shortDesc": "This Pokemon's Attack is raised by 1 stage if it attacks and KOes another Pokemon.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "grimneigh",
+    "num": 265,
+    "name": "Grim Neigh",
+    "shortDesc": "This Pokemon's Sp. Atk is raised by 1 stage if it attacks and KOes another Pokemon.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "asoneglastrier",
+    "num": 266,
+    "name": "As One (Glastrier)",
+    "shortDesc": "Combination of the Unnerve and Chilling Neigh Abilities.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "asonespectrier",
+    "num": 267,
+    "name": "As One (Spectrier)",
+    "shortDesc": "Combination of the Unnerve and Grim Neigh Abilities.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "lingeringaroma",
+    "num": 268,
+    "name": "Lingering Aroma",
+    "shortDesc": "Making contact with this Pokemon has the attacker's Ability become Lingering Aroma.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "seedsower",
+    "num": 269,
+    "name": "Seed Sower",
+    "shortDesc": "When this Pokemon is hit by an attack, the effect of Grassy Terrain begins.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "thermalexchange",
+    "num": 270,
+    "name": "Thermal Exchange",
+    "shortDesc": "This Pokemon's Attack is raised by 1 when damaged by Fire moves; can't be burned.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "angershell",
+    "num": 271,
+    "name": "Anger Shell",
+    "shortDesc": "At 1/2 or less of this Pokemon's max HP: +1 Atk, Sp. Atk, Spe, and -1 Def, Sp. Def.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "purifyingsalt",
+    "num": 272,
+    "name": "Purifying Salt",
+    "shortDesc": "Ghost damage to this Pokemon dealt with a halved offensive stat; can't be statused.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "wellbakedbody",
+    "num": 273,
+    "name": "Well-Baked Body",
+    "shortDesc": "This Pokemon's Defense is raised 2 stages if hit by a Fire move; Fire immunity.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "windrider",
+    "num": 274,
+    "name": "Wind Rider",
+    "shortDesc": "Attack raised by 1 if hit by a wind move or Tailwind begins. Wind move immunity.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "guarddog",
+    "num": 275,
+    "name": "Guard Dog",
+    "shortDesc": "Immune to Intimidate. Intimidated: +1 Attack. Cannot be forced to switch out.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "rockypayload",
+    "num": 276,
+    "name": "Rocky Payload",
+    "shortDesc": "This Pokemon's offensive stat is multiplied by 1.5 while using a Rock-type attack.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "windpower",
+    "num": 277,
+    "name": "Wind Power",
+    "shortDesc": "This Pokemon gains the Charge effect when hit by a wind move or Tailwind begins.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "zerotohero",
+    "num": 278,
+    "name": "Zero to Hero",
+    "shortDesc": "If this Pokemon is a Palafin in Zero Form, switching out has it change to Hero Form.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "commander",
+    "num": 279,
+    "name": "Commander",
+    "shortDesc": "If ally is Dondozo: this Pokemon cannot act or be hit, +2 to all Dondozo's stats.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "electromorphosis",
+    "num": 280,
+    "name": "Electromorphosis",
+    "shortDesc": "This Pokemon gains the Charge effect when it takes a hit from an attack.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "protosynthesis",
+    "num": 281,
+    "name": "Protosynthesis",
+    "shortDesc": "Sunny Day active or Booster Energy used: highest stat is 1.3x, or 1.5x if Speed.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "quarkdrive",
+    "num": 282,
+    "name": "Quark Drive",
+    "shortDesc": "Electric Terrain active or Booster Energy used: highest stat is 1.3x, or 1.5x if Speed.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "goodasgold",
+    "num": 283,
+    "name": "Good as Gold",
+    "shortDesc": "This Pokemon is immune to Status moves.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "beadsofruin",
+    "num": 284,
+    "name": "Beads of Ruin",
+    "shortDesc": "Active Pokemon without this Ability have their Special Defense multiplied by 0.75.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "tabletsofruin",
+    "num": 284,
+    "name": "Tablets of Ruin",
+    "shortDesc": "Active Pokemon without this Ability have their Attack multiplied by 0.75.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "vesselofruin",
+    "num": 284,
+    "name": "Vessel of Ruin",
+    "shortDesc": "Active Pokemon without this Ability have their Special Attack multiplied by 0.75.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "swordofruin",
+    "num": 285,
+    "name": "Sword of Ruin",
+    "shortDesc": "Active Pokemon without this Ability have their Defense multiplied by 0.75.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "orichalcumpulse",
+    "num": 288,
+    "name": "Orichalcum Pulse",
+    "shortDesc": "On switch-in, summons Sunny Day. During Sunny Day, Attack is 1.3333x.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "hadronengine",
+    "num": 289,
+    "name": "Hadron Engine",
+    "shortDesc": "On switch-in, summons Electric Terrain. During Electric Terrain, Sp. Atk is 1.3333x.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "opportunist",
+    "num": 290,
+    "name": "Opportunist",
+    "shortDesc": "When an opposing Pokemon has a stat stage raised, this Pokemon copies the effect.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "cudchew",
+    "num": 291,
+    "name": "Cud Chew",
+    "shortDesc": "If this Pokemon eats a Berry, it will eat that Berry again at the end of the next turn.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "sharpness",
+    "num": 292,
+    "name": "Sharpness",
+    "shortDesc": "This Pokemon's slicing moves have their power multiplied by 1.5.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "supremeoverlord",
+    "num": 293,
+    "name": "Supreme Overlord",
+    "shortDesc": "This Pokemon's moves have 10% more power for each fainted ally, up to 5 allies.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "costar",
+    "num": 294,
+    "name": "Costar",
+    "shortDesc": "On switch-in, this Pokemon copies all of its ally's stat stage changes.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "toxicdebris",
+    "num": 295,
+    "name": "Toxic Debris",
+    "shortDesc": "If this Pokemon is hit by a physical attack, Toxic Spikes are set on the opposing side.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "armortail",
+    "num": 296,
+    "name": "Armor Tail",
+    "shortDesc": "This Pokemon and its allies are protected from opposing priority moves.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "eartheater",
+    "num": 297,
+    "name": "Earth Eater",
+    "shortDesc": "This Pokemon heals 1/4 of its max HP when hit by Ground moves; Ground immunity.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "myceliummight",
+    "num": 298,
+    "name": "Mycelium Might",
+    "shortDesc": "This Pokemon's Status moves go last in their priority bracket and ignore Abilities.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "hospitality",
+    "num": 299,
+    "name": "Hospitality",
+    "shortDesc": "On switch-in, this Pokemon restores 1/4 of its ally's maximum HP, rounded down.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "mindseye",
+    "num": 300,
+    "name": "Mind's Eye",
+    "shortDesc": "Fighting, Normal moves hit Ghost. Accuracy can't be lowered, ignores evasiveness.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "embodyaspectteal",
+    "num": 301,
+    "name": "Embody Aspect (Teal)",
+    "shortDesc": "On switch-in, this Pokemon's Speed is raised by 1 stage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "embodyaspectwellspring",
+    "num": 302,
+    "name": "Embody Aspect (Wellspring)",
+    "shortDesc": "On switch-in, this Pokemon's Special Defense is raised by 1 stage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "embodyaspecthearthflame",
+    "num": 303,
+    "name": "Embody Aspect (Hearthflame)",
+    "shortDesc": "On switch-in, this Pokemon's Attack is raised by 1 stage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "embodyaspectcornerstone",
+    "num": 304,
+    "name": "Embody Aspect (Cornerstone)",
+    "shortDesc": "On switch-in, this Pokemon's Defense is raised by 1 stage.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "toxicchain",
+    "num": 305,
+    "name": "Toxic Chain",
+    "shortDesc": "This Pokemon's attacks have a 30% chance of badly poisoning.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "supersweetsyrup",
+    "num": 306,
+    "name": "Supersweet Syrup",
+    "shortDesc": "On switch-in, this Pokemon lowers the evasiveness of opponents 1 stage. Once per battle.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "terashift",
+    "num": 307,
+    "name": "Tera Shift",
+    "shortDesc": "If this Pokemon is a Terapagos, it transforms into its Terastal Form on entry.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "terashell",
+    "num": 308,
+    "name": "Tera Shell",
+    "shortDesc": "Terapagos: If full HP, attacks taken have 0.5x effectiveness unless naturally immune.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "teraformzero",
+    "num": 309,
+    "name": "Teraform Zero",
+    "shortDesc": "Terapagos: Terastallizing ends the effects of weather and terrain. Once per battle.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "poisonpuppeteer",
+    "num": 310,
+    "name": "Poison Puppeteer",
+    "shortDesc": "Pecharunt: If this Pokemon poisons a target, the target also becomes confused.",
+    "isNonstandard": null,
+    "aliasesJa": []
+  },
+  {
+    "id": "piercingdrill",
+    "num": 311,
+    "name": "Piercing Drill",
+    "shortDesc": "This Pokemon's contact moves ignore a target's protection and deal 1/4 the usual damage.",
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "dragonize",
+    "num": 312,
+    "name": "Dragonize",
+    "shortDesc": "This Pokemon's Normal-type moves become Dragon type and have 1.2x power.",
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "eelevate",
+    "num": 313,
+    "name": "Eelevate",
+    "shortDesc": "This Pokemon is immune to Ground; +1 to highest stat if it KOes another Pokemon.",
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "megasol",
+    "num": 315,
+    "name": "Mega Sol",
+    "shortDesc": "This Pokemon's moves are used as if the effects of Sunny Day were active.",
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "firemane",
+    "num": 316,
+    "name": "Fire Mane",
+    "shortDesc": "This Pokemon's offensive stat is multiplied by 1.5 while using a Fire-type attack.",
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  },
+  {
+    "id": "spicyspray",
+    "num": 318,
+    "name": "Spicy Spray",
+    "shortDesc": "If this Pokemon is hit by an attack, the attacker becomes burned.",
+    "isNonstandard": "Future",
+    "aliasesJa": []
+  }
+]

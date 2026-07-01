@@ -78,7 +78,9 @@
     "weightkg": 100,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "フシギバナ"
+    ]
   },
   {
     "id": "venusaurgmax",
@@ -131,7 +133,9 @@
     "weightkg": 155.5,
     "isMega": true,
     "isNonstandard": "Past",
-    "aliasesJa": []
+    "aliasesJa": [
+      "メガフシギバナ"
+    ]
   },
   {
     "id": "charmander",
@@ -210,7 +214,9 @@
     "weightkg": 90.5,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "リザードン"
+    ]
   },
   {
     "id": "charizardgmax",
@@ -367,7 +373,9 @@
     "weightkg": 85.5,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "カメックス"
+    ]
   },
   {
     "id": "blastoisegmax",
@@ -418,7 +426,9 @@
     "weightkg": 101.1,
     "isMega": true,
     "isNonstandard": "Past",
-    "aliasesJa": []
+    "aliasesJa": [
+      "メガカメックス"
+    ]
   },
   {
     "id": "caterpie",
@@ -5122,7 +5132,9 @@
     "weightkg": 80,
     "isMega": false,
     "isNonstandard": "Past",
-    "aliasesJa": []
+    "aliasesJa": [
+      "スターミー"
+    ]
   },
   {
     "id": "starmiemega",
@@ -5528,7 +5540,9 @@
     "weightkg": 235,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "ギャラドス"
+    ]
   },
   {
     "id": "gyaradosmega",
@@ -5554,7 +5568,9 @@
     "weightkg": 305,
     "isMega": true,
     "isNonstandard": "Past",
-    "aliasesJa": []
+    "aliasesJa": [
+      "メガギャラドス"
+    ]
   },
   {
     "id": "lapras",
@@ -6488,7 +6504,9 @@
     "weightkg": 100.5,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "メガニウム"
+    ]
   },
   {
     "id": "meganiummega",
@@ -7814,7 +7832,9 @@
     "weightkg": 27,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "ブラッキー"
+    ]
   },
   {
     "id": "murkrow",
@@ -8302,7 +8322,9 @@
     "weightkg": 118,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "ハッサム"
+    ]
   },
   {
     "id": "scizormega",
@@ -8328,7 +8350,9 @@
     "weightkg": 125,
     "isMega": true,
     "isNonstandard": "Past",
-    "aliasesJa": []
+    "aliasesJa": [
+      "メガハッサム"
+    ]
   },
   {
     "id": "shuckle",
@@ -11138,7 +11162,9 @@
     "weightkg": 11.5,
     "isMega": false,
     "isNonstandard": "Past",
-    "aliasesJa": []
+    "aliasesJa": [
+      "クチート"
+    ]
   },
   {
     "id": "mawilemega",
@@ -11164,7 +11190,9 @@
     "weightkg": 23.5,
     "isMega": true,
     "isNonstandard": "Past",
-    "aliasesJa": []
+    "aliasesJa": [
+      "メガクチート"
+    ]
   },
   {
     "id": "aron",
@@ -15966,7 +15994,9 @@
     "weightkg": 54,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "ルカリオ"
+    ]
   },
   {
     "id": "lucariomega",
@@ -15992,7 +16022,9 @@
     "weightkg": 57.5,
     "isMega": true,
     "isNonstandard": "Past",
-    "aliasesJa": []
+    "aliasesJa": [
+      "メガルカリオ"
+    ]
   },
   {
     "id": "lucariomegaz",
@@ -16726,7 +16758,9 @@
     "weightkg": 291,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "マンムー"
+    ]
   },
   {
     "id": "porygonz",
@@ -17020,7 +17054,10 @@
     "weightkg": 0.3,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "ヒートロトム",
+      "火ロトム"
+    ]
   },
   {
     "id": "rotommow",
@@ -18332,7 +18369,9 @@
     "weightkg": 58.2,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "ヒスイダイケンキ"
+    ]
   },
   {
     "id": "patrat",
@@ -19608,7 +19647,9 @@
     "weightkg": 6.6,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "エルフーン"
+    ]
   },
   {
     "id": "petilil",
@@ -20924,7 +20965,9 @@
     "weightkg": 57.5,
     "isMega": false,
     "isNonstandard": "Past",
-    "aliasesJa": []
+    "aliasesJa": [
+      "バイバニラ"
+    ]
   },
   {
     "id": "deerling",
@@ -22584,7 +22627,9 @@
     "weightkg": 46,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "ウルガモス"
+    ]
   },
   {
     "id": "cobalion",
@@ -23367,7 +23412,9 @@
     "weightkg": 39,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "マフォクシー"
+    ]
   },
   {
     "id": "delphoxmega",
@@ -24854,7 +24901,9 @@
     "weightkg": 53,
     "isMega": false,
     "isNonstandard": "Past",
-    "aliasesJa": []
+    "aliasesJa": [
+      "ギルガルド"
+    ]
   },
   {
     "id": "aegislashblade",
@@ -25472,7 +25521,9 @@
     "weightkg": 23.5,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "ニンフィア"
+    ]
   },
   {
     "id": "hawlucha",
@@ -32120,7 +32171,9 @@
     "weightkg": 61,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "オーロンゲ"
+    ]
   },
   {
     "id": "grimmsnarlgmax",
@@ -33866,7 +33919,11 @@
     "weightkg": 110,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "イダイトウ",
+      "イダイトウ(オス)",
+      "イダイトウ（オス）"
+    ]
   },
   {
     "id": "basculegionf",
@@ -33922,7 +33979,9 @@
     "weightkg": 43,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "オオニューラ"
+    ]
   },
   {
     "id": "overqwil",
@@ -34163,7 +34222,9 @@
     "weightkg": 326.5,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "ラウドボーン"
+    ]
   },
   {
     "id": "quaxly",
@@ -34998,7 +35059,9 @@
     "weightkg": 62,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "ソウブレイズ"
+    ]
   },
   {
     "id": "tadbulb",
@@ -35945,7 +36008,9 @@
     "weightkg": 45,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "キラフロル"
+    ]
   },
   {
     "id": "glimmoramega",
@@ -36489,7 +36554,9 @@
     "weightkg": 120,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "ドドゲザン"
+    ]
   },
   {
     "id": "greattusk",
@@ -36987,7 +37054,9 @@
     "weightkg": 30,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "サーフゴー"
+    ]
   },
   {
     "id": "wochien",

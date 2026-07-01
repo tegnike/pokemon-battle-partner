@@ -11,8 +11,9 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "typecheck": "tsc --noEmit",
-    "test": "npm run test:knowledge",
-    "test:knowledge": "node tests/knowledge-files.test.mjs"
+    "test": "npm run test:knowledge && npm run test:speed",
+    "test:knowledge": "node tests/knowledge-files.test.mjs",
+    "test:speed": "tsx tests/speed-comparison.test.mjs"
   },
   "dependencies": {
     "@ai-sdk/openai": "^4.0.4",

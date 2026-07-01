@@ -12,8 +12,9 @@ import {
   createPokemon,
   normalizeBattleState
 } from "../domain";
+import { calculateChampionsStats, type NatureModifiers, type StatPoints } from "../champions/statCalc";
 import { calculateLocalDamage } from "./damage";
-import { createLocalDataStore, type LocalDataStore } from "./localData";
+import { createLocalDataStore, type LocalDataStore, type LocalPokemon } from "./localData";
 import {
   applyOwnMegaEvolutions,
   applyOpponentMegaEvolutions,
@@ -75,9 +76,32 @@ const candidateActionSchema = z.object({
   command: z.string(),
   reason: z.string(),
   risk: z.string(),
-  confidence: z.enum(["high", "medium", "low"])
+  confidence: z.enum(["high", "medium", "low"]),
+  speedComparison: z
+    .object({
+      subject: z.string(),
+      target: z.string(),
+      subjectSpeed: z.number(),
+      targetMaxSpeed: z.number(),
+      targetMegaName: z.string().optional(),
+      targetMegaMaxSpeed: z.number().optional(),
+      contextNote: z.string()
+    })
+    .optional()
 });
-type CandidateAction = z.infer<typeof candidateActionSchema>;
+export type CandidateAction = z.infer<typeof candidateActionSchema>;
+
+interface SpeedComparisonAction extends CandidateAction {
+  speedComparison?: {
+    subject: string;
+    target: string;
+    subjectSpeed: number;
+    targetMaxSpeed: number;
+    targetMegaName?: string;
+    targetMegaMaxSpeed?: number;
+    contextNote: string;
+  };
+}
 
 const finalDecisionSchema = z.object({
   action: candidateActionSchema,
@@ -184,6 +208,96 @@ function compactPokemonForPrompt(pokemon: PokemonState, side: "own" | "opponent"
   };
 }
 
+const natureByJaName: Record<string, NatureModifiers> = {
+  いじっぱり: { plus: "atk", minus: "spa" },
+  ひかえめ: { plus: "spa", minus: "atk" },
+  ずぶとい: { plus: "def", minus: "atk" },
+  おくびょう: { plus: "spe", minus: "atk" },
+  ようき: { plus: "spe", minus: "spa" },
+  わんぱく: { plus: "def", minus: "spa" },
+  おだやか: { plus: "spd", minus: "atk" },
+  しんちょう: { plus: "spd", minus: "spa" },
+  のんき: { plus: "def", minus: "spe" },
+  れいせい: { plus: "spa", minus: "spe" },
+  なまいき: { plus: "spd", minus: "spe" },
+  ゆうかん: { plus: "atk", minus: "spe" }
+};
+
+const statPointKeyByLabel: Record<string, keyof StatPoints> = {
+  H: "hp",
+  A: "atk",
+  B: "def",
+  C: "spa",
+  D: "spd",
+  S: "spe"
+};
+
+function parseStatProfile(notes: string): { nature?: NatureModifiers; statPoints: StatPoints } {
+  const statPoints: StatPoints = {};
+  for (const [natureName, nature] of Object.entries(natureByJaName)) {
+    if (notes.includes(natureName)) {
+      for (const match of notes.matchAll(/\b([HABCDS])(\d{1,2})\b/g)) {
+        const key = statPointKeyByLabel[match[1]];
+        if (key) statPoints[key] = Number(match[2]);
+      }
+      return { nature, statPoints };
+    }
+  }
+  for (const match of notes.matchAll(/\b([HABCDS])(\d{1,2})\b/g)) {
+    const key = statPointKeyByLabel[match[1]];
+    if (key) statPoints[key] = Number(match[2]);
+  }
+  return { statPoints };
+}
+
+function maxUnboostedSpeed(pokemon: LocalPokemon): number {
+  return calculateChampionsStats({
+    baseStats: pokemon.baseStats,
+    statPoints: { spe: 32 },
+    nature: { plus: "spe", minus: "atk" }
+  }).spe;
+}
+
+function megaPokemonForBase(store: LocalDataStore, pokemon: LocalPokemon): LocalPokemon | null {
+  if (pokemon.isMega) return null;
+  return store.getPokemon(`${pokemon.id}mega`);
+}
+
+function localPokemonForName(store: LocalDataStore, name: string): LocalPokemon | null {
+  const direct = store.getPokemon(name);
+  if (direct) return direct;
+  const trimmed = name.trim().normalize("NFKC");
+  if (!trimmed.startsWith("メガ") || trimmed.length <= 2) return null;
+  const base = store.getPokemon(trimmed.slice(2));
+  return base ? megaPokemonForBase(store, base) : null;
+}
+
+function displayPokemonName(pokemon: LocalPokemon, fallback: string): string {
+  return pokemon.aliasesJa[0] ?? fallback;
+}
+
+function knownOwnSpeed(store: LocalDataStore, pokemon: PokemonState): number | null {
+  const local = localPokemonForName(store, pokemon.name);
+  if (!local) return null;
+  const profile = parseStatProfile(pokemon.notes);
+  if (profile.statPoints.spe === undefined || !profile.nature) return null;
+  return calculateChampionsStats({
+    baseStats: local.baseStats,
+    statPoints: profile.statPoints,
+    nature: profile.nature
+  }).spe;
+}
+
+function describeSpeedData(store: LocalDataStore, state: BattleState, name: string): string | null {
+  const local = localPokemonForName(store, name);
+  if (!local) return null;
+  const own = state.ownTeam.find((pokemon) => pokemon.name === name);
+  const ownSpeed = own ? knownOwnSpeed(store, own) : null;
+  const displayName = local.aliasesJa[0] ?? name;
+  const ownText = ownSpeed === null ? "" : `; ownKnownSpeed=${ownSpeed}; ownNotes=${own?.notes ?? ""}`;
+  return `- ${displayName}: baseSpe=${local.baseStats.spe}; maxUnboostedSpeed=${maxUnboostedSpeed(local)}${ownText}`;
+}
+
 function compactStateForPrompt(state: BattleState) {
   return {
     phase: state.phase,
@@ -211,7 +325,9 @@ function describePokemonData(store: LocalDataStore, name: string): string | null
   const groundNote = hasGroundImmunity(pokemon)
     ? "じめん無効の可能性あり"
     : "じめん無効ではない";
-  return `- ${displayName}: types=${pokemon.types.join("/")}; abilities=${abilities}; ${groundNote}`;
+  return `- ${displayName}: types=${pokemon.types.join("/")}; abilities=${abilities}; baseStats=${JSON.stringify(
+    pokemon.baseStats
+  )}; maxUnboostedSpeed=${maxUnboostedSpeed(pokemon)}; ${groundNote}`;
 }
 
 function relevantPokemonNames(state: BattleState, facts: BattleFacts): string[] {
@@ -219,6 +335,7 @@ function relevantPokemonNames(state: BattleState, facts: BattleFacts): string[] 
   for (const name of [
     ...facts.opponentMentionedPokemon,
     ...facts.opponentSelectedPokemon,
+    ...facts.ownMentionedPokemon,
     ...facts.ownSelectedPokemon,
     ...facts.faintedPokemon.map((pokemon) => pokemon.pokemon),
     facts.activeOwn,
@@ -260,7 +377,7 @@ function readPokemonKnowledge(championsDataDir: string, store: LocalDataStore, p
   return `### ${displayName}（適用対象: ${displayName} の型・行動・対面リスクのみ。他のポケモンには転用しない）\n${limitText(content, 1600)}`;
 }
 
-function buildLocalKnowledge(
+export function buildLocalKnowledge(
   store: LocalDataStore,
   state: BattleState,
   facts: BattleFacts,
@@ -272,6 +389,10 @@ function buildLocalKnowledge(
     const description = describePokemonData(store, name);
     return description ? [description] : [];
   });
+  const speedLines = relevantNames.flatMap((name) => {
+    const description = describeSpeedData(store, state, name);
+    return description ? [description] : [];
+  });
   const knowledgeNotes = opponentNames.flatMap((name) => {
     const note = readPokemonKnowledge(championsDataDir, store, name);
     return note ? [note] : [];
@@ -279,6 +400,9 @@ function buildLocalKnowledge(
   return [
     "## この相談で参照すべきローカルポケモンデータ",
     ...(lines.length > 0 ? lines : ["なし"]),
+    "",
+    "## 素早さ比較用データ",
+    ...(speedLines.length > 0 ? speedLines : ["なし"]),
     "",
     "## 相手パーティに紐づくポケモン別ナレッジ（各見出しのポケモン専用）",
     ...(knowledgeNotes.length > 0 ? knowledgeNotes : ["なし"])
@@ -331,8 +455,70 @@ function normalizeBattleFactsInput(value: unknown): unknown {
     opponentName: typeof object.opponentName === "string" ? object.opponentName.trim() : undefined,
     opponentMentionedPokemon: normalizeNameArray(object.opponentMentionedPokemon),
     opponentSelectedPokemon: normalizeNameArray(object.opponentSelectedPokemon),
+    ownMentionedPokemon: normalizeNameArray(object.ownMentionedPokemon),
     ownSelectedPokemon: normalizeNameArray(object.ownSelectedPokemon),
+    field: typeof object.field === "string" ? object.field.trim() : undefined,
+    statChanges: normalizeStatChangesArray(object.statChanges),
     faintedPokemon: normalizeSidePokemonArray(object.faintedPokemon, "opponent")
+  };
+}
+
+function normalizeStatChangesArray(value: unknown): Array<{ side: "own" | "opponent"; pokemon: string; changes: string }> {
+  if (!Array.isArray(value)) return [];
+  return value.flatMap((entry) => {
+    if (!entry || typeof entry !== "object") return [];
+    const object = entry as Record<string, unknown>;
+    const pokemon =
+      typeof object.pokemon === "string"
+        ? object.pokemon
+        : typeof object.name === "string"
+          ? object.name
+          : typeof object.value === "string"
+            ? object.value
+            : "";
+    const changes =
+      typeof object.changes === "string"
+        ? object.changes
+        : typeof object.statChanges === "string"
+          ? object.statChanges
+          : typeof object.change === "string"
+            ? object.change
+            : "";
+    const side = object.side === "own" || object.side === "opponent" ? object.side : "opponent";
+    if (!pokemon.trim() || !changes.trim()) return [];
+    return [{ side, pokemon: pokemon.trim(), changes: changes.trim() }];
+  });
+}
+
+function uniqueNames(names: string[]): string[] {
+  return [...new Set(names.filter((name) => name.trim().length > 0))];
+}
+
+function mentionedOwnNamesFromText(state: BattleState, transcript: string): string[] {
+  return state.ownTeam
+    .map((pokemon) => pokemon.name)
+    .filter((name) => name && transcript.includes(name));
+}
+
+function mentionedOpponentNamesFromText(state: BattleState, transcript: string): string[] {
+  const ownNames = new Set(state.ownTeam.map((pokemon) => pokemon.name));
+  return state.opponentTeam
+    .map((pokemon) => pokemon.name)
+    .filter((name) => name && !ownNames.has(name) && transcript.includes(name));
+}
+
+function addTranscriptMentionedPokemon(facts: BattleFacts, state: BattleState, transcript: string): BattleFacts {
+  const ownMentioned = mentionedOwnNamesFromText(state, transcript);
+  const opponentMentioned = mentionedOpponentNamesFromText(state, transcript);
+  if (ownMentioned.length === 0 && opponentMentioned.length === 0) return facts;
+  const ownSet = new Set(ownMentioned);
+  return {
+    ...facts,
+    ownMentionedPokemon: uniqueNames([...facts.ownMentionedPokemon, ...ownMentioned]),
+    opponentMentionedPokemon: uniqueNames([
+      ...facts.opponentMentionedPokemon.filter((name) => !ownSet.has(name)),
+      ...opponentMentioned
+    ])
   };
 }
 
@@ -399,7 +585,9 @@ function canonicalizeBattleFacts(facts: BattleFacts, store: LocalDataStore): Bat
     ...facts,
     opponentMentionedPokemon: facts.opponentMentionedPokemon.map(pokemonName),
     opponentSelectedPokemon: facts.opponentSelectedPokemon.map(pokemonName),
+    ownMentionedPokemon: facts.ownMentionedPokemon.map(pokemonName),
     ownSelectedPokemon: facts.ownSelectedPokemon.map(pokemonName),
+    statChanges: facts.statChanges.map((change) => ({ ...change, pokemon: pokemonName(change.pokemon) })),
     activeOwn: canonicalPokemonName(store, facts.activeOwn),
     activeOpponent: canonicalPokemonName(store, facts.activeOpponent),
     hpUpdates: facts.hpUpdates.map((update) => ({ ...update, pokemon: pokemonName(update.pokemon) })),
@@ -501,6 +689,111 @@ function sanitizeBattleCandidates(state: BattleState, candidates: CandidateActio
     }];
 }
 
+function pokemonMentionsInOrder(state: BattleState, transcript: string): string[] {
+  const names = uniqueNames([
+    ...state.ownTeam.map((pokemon) => pokemon.name),
+    ...state.opponentTeam.map((pokemon) => pokemon.name)
+  ]);
+  return names
+    .map((name) => ({ name, index: transcript.indexOf(name) }))
+    .filter((entry) => entry.name && entry.index >= 0)
+    .sort((left, right) => left.index - right.index)
+    .map((entry) => entry.name);
+}
+
+function speedComparisonPokemonState(state: BattleState, name: string): PokemonState | undefined {
+  return findPokemon(state.ownTeam, name) ?? findPokemon(state.opponentTeam, name);
+}
+
+function isKnownMegaState(pokemon: PokemonState | undefined, local: LocalPokemon): boolean {
+  if (local.isMega) return true;
+  const item = pokemon?.item.value ?? "";
+  return pokemon?.name.startsWith("メガ") || item.includes("メガストーン") || item.includes("ナイト");
+}
+
+function observedSpeedContext(state: BattleState, pokemon: PokemonState | undefined): string {
+  const notes: string[] = [];
+  const field = state.field.trim();
+  const statChanges = pokemon?.statChanges.trim() ?? "";
+  if (field && /追い風|おいかぜ/i.test(field)) {
+    notes.push(`現在の場メモに「${field}」があります。`);
+  }
+  if (statChanges && /素早|すばや|S|スピード|速/i.test(statChanges)) {
+    notes.push(`${pokemon?.name ?? "相手"}の能力変化メモは「${statChanges}」です。`);
+  }
+  if (notes.length > 0) return notes.join("");
+  return "現在のメモ上は、追い風や相手の素早さ上昇は確認されていません。";
+}
+
+export function speedComparisonCandidate(store: LocalDataStore, state: BattleState, transcript: string): CandidateAction | null {
+  const normalized = transcript.replace(/\s+/g, "");
+  if (!/(素早|すばや|速|遅).*(より)|より.*(素早|すばや|速|遅)/.test(normalized)) return null;
+  const [subject, target] = pokemonMentionsInOrder(state, transcript);
+  if (!subject || !target || subject === target) return null;
+  const subjectOwn = state.ownTeam.find((pokemon) => pokemon.name === subject);
+  const targetState = speedComparisonPokemonState(state, target);
+  const subjectLocal = localPokemonForName(store, subject);
+  const baseTargetLocal = localPokemonForName(store, target);
+  const targetMegaLocal = baseTargetLocal ? megaPokemonForBase(store, baseTargetLocal) : null;
+  const targetLocal = baseTargetLocal && targetMegaLocal && isKnownMegaState(targetState, baseTargetLocal)
+    ? targetMegaLocal
+    : baseTargetLocal;
+  if (!subjectLocal || !targetLocal) return null;
+  const subjectSpeed = subjectOwn ? knownOwnSpeed(store, subjectOwn) : maxUnboostedSpeed(subjectLocal);
+  if (subjectSpeed === null) return null;
+  const targetMaxSpeed = maxUnboostedSpeed(targetLocal);
+  const targetMegaName = targetMegaLocal ? displayPokemonName(targetMegaLocal, `メガ${target}`) : undefined;
+  const targetMegaMaxSpeed = targetMegaLocal ? maxUnboostedSpeed(targetMegaLocal) : undefined;
+  const subjectIsFaster = subjectSpeed > targetMaxSpeed;
+  const subjectIsSlower = subjectSpeed < targetMaxSpeed;
+  const command = subjectIsFaster
+    ? `いいえ、${subject}の方が速いです。`
+    : subjectIsSlower
+      ? `はい、${subject}の方が遅いです。`
+      : `${subject}と${target}は最速想定では同速です。`;
+  const detail = `${subject}はS${subjectSpeed}、${target}は最速想定でS${targetMaxSpeed}です。`;
+  const contextNote = observedSpeedContext(state, targetState);
+  return {
+    kind: "note",
+    command,
+    reason: `ローカル素早さ比較: ${detail}`,
+    risk: contextNote,
+    confidence: "high",
+    speedComparison: {
+      subject,
+      target,
+      subjectSpeed,
+      targetMaxSpeed,
+      targetMegaName,
+      targetMegaMaxSpeed,
+      contextNote
+    }
+  };
+}
+
+function isSpeedComparisonCandidate(candidate: CandidateAction): candidate is SpeedComparisonAction {
+  return candidate.kind === "note" && candidate.reason.startsWith("ローカル素早さ比較:");
+}
+
+export function speedComparisonSpeech(candidate: SpeedComparisonAction): string {
+  const comparison = candidate.speedComparison;
+  if (!comparison) {
+    return `${candidate.command}${candidate.reason.replace("ローカル素早さ比較: ", "")} ${candidate.risk}`;
+  }
+  const { subject, target, subjectSpeed, targetMaxSpeed } = comparison;
+  const megaNote =
+    comparison.targetMegaName && comparison.targetMegaMaxSpeed && comparison.targetMegaMaxSpeed !== targetMaxSpeed
+      ? `ただし${target}がメガシンカすると、${comparison.targetMegaName}は最速${comparison.targetMegaMaxSpeed}なので、メガ後は上を取られます。`
+      : "";
+  if (subjectSpeed > targetMaxSpeed) {
+    return `いいえ、マスターの${subject}の素早さは${subjectSpeed}ですが、${target}は最速でも${targetMaxSpeed}なので、${subject}のほうが速いです。${megaNote}${comparison.contextNote}`;
+  }
+  if (subjectSpeed < targetMaxSpeed) {
+    return `はい、マスターの${subject}の素早さは${subjectSpeed}ですが、${target}は最速で${targetMaxSpeed}まで上がるので、${subject}のほうが遅いです。${comparison.contextNote}`;
+  }
+  return `マスターの${subject}の素早さは${subjectSpeed}で、${target}も最速なら${targetMaxSpeed}なので同速です。${megaNote}${comparison.contextNote}`;
+}
+
 function ensureOpponentPokemon(state: BattleState, name: string): BattleState {
   if (!name.trim()) return state;
   if (state.opponentTeam.some((pokemon) => pokemon.name === name)) return state;
@@ -537,6 +830,7 @@ function megaCandidateNamesFromFacts(facts: BattleFacts): Array<string | undefin
 
 function ownMegaCandidateNamesFromFacts(facts: BattleFacts): Array<string | undefined> {
   return [
+    ...facts.ownMentionedPokemon,
     ...facts.ownSelectedPokemon,
     facts.activeOwn,
     ...facts.hpUpdates.filter((update) => update.side === "own").map((update) => update.pokemon),
@@ -553,6 +847,9 @@ function applyFactsToState(state: BattleState, rawFacts: BattleFacts, store: Loc
   if (facts.phase) next.phase = facts.phase;
   if (facts.opponentName?.trim()) {
     next.opponentName = facts.opponentName.trim();
+  }
+  if (facts.field?.trim()) {
+    next.field = facts.field.trim();
   }
 
   for (const name of facts.opponentMentionedPokemon) {
@@ -700,6 +997,20 @@ function applyFactsToState(state: BattleState, rawFacts: BattleFacts, store: Loc
     };
   }
 
+  for (const statChange of facts.statChanges) {
+    const target = statChange.side === "own" ? "ownTeam" : "opponentTeam";
+    next = {
+      ...next,
+      [target]: updateTeamPokemon(next[target], statChange.pokemon, (pokemon) => ({
+        ...pokemon,
+        statChanges:
+          pokemon.statChanges && !pokemon.statChanges.includes(statChange.changes)
+            ? `${pokemon.statChanges} / ${statChange.changes}`
+            : statChange.changes
+      }))
+    };
+  }
+
   if (facts.notes.length > 0) {
     next.latestMemo = facts.notes.join(" / ");
   }
@@ -724,11 +1035,14 @@ function buildFactsPrompt(state: BattleState, transcript: string): string {
 - 「こちら」「裏選出」など曖昧でも、ownTeam外の名前は相手側情報として扱う。
 - 相手のパーティ6体、見せ合い6体、「相手のポケモンは...」は opponentMentionedPokemon に入れる。opponentSelectedPokemon には入れない。
 - opponentSelectedPokemon は「相手の選出はA/B/C」「初手A」「Aを出してきた」「裏からB」「2体目B」など、実際の選出・場に出たことが明示された場合だけ入れる。
+- ownMentionedPokemon は「私のA」「こちらのA」「AはBより速い/遅いか」など、こちらの6体に含まれるポケモンが話題に出た場合に入れる。選出確定とは別扱いにする。
 - 6体すべてを opponentSelectedPokemon に入れてはいけない。明示された選出3体でない限り、最大でも今回新しく場に出たポケモンだけにする。
 - 「初手A」「Aを投げてきた」「Aを出してきた」「裏からA」は activeOpponent にもAを入れる。
 - 相手が「メガA」に進化した、または「メガA」と判明した場合は、以後その相手ポケモン名をメガAとして扱い、revealedItem に item="メガストーン" confirmed を入れる。
 - 「Aを倒した」「Aを倒せた」「Aを落とした」「Aがひんし」は faintedPokemon に入れ、side は相手を倒したなら opponent、自分が倒されたなら own。
 - 相手が「きあいのタスキ」「気合のタスキ」「きあいのハチマキ」などで持ちこたえた/耐えた場合は、相手側 hpUpdates に hpPercent=1 を入れ、revealedItem にその持ち物を confirmed で入れる。
+- 天気、フィールド、追い風、壁、ステルスロック、まきびしなど場に残る情報は field に短く追記できる形で入れる。
+- 「Aの素早さが上がった」「S+1」「Aの攻撃が下がった」など能力ランク変化は statChanges に入れる。pokemon は対象、changes は「素早さ+1」「攻撃-1」など短く書く。
 - 確定していない技・特性・持ち物は suspected、発話で明確なら confirmed。
 - 雑談や対戦に無関係な話は、notes に短く残し、対戦stateを無理に更新しない。
 - 分からない項目は空配列または省略。
@@ -749,7 +1063,10 @@ ${transcript}
   "opponentName": "",
   "opponentMentionedPokemon": [],
   "opponentSelectedPokemon": [],
+  "ownMentionedPokemon": [],
   "ownSelectedPokemon": [],
+  "field": "",
+  "statChanges": [],
   "activeOwn": "",
   "activeOpponent": "",
   "hpUpdates": [],
@@ -783,6 +1100,7 @@ Pokemon Championsの次アクション候補を作ってください。最終決
 - ダメージ計算結果がある場合は必ず候補理由に反映する。
 - 雑談や記憶してほしい話題なら、kind は note にして自然な返答候補を作る。
 - ポケモン別ナレッジは見出しに書かれたポケモン専用。現在対面やリスク説明で別ポケモンのナレッジを流用しない。
+- 素早さ・先手後手の確認では、必ず「素早さ比較用データ」の ownKnownSpeed / maxUnboostedSpeed / baseSpe を優先する。記憶や一般知識だけで速い・遅いを断定しない。
 
 こちらの構築メモ:
 ${payload.teamDoc}
@@ -839,6 +1157,7 @@ function buildDecisionPrompt(payload: z.infer<typeof candidatesPayloadSchema>): 
 - Pokemon Championsローカルデータを優先する。ローカルポケモンデータに書かれていないタイプ・特性・無効耐性を昔の知識で補完してはいけない。
 - ポケモン別ナレッジは見出しに書かれたポケモン専用。現在対面やリスク説明で別ポケモンのナレッジを流用しない。
 - 候補理由にローカルデータの型・特性・相性が書かれている場合、それと矛盾する説明をしてはいけない。
+- 素早さ・先手後手の確認では、必ず「素早さ比較用データ」の ownKnownSpeed / maxUnboostedSpeed / baseSpe を優先する。記憶や一般知識だけで速い・遅いを断定しない。
 - 返答はJSONだけ。Markdownや説明文を外に出さない。
 
 こちらの構築メモ:
@@ -900,6 +1219,7 @@ function buildMemoryExtractionPrompt(payload: z.infer<typeof advicePayloadSchema
 - すでに同じ意味で記憶済みの内容
 - 挨拶だけ、短い相づちだけ
 - 不確かな固有情報の断定
+- ローカルデータや計算で検証していない素早さ・ダメージ・相性の断定
 
 scope:
 - global: 一般的な会話・継続的な情報
@@ -1235,6 +1555,16 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
     outputSchema: factsPayloadSchema,
     execute: async ({ inputData }) => {
       return timed(inputData, "extractBattleFacts", async () => {
+        if (speedComparisonCandidate(store, inputData.state, inputData.transcript)) {
+          const facts = addTranscriptMentionedPokemon(
+            battleFactsSchema.parse({
+              notes: ["素早さ比較の確認質問"]
+            }),
+            inputData.state,
+            inputData.transcript
+          );
+          return { ...inputData, facts };
+        }
         const result = await extractBattleFactsAgent.generate(buildFactsPrompt(inputData.state, inputData.transcript), {
           maxSteps: 2,
           abortSignal: timeoutSignal(deps.requestTimeoutMs, deps.abortSignal),
@@ -1247,7 +1577,11 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
         });
         throwIfAborted(deps.abortSignal);
         const extractedFacts = battleFactsSchema.parse(normalizeBattleFactsInput(result.object));
-        const facts = canonicalizeBattleFacts(applyOpponentSurvivalItemFacts(extractedFacts, inputData.transcript, inputData.state), store);
+        const facts = addTranscriptMentionedPokemon(
+          canonicalizeBattleFacts(applyOpponentSurvivalItemFacts(extractedFacts, inputData.transcript, inputData.state), store),
+          inputData.state,
+          inputData.transcript
+        );
         return { ...inputData, facts };
       });
     }
@@ -1262,6 +1596,7 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
       for (const name of [
         ...inputData.facts.opponentMentionedPokemon,
         ...inputData.facts.opponentSelectedPokemon,
+        ...inputData.facts.ownMentionedPokemon,
         ...inputData.facts.ownSelectedPokemon,
         ...inputData.facts.faintedPokemon.map((pokemon) => pokemon.pokemon),
         inputData.facts.activeOwn,
@@ -1328,6 +1663,14 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
     outputSchema: candidatesPayloadSchema,
     execute: async ({ inputData }) => {
       return timed(inputData, "generateCandidates", async () => {
+        const speedCandidate = speedComparisonCandidate(store, inputData.updatedState, inputData.transcript);
+        if (speedCandidate) {
+          return {
+            ...inputData,
+            candidates: [speedCandidate],
+            candidateToolCalls: []
+          };
+        }
         const result = await generateCandidatesAgent.generate(buildCandidatesPrompt(inputData), {
           maxSteps: 2,
           abortSignal: timeoutSignal(deps.requestTimeoutMs, deps.abortSignal),
@@ -1357,6 +1700,20 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
     outputSchema: advicePayloadSchema,
     execute: async ({ inputData }) => {
       return timed(inputData, "chooseFinalAction", async () => {
+        const speedCandidate = inputData.candidates.find(isSpeedComparisonCandidate);
+        if (speedCandidate) {
+          const advice: AdviceResult = {
+            updatedState: normalizeBattleState(inputData.updatedState),
+            action: speedCandidate,
+            speech: speedComparisonSpeech(speedCandidate),
+            memo: speedCandidate.reason
+          };
+          return {
+            ...inputData,
+            advice,
+            decisionToolCalls: []
+          };
+        }
         const result = await chooseFinalActionAgent.generate(buildDecisionPrompt(inputData), {
           maxSteps: 1,
           abortSignal: timeoutSignal(deps.requestTimeoutMs, deps.abortSignal),
@@ -1466,6 +1823,12 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
     outputSchema: memoryNotesPayloadSchema,
     execute: async ({ inputData }) => {
       return timed(inputData, "extractMemoryNotes", async () => {
+        if (inputData.candidates.some(isSpeedComparisonCandidate)) {
+          return {
+            ...inputData,
+            memoryNotes: []
+          };
+        }
         if (inputData.conversationIntent === "battle" && inputData.updatedState.status === "active") {
           return {
             ...inputData,

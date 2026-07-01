@@ -15,9 +15,11 @@ import {
 import { calculateLocalDamage } from "./damage";
 import { createLocalDataStore, type LocalDataStore } from "./localData";
 import {
+  applyOwnMegaEvolutions,
   applyOpponentMegaEvolutions,
   collectMegaEvolutions,
   inferMegaEvolution,
+  rewriteOwnMegaFactReferences,
   rewriteOpponentMegaFactReferences
 } from "./megaEvolution";
 import {
@@ -148,18 +150,18 @@ function compactTeamDoc(doc: string): string {
 固定構築:
 - ガブリアス: さめはだ / きあいのタスキ / じしん・ドラゴンクロー・がんせきふうじ・ステルスロック
 - アシレーヌ: げきりゅう / たつじんのおび / うたかたのアリア・ムーンフォース・れいとうビーム・エナジーボール
-- メガメタグロス: クリアボディ->かたいツメ / メタグロスナイト / アイアンヘッド・バレットパンチ・アームハンマー・かみなりパンチ
+- メタグロス: クリアボディ / メタグロスナイト / アイアンヘッド・バレットパンチ・アームハンマー・かみなりパンチ
 - ウォッシュロトム: ふゆう / たべのこし / ハイドロポンプ・10まんボルト・おにび・ボルトチェンジ
 - マスカーニャ: へんげんじざい / いのちのたま / トリックフラワー・はたきおとす・トリプルアクセル・ふいうち
 - サザンドラ: ふゆう / こだわりスカーフ / りゅうせいぐん・あくのはどう・かえんほうしゃ・だいちのちから
 
 基本方針:
-- 基本選出はガブリアス、アシレーヌ、メガメタグロス。
+- 基本選出はガブリアス、アシレーヌ、メタグロス。
 - ライチュウ、特にメガライチュウYが見えたらガブリアスを厚めに見る。
 - 雨ラグ展開はウォッシュロトム、アシレーヌ、マスカーニャを優先。
 - ラグラージやカバルドンにはマスカーニャ、アシレーヌの草打点。
-- アーマーガア、ペリッパー、水飛行にはウォッシュロトムやメガメタグロスのかみなりパンチ。
-- ブリジュラスはガブリアスのじしん、メガメタグロスのアームハンマー、サザンドラのだいちのちから、アシレーヌのムーンフォースで見る。
+- アーマーガア、ペリッパー、水飛行にはウォッシュロトムやメタグロスのかみなりパンチ。
+- ブリジュラスはガブリアスのじしん、メタグロスのアームハンマー、サザンドラのだいちのちから、アシレーヌのムーンフォースで見る。
 - 対戦中は次の一手だけを返す。交代読み前提より、対面で分かりやすい安定行動を優先。
 `.trim();
   if (!doc.trim()) return fallback;
@@ -533,10 +535,21 @@ function megaCandidateNamesFromFacts(facts: BattleFacts): Array<string | undefin
   ];
 }
 
+function ownMegaCandidateNamesFromFacts(facts: BattleFacts): Array<string | undefined> {
+  return [
+    ...facts.ownSelectedPokemon,
+    facts.activeOwn,
+    ...facts.hpUpdates.filter((update) => update.side === "own").map((update) => update.pokemon),
+    ...facts.faintedPokemon.filter((fainted) => fainted.side === "own").map((fainted) => fainted.pokemon),
+    ...facts.statuses.filter((status) => status.side === "own").map((status) => status.pokemon)
+  ];
+}
+
 function applyFactsToState(state: BattleState, rawFacts: BattleFacts, store: LocalDataStore): BattleState {
   const megaEvolutions = collectMegaEvolutions(store, megaCandidateNamesFromFacts(rawFacts));
-  const facts = rewriteOpponentMegaFactReferences(rawFacts, megaEvolutions);
-  let next = applyOpponentMegaEvolutions({ ...state }, megaEvolutions);
+  const ownMegaEvolutions = collectMegaEvolutions(store, ownMegaCandidateNamesFromFacts(rawFacts));
+  const facts = rewriteOwnMegaFactReferences(rewriteOpponentMegaFactReferences(rawFacts, megaEvolutions), ownMegaEvolutions);
+  let next = applyOwnMegaEvolutions(applyOpponentMegaEvolutions({ ...state }, megaEvolutions), ownMegaEvolutions);
   if (facts.phase) next.phase = facts.phase;
   if (facts.opponentName?.trim()) {
     next.opponentName = facts.opponentName.trim();
@@ -691,7 +704,7 @@ function applyFactsToState(state: BattleState, rawFacts: BattleFacts, store: Loc
     next.latestMemo = facts.notes.join(" / ");
   }
 
-  return normalizeBattleState(applyOpponentMegaEvolutions(next, megaEvolutions));
+  return normalizeBattleState(applyOwnMegaEvolutions(applyOpponentMegaEvolutions(next, megaEvolutions), ownMegaEvolutions));
 }
 
 function buildFactsPrompt(state: BattleState, transcript: string): string {
@@ -705,6 +718,7 @@ function buildFactsPrompt(state: BattleState, transcript: string): string {
 
 ルール:
 - ownTeamに存在しないポケモン名は自分側として扱わない。
+- ownTeamのメタグロスは、初期状態では「メタグロス」として扱う。「メガ進化した」「こちらのメガメタグロス」など自分側のメガ進化が明示された場合だけ、以後「メガメタグロス」として扱う。
 - 「対戦相手は〇〇さん」「相手の名前は〇〇」「〇〇さんと対戦」などは opponentName に入れる。
 - opponentName はプレイヤー名だけ。ポケモン名や敬称だけを誤って入れない。
 - 「こちら」「裏選出」など曖昧でも、ownTeam外の名前は相手側情報として扱う。
@@ -821,7 +835,7 @@ function buildDecisionPrompt(payload: z.infer<typeof candidatesPayloadSchema>): 
 - 対戦に関係する確認質問でも、操作判断を求められていないなら action.kind = "note" で答える。
 - マスターの好みや過去会話に関係する場合は、会話記憶を判断材料にする。
 - speech はAIニケちゃんとしてマスターにそのまま話すセリフ。音声再生される前提で、自然な日本語1〜3文にする。
-- speech には command だけでなく、「なぜそうするか」を短く含める。例: 「ペリッパーとラグラージの雨展開が見えるので、ここはガブリアス、アシレーヌ、メガメタグロスでいきましょう！」
+- speech には command だけでなく、「なぜそうするか」を短く含める。例: 「ペリッパーとラグラージの雨展開が見えるので、ここはガブリアス、アシレーヌ、メタグロスでいきましょう！」
 - Pokemon Championsローカルデータを優先する。ローカルポケモンデータに書かれていないタイプ・特性・無効耐性を昔の知識で補完してはいけない。
 - ポケモン別ナレッジは見出しに書かれたポケモン専用。現在対面やリスク説明で別ポケモンのナレッジを流用しない。
 - 候補理由にローカルデータの型・特性・相性が書かれている場合、それと矛盾する説明をしてはいけない。

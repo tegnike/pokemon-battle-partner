@@ -9,8 +9,16 @@ export interface MegaEvolutionInfo {
   megaName: string;
 }
 
+const OWN_MEGA_ABILITIES = new Map<string, string>([
+  ["メガメタグロス", "かたいツメ"]
+]);
+
 function confirmedMegaStone(): KnownValue {
   return { value: MEGA_STONE_ITEM, status: "confirmed" };
+}
+
+function confirmed(value: string): KnownValue {
+  return { value, status: "confirmed" };
 }
 
 function unique(values: string[]): string[] {
@@ -94,7 +102,7 @@ export function rewriteOpponentMegaFactReferences(facts: BattleFacts, evolutions
     ...facts,
     opponentMentionedPokemon: unique(facts.opponentMentionedPokemon.map(upgradeOpponentName)),
     opponentSelectedPokemon: unique(facts.opponentSelectedPokemon.map(upgradeOpponentName)),
-    activeOpponent: upgradeName(facts.activeOpponent, byBaseName),
+    activeOpponent: upgradeName(facts.activeOpponent, byBaseName) ?? facts.activeOpponent,
     hpUpdates: facts.hpUpdates.map((update) => ({
       ...update,
       pokemon: update.side === "opponent" ? upgradeOpponentName(update.pokemon) : update.pokemon
@@ -127,11 +135,43 @@ export function rewriteOpponentMegaFactReferences(facts: BattleFacts, evolutions
   };
 }
 
+export function rewriteOwnMegaFactReferences(facts: BattleFacts, evolutions: MegaEvolutionInfo[]): BattleFacts {
+  if (evolutions.length === 0) return facts;
+  const byBaseName = new Map(evolutions.map((evolution) => [evolution.baseName, evolution]));
+  const upgradeOwnName = (name: string) => upgradeName(name, byBaseName) ?? name;
+  return {
+    ...facts,
+    ownSelectedPokemon: unique(facts.ownSelectedPokemon.map(upgradeOwnName)),
+    activeOwn: upgradeName(facts.activeOwn, byBaseName) ?? facts.activeOwn,
+    hpUpdates: facts.hpUpdates.map((update) => ({
+      ...update,
+      pokemon: update.side === "own" ? upgradeOwnName(update.pokemon) : update.pokemon
+    })),
+    faintedPokemon: facts.faintedPokemon.map((fainted) => ({
+      ...fainted,
+      pokemon: fainted.side === "own" ? upgradeOwnName(fainted.pokemon) : fainted.pokemon
+    })),
+    statuses: facts.statuses.map((status) => ({
+      ...status,
+      pokemon: status.side === "own" ? upgradeOwnName(status.pokemon) : status.pokemon
+    }))
+  };
+}
+
 function applyMegaStone(pokemon: PokemonState, megaName: string): PokemonState {
   return {
     ...pokemon,
     name: megaName,
     item: confirmedMegaStone()
+  };
+}
+
+function applyOwnMegaStone(pokemon: PokemonState, megaName: string): PokemonState {
+  const megaAbility = OWN_MEGA_ABILITIES.get(megaName);
+  return {
+    ...pokemon,
+    name: megaName,
+    ability: megaAbility ? confirmed(megaAbility) : pokemon.ability
   };
 }
 
@@ -145,6 +185,20 @@ export function applyOpponentMegaEvolutions(state: BattleState, evolutions: Mega
     opponentTeam: state.opponentTeam.map((pokemon) => {
       const evolution = byBaseName.get(pokemon.name) ?? byMegaName.get(pokemon.name);
       return evolution ? applyMegaStone(pokemon, evolution.megaName) : pokemon;
+    })
+  };
+}
+
+export function applyOwnMegaEvolutions(state: BattleState, evolutions: MegaEvolutionInfo[]): BattleState {
+  if (evolutions.length === 0) return state;
+  const byBaseName = new Map(evolutions.map((evolution) => [evolution.baseName, evolution]));
+  const byMegaName = new Map(evolutions.map((evolution) => [evolution.megaName, evolution]));
+  return {
+    ...state,
+    activeOwn: upgradeName(state.activeOwn, byBaseName) ?? state.activeOwn,
+    ownTeam: state.ownTeam.map((pokemon) => {
+      const evolution = byBaseName.get(pokemon.name) ?? byMegaName.get(pokemon.name);
+      return evolution ? applyOwnMegaStone(pokemon, evolution.megaName) : pokemon;
     })
   };
 }

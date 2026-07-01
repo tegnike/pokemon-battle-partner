@@ -153,12 +153,12 @@ export function createOwnTeam(): PokemonState[] {
     }),
     createOwnPokemon({
       id: "own-metagross",
-      name: "メガメタグロス",
-      ability: "クリアボディ -> かたいツメ",
+      name: "メタグロス",
+      ability: "クリアボディ",
       item: "メタグロスナイト",
       moves: ["アイアンヘッド", "バレットパンチ", "アームハンマー", "かみなりパンチ"],
       notes: "ようき / A32 S32 B2",
-      baseStats: { hp: 80, atk: 145, def: 150, spa: 105, spd: 110, spe: 110 },
+      baseStats: { hp: 80, atk: 135, def: 130, spa: 95, spd: 90, spe: 70 },
       statPoints: { atk: 32, spe: 32, def: 2 },
       nature: { plus: "spe", minus: "spa" }
     }),
@@ -223,23 +223,31 @@ export function normalizeBattleState(input: unknown): BattleState {
   if (!input || typeof input !== "object") return initial;
   const raw = input as Partial<BattleState> & { ownSelection?: PokemonState[] };
   const legacyOwn = Array.isArray(raw.ownTeam) ? raw.ownTeam : raw.ownSelection;
+  const ownById = new Map((legacyOwn ?? []).map((pokemon) => [pokemon.id, pokemon]));
   const ownByName = new Map((legacyOwn ?? []).map((pokemon) => [pokemon.name, pokemon]));
   const ownTeam = createOwnTeam().map((pokemon) => {
-    const saved = ownByName.get(pokemon.name);
+    const saved = ownById.get(pokemon.id) ?? ownByName.get(pokemon.name);
     if (!saved) return pokemon;
     const hpPercent = clampHpPercent(saved.hpPercent, pokemon.hpPercent);
     const currentHp = typeof saved.currentHp === "number" ? saved.currentHp : currentHpFromPercent(pokemon.maxHp, hpPercent);
+    const savedMegaMetagross = pokemon.id === "own-metagross" && saved.name === "メガメタグロス" && saved.ability?.value === "かたいツメ";
     return {
       ...pokemon,
+      name: savedMegaMetagross ? saved.name : pokemon.name,
       selected: saved.selected,
       active: saved.active,
       hpPercent,
       currentHp,
       condition: saved.condition,
+      ability: savedMegaMetagross ? saved.ability : pokemon.ability,
       statChanges: saved.statChanges,
       notes: saved.notes && saved.notes !== pokemon.notes ? `${pokemon.notes} / ${saved.notes}` : pokemon.notes
     };
   });
+  const ownNames = new Set(ownTeam.map((pokemon) => pokemon.name));
+  const activeOwn = typeof raw.activeOwn === "string" && ownNames.has(raw.activeOwn)
+    ? raw.activeOwn
+    : ownTeam.find((pokemon) => pokemon.active)?.name ?? initial.activeOwn;
   return {
     ...initial,
     ...raw,
@@ -249,6 +257,7 @@ export function normalizeBattleState(input: unknown): BattleState {
     updatedAt: typeof raw.updatedAt === "string" ? raw.updatedAt : initial.updatedAt,
     opponentTeam: normalizeOpponentTeam(Array.isArray(raw.opponentTeam) ? raw.opponentTeam : initial.opponentTeam),
     ownTeam,
+    activeOwn,
     history: Array.isArray(raw.history) ? raw.history : []
   };
 }

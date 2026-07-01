@@ -10,7 +10,9 @@
     "data:champions": "tsx scripts/generate-champions-data.ts",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "npm run test:knowledge",
+    "test:knowledge": "node tests/knowledge-files.test.mjs"
   },
   "dependencies": {
     "@ai-sdk/openai": "^4.0.4",

@@ -112,6 +112,27 @@ Champions用ステータス計算は [src/champions/statCalc.ts](/Users/user/Wor
 
 日本語名aliasは初期状態では現構築と想定上位相手中心です。未登録名が出た場合は `scripts/generate-champions-data.ts` のaliasへ追加して再生成します。
 
+## Pokemon Champions ポケモン別ナレッジ
+
+環境でよく見る型、技、持ち物、特性、性格、能力ポイント、同じチームに入りやすいポケモンは、ポケモン別Markdownとして保存します。
+
+```text
+data/knowledge/pokemon/{pokemonId}.md
+```
+
+2026-07-01時点では、Pokemon Champions シングル Season M-3 使用率上位50体分を作成しています。使用率順位はGameWith、技・持ち物・特性・性格・能力ポイント・同じチームの採用傾向はGame8の使用率ランキング詳細統計と個別育成論を参考にしています。
+
+参照元:
+
+- GameWith 使用率ランキング: https://gamewith.jp/pokemon-champions/555373
+- Game8 使用率ランキング: https://game8.jp/pokemon-champions/779317
+
+ナレッジファイルの最低行数、必須見出し、参照元URLは以下で確認できます。
+
+```bash
+npm run test:knowledge
+```
+
 ## Mastra設計
 
 裏側をMastra workflowへ移行する設計は [docs/mastra-agent-design.md](/Users/user/WorkSpace/pokemon-battle-partner/docs/mastra-agent-design.md) にまとめています。
@@ -135,3 +156,4 @@ curl http://127.0.0.1:8787/api/champions-data/pokemon/ディンルー
 - `@smogon/calc`: https://github.com/smogon/damage-calc
 - PokéAPI: https://pokeapi.co/docs/v2
 - 能力ポイント仕様確認: https://yakkun.com/ch/stat_points.htm
+- Pokemon Champions 使用率/育成論: https://gamewith.jp/pokemon-champions/555373 / https://game8.jp/pokemon-champions/779317

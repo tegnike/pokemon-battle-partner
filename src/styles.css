@@ -66,6 +66,7 @@ main {
 .recorder,
 .section-title,
 .pokemon-top,
+.pokemon-identity,
 .facts,
 .moves {
   align-items: center;
@@ -328,6 +329,11 @@ textarea:focus {
   padding: 10px;
 }
 
+.selection-card .pokemon-icon {
+  height: 34px;
+  width: 34px;
+}
+
 .selection-card strong {
   display: block;
   font-size: 17px;
@@ -415,9 +421,42 @@ textarea:focus {
   gap: 10px;
 }
 
+.pokemon-identity {
+  gap: 10px;
+  min-width: 0;
+}
+
+.pokemon-identity div {
+  min-width: 0;
+}
+
+.pokemon-icon {
+  background: #eef1f5;
+  border: 1px solid #d7dde7;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  height: 42px;
+  object-fit: contain;
+  padding: 3px;
+  width: 42px;
+}
+
+.pokemon-icon.fallback {
+  align-items: center;
+  color: #5d6877;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  justify-content: center;
+  line-height: 1;
+  overflow: hidden;
+  text-align: center;
+}
+
 .pokemon h3 {
   font-size: 16px;
   margin: 0;
+  overflow-wrap: anywhere;
 }
 
 .pokemon p {

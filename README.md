@@ -5,6 +5,42 @@
 - 文字起こし: gpt-4o-transcribe
 - 対戦判断: gpt-5.4-mini (`reasoning.effort=none`)
 
+## 判断とデータの出どころ
+
+このアプリは、対戦中の発話やテキスト入力をAIで整理し、ローカルに持っているPokemon Champions向けデータを参照して次の一手を提案します。
+
+- 音声入力はOpenAIの `gpt-4o-transcribe` で文字起こしします。
+- 対戦状況の抽出、候補生成、最終提案、反省会、会話記憶の抽出はOpenAIの `gpt-5.4-mini` で行います。
+- AIには、現在の対戦状態、直近会話、関連する長期記憶、構築文書、ローカルのポケモン・技・特性・持ち物データ、必要に応じたローカルダメージ計算結果を渡します。
+- AIの回答は推論結果です。ゲーム画面を直接読み取っているわけではなく、マスターが話した内容・入力した内容・保存済み状態を元に判断します。
+- 対戦判断中はPokéAPIなどの外部データAPIを叩かず、`data/champions/` のローカルJSONを参照します。
+
+ポケモンの基礎データは `npm run data:champions` で生成します。生成元と用途は以下です。
+
+- `@pkmn/dex` / `@pkmn/data`: 種族、タイプ、種族値、特性、技、持ち物、性格などのGen 9基礎データ
+- `scripts/generate-champions-data.ts`: Pokemon Champions向けに必要な項目だけを抽出し、日本語音声入力用aliasとmetadataを付与
+- [src/champions/statCalc.ts](/Users/user/WorkSpace/pokemon-battle-partner/src/champions/statCalc.ts): Pokemon Champions想定のレベル50・能力ポイント式で実数値を計算
+- [src/mastra/damage.ts](/Users/user/WorkSpace/pokemon-battle-partner/src/mastra/damage.ts): ローカルの簡易ダメージ計算。現状は必要最小限のタイプ相性・能力計算を使う補助情報です
+
+## ポケモン画像について
+
+このリポジトリには、ポケモンの公式画像・sprite画像を同梱していません。
+
+Web UIでは、表示時にポケモン名を `/api/champions-data/pokemon/:name` でローカルデータへ解決し、全国図鑑番号からPokéAPI spritesリポジトリ上のPNG URLを組み立ててブラウザで読み込みます。画像取得に失敗した場合や名前を解決できない場合は、文字のフォールバック表示になります。
+
+使用している画像URLの形式:
+
+```text
+https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{nationalDexNumber}.png
+```
+
+注意:
+
+- PokéAPI spritesのライセンス文は、画像内容がThe Pokémon Companyの著作物であることを明記しています。
+- このプロジェクトは画像を再配布せず、実行時に外部URLを参照します。
+- 公式ロゴや公式画像をリポジトリに追加しないでください。
+- 公開運用で問題がある場合は、sprite表示部分を外すか、自作アイコンへ差し替えてください。
+
 ## 起動
 
 ```bash
@@ -65,7 +101,7 @@ VITE_API_PROXY_TARGET=http://127.0.0.1:8790 npm run dev:client -- --port 5178
 - `ja-aliases.json` — 日本語音声入力をShowdown IDへ寄せるalias
 - `metadata.json` — 生成元とChampions用ステータス計算ルール
 
-基礎データは `@pkmn/dex` のGen 9データから生成します。対戦中は外部APIを叩かず、このローカルJSONを参照します。
+基礎データは `@pkmn/dex` のGen 9データから生成します。対戦判断中は外部APIを叩かず、このローカルJSONを参照します。
 
 Champions用ステータス計算は [src/champions/statCalc.ts](/Users/user/WorkSpace/pokemon-battle-partner/src/champions/statCalc.ts) にあります。
 

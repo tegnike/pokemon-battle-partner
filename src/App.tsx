@@ -23,6 +23,14 @@ import {
 
 const STORAGE_KEY = "pokemon-battle-partner-state";
 const ACTIVE_BATTLE_KEY = "pokemon-battle-partner-active-battle";
+const SPRITE_BASE_URL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
+
+interface PokemonIconData {
+  name: string;
+  num: number;
+}
+
+const pokemonIconCache = new Map<string, PokemonIconData | null>();
 
 interface BattleSummary {
   battleId: string;
@@ -79,6 +87,66 @@ function hpLabel(pokemon: PokemonState, side: "own" | "opponent"): string {
   return `HP ${pokemon.hpPercent ?? 100}%`;
 }
 
+function iconFallbackLabel(name: string): string {
+  const normalized = name.trim();
+  if (!normalized) return "?";
+  return Array.from(normalized).slice(0, 2).join("");
+}
+
+function PokemonIcon({ name }: { name: string }) {
+  const [iconData, setIconData] = useState<PokemonIconData | null>(() => pokemonIconCache.get(name) ?? null);
+  const [failed, setFailed] = useState(false);
+  const trimmedName = name.trim();
+
+  useEffect(() => {
+    let cancelled = false;
+    setFailed(false);
+    if (!trimmedName) {
+      setIconData(null);
+      return;
+    }
+    if (pokemonIconCache.has(trimmedName)) {
+      setIconData(pokemonIconCache.get(trimmedName) ?? null);
+      return;
+    }
+    fetch(`/api/champions-data/pokemon/${encodeURIComponent(trimmedName)}`)
+      .then(async (response) => {
+        if (!response.ok) return null;
+        const json = (await response.json()) as Partial<PokemonIconData>;
+        if (typeof json.num !== "number" || !json.name) return null;
+        return { name: json.name, num: json.num };
+      })
+      .then((resolved) => {
+        if (cancelled) return;
+        pokemonIconCache.set(trimmedName, resolved);
+        setIconData(resolved);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        pokemonIconCache.set(trimmedName, null);
+        setIconData(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [trimmedName]);
+
+  if (!trimmedName || !iconData || failed) {
+    return <span className="pokemon-icon fallback">{iconFallbackLabel(trimmedName)}</span>;
+  }
+
+  return (
+    <img
+      className="pokemon-icon"
+      src={`${SPRITE_BASE_URL}/${iconData.num}.png`}
+      alt=""
+      loading="lazy"
+      referrerPolicy="no-referrer"
+      onError={() => setFailed(true)}
+    />
+  );
+}
+
 function sortSelectedFirst(team: PokemonState[]): PokemonState[] {
   return [...team].sort((a, b) => Number(b.selected) - Number(a.selected));
 }
@@ -99,9 +167,12 @@ function PokemonPanel({ pokemon, side }: { pokemon: PokemonState; side: "own" | 
   return (
     <article className={["pokemon", pokemon.selected ? "selected" : "", pokemon.active ? "active" : ""].filter(Boolean).join(" ")}>
       <div className="pokemon-top">
-        <div>
-          <h3>{pokemon.name || "未確認"}</h3>
-          <p>{side === "opponent" ? (pokemon.selected ? "選出" : "控え候補") : roleLabel}</p>
+        <div className="pokemon-identity">
+          <PokemonIcon name={pokemon.name} />
+          <div>
+            <h3>{pokemon.name || "未確認"}</h3>
+            <p>{side === "opponent" ? (pokemon.selected ? "選出" : "控え候補") : roleLabel}</p>
+          </div>
         </div>
         <span className="hp">{hpLabel(pokemon, side)}</span>
       </div>
@@ -159,6 +230,7 @@ function SelectionSummary({
           {orderedSelected.map((entry, index) => (
             <article className="selection-card" key={entry.id}>
               <span className="selection-order">{index + 1}</span>
+              <PokemonIcon name={entry.name} />
               <div>
                 <strong>{entry.name}</strong>
                 <p>{hpLabel(entry, side)}</p>

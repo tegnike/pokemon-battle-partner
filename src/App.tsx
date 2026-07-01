@@ -59,6 +59,15 @@ function compactActionLabel(action: string, memo = ""): string {
   return "会話";
 }
 
+// 履歴チップの色分け（試作版と同じ配色）
+function historyChipClass(label: string): string {
+  if (label.includes("選出")) return "sel";
+  if (label.includes("反省")) return "review";
+  if (label.includes("会話") || label.includes("記憶")) return "chat";
+  if (label.includes("状況")) return "note";
+  return "battle";
+}
+
 function loadInitialState(): BattleState {
   const saved = localStorage.getItem(STORAGE_KEY);
   if (!saved) return createInitialBattleState();
@@ -79,12 +88,35 @@ function statusClass(status: KnowledgeStatus): string {
   return `knowledge knowledge-${status}`;
 }
 
-function hpLabel(pokemon: PokemonState, side: "own" | "opponent"): string {
+// HPの表示テキスト（自分=実数, 相手=割合）
+function hpText(pokemon: PokemonState, side: "own" | "opponent"): string {
   if (side === "own") {
-    if (pokemon.maxHp) return `HP ${pokemon.currentHp ?? pokemon.maxHp}/${pokemon.maxHp}`;
-    return "HP -";
+    if (pokemon.maxHp) return `${pokemon.currentHp ?? pokemon.maxHp} / ${pokemon.maxHp}`;
+    return "-";
   }
-  return `HP ${pokemon.hpPercent ?? 100}%`;
+  return `${pokemon.hpPercent ?? 100}%`;
+}
+
+// 残HPを 0-100 の割合で返す（HPバー用）
+function hpPercentValue(pokemon: PokemonState, side: "own" | "opponent"): number {
+  if (side === "own") {
+    if (!pokemon.maxHp) return 100;
+    const value = Math.round(((pokemon.currentHp ?? pokemon.maxHp) / pokemon.maxHp) * 100);
+    return Math.max(0, Math.min(100, value));
+  }
+  return Math.max(0, Math.min(100, pokemon.hpPercent ?? 100));
+}
+
+// 残量に応じてHPバーの色を返す
+function hpBarColor(pct: number): string {
+  if (pct > 50) return "#10b981";
+  if (pct >= 25) return "#f0a929";
+  return "#e0455e";
+}
+
+function roleText(pokemon: PokemonState, side: "own" | "opponent"): string {
+  if (pokemon.selected) return pokemon.active ? "選出 / 対面中" : "選出";
+  return side === "opponent" ? "控え候補" : "控え";
 }
 
 function iconFallbackLabel(name: string): string {
@@ -163,18 +195,27 @@ function sortByFirstMention(selected: PokemonState[], history: BattleState["hist
 
 function PokemonPanel({ pokemon, side }: { pokemon: PokemonState; side: "own" | "opponent" }) {
   const moves = pokemon.moves.filter((move) => move.value.trim().length > 0);
-  const roleLabel = pokemon.selected ? "選出" : "候補";
+  const pct = hpPercentValue(pokemon, side);
   return (
     <article className={["pokemon", pokemon.selected ? "selected" : "", pokemon.active ? "active" : ""].filter(Boolean).join(" ")}>
+      {pokemon.active && <span className="face-badge">対面中</span>}
       <div className="pokemon-top">
         <div className="pokemon-identity">
           <PokemonIcon name={pokemon.name} />
           <div>
             <h3>{pokemon.name || "未確認"}</h3>
-            <p>{side === "opponent" ? (pokemon.selected ? "選出" : "控え候補") : roleLabel}</p>
+            <p className="role">{roleText(pokemon, side)}</p>
           </div>
         </div>
-        <span className="hp">{hpLabel(pokemon, side)}</span>
+      </div>
+      <div className="hp-block">
+        <div className="hp-row">
+          <span>HP</span>
+          <b>{hpText(pokemon, side)}</b>
+        </div>
+        <div className="hp-bar">
+          <div className="hp-fill" style={{ width: `${pct}%`, background: hpBarColor(pct) }} />
+        </div>
       </div>
       <div className="facts">
         <span className={statusClass(pokemon.ability.status)}>
@@ -186,7 +227,7 @@ function PokemonPanel({ pokemon, side }: { pokemon: PokemonState; side: "own" | 
       </div>
       <div className="moves">
         {moves.length === 0 ? (
-          <span className="muted">技未確認</span>
+          <span className="muted">技 未確認</span>
         ) : (
           moves.map((move, index) => (
             <span className={statusClass(move.status)} key={`${move.value}-${index}`}>
@@ -204,41 +245,92 @@ function PokemonPanel({ pokemon, side }: { pokemon: PokemonState; side: "own" | 
   );
 }
 
-function SelectionSummary({
-  title,
-  pokemon,
+// 現在の対面を大きく表示するバンド（自分＝左 / 相手＝右）
+function MatchupBand({ own, opponent }: { own: PokemonState | null; opponent: PokemonState | null }) {
+  if (!own && !opponent) return null;
+  const ownPct = own ? hpPercentValue(own, "own") : 0;
+  const oppPct = opponent ? hpPercentValue(opponent, "opponent") : 0;
+  return (
+    <section className="matchup">
+      <div className="matchup-side own">
+        {own ? (
+          <>
+            <PokemonIcon name={own.name} />
+            <div className="matchup-info">
+              <div className="matchup-name">
+                <span className="tag own">YOU</span>
+                {own.name || "未確認"}
+              </div>
+              <div className="matchup-hp">
+                <span>HP</span>
+                <b>{hpText(own, "own")}</b>
+              </div>
+              <div className="hp-bar">
+                <div className="hp-fill" style={{ width: `${ownPct}%`, background: hpBarColor(ownPct) }} />
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="matchup-empty">自分の対面未確定</div>
+        )}
+      </div>
+      <div className="matchup-vs">
+        <span>VS</span>
+        <em>対面中</em>
+      </div>
+      <div className="matchup-side opp">
+        {opponent ? (
+          <>
+            <PokemonIcon name={opponent.name} />
+            <div className="matchup-info">
+              <div className="matchup-name">
+                {opponent.name || "未確認"}
+                <span className="tag opp">OPPONENT</span>
+              </div>
+              <div className="matchup-hp">
+                <span>HP</span>
+                <b>{hpText(opponent, "opponent")}</b>
+              </div>
+              <div className="hp-bar">
+                <div className="hp-fill" style={{ width: `${oppPct}%`, background: hpBarColor(oppPct) }} />
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="matchup-empty">相手の対面未確定</div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+// 列ヘッダーの選出ストリップ（選出済みのポケモンを順に表示）
+function SelectionStrip({
+  team,
   side,
   history = []
 }: {
-  title: string;
-  pokemon: PokemonState[];
+  team: PokemonState[];
   side: "own" | "opponent";
   history?: BattleState["history"];
 }) {
-  const selected = pokemon.filter((entry) => entry.selected);
-  const orderedSelected = side === "opponent" ? sortByFirstMention(selected, history) : selected;
+  const selected = team.filter((entry) => entry.selected);
+  const ordered = side === "opponent" ? sortByFirstMention(selected, history) : selected;
+  if (ordered.length === 0) {
+    return <p className="sel-empty">まだ選出未確定です。</p>;
+  }
   return (
-    <div className="selection-summary-block">
-      <div className="section-title compact">
-        <h2>{title}</h2>
-        <span>{selected.length}/3</span>
-      </div>
-      {selected.length === 0 ? (
-        <p className="selection-empty">まだ選出未確定です。</p>
-      ) : (
-        <div className="selection-list">
-          {orderedSelected.map((entry, index) => (
-            <article className="selection-card" key={entry.id}>
-              <span className="selection-order">{index + 1}</span>
-              <PokemonIcon name={entry.name} />
-              <div>
-                <strong>{entry.name}</strong>
-                <p>{hpLabel(entry, side)}</p>
-              </div>
-            </article>
-          ))}
+    <div className="sel-strip">
+      {ordered.map((entry, index) => (
+        <div className="sel-chip" key={entry.id}>
+          <span className="sel-order">{index + 1}</span>
+          <PokemonIcon name={entry.name} />
+          <div>
+            <strong>{entry.name || "未確認"}</strong>
+            <span className="sel-hp">{hpText(entry, side)}</span>
+          </div>
         </div>
-      )}
+      ))}
     </div>
   );
 }
@@ -455,25 +547,22 @@ export default function App() {
   const selectedOwn = state.ownTeam.filter((pokemon) => pokemon.selected);
   const ownTeamForDisplay = sortSelectedFirst(state.ownTeam);
   const opponentTeamForDisplay = sortSelectedFirst(state.opponentTeam);
+  const activeOwnMon = state.ownTeam.find((pokemon) => pokemon.active) ?? null;
+  const activeOppMon = state.opponentTeam.find((pokemon) => pokemon.active) ?? null;
   const adviceBusy = busy === "判断中";
 
   return (
     <main>
       <header className="topbar">
-        <div>
-          <h1>Pokemon Battle Partner</h1>
-          <p>Pokemon Champions / OpenAI / AI Nikechan</p>
+        <div className="brand">
+          <div className="brand-logo">N</div>
+          <div>
+            <h1>Pokémon Battle Partner</h1>
+            <p className="subtitle">Pokemon Champions · OpenAI · AI ニケちゃん</p>
+          </div>
         </div>
-        <div className="top-actions">
-          <button className="icon-button" onClick={() => void createNewBattle()} title="新規対戦">
-            <Plus size={18} />
-          </button>
-        </div>
-      </header>
-
-      <section className="battle-switcher">
-        <div className="battle-select">
-          <label>
+        <div className="top-controls">
+          <label className="field-label">
             対戦
             <select value={state.battleId} onChange={(event) => void selectBattle(event.target.value)}>
               {battles.map((battle) => (
@@ -483,7 +572,7 @@ export default function App() {
               ))}
             </select>
           </label>
-          <label>
+          <label className="field-label">
             相手名
             <input
               value={opponentNameDraft}
@@ -492,138 +581,186 @@ export default function App() {
               placeholder="対戦相手名"
             />
           </label>
-        </div>
-        <div className="status-actions">
+          <button className="icon-button" onClick={() => void createNewBattle()} title="新規対戦">
+            <Plus size={18} />
+          </button>
           <button className="icon-button" onClick={() => void loadBattleSessions()} title="再読み込み">
-            <RotateCcw size={18} />
+            <RotateCcw size={17} />
           </button>
         </div>
-      </section>
+      </header>
 
-      <section className="command-band">
-        <div className="recorder">
+      <section className="console">
+        <section className="advice">
+          <div className="advice-head">
+            <div className="advice-tag">
+              <span className="dot" />
+              NIKE'S CALL <em>次の一手</em>
+            </div>
+            <span className={`confidence ${advice?.action.confidence ?? "low"}`}>
+              {advice ? advice.action.confidence.toUpperCase() : "WAITING"}
+            </span>
+          </div>
+          <div className="advice-command">
+            {activeOwnMon && <PokemonIcon name={activeOwnMon.name} />}
+            <div>
+              <div className="advice-kicker">推奨アクション</div>
+              <h2>{advice?.action.command ?? "状況を入力してください"}</h2>
+            </div>
+          </div>
+          <p className="speech">{advice?.speech ?? "入力後、選出相談か対戦相談を選んでください。"}</p>
+          {advice?.action.reason && (
+            <div className="advice-reason">
+              <span>理由</span>
+              <p>{advice.action.reason}</p>
+            </div>
+          )}
+          {advice?.action.risk && (
+            <div className="advice-risk">
+              <span>リスク</span>
+              <p>{advice.action.risk}</p>
+            </div>
+          )}
+        </section>
+
+        <section className="command-band">
+          <div className="panel-label">
+            <span className="kicker">INPUT</span>
+            <span className="title">状況入力</span>
+          </div>
           <button
             className={recording ? "record stop" : "record"}
             onClick={recording ? stopRecording : startRecording}
             disabled={Boolean(busy)}
           >
-            {recording ? <Square size={18} /> : <Mic size={18} />}
-            {recording ? "停止" : "録音"}
+            {recording ? <span className="rec-dot" /> : <Mic size={18} />}
+            {recording ? "録音を停止" : "録音する"}
           </button>
-          <button
-            className="primary selection-submit"
-            onClick={() => void requestAdvice("selection")}
-            disabled={Boolean(busy) || !transcript.trim()}
-          >
-            {busy ? <LoaderCircle className="spin" size={18} /> : <Users size={18} />}
-            選出相談
-          </button>
-          <button
-            className="primary battle-submit"
-            onClick={() => void requestAdvice("battle")}
-            disabled={Boolean(busy) || !transcript.trim()}
-          >
-            {busy ? <LoaderCircle className="spin" size={18} /> : <Swords size={18} />}
-            対戦相談
-          </button>
-          <button
-            className="primary chat-submit"
-            onClick={() => void requestAdvice("chat")}
-            disabled={Boolean(busy) || !transcript.trim()}
-          >
-            {busy ? <LoaderCircle className="spin" size={18} /> : <MessageSquareText size={18} />}
-            会話
-          </button>
-          <button
-            className="primary review-submit"
-            onClick={() => void requestAdvice("review")}
-            disabled={Boolean(busy) || !transcript.trim()}
-          >
-            {busy ? <LoaderCircle className="spin" size={18} /> : <MessageSquareText size={18} />}
-            反省会
-          </button>
-          {adviceBusy && (
-            <button className="emergency-stop" onClick={stopAdviceRequest} title="相談を停止して結果を反映しない">
-              <Ban size={18} />
-              緊急停止
+          <textarea
+            value={transcript}
+            onChange={(event) => setTranscript(event.target.value)}
+            placeholder="相手の6体、選出、現在対面、HP、技、状態異常、前ターン結果を話すか入力してください。"
+          />
+          <div className="action-grid">
+            <button
+              className="primary selection-submit"
+              onClick={() => void requestAdvice("selection")}
+              disabled={Boolean(busy) || !transcript.trim()}
+            >
+              {busy ? <LoaderCircle className="spin" size={18} /> : <Users size={18} />}
+              選出相談
             </button>
-          )}
-        </div>
-        <textarea
-          value={transcript}
-          onChange={(event) => setTranscript(event.target.value)}
-          placeholder="相手の6体、選出、現在対面、HP、技、状態異常、前ターン結果を話すか入力してください。"
-        />
-        {error && <p className="error">{error}</p>}
+            <button
+              className="primary battle-submit"
+              onClick={() => void requestAdvice("battle")}
+              disabled={Boolean(busy) || !transcript.trim()}
+            >
+              {busy ? <LoaderCircle className="spin" size={18} /> : <Swords size={18} />}
+              対戦相談
+            </button>
+            <button
+              className="primary chat-submit"
+              onClick={() => void requestAdvice("chat")}
+              disabled={Boolean(busy) || !transcript.trim()}
+            >
+              {busy ? <LoaderCircle className="spin" size={18} /> : <MessageSquareText size={18} />}
+              会話
+            </button>
+            <button
+              className="primary review-submit"
+              onClick={() => void requestAdvice("review")}
+              disabled={Boolean(busy) || !transcript.trim()}
+            >
+              {busy ? <LoaderCircle className="spin" size={18} /> : <MessageSquareText size={18} />}
+              反省会
+            </button>
+          </div>
+          <button
+            className="emergency-stop"
+            onClick={stopAdviceRequest}
+            disabled={!adviceBusy}
+            title="相談を停止して結果を反映しない"
+          >
+            <Ban size={15} />
+            緊急停止 <small>相談中のみ有効</small>
+          </button>
+          {error && <p className="error">{error}</p>}
+        </section>
       </section>
 
-      <section className="advice">
-        <div>
-          <span className={`confidence ${advice?.action.confidence ?? "low"}`}>
-            {advice ? advice.action.confidence.toUpperCase() : "WAITING"}
-          </span>
-          <h2>{advice?.action.command ?? "状況を入力してください"}</h2>
-        </div>
-        <p className="speech">{advice?.speech ?? "入力後、選出相談か対戦相談を選んでください。"}</p>
-        {advice?.action.reason && <p>{advice.action.reason}</p>}
-        {advice?.action.risk && <p className="risk">{advice.action.risk}</p>}
-      </section>
-
-      <section className="selection-overview">
-        <SelectionSummary title="自分の選出" pokemon={state.ownTeam} side="own" />
-        <SelectionSummary title="相手の選出" pokemon={state.opponentTeam} side="opponent" history={state.history} />
-      </section>
+      <MatchupBand own={activeOwnMon} opponent={activeOppMon} />
 
       <section className="layout">
-        <div className="column">
+        <div className="column own">
           <div className="section-title">
-            <h2>相手</h2>
-            <span>{selectedOpponent.length}/3 選出</span>
+            <span className="kicker">YOUR TEAM</span>
+            <h2>自分</h2>
+            <span className="count">{selectedOwn.length} / 6 選出</span>
           </div>
+          <SelectionStrip team={state.ownTeam} side="own" />
+          <div className="grid">
+            {ownTeamForDisplay.map((pokemon) => (
+              <PokemonPanel key={pokemon.id} pokemon={pokemon} side="own" />
+            ))}
+          </div>
+        </div>
+
+        <div className="column opp">
+          <div className="section-title">
+            <span className="kicker">OPPONENT</span>
+            <h2>相手</h2>
+            <span className="count">{selectedOpponent.length} / 6 選出</span>
+          </div>
+          <SelectionStrip team={state.opponentTeam} side="opponent" history={state.history} />
           <div className="grid">
             {opponentTeamForDisplay.map((pokemon) => (
               <PokemonPanel key={pokemon.id} pokemon={pokemon} side="opponent" />
             ))}
           </div>
         </div>
-
-        <div className="column">
-          <div className="section-title">
-            <h2>自分</h2>
-            <span>{selectedOwn.length}/3 選出</span>
-          </div>
-          <div className="grid">
-            {ownTeamForDisplay.map((pokemon) => (
-              <PokemonPanel key={pokemon.id} pokemon={pokemon} side="own" />
-            ))}
-          </div>
-          <div className="memo">
-            <h2>メモ</h2>
-            <p>{state.latestMemo || "まだメモはありません。"}</p>
-            {state.field && <p className="field">{state.field}</p>}
-          </div>
-        </div>
       </section>
 
-      <section className="history">
-        <div className="section-title">
-          <h2>履歴</h2>
-          <span>{state.history.length}件</span>
+      <section className="bottom">
+        <div className="memo-panel">
+          <div className="section-title">
+            <span className="kicker">MEMO</span>
+            <h2>メモ</h2>
+          </div>
+          <p>{state.latestMemo || "まだメモはありません。"}</p>
+          {state.field && (
+            <div className="field">
+              <span className="kicker">FIELD</span>
+              <span className="value">{state.field}</span>
+            </div>
+          )}
         </div>
-        {state.history.length === 0 ? (
-          <p className="muted">ログなし</p>
-        ) : (
-          state.history
-            .slice()
-            .reverse()
-            .map((entry) => (
-              <article key={`${entry.createdAt}-${entry.turn}`} className="history-row">
-                <span>T{entry.turn}</span>
-                <strong title={entry.action}>{compactActionLabel(entry.action, entry.memo)}</strong>
-                <p>{entry.memo}</p>
-              </article>
-            ))
-        )}
+
+        <div className="history">
+          <div className="section-title">
+            <span className="kicker">LOG</span>
+            <h2>履歴</h2>
+            <span className="count">{state.history.length}件</span>
+          </div>
+          {state.history.length === 0 ? (
+            <p className="muted">ログなし</p>
+          ) : (
+            state.history
+              .slice()
+              .reverse()
+              .map((entry) => {
+                const label = compactActionLabel(entry.action, entry.memo);
+                return (
+                  <article key={`${entry.createdAt}-${entry.turn}`} className="history-row">
+                    <span className="turn">T{entry.turn}</span>
+                    <span className={`chip ${historyChipClass(label)}`} title={entry.action}>
+                      {label}
+                    </span>
+                    <p>{entry.memo}</p>
+                  </article>
+                );
+              })
+          )}
+        </div>
       </section>
     </main>
   );

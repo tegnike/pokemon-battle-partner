@@ -16642,7 +16642,9 @@
     "weightkg": 25.5,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "リーフィア"
+    ]
   },
   {
     "id": "glaceon",
@@ -16886,7 +16888,9 @@
     "weightkg": 26.6,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "ユキメノコ"
+    ]
   },
   {
     "id": "froslassmega",
@@ -21707,7 +21711,9 @@
     "weightkg": 34.3,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "シャンデラ"
+    ]
   },
   {
     "id": "chandeluremega",
@@ -23467,7 +23473,9 @@
     "weightkg": 40,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "ゲッコウガ"
+    ]
   },
   {
     "id": "greninjaash",
@@ -25196,7 +25204,9 @@
     "weightkg": 81.5,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "ドラミドロ"
+    ]
   },
   {
     "id": "dragalgemega",
@@ -36583,7 +36593,9 @@
     "weightkg": 4,
     "isMega": false,
     "isNonstandard": null,
-    "aliasesJa": []
+    "aliasesJa": [
+      "ハバタクカミ"
+    ]
   },
   {
     "id": "slitherwing",

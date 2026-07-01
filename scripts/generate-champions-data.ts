@@ -40,7 +40,13 @@ const japaneseAliases: Record<string, string[]> = {
   ninetalesalola: ["アローラキュウコン"],
   bellibolt: ["ハラバリー", "ハラバリ", "アラバリ"],
   staraptor: ["ムクホーク"],
-  "staraptormega": ["メガムクホーク"]
+  "staraptormega": ["メガムクホーク"],
+  froslass: ["ユキメノコ"],
+  greninja: ["ゲッコウガ"],
+  chandelure: ["シャンデラ"],
+  dragalge: ["ドラミドロ"],
+  leafeon: ["リーフィア"],
+  fluttermane: ["ハバタクカミ"]
 };
 
 const moveAliases: Record<string, string[]> = {

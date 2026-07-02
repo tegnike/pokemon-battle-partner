@@ -489,7 +489,7 @@ export default function App() {
   }
 
   async function requestAdvice(mode: ConsultationMode) {
-    if (!transcript.trim()) return;
+    if (recording || busy || !transcript.trim()) return;
     const requestId = adviceRequestIdRef.current + 1;
     adviceRequestIdRef.current = requestId;
     adviceAbortRef.current?.abort();
@@ -550,6 +550,7 @@ export default function App() {
   const activeOwnMon = state.ownTeam.find((pokemon) => pokemon.active) ?? null;
   const activeOppMon = state.opponentTeam.find((pokemon) => pokemon.active) ?? null;
   const adviceBusy = busy === "判断中";
+  const consultationDisabled = Boolean(busy) || recording || !transcript.trim();
 
   return (
     <main>
@@ -645,7 +646,8 @@ export default function App() {
             <button
               className="primary selection-submit"
               onClick={() => void requestAdvice("selection")}
-              disabled={Boolean(busy) || !transcript.trim()}
+              disabled={consultationDisabled}
+              title={recording ? "録音中は相談できません" : undefined}
             >
               {busy ? <LoaderCircle className="spin" size={18} /> : <Users size={18} />}
               選出相談
@@ -653,7 +655,8 @@ export default function App() {
             <button
               className="primary battle-submit"
               onClick={() => void requestAdvice("battle")}
-              disabled={Boolean(busy) || !transcript.trim()}
+              disabled={consultationDisabled}
+              title={recording ? "録音中は相談できません" : undefined}
             >
               {busy ? <LoaderCircle className="spin" size={18} /> : <Swords size={18} />}
               対戦相談
@@ -661,7 +664,8 @@ export default function App() {
             <button
               className="primary chat-submit"
               onClick={() => void requestAdvice("chat")}
-              disabled={Boolean(busy) || !transcript.trim()}
+              disabled={consultationDisabled}
+              title={recording ? "録音中は相談できません" : undefined}
             >
               {busy ? <LoaderCircle className="spin" size={18} /> : <MessageSquareText size={18} />}
               会話
@@ -669,7 +673,8 @@ export default function App() {
             <button
               className="primary review-submit"
               onClick={() => void requestAdvice("review")}
-              disabled={Boolean(busy) || !transcript.trim()}
+              disabled={consultationDisabled}
+              title={recording ? "録音中は相談できません" : undefined}
             >
               {busy ? <LoaderCircle className="spin" size={18} /> : <MessageSquareText size={18} />}
               反省会

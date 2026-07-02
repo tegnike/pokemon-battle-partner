@@ -32,6 +32,7 @@ export interface LocalDataStore {
   resolvePokemonId(name: string): string | null;
   resolveMoveId(name: string): string | null;
   getPokemon(nameOrId: string): LocalPokemon | null;
+  listPokemon(): LocalPokemon[];
   getMove(nameOrId: string): LocalMove | null;
 }
 
@@ -102,6 +103,9 @@ export function createLocalDataStore(dataDir: string): LocalDataStore {
       const id = this.resolvePokemonId(nameOrId);
       if (!id) return null;
       return pokemon.find((entry) => entry.id === id) ?? null;
+    },
+    listPokemon() {
+      return pokemon;
     },
     getMove(nameOrId: string) {
       const id = this.resolveMoveId(nameOrId);

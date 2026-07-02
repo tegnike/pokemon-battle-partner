@@ -83,8 +83,13 @@ const candidateActionSchema = z.object({
       target: z.string(),
       subjectSpeed: z.number(),
       targetMaxSpeed: z.number(),
-      targetMegaName: z.string().optional(),
-      targetMegaMaxSpeed: z.number().optional(),
+      subjectEffectiveSpeed: z.number(),
+      targetEffectiveSpeed: z.number(),
+      targetMegaOptions: z.array(z.object({
+        name: z.string(),
+        maxSpeed: z.number(),
+        effectiveSpeed: z.number()
+      })),
       contextNote: z.string()
     })
     .optional()
@@ -97,8 +102,9 @@ interface SpeedComparisonAction extends CandidateAction {
     target: string;
     subjectSpeed: number;
     targetMaxSpeed: number;
-    targetMegaName?: string;
-    targetMegaMaxSpeed?: number;
+    subjectEffectiveSpeed: number;
+    targetEffectiveSpeed: number;
+    targetMegaOptions: Array<{ name: string; maxSpeed: number; effectiveSpeed: number }>;
     contextNote: string;
   };
 }
@@ -258,9 +264,18 @@ function maxUnboostedSpeed(pokemon: LocalPokemon): number {
   }).spe;
 }
 
-function megaPokemonForBase(store: LocalDataStore, pokemon: LocalPokemon): LocalPokemon | null {
-  if (pokemon.isMega) return null;
-  return store.getPokemon(`${pokemon.id}mega`);
+function baseIdFromMegaId(id: string): string | null {
+  if (id.endsWith("megax") || id.endsWith("megay")) return id.slice(0, -5);
+  if (id.endsWith("mega")) return id.slice(0, -4);
+  return null;
+}
+
+function megaPokemonForBase(store: LocalDataStore, pokemon: LocalPokemon): LocalPokemon[] {
+  if (pokemon.isMega) return [];
+  return store
+    .listPokemon()
+    .filter((entry) => entry.isMega && baseIdFromMegaId(entry.id) === pokemon.id)
+    .sort((left, right) => maxUnboostedSpeed(right) - maxUnboostedSpeed(left));
 }
 
 function localPokemonForName(store: LocalDataStore, name: string): LocalPokemon | null {
@@ -268,12 +283,26 @@ function localPokemonForName(store: LocalDataStore, name: string): LocalPokemon 
   if (direct) return direct;
   const trimmed = name.trim().normalize("NFKC");
   if (!trimmed.startsWith("メガ") || trimmed.length <= 2) return null;
-  const base = store.getPokemon(trimmed.slice(2));
-  return base ? megaPokemonForBase(store, base) : null;
+  const body = trimmed.slice(2);
+  const variant = body.match(/[XY]$/i)?.[0]?.toLowerCase();
+  const baseName = variant ? body.slice(0, -1) : body;
+  const base = store.getPokemon(baseName);
+  if (!base) return null;
+  const megas = megaPokemonForBase(store, base);
+  return variant
+    ? megas.find((pokemon) => pokemon.id.endsWith(`mega${variant}`)) ?? null
+    : megas[0] ?? null;
 }
 
 function displayPokemonName(pokemon: LocalPokemon, fallback: string): string {
   return pokemon.aliasesJa[0] ?? fallback;
+}
+
+function displayMegaPokemonName(pokemon: LocalPokemon, baseName: string): string {
+  if (pokemon.aliasesJa[0]) return pokemon.aliasesJa[0];
+  if (pokemon.id.endsWith("megax")) return `メガ${baseName}X`;
+  if (pokemon.id.endsWith("megay")) return `メガ${baseName}Y`;
+  return `メガ${baseName}`;
 }
 
 function knownOwnSpeed(store: LocalDataStore, pokemon: PokemonState): number | null {
@@ -690,19 +719,32 @@ function sanitizeBattleCandidates(state: BattleState, candidates: CandidateActio
 }
 
 function pokemonMentionsInOrder(state: BattleState, transcript: string): string[] {
-  const names = uniqueNames([
+  const baseNames = uniqueNames([
     ...state.ownTeam.map((pokemon) => pokemon.name),
     ...state.opponentTeam.map((pokemon) => pokemon.name)
   ]);
+  const names = uniqueNames(baseNames.flatMap((name) => {
+    if (!name || name.startsWith("メガ")) return [name];
+    return [name, `メガ${name}`, `メガ${name}X`, `メガ${name}Y`];
+  }));
   return names
     .map((name) => ({ name, index: transcript.indexOf(name) }))
     .filter((entry) => entry.name && entry.index >= 0)
-    .sort((left, right) => left.index - right.index)
+    .sort((left, right) => left.index - right.index || right.name.length - left.name.length)
     .map((entry) => entry.name);
 }
 
 function speedComparisonPokemonState(state: BattleState, name: string): PokemonState | undefined {
-  return findPokemon(state.ownTeam, name) ?? findPokemon(state.opponentTeam, name);
+  const stripped = name.replace(/^メガ/, "").replace(/[XY]$/i, "");
+  return findPokemon(state.ownTeam, name) ??
+    findPokemon(state.opponentTeam, name) ??
+    findPokemon(state.ownTeam, stripped) ??
+    findPokemon(state.opponentTeam, stripped);
+}
+
+function pokemonSide(state: BattleState, name: string): "own" | "opponent" {
+  const stripped = name.replace(/^メガ/, "").replace(/[XY]$/i, "");
+  return state.ownTeam.some((pokemon) => pokemon.name === name || pokemon.name === stripped) ? "own" : "opponent";
 }
 
 function isKnownMegaState(pokemon: PokemonState | undefined, local: LocalPokemon): boolean {
@@ -711,11 +753,42 @@ function isKnownMegaState(pokemon: PokemonState | undefined, local: LocalPokemon
   return pokemon?.name.startsWith("メガ") || item.includes("メガストーン") || item.includes("ナイト");
 }
 
-function observedSpeedContext(state: BattleState, pokemon: PokemonState | undefined): string {
+function speedStageMultiplier(stage: number): number {
+  const clamped = Math.max(-6, Math.min(6, stage));
+  return clamped >= 0 ? (2 + clamped) / 2 : 2 / (2 - clamped);
+}
+
+function parseSpeedStage(statChanges: string): number {
+  const normalized = statChanges.normalize("NFKC");
+  const explicit = normalized.match(/(?:素早さ|すばやさ|S|スピード)[^+\-0-9]*([+\-][0-6])/i);
+  if (explicit) return Number(explicit[1]);
+  if (/(?:素早さ|すばやさ|スピード).*(?:ぐーん|2段階|二段階).*(?:上が|上昇)/.test(normalized)) return 2;
+  if (/(?:素早さ|すばやさ|スピード).*(?:上が|上昇)/.test(normalized)) return 1;
+  if (/(?:素早さ|すばやさ|スピード).*(?:ぐーん|2段階|二段階).*(?:下が|下降)/.test(normalized)) return -2;
+  if (/(?:素早さ|すばやさ|スピード).*(?:下が|下降)/.test(normalized)) return -1;
+  return 0;
+}
+
+function sideHasTailwind(field: string, side: "own" | "opponent"): boolean {
+  const normalized = field.normalize("NFKC");
+  if (!/追い風|おいかぜ/i.test(normalized)) return false;
+  const ownPattern = /(?:こちら|自分|味方|自軍)[^。/]*?(?:追い風|おいかぜ)|(?:追い風|おいかぜ)[^。/]*?(?:こちら|自分|味方|自軍)/i;
+  const opponentPattern = /(?:相手|敵)[^。/]*?(?:追い風|おいかぜ)|(?:追い風|おいかぜ)[^。/]*?(?:相手|敵)/i;
+  if (side === "own") return ownPattern.test(normalized);
+  return opponentPattern.test(normalized);
+}
+
+function effectiveSpeed(baseSpeed: number, state: BattleState, pokemon: PokemonState | undefined, side: "own" | "opponent"): number {
+  const stage = parseSpeedStage(pokemon?.statChanges ?? "");
+  const tailwind = sideHasTailwind(state.field, side);
+  return Math.floor(baseSpeed * speedStageMultiplier(stage) * (tailwind ? 2 : 1));
+}
+
+function observedSpeedContext(state: BattleState, pokemon: PokemonState | undefined, side: "own" | "opponent"): string {
   const notes: string[] = [];
   const field = state.field.trim();
   const statChanges = pokemon?.statChanges.trim() ?? "";
-  if (field && /追い風|おいかぜ/i.test(field)) {
+  if (field && sideHasTailwind(field, side)) {
     notes.push(`現在の場メモに「${field}」があります。`);
   }
   if (statChanges && /素早|すばや|S|スピード|速/i.test(statChanges)) {
@@ -730,29 +803,43 @@ export function speedComparisonCandidate(store: LocalDataStore, state: BattleSta
   if (!/(素早|すばや|速|遅).*(より)|より.*(素早|すばや|速|遅)/.test(normalized)) return null;
   const [subject, target] = pokemonMentionsInOrder(state, transcript);
   if (!subject || !target || subject === target) return null;
-  const subjectOwn = state.ownTeam.find((pokemon) => pokemon.name === subject);
+  const subjectState = speedComparisonPokemonState(state, subject);
+  const subjectOwn = pokemonSide(state, subject) === "own" ? subjectState : undefined;
   const targetState = speedComparisonPokemonState(state, target);
+  const subjectSide = subjectOwn ? "own" : pokemonSide(state, subject);
+  const targetSide = pokemonSide(state, target);
   const subjectLocal = localPokemonForName(store, subject);
   const baseTargetLocal = localPokemonForName(store, target);
-  const targetMegaLocal = baseTargetLocal ? megaPokemonForBase(store, baseTargetLocal) : null;
-  const targetLocal = baseTargetLocal && targetMegaLocal && isKnownMegaState(targetState, baseTargetLocal)
-    ? targetMegaLocal
+  const targetMegaLocals = baseTargetLocal ? megaPokemonForBase(store, baseTargetLocal) : [];
+  const targetLocal = baseTargetLocal && targetMegaLocals.length > 0 && isKnownMegaState(targetState, baseTargetLocal)
+    ? targetMegaLocals[0]
     : baseTargetLocal;
   if (!subjectLocal || !targetLocal) return null;
   const subjectSpeed = subjectOwn ? knownOwnSpeed(store, subjectOwn) : maxUnboostedSpeed(subjectLocal);
   if (subjectSpeed === null) return null;
   const targetMaxSpeed = maxUnboostedSpeed(targetLocal);
-  const targetMegaName = targetMegaLocal ? displayPokemonName(targetMegaLocal, `メガ${target}`) : undefined;
-  const targetMegaMaxSpeed = targetMegaLocal ? maxUnboostedSpeed(targetMegaLocal) : undefined;
-  const subjectIsFaster = subjectSpeed > targetMaxSpeed;
-  const subjectIsSlower = subjectSpeed < targetMaxSpeed;
+  const subjectEffectiveSpeed = effectiveSpeed(subjectSpeed, state, subjectState, subjectSide);
+  const targetEffectiveSpeed = effectiveSpeed(targetMaxSpeed, state, targetState, targetSide);
+  const targetMegaOptions = targetMegaLocals.map((pokemon) => {
+    const maxSpeed = maxUnboostedSpeed(pokemon);
+    return {
+      name: displayMegaPokemonName(pokemon, target),
+      maxSpeed,
+      effectiveSpeed: effectiveSpeed(maxSpeed, state, targetState, targetSide)
+    };
+  });
+  const subjectIsFaster = subjectEffectiveSpeed > targetEffectiveSpeed;
+  const subjectIsSlower = subjectEffectiveSpeed < targetEffectiveSpeed;
   const command = subjectIsFaster
     ? `いいえ、${subject}の方が速いです。`
     : subjectIsSlower
       ? `はい、${subject}の方が遅いです。`
       : `${subject}と${target}は最速想定では同速です。`;
-  const detail = `${subject}はS${subjectSpeed}、${target}は最速想定でS${targetMaxSpeed}です。`;
-  const contextNote = observedSpeedContext(state, targetState);
+  const detail =
+    subjectEffectiveSpeed === subjectSpeed && targetEffectiveSpeed === targetMaxSpeed
+      ? `${subject}はS${subjectSpeed}、${target}は最速想定でS${targetMaxSpeed}です。`
+      : `${subject}はS${subjectSpeed}（実効S${subjectEffectiveSpeed}）、${target}は最速想定でS${targetMaxSpeed}（実効S${targetEffectiveSpeed}）です。`;
+  const contextNote = observedSpeedContext(state, targetState, targetSide);
   return {
     kind: "note",
     command,
@@ -764,8 +851,9 @@ export function speedComparisonCandidate(store: LocalDataStore, state: BattleSta
       target,
       subjectSpeed,
       targetMaxSpeed,
-      targetMegaName,
-      targetMegaMaxSpeed,
+      subjectEffectiveSpeed,
+      targetEffectiveSpeed,
+      targetMegaOptions,
       contextNote
     }
   };
@@ -780,18 +868,31 @@ export function speedComparisonSpeech(candidate: SpeedComparisonAction): string 
   if (!comparison) {
     return `${candidate.command}${candidate.reason.replace("ローカル素早さ比較: ", "")} ${candidate.risk}`;
   }
-  const { subject, target, subjectSpeed, targetMaxSpeed } = comparison;
-  const megaNote =
-    comparison.targetMegaName && comparison.targetMegaMaxSpeed && comparison.targetMegaMaxSpeed !== targetMaxSpeed
-      ? `ただし${target}がメガシンカすると、${comparison.targetMegaName}は最速${comparison.targetMegaMaxSpeed}なので、メガ後は上を取られます。`
-      : "";
-  if (subjectSpeed > targetMaxSpeed) {
-    return `いいえ、マスターの${subject}の素早さは${subjectSpeed}ですが、${target}は最速でも${targetMaxSpeed}なので、${subject}のほうが速いです。${megaNote}${comparison.contextNote}`;
+  const { subject, target, subjectSpeed, targetMaxSpeed, subjectEffectiveSpeed, targetEffectiveSpeed } = comparison;
+  const effectiveNote =
+    subjectSpeed === subjectEffectiveSpeed && targetMaxSpeed === targetEffectiveSpeed
+      ? ""
+      : `現在の場と能力変化込みでは、${subject}は実効${subjectEffectiveSpeed}、${target}は実効${targetEffectiveSpeed}です。`;
+  const fasterMegaOptions = comparison.targetMegaOptions.filter((option) => option.effectiveSpeed > subjectEffectiveSpeed);
+  const sameOrSlowerMegaOptions = comparison.targetMegaOptions.filter((option) => option.effectiveSpeed <= subjectEffectiveSpeed);
+  const fasterMegaNote = fasterMegaOptions.length > 0
+    ? `ただし${target}がメガシンカすると、${fasterMegaOptions
+        .map((option) => `${option.name}は最速${option.maxSpeed}${option.effectiveSpeed !== option.maxSpeed ? `、実効${option.effectiveSpeed}` : ""}`)
+        .join("、")}なので、メガ後は上を取られます。`
+    : "";
+  const slowerMegaNote = sameOrSlowerMegaOptions.length > 0
+    ? `一方で${sameOrSlowerMegaOptions
+        .map((option) => `${option.name}は最速${option.maxSpeed}${option.effectiveSpeed !== option.maxSpeed ? `、実効${option.effectiveSpeed}` : ""}`)
+        .join("、")}なので、現在条件では${subject}が上です。`
+    : "";
+  const megaNote = `${fasterMegaNote}${slowerMegaNote}`;
+  if (subjectEffectiveSpeed > targetEffectiveSpeed) {
+    return `いいえ、マスターの${subject}の素早さは${subjectSpeed}ですが、${target}は最速でも${targetMaxSpeed}なので、${subject}のほうが速いです。${effectiveNote}${megaNote}${comparison.contextNote}`;
   }
-  if (subjectSpeed < targetMaxSpeed) {
-    return `はい、マスターの${subject}の素早さは${subjectSpeed}ですが、${target}は最速で${targetMaxSpeed}まで上がるので、${subject}のほうが遅いです。${comparison.contextNote}`;
+  if (subjectEffectiveSpeed < targetEffectiveSpeed) {
+    return `はい、マスターの${subject}の素早さは${subjectSpeed}ですが、${target}は最速で${targetMaxSpeed}まで上がるので、${subject}のほうが遅いです。${effectiveNote}${comparison.contextNote}`;
   }
-  return `マスターの${subject}の素早さは${subjectSpeed}で、${target}も最速なら${targetMaxSpeed}なので同速です。${megaNote}${comparison.contextNote}`;
+  return `マスターの${subject}の素早さは${subjectSpeed}で、${target}も最速なら${targetMaxSpeed}なので同速です。${effectiveNote}${megaNote}${comparison.contextNote}`;
 }
 
 function ensureOpponentPokemon(state: BattleState, name: string): BattleState {

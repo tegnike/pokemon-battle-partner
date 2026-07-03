@@ -20,6 +20,7 @@ import {
   createInitialBattleState,
   normalizeBattleState
 } from "./domain";
+import { type BattleStatusSummary, type FieldStatusItem, summarizeBattleStatus } from "./fieldStatus";
 
 const STORAGE_KEY = "pokemon-battle-partner-state";
 const ACTIVE_BATTLE_KEY = "pokemon-battle-partner-active-battle";
@@ -57,6 +58,12 @@ function compactActionLabel(action: string, memo = ""): string {
   if (combined.includes("覚えて")) return "記憶";
   if (combined.includes("反省")) return "反省会";
   return "会話";
+}
+
+function adviceActionLabel(advice: AdviceResult | null): string {
+  if (!advice) return "状況確認";
+  if (advice.action.kind === "selection") return "選出理由";
+  return compactActionLabel(advice.action.command, `${advice.action.reason}\n${advice.memo}`);
 }
 
 // 履歴チップの色分け（試作版と同じ配色）
@@ -242,6 +249,78 @@ function PokemonPanel({ pokemon, side }: { pokemon: PokemonState; side: "own" | 
         </p>
       )}
     </article>
+  );
+}
+
+function statusItemClass(item: FieldStatusItem): string {
+  return `status-chip status-${item.category}`;
+}
+
+function StatusChip({ item }: { item: FieldStatusItem }) {
+  return (
+    <span className={statusItemClass(item)}>
+      <b>{item.label}</b>
+      {item.detail && <small>{item.detail}</small>}
+    </span>
+  );
+}
+
+function StatusGroup({
+  title,
+  items,
+  tone
+}: {
+  title: string;
+  items: FieldStatusItem[];
+  tone: "global" | "own" | "opponent" | "unknown" | "pokemon";
+}) {
+  return (
+    <div className={`status-group ${tone}`}>
+      <div className="status-group-head">
+        <span>{title}</span>
+        <em>{items.length ? `${items.length}件` : "なし"}</em>
+      </div>
+      <div className="status-chip-row">
+        {items.length > 0 ? (
+          items.map((item, index) => <StatusChip key={`${item.label}-${item.detail}-${index}`} item={item} />)
+        ) : (
+          <span className="status-empty">なし</span>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function BattleStatusBoard({ summary }: { summary: BattleStatusSummary }) {
+  const hasAnyStatus =
+    summary.rawField ||
+    summary.global.length > 0 ||
+    summary.own.length > 0 ||
+    summary.opponent.length > 0 ||
+    summary.unknown.length > 0 ||
+    summary.pokemon.length > 0;
+
+  return (
+    <section className="status-board">
+      <div className="section-title">
+        <span className="kicker">FIELD STATUS</span>
+        <h2>場の状態</h2>
+        <span className="count">{hasAnyStatus ? "反映中" : "なし"}</span>
+      </div>
+      <div className="status-board-grid">
+        <StatusGroup title="全体" items={summary.global} tone="global" />
+        <StatusGroup title="自分側" items={summary.own} tone="own" />
+        <StatusGroup title="相手側" items={summary.opponent} tone="opponent" />
+        <StatusGroup title="側不明・その他" items={summary.unknown} tone="unknown" />
+      </div>
+      <StatusGroup title="ポケモン状態・能力変化" items={summary.pokemon} tone="pokemon" />
+      {summary.rawField && (
+        <div className="status-raw">
+          <span>元メモ</span>
+          <p>{summary.rawField}</p>
+        </div>
+      )}
+    </section>
   );
 }
 
@@ -550,7 +629,9 @@ export default function App() {
   const activeOwnMon = state.ownTeam.find((pokemon) => pokemon.active) ?? null;
   const activeOppMon = state.opponentTeam.find((pokemon) => pokemon.active) ?? null;
   const adviceBusy = busy === "判断中";
+  const adviceLabel = adviceActionLabel(advice);
   const consultationDisabled = Boolean(busy) || recording || !transcript.trim();
+  const statusSummary = summarizeBattleStatus(state);
 
   return (
     <main>
@@ -606,7 +687,12 @@ export default function App() {
             {activeOwnMon && <PokemonIcon name={activeOwnMon.name} />}
             <div>
               <div className="advice-kicker">推奨アクション</div>
-              <h2>{advice?.action.command ?? "状況を入力してください"}</h2>
+              <span
+                className={`advice-action-chip ${historyChipClass(adviceLabel)}`}
+                title={advice?.action.command}
+              >
+                {advice ? adviceLabel : "状況を入力してください"}
+              </span>
             </div>
           </div>
           <p className="speech">{advice?.speech ?? "入力後、選出相談か対戦相談を選んでください。"}</p>
@@ -694,6 +780,8 @@ export default function App() {
       </section>
 
       <MatchupBand own={activeOwnMon} opponent={activeOppMon} />
+
+      <BattleStatusBoard summary={statusSummary} />
 
       <section className="layout">
         <div className="column own">

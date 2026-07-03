@@ -14,7 +14,7 @@ import {
 } from "../domain";
 import { calculateChampionsStats, type NatureModifiers, type StatPoints } from "../champions/statCalc";
 import { calculateLocalDamage } from "./damage";
-import { createLocalDataStore, type LocalDataStore, type LocalPokemon } from "./localData";
+import { createLocalDataStore, type LocalDataStore, type LocalPokemon, type LocalMove, type StatBoosts } from "./localData";
 import {
   applyOwnMegaEvolutions,
   applyOpponentMegaEvolutions,
@@ -536,17 +536,38 @@ function mentionedOpponentNamesFromText(state: BattleState, transcript: string):
     .filter((name) => name && !ownNames.has(name) && transcript.includes(name));
 }
 
-function addTranscriptMentionedPokemon(facts: BattleFacts, state: BattleState, transcript: string): BattleFacts {
+function isOpponentPartyListText(transcript: string): boolean {
+  const normalized = transcript.replace(/\s+/g, "");
+  return /(相手|お相手).*(ポケモン|手持ち|パーティ|6体|六体)|見せ合い|相手.*6体|ポケモン.*6体/.test(normalized);
+}
+
+export function inferOpponentPartyPokemonFromText(store: LocalDataStore, transcript: string): string[] {
+  if (!isOpponentPartyListText(transcript)) return [];
+  const matches: Array<{ name: string; index: number }> = [];
+  for (const pokemon of store.listPokemon()) {
+    const names = [pokemon.name, ...pokemon.aliasesJa]
+      .filter((name) => name.trim().length >= 2)
+      .sort((a, b) => b.length - a.length);
+    const matchedName = names.find((name) => transcript.includes(name));
+    if (matchedName) matches.push({ name: pokemon.aliasesJa[0] ?? matchedName, index: transcript.indexOf(matchedName) });
+  }
+  return uniqueNames(matches.sort((a, b) => a.index - b.index).map((match) => match.name));
+}
+
+function addTranscriptMentionedPokemon(facts: BattleFacts, state: BattleState, transcript: string, store: LocalDataStore): BattleFacts {
   const ownMentioned = mentionedOwnNamesFromText(state, transcript);
   const opponentMentioned = mentionedOpponentNamesFromText(state, transcript);
-  if (ownMentioned.length === 0 && opponentMentioned.length === 0) return facts;
+  const opponentPartyMentioned = inferOpponentPartyPokemonFromText(store, transcript);
+  if (ownMentioned.length === 0 && opponentMentioned.length === 0 && opponentPartyMentioned.length === 0) return facts;
   const ownSet = new Set(ownMentioned);
+  const keepOwnNamesAsOpponent = new Set(opponentPartyMentioned);
   return {
     ...facts,
     ownMentionedPokemon: uniqueNames([...facts.ownMentionedPokemon, ...ownMentioned]),
     opponentMentionedPokemon: uniqueNames([
-      ...facts.opponentMentionedPokemon.filter((name) => !ownSet.has(name)),
-      ...opponentMentioned
+      ...facts.opponentMentionedPokemon.filter((name) => !ownSet.has(name) || keepOwnNamesAsOpponent.has(name)),
+      ...opponentMentioned,
+      ...opponentPartyMentioned
     ])
   };
 }
@@ -589,6 +610,226 @@ function applyOpponentSurvivalItemFacts(facts: BattleFacts, transcript: string, 
     ? facts.notes
     : [...facts.notes, `${pokemon}は${item}で持ちこたえたためHP1。`];
   return { ...facts, hpUpdates, revealedItem, notes };
+}
+
+function appendUniqueStatChange(
+  changes: BattleFacts["statChanges"],
+  entry: BattleFacts["statChanges"][number]
+): BattleFacts["statChanges"] {
+  return changes.some((change) =>
+    change.side === entry.side && change.pokemon === entry.pokemon && change.changes === entry.changes
+  )
+    ? changes
+    : [...changes, entry];
+}
+
+function appendUniqueRevealedMove(
+  moves: BattleFacts["revealedMoves"],
+  entry: BattleFacts["revealedMoves"][number]
+): BattleFacts["revealedMoves"] {
+  return moves.some((move) => move.pokemon === entry.pokemon && move.move === entry.move)
+    ? moves
+    : [...moves, entry];
+}
+
+function mergeConditionText(current: string, incoming: string): string {
+  const next = incoming.trim();
+  if (!next) return current;
+  if (!current.trim()) return next;
+  if (current.includes(next)) return current;
+  return `${current} / ${next}`;
+}
+
+function compactLookupKey(value: string): string {
+  return value
+    .toLowerCase()
+    .normalize("NFKC")
+    .replace(/[・\s._'-]/g, "");
+}
+
+function moveNamesForText(move: LocalMove): string[] {
+  return [move.name, ...move.aliasesJa].filter((name) => name.trim().length > 0);
+}
+
+function transcriptMentionsMove(transcript: string, move: LocalMove): boolean {
+  const normalized = compactLookupKey(transcript);
+  return moveNamesForText(move).some((name) => normalized.includes(compactLookupKey(name)));
+}
+
+function transcriptImpliesMoveUsed(transcript: string, move: LocalMove, userName: string): boolean {
+  if (!transcriptMentionsMove(transcript, move)) return false;
+  if (userName && transcript.includes(`${userName}の`)) return true;
+  return /(使|撃|打|受け|受けた|くら|喰ら|減ら|通|耐え|倒|押|選)/.test(transcript);
+}
+
+function inferMoveUserSide(state: BattleState, userName: string): "own" | "opponent" {
+  return isOwnPokemon(state, userName) ? "own" : "opponent";
+}
+
+function moveEffectTarget(move: LocalMove, userSide: "own" | "opponent", selfTarget: boolean): "own" | "opponent" {
+  if (selfTarget || move.target === "self") return userSide;
+  return userSide === "own" ? "opponent" : "own";
+}
+
+function activePokemonForSide(state: BattleState, facts: BattleFacts, side: "own" | "opponent"): string | undefined {
+  return side === "own"
+    ? facts.activeOwn || state.activeOwn
+    : facts.activeOpponent || state.activeOpponent;
+}
+
+const statLabelByKey: Record<keyof StatBoosts, string> = {
+  atk: "攻撃",
+  def: "防御",
+  spa: "特攻",
+  spd: "特防",
+  spe: "素早さ",
+  accuracy: "命中",
+  evasion: "回避率"
+};
+
+const conditionByStatus: Record<string, string> = {
+  brn: "やけど",
+  par: "まひ",
+  slp: "ねむり",
+  frz: "こおり",
+  psn: "どく",
+  tox: "もうどく"
+};
+
+function statChangeText(stat: keyof StatBoosts, stage: number): string | null {
+  if (!stage) return null;
+  const label = statLabelByKey[stat];
+  if (!label) return null;
+  return `${label}${stage > 0 ? `+${stage}` : stage}`;
+}
+
+function applyBoostsToFacts(
+  facts: BattleFacts,
+  state: BattleState,
+  move: LocalMove,
+  userSide: "own" | "opponent",
+  boosts: StatBoosts | undefined,
+  selfTarget: boolean,
+  notes: string[]
+): BattleFacts {
+  if (!boosts || Object.keys(boosts).length === 0) return facts;
+  const targetSide = moveEffectTarget(move, userSide, selfTarget);
+  const targetPokemon = activePokemonForSide(state, facts, targetSide);
+  if (!targetPokemon) return facts;
+  let next = facts;
+  for (const [stat, stage] of Object.entries(boosts) as Array<[keyof StatBoosts, number]>) {
+    const changes = statChangeText(stat, stage);
+    if (!changes) continue;
+    next = {
+      ...next,
+      statChanges: appendUniqueStatChange(next.statChanges, {
+        side: targetSide,
+        pokemon: targetPokemon,
+        changes
+      })
+    };
+    notes.push(`${targetPokemon}の${changes}`);
+  }
+  return next;
+}
+
+function applyStatusToFacts(
+  facts: BattleFacts,
+  state: BattleState,
+  move: LocalMove,
+  userSide: "own" | "opponent",
+  status: string | undefined,
+  selfTarget: boolean,
+  notes: string[]
+): BattleFacts {
+  if (!status) return facts;
+  const condition = conditionByStatus[status] ?? status;
+  const targetSide = moveEffectTarget(move, userSide, selfTarget);
+  const targetPokemon = activePokemonForSide(state, facts, targetSide);
+  if (!targetPokemon) return facts;
+  notes.push(`${targetPokemon}は${condition}`);
+  return {
+    ...facts,
+    statuses: facts.statuses.some((entry) => entry.side === targetSide && entry.pokemon === targetPokemon && entry.condition === condition)
+      ? facts.statuses
+      : [...facts.statuses, { side: targetSide, pokemon: targetPokemon, condition }]
+  };
+}
+
+function moveGuaranteedEffects(move: LocalMove): Array<{ boosts?: StatBoosts; status?: string; selfTarget: boolean }> {
+  const effects: Array<{ boosts?: StatBoosts; status?: string; selfTarget: boolean }> = [];
+  if (move.boosts) effects.push({ boosts: move.boosts, status: move.status ?? undefined, selfTarget: move.target === "self" });
+  if (move.self?.boosts) effects.push({ boosts: move.self.boosts, selfTarget: true });
+  if (move.status && !move.boosts) effects.push({ status: move.status, selfTarget: move.target === "self" });
+  const secondaries = [
+    ...(move.secondary ? [move.secondary] : []),
+    ...(move.secondaries ?? [])
+  ];
+  for (const secondary of secondaries) {
+    if (secondary.chance !== 100) continue;
+    if (secondary.boosts || secondary.status) {
+      effects.push({ boosts: secondary.boosts, status: secondary.status, selfTarget: false });
+    }
+    if (secondary.self?.boosts) {
+      effects.push({ boosts: secondary.self.boosts, selfTarget: true });
+    }
+  }
+  return effects;
+}
+
+function inferredMoveUses(store: LocalDataStore, facts: BattleFacts, transcript: string, state: BattleState): Array<{ user: string; move: LocalMove }> {
+  const uses = facts.revealedMoves.flatMap((entry) => {
+    const move = store.getMove(entry.move);
+    return move && transcriptImpliesMoveUsed(transcript, move, entry.pokemon) ? [{ user: entry.pokemon, move }] : [];
+  });
+  const activeOwn = facts.activeOwn || state.activeOwn;
+  const activeOpponent = facts.activeOpponent || state.activeOpponent;
+  for (const move of store.listMoves()) {
+    if (!transcriptMentionsMove(transcript, move)) continue;
+    if (activeOpponent && (transcript.includes(`${activeOpponent}の`) || /(?:相手|敵)[^。]*?(?:使|撃|打|受け|減ら|通|耐え|倒|押|選)/.test(transcript))) {
+      uses.push({ user: activeOpponent, move });
+    } else if (activeOwn && (transcript.includes(`${activeOwn}の`) || /(?:こちら|自分|味方)[^。]*?(?:使|撃|打|受け|減ら|通|耐え|倒|押|選)/.test(transcript))) {
+      uses.push({ user: activeOwn, move });
+    }
+  }
+  const seen = new Set<string>();
+  return uses.filter((use) => {
+    const key = `${use.user}:${use.move.id}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return moveGuaranteedEffects(use.move).length > 0;
+  });
+}
+
+export function applyKnownMoveSideEffectFacts(
+  facts: BattleFacts,
+  transcript: string,
+  state: BattleState,
+  store: LocalDataStore
+): BattleFacts {
+  let next = facts;
+  const notes: string[] = [];
+  for (const use of inferredMoveUses(store, facts, transcript, state)) {
+    const userSide = inferMoveUserSide(state, use.user);
+    next = {
+      ...next,
+      revealedMoves: appendUniqueRevealedMove(next.revealedMoves, {
+        pokemon: use.user,
+        move: use.move.aliasesJa[0] ?? use.move.name,
+        certainty: "confirmed"
+      })
+    };
+    for (const effect of moveGuaranteedEffects(use.move)) {
+      next = applyBoostsToFacts(next, state, use.move, userSide, effect.boosts, effect.selfTarget, notes);
+      next = applyStatusToFacts(next, state, use.move, userSide, effect.status, effect.selfTarget, notes);
+    }
+  }
+  if (notes.length === 0) return next;
+  const uniqueNotes = [...new Set(notes)].map((note) => `${note}。`);
+  return {
+    ...next,
+    notes: [...next.notes, ...uniqueNotes.filter((note) => !next.notes.includes(note))]
+  };
 }
 
 function statusFromCertainty(certainty: "suspected" | "confirmed"): KnownValue["status"] {
@@ -702,6 +943,91 @@ function isValidActiveMoveCandidate(state: BattleState, candidate: CandidateActi
   if (candidate.kind !== "move") return true;
   const active = getActiveOwnPokemon(state);
   return Boolean(active && ownsMove(active, candidate.command));
+}
+
+function isBattleReadyPokemon(pokemon: PokemonState): boolean {
+  return pokemon.hpPercent !== 0 && pokemon.condition !== "ひんし";
+}
+
+function selectedBenchPokemon(state: BattleState): PokemonState[] {
+  const active = getActiveOwnPokemon(state);
+  return state.ownTeam.filter(
+    (pokemon) => pokemon.selected && pokemon.name !== active?.name && isBattleReadyPokemon(pokemon)
+  );
+}
+
+function firstDamageAssumption(
+  store: LocalDataStore,
+  attacker: PokemonState,
+  defender: string
+): { move: string; percentMin: number; percentMax: number } | null {
+  const profile = parseStatProfile(attacker.notes);
+  let best: { move: string; percentMin: number; percentMax: number } | null = null;
+  for (const move of attacker.moves) {
+    if (!move.value) continue;
+    try {
+      const result = calculateLocalDamage(store, {
+        attacker: attacker.name,
+        defender,
+        move: move.value,
+        attackerStatPoints: profile.statPoints,
+        attackerNature: profile.nature
+      });
+      const first = result.assumptions[0];
+      if (!first) continue;
+      const summary = {
+        move: move.value,
+        percentMin: first.percentMin,
+        percentMax: first.percentMax
+      };
+      if (!best || summary.percentMax > best.percentMax) best = summary;
+    } catch {
+      // Status moves or unresolved local data are not useful for this quick switch comparison.
+    }
+  }
+  return best;
+}
+
+export function localSwitchCandidate(store: LocalDataStore, state: BattleState): CandidateAction | null {
+  if (state.phase !== "battle" || state.status !== "active") return null;
+  const activeOwn = getActiveOwnPokemon(state);
+  if (!activeOwn || !state.activeOpponent) return null;
+  const bench = selectedBenchPokemon(state);
+  if (bench.length === 0) return null;
+
+  const activeDamage = firstDamageAssumption(store, activeOwn, state.activeOpponent);
+  const switchOptions = bench.flatMap((pokemon) => {
+    const damage = firstDamageAssumption(store, pokemon, state.activeOpponent);
+    return damage ? [{ pokemon, damage }] : [];
+  });
+  if (switchOptions.length === 0) return null;
+
+  switchOptions.sort((left, right) => right.damage.percentMax - left.damage.percentMax);
+  const best = switchOptions[0];
+  const activeDamageText = activeDamage
+    ? `場の${activeOwn.name}の最大打点は${activeDamage.move}で約${activeDamage.percentMin}-${activeDamage.percentMax}%です。`
+    : `場の${activeOwn.name}はローカル簡易計算で有効な攻撃打点を確認できていません。`;
+  return {
+    kind: "switch",
+    command: best.pokemon.name,
+    reason: `${activeDamageText}控えの${best.pokemon.name}は${state.activeOpponent}へ${best.damage.move}で約${best.damage.percentMin}-${best.damage.percentMax}%を見込めるため、最終判断AIが比較するための交代材料です。`,
+    risk: "交代ターンに相手の積み技や交代読み打点を受けるリスクがあります。交代すべきかは、相手の自然な行動、HP管理、温存価値を含めて最終判断します。",
+    confidence: "low"
+  };
+}
+
+function withLocalSwitchCandidate(
+  store: LocalDataStore,
+  state: BattleState,
+  candidates: CandidateAction[]
+): CandidateAction[] {
+  const switchCandidate = localSwitchCandidate(store, state);
+  if (!switchCandidate) return candidates;
+  if (candidates.some((candidate) => candidate.kind === "switch" && candidate.command === switchCandidate.command)) {
+    return candidates;
+  }
+  const base = candidates.filter((candidate) => candidate.kind !== "selection");
+  return [...base.slice(0, 4), switchCandidate];
 }
 
 function sanitizeBattleCandidates(state: BattleState, candidates: CandidateAction[]): CandidateAction[] {
@@ -1043,7 +1369,7 @@ function applyFactsToState(state: BattleState, rawFacts: BattleFacts, store: Loc
       ...next,
       [target]: updateTeamPokemon(next[target], status.pokemon, (pokemon) => ({
         ...pokemon,
-        condition: status.condition
+        condition: mergeConditionText(pokemon.condition, status.condition)
       }))
     };
   }
@@ -1134,7 +1460,7 @@ function buildFactsPrompt(state: BattleState, transcript: string): string {
 - 「対戦相手は〇〇さん」「相手の名前は〇〇」「〇〇さんと対戦」などは opponentName に入れる。
 - opponentName はプレイヤー名だけ。ポケモン名や敬称だけを誤って入れない。
 - 「こちら」「裏選出」など曖昧でも、ownTeam外の名前は相手側情報として扱う。
-- 相手のパーティ6体、見せ合い6体、「相手のポケモンは...」は opponentMentionedPokemon に入れる。opponentSelectedPokemon には入れない。
+- 相手のパーティ6体、見せ合い6体、「相手のポケモンは...」は opponentMentionedPokemon に入れる。こちらの6体と同名のポケモン（例: ガブリアス、マスカーニャ）が含まれていても、相手の文脈なら opponentMentionedPokemon に入れる。opponentSelectedPokemon には入れない。
 - opponentSelectedPokemon は「相手の選出はA/B/C」「初手A」「Aを出してきた」「裏からB」「2体目B」など、実際の選出・場に出たことが明示された場合だけ入れる。
 - ownMentionedPokemon は「私のA」「こちらのA」「AはBより速い/遅いか」など、こちらの6体に含まれるポケモンが話題に出た場合に入れる。選出確定とは別扱いにする。
 - 6体すべてを opponentSelectedPokemon に入れてはいけない。明示された選出3体でない限り、最大でも今回新しく場に出たポケモンだけにする。
@@ -1142,8 +1468,10 @@ function buildFactsPrompt(state: BattleState, transcript: string): string {
 - 相手が「メガA」に進化した、または「メガA」と判明した場合は、以後その相手ポケモン名をメガAとして扱い、revealedItem に item="メガストーン" confirmed を入れる。
 - 「Aを倒した」「Aを倒せた」「Aを落とした」「Aがひんし」は faintedPokemon に入れ、side は相手を倒したなら opponent、自分が倒されたなら own。
 - 相手が「きあいのタスキ」「気合のタスキ」「きあいのハチマキ」などで持ちこたえた/耐えた場合は、相手側 hpUpdates に hpPercent=1 を入れ、revealedItem にその持ち物を confirmed で入れる。
-- 天気、フィールド、追い風、壁、ステルスロック、まきびしなど場に残る情報は field に短く追記できる形で入れる。
+- 天気、フィールド、トリックルームなど全体に影響する情報は field に「全体: 雨」のように入れる。
+- ステルスロック、まきびし、どくびし、ねばねばネット、追い風、壁、しんぴのまもりなど片側の場に残る情報は、必ず「自分側: ステルスロック」「相手側: ひかりのかべ」のように、どちら側にあるかを明記して field に入れる。側が本当に不明なら「側不明: ステルスロック」と書く。
 - 「Aの素早さが上がった」「S+1」「Aの攻撃が下がった」など能力ランク変化は statChanges に入れる。pokemon は対象、changes は「素早さ+1」「攻撃-1」など短く書く。
+- まひ、やけど、ねむり、こおり、どく、こんらん、みがわり、ちょうはつ、アンコール、かなしばり、ほろびのうた、やどりぎ、のろいなどポケモン個別に残る状態は statuses に入れる。
 - 確定していない技・特性・持ち物は suspected、発話で明確なら confirmed。
 - 雑談や対戦に無関係な話は、notes に短く残し、対戦stateを無理に更新しない。
 - 分からない項目は空配列または省略。
@@ -1241,9 +1569,10 @@ function buildDecisionPrompt(payload: z.infer<typeof candidatesPayloadSchema>): 
 絶対ルール:
 - 会話intent が chat または memory の場合は、必ず action.kind = "note" にして、選出・技・交代の新規指示を出さない。
 - 対戦ステータスが review の場合は、勝敗・選出・分岐・次回改善点の反省会として返す。
-- 会話intent が battle、対戦ステータスが active、現在phaseがbattleの場合は、対戦相談ボタン経由として扱い、短い盤面報告だけでも候補から技または交代の一手を返す。
-- 対戦中にマスターが次の行動判断を求めている場合だけ、技または交代の一手を返す。
-- マスターが確認、報告、待機、実行宣言をしているだけなら、action.kind = "note" で短く受ける。技指示を繰り返さない。
+- 会話intent が battle、対戦ステータスが active、現在phaseがbattleの場合は、対戦相談ボタン経由として扱い、短い盤面報告、確認、実行宣言に見える発話でも候補から技または交代の一手を返す。
+- battle intent の active battle では、原則として action.kind は move または switch にする。note は候補が作れない場合だけにする。
+- 候補は判断材料であり、候補順やローカル補助だけで最終手を固定しない。相手の自然な行動、こちらのHP、温存価値、リスクを総合してAIニケちゃんとして最終判断する。
+- chat / memory intent でマスターが確認、報告、待機、実行宣言をしているだけなら、action.kind = "note" で短く受ける。battle intent では次の一手を決める。
 - 選出画面では ownTeam の6体から3体を選び、選んだ3体だけ selected: true にする。
 - 選出画面の action.command は、必ずこちらの6体から選んだ3体名だけを「ポケモン名、ポケモン名、ポケモン名」の形式で返す。
 - 選出画面の speech では、必ず「先発は〇〇」と先発ポケモンを明示する。先発は action.command の1体目として扱う。
@@ -1507,6 +1836,72 @@ function repairNoteModeAdvice(advice: AdviceResult, fallbackState: BattleState, 
   };
 }
 
+export function isPositiveFeedback(transcript: string): boolean {
+  const normalized = transcript.replace(/\s+/g, "");
+  if (!normalized) return false;
+  if (/(何を|どうすれば|どうしたら|ですか|ますか|でしょうか|かな|かね|教えて|相談|\?|？)/.test(normalized)) {
+    return false;
+  }
+  return /(いいと思います|良いと思います|よいと思います|いいですね|良いですね|よさそう|良さそう|いい感じ|良い感じ|助かります|ありがとう|ありがたい|ナイス|さすが)/.test(normalized);
+}
+
+function latestSelectionSummary(state: BattleState): string {
+  const selected = state.ownTeam.filter((pokemon) => pokemon.selected).map((pokemon) => pokemon.name);
+  if (selected.length === 3) return selected.join("、");
+  const latestSelection = [...state.history].reverse().find((entry) => entry.action.includes("、"));
+  return latestSelection?.action ?? "";
+}
+
+function repairPositiveFeedbackAdvice(advice: AdviceResult, fallbackState: BattleState, transcript: string): AdviceResult {
+  if (!isPositiveFeedback(transcript)) return advice;
+  const selection = latestSelectionSummary(fallbackState);
+  const speech =
+    fallbackState.phase === "selection" && selection
+      ? `そう言ってもらえてよかったです、マスター。では${selection}でいきましょう。`
+      : "そう言ってもらえてよかったです、マスター。この方針で進めましょう。";
+  return {
+    ...advice,
+    updatedState: fallbackState,
+    speech,
+    memo: advice.memo || "マスターが方針に肯定的な反応。",
+    action: {
+      kind: "note",
+      command: "方針確認",
+      reason: "マスターが提案内容に肯定的な反応を返したため、機械的な了承ではなく自然に受けました。",
+      risk: "新しい対戦指示は出していません。",
+      confidence: advice.action.confidence
+    }
+  };
+}
+
+export function isExecutionAcknowledgement(transcript: string): boolean {
+  const normalized = transcript.replace(/\s+/g, "");
+  if (!normalized) return false;
+  if (/(何を|どうすれば|どうしたら|すべき|した方が|いいですか|ですか|ますか|でしょうか|ですかね|かね|かな|教えて|相談|選んで|決めて|\?|？)/.test(normalized)) {
+    return false;
+  }
+  return /(わかりました|分かりました|了解|承知|OK|オーケー|では|じゃあ|それで|その手で|その一手で|でいきます|で行きます|をします|押します|打ちます|撃ちます|選びます|使います|してきます|待ってて|待ってください)/.test(normalized);
+}
+
+function repairExecutionAcknowledgementAdvice(advice: AdviceResult, fallbackState: BattleState, transcript: string): AdviceResult {
+  if (fallbackState.phase !== "battle" || fallbackState.status !== "active" || !isExecutionAcknowledgement(transcript)) {
+    return advice;
+  }
+  return {
+    ...advice,
+    updatedState: fallbackState,
+    speech: "はい、お願いします。結果が分かったら教えてください。",
+    memo: advice.memo || "マスターが前回の指示を実行すると報告。",
+    action: {
+      kind: "note",
+      command: "状況確認",
+      reason: advice.action.reason || "マスターが前回の指示を実行すると報告したため、新しい操作指示は出しません。",
+      risk: "新規の対戦指示は出していません。",
+      confidence: advice.action.confidence
+    }
+  };
+}
+
 function repairBattleNoteAdvice(
   advice: AdviceResult,
   fallbackState: BattleState,
@@ -1619,8 +2014,8 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
     instructions: [
       "あなたはAIニケちゃん。Pokemon Championsの対戦パートナーとして、マスターの発話に応じて選出、次の一手、確認応答を返します。",
       "選出画面では自分の6体から3体を選び、ownTeamは6体すべて保持してください。",
-      "対戦中にマスターが次の行動を求めている場合は、候補を比較して最終的な1手に絞ってください。",
-      "マスターが待機、確認、報告、実行宣言をしているだけなら、技指示を繰り返さず action.kind = note で短く受けてください。"
+      "対戦相談では、候補を比較して最終的な1手に絞ってください。",
+      "会話や記憶では、マスターが待機、確認、報告、実行宣言をしているだけなら、技指示を繰り返さず action.kind = note で短く受けてください。"
     ].join("\n")
   });
 
@@ -1662,7 +2057,8 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
               notes: ["素早さ比較の確認質問"]
             }),
             inputData.state,
-            inputData.transcript
+            inputData.transcript,
+            store
           );
           return { ...inputData, facts };
         }
@@ -1678,10 +2074,17 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
         });
         throwIfAborted(deps.abortSignal);
         const extractedFacts = battleFactsSchema.parse(normalizeBattleFactsInput(result.object));
-        const facts = addTranscriptMentionedPokemon(
-          canonicalizeBattleFacts(applyOpponentSurvivalItemFacts(extractedFacts, inputData.transcript, inputData.state), store),
+        const enrichedFacts = applyKnownMoveSideEffectFacts(
+          applyOpponentSurvivalItemFacts(extractedFacts, inputData.transcript, inputData.state),
+          inputData.transcript,
           inputData.state,
-          inputData.transcript
+          store
+        );
+        const facts = addTranscriptMentionedPokemon(
+          canonicalizeBattleFacts(enrichedFacts, store),
+          inputData.state,
+          inputData.transcript,
+          store
         );
         return { ...inputData, facts };
       });
@@ -1785,7 +2188,11 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
           }
         });
         throwIfAborted(deps.abortSignal);
-        const candidates = sanitizeBattleCandidates(inputData.updatedState, result.object.candidates);
+        const candidates = withLocalSwitchCandidate(
+          store,
+          inputData.updatedState,
+          sanitizeBattleCandidates(inputData.updatedState, result.object.candidates)
+        );
         return {
           ...inputData,
           candidates,
@@ -1862,9 +2269,20 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
     outputSchema: workflowOutputSchema,
     execute: async ({ inputData }) => {
       const noteMode = inputData.conversationIntent !== "battle" || inputData.updatedState.status === "review";
+      const baseAdvice = noteMode
+        ? repairPositiveFeedbackAdvice(
+            repairExecutionAcknowledgementAdvice(
+              repairNoteModeAdvice(inputData.advice, inputData.updatedState, "会話または反省会として扱いました。"),
+              inputData.updatedState,
+              inputData.transcript
+            ),
+            inputData.updatedState,
+            inputData.transcript
+          )
+        : inputData.advice;
       const guardedAdvice = noteMode
-        ? repairNoteModeAdvice(inputData.advice, inputData.updatedState, "会話または反省会として扱いました。")
-        : repairInvalidBattleAdvice(inputData.advice, inputData.updatedState, inputData.candidates);
+        ? baseAdvice
+        : repairInvalidBattleAdvice(baseAdvice, inputData.updatedState, inputData.candidates);
       const errors = noteMode ? [] : validateSelectionAdvice(guardedAdvice);
       const repaired = noteMode || errors.length > 0;
       const advice = errors.length > 0 ? repairSelectionAdvice(guardedAdvice, inputData.updatedState, inputData.candidates) : guardedAdvice;
@@ -1949,9 +2367,10 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
           }
         });
         throwIfAborted(deps.abortSignal);
+        const memoryNotes = result.object.notes.map((note) => longTermMemoryNoteSchema.parse(note));
         return {
           ...inputData,
-          memoryNotes: result.object.notes
+          memoryNotes
         };
       });
     }

@@ -158,9 +158,13 @@ data/champions/ja-aliases.json
 
 ```bash
 npm run data:champions
+npm run data:champions:refresh # 外部のChampions可用性・日本語技名aliasも更新する場合
 ```
 
 対戦中は外部APIを叩かず、ローカルデータを使う。タイプ、特性、種族値、技威力、技タイプはこのデータを優先する。LLMの古い一般知識よりローカルデータを優先する。
+`moves.json` は `@pkmn/dex` Gen 9 の技データを土台にし、`data/champions/move-availability.json` から `usableInChampions` を付与する。`true` はChampionsで使用可能、`false` はChampionsで使用不可、`null` は可用性表に存在しない未確認技を表す。技データ自体は削らず、対戦判断では使用可能フラグを優先材料として扱う。
+日本語技名は `data/champions/move-ja-aliases.json` と手動補正をマージして `ja-aliases.json` に保存する。
+`moves.json` には技の `secondary` / `secondaries` / `boosts` / `self` などの追加効果も保存する。対戦ログから実際に使われた技が分かり、かつ追加効果が100%発動する能力変化・状態異常の場合だけ、deterministic に `statChanges` / `statuses` へ反映する。ランダム追加効果は自動確定しない。
 
 ## ポケモン別ナレッジ
 
@@ -286,6 +290,7 @@ guardAdvice
 - 自分の技ごとに簡易ダメ計
 - 最も通る技を候補にする
 - `move` 候補は場の自分ポケモンが覚えている技だけに制限する。控えの技は `switch` なしに指示しない。
+- `activeOwn` / `activeOpponent` と選出済みの控えが分かる場合は、控えの最良打点から `switch` 候補を材料として追加する。候補順やローカル計算だけで交代を固定せず、最終判断はAIが相手の自然な行動、こちらのHP、温存価値、リスクを含めて行う。
 - 候補理由にダメージレンジを含める
 
 ### chooseFinalAction
@@ -300,6 +305,7 @@ LLM出力を返す前に deterministic guard を通す。
 - 選出時は `command`、`speech`、`ownTeam.selected` を同じ3体に揃え、1体目を `activeOwn` にする
 - 対戦中に選出指示へ戻った場合は補正
 - 対戦相談で最終出力が `note` でも、候補に技・交代がある場合は一手へ補正
+- `わかりました。地震でいきます。` のように、マスターが前回の指示を実行すると報告しているだけの場合は `note` として短く受け、新しい技指示や復唱指示を出さない
 - 場の自分ポケモンが覚えていない `move` が返った場合は、候補内の有効な一手へ補正する
 - ローカルデータと矛盾するタイプ・特性説明を補正
 

@@ -1,7 +1,16 @@
 import assert from "node:assert/strict";
 import path from "node:path";
 import { createInitialBattleState } from "../src/domain.ts";
-import { buildLocalKnowledge, speedComparisonCandidate, speedComparisonSpeech } from "../src/mastra/battleWorkflow.ts";
+import {
+  applyKnownMoveSideEffectFacts,
+  buildLocalKnowledge,
+  inferOpponentPartyPokemonFromText,
+  isExecutionAcknowledgement,
+  isPositiveFeedback,
+  localSwitchCandidate,
+  speedComparisonCandidate,
+  speedComparisonSpeech
+} from "../src/mastra/battleWorkflow.ts";
 import { createLocalDataStore } from "../src/mastra/localData.ts";
 
 const store = createLocalDataStore(path.resolve("data/champions"));
@@ -115,6 +124,108 @@ assert.ok(megaCharizardCandidate, "expected explicit Mega Charizard Y to resolve
 assert.match(speedComparisonSpeech(megaCharizardCandidate), /メガリザードンYは最速でも167/);
 assert.match(speedComparisonSpeech(megaCharizardCandidate), /マスカーニャのほうが速いです。/);
 
+const garchompSpeedDropState = createInitialBattleState("ササミ");
+garchompSpeedDropState.phase = "battle";
+garchompSpeedDropState.activeOwn = "ガブリアス";
+garchompSpeedDropState.activeOpponent = "ゲンガー";
+garchompSpeedDropState.opponentTeam = garchompSpeedDropState.opponentTeam.map((pokemon, index) => ({
+  ...pokemon,
+  name: index === 0 ? "ゲンガー" : pokemon.name,
+  selected: index === 0,
+  active: index === 0
+}));
+
+const icyWindFacts = applyKnownMoveSideEffectFacts(
+  {
+    opponentMentionedPokemon: [],
+    opponentSelectedPokemon: [],
+    ownMentionedPokemon: [],
+    ownSelectedPokemon: [],
+    hpUpdates: [],
+    faintedPokemon: [],
+    statuses: [],
+    revealedMoves: [],
+    revealedAbility: [],
+    revealedItem: [],
+    statChanges: [],
+    damageCalcRequests: [],
+    notes: []
+  },
+  "ゲンガーの凍える風でガブリアスのHPが20まで減らされてしまいました。",
+  garchompSpeedDropState,
+  store
+);
+assert.deepEqual(icyWindFacts.statChanges, [{ side: "own", pokemon: "ガブリアス", changes: "素早さ-1" }]);
+assert.deepEqual(icyWindFacts.revealedMoves, [{ pokemon: "ゲンガー", move: "こごえるかぜ", certainty: "confirmed" }]);
+
+const rockTombFacts = applyKnownMoveSideEffectFacts(
+  {
+    opponentMentionedPokemon: [],
+    opponentSelectedPokemon: [],
+    ownMentionedPokemon: [],
+    ownSelectedPokemon: [],
+    hpUpdates: [],
+    faintedPokemon: [],
+    statuses: [],
+    revealedMoves: [],
+    revealedAbility: [],
+    revealedItem: [],
+    statChanges: [],
+    damageCalcRequests: [],
+    notes: []
+  },
+  "こちらのガブリアスのがんせきふうじがゲンガーに入りました。",
+  garchompSpeedDropState,
+  store
+);
+assert.deepEqual(rockTombFacts.statChanges, [{ side: "opponent", pokemon: "ゲンガー", changes: "素早さ-1" }]);
+
+const leafStormState = {
+  ...garchompSpeedDropState,
+  activeOwn: "マスカーニャ",
+  ownTeam: garchompSpeedDropState.ownTeam.map((pokemon) => ({
+    ...pokemon,
+    active: pokemon.name === "マスカーニャ"
+  }))
+};
+const leafStormFacts = applyKnownMoveSideEffectFacts(
+  {
+    opponentMentionedPokemon: [],
+    opponentSelectedPokemon: [],
+    ownMentionedPokemon: [],
+    ownSelectedPokemon: [],
+    hpUpdates: [],
+    faintedPokemon: [],
+    statuses: [],
+    revealedMoves: [],
+    revealedAbility: [],
+    revealedItem: [],
+    statChanges: [],
+    damageCalcRequests: [],
+    notes: []
+  },
+  "こちらのマスカーニャのリーフストームを使いました。",
+  leafStormState,
+  store
+);
+assert.deepEqual(leafStormFacts.statChanges, [{ side: "own", pokemon: "マスカーニャ", changes: "特攻-2" }]);
+
+const loweredGarchompState = {
+  ...garchompSpeedDropState,
+  ownTeam: garchompSpeedDropState.ownTeam.map((pokemon) =>
+    pokemon.name === "ガブリアス" ? { ...pokemon, statChanges: "素早さ-1" } : pokemon
+  )
+};
+const loweredGarchompCandidate = speedComparisonCandidate(
+  store,
+  loweredGarchompState,
+  "ガブリアスはゲンガーより速いですか?"
+);
+assert.ok(loweredGarchompCandidate, "expected own speed drop to affect speed comparison");
+assert.match(loweredGarchompCandidate.reason, /ガブリアスはS169（実効S112）/);
+assert.match(speedComparisonSpeech(loweredGarchompCandidate), /ガブリアスは実効112/);
+assert.match(speedComparisonSpeech(loweredGarchompCandidate), /ガブリアスのほうが遅いです。/);
+
 const knowledge = buildLocalKnowledge(
   store,
   state,
@@ -138,5 +249,50 @@ const knowledge = buildLocalKnowledge(
 
 assert.match(knowledge, /マスカーニャ: baseSpe=123; maxUnboostedSpeed=192; ownKnownSpeed=192/);
 assert.match(knowledge, /ゲンガー: baseSpe=110; maxUnboostedSpeed=178/);
+
+const switchState = createInitialBattleState("ササミ");
+switchState.phase = "battle";
+switchState.status = "active";
+switchState.activeOwn = "ガブリアス";
+switchState.activeOpponent = "ラグラージ";
+switchState.opponentTeam = switchState.opponentTeam.map((pokemon, index) => ({
+  ...pokemon,
+  name: index === 0 ? "ラグラージ" : pokemon.name,
+  selected: index === 0,
+  active: index === 0
+}));
+switchState.ownTeam = switchState.ownTeam.map((pokemon) => ({
+  ...pokemon,
+  selected: ["ガブリアス", "アシレーヌ", "ウォッシュロトム"].includes(pokemon.name),
+  active: pokemon.name === "ガブリアス",
+  hpPercent: pokemon.name === "ガブリアス" ? 35 : pokemon.hpPercent
+}));
+
+const switchCandidate = localSwitchCandidate(store, switchState);
+assert.ok(switchCandidate, "expected a deterministic local switch candidate");
+assert.equal(switchCandidate.kind, "switch");
+assert.notEqual(switchCandidate.command, "ガブリアス");
+assert.ok(["アシレーヌ", "ウォッシュロトム"].includes(switchCandidate.command));
+assert.equal(switchCandidate.confidence, "low");
+assert.match(switchCandidate.reason, /最終判断AIが比較するための交代材料/);
+
+assert.equal(isExecutionAcknowledgement("わかりました。地震でいきます。"), true);
+assert.equal(isExecutionAcknowledgement("なるほど、では岩石封じをします。次のターンちょっと待っててください。"), true);
+assert.equal(isExecutionAcknowledgement("ガブリアスは何をすればいいでしょうか?"), false);
+assert.equal(isExecutionAcknowledgement("地震でいっていいですか?"), false);
+assert.equal(
+  isExecutionAcknowledgement("わかりました。ではメタグロスを出します。メガ進化して何か技を選択するってことですかね。"),
+  false
+);
+assert.equal(isPositiveFeedback("なるほど、いいと思います。"), true);
+assert.equal(isPositiveFeedback("良いと思います。"), true);
+assert.equal(isPositiveFeedback("いいと思いますが、次は何をすればいいですか?"), false);
+assert.deepEqual(
+  inferOpponentPartyPokemonFromText(
+    store,
+    "相手のポケモンはゲンガー、ガブリアス、ミミッキュ、ブリジュラス、ペリッパー、マスカーニャの6体です。"
+  ),
+  ["ゲンガー", "ガブリアス", "ミミッキュ", "ブリジュラス", "ペリッパー", "マスカーニャ"]
+);
 
 console.log("Validated speed comparison guard.");

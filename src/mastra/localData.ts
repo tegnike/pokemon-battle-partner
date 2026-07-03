@@ -11,6 +11,18 @@ export interface LocalPokemon {
   aliasesJa: string[];
 }
 
+export type StatBoosts = Partial<Record<"atk" | "def" | "spa" | "spd" | "spe" | "accuracy" | "evasion", number>>;
+
+export interface LocalMoveEffect {
+  boosts?: StatBoosts;
+  self?: {
+    boosts?: StatBoosts;
+  };
+  status?: string;
+  volatileStatus?: string;
+  chance?: number;
+}
+
 export interface LocalMove {
   id: string;
   name: string;
@@ -18,6 +30,20 @@ export interface LocalMove {
   category: "Physical" | "Special" | "Status";
   basePower: number;
   accuracy: number | true;
+  pp: number;
+  priority: number;
+  target: string;
+  secondary: LocalMoveEffect | null;
+  secondaries: LocalMoveEffect[] | null;
+  boosts: StatBoosts | null;
+  self: { boosts?: StatBoosts } | null;
+  status: string | null;
+  volatileStatus: string | null;
+  forceSwitch: boolean | null;
+  selfSwitch: string | boolean | null;
+  isNonstandard: string | null;
+  usableInChampions: boolean | null;
+  championsAvailabilitySource: string | null;
   aliasesJa: string[];
 }
 
@@ -34,6 +60,7 @@ export interface LocalDataStore {
   getPokemon(nameOrId: string): LocalPokemon | null;
   listPokemon(): LocalPokemon[];
   getMove(nameOrId: string): LocalMove | null;
+  listMoves(): LocalMove[];
 }
 
 function normalizeLookupKey(value: string): string {
@@ -111,6 +138,9 @@ export function createLocalDataStore(dataDir: string): LocalDataStore {
       const id = this.resolveMoveId(nameOrId);
       if (!id) return null;
       return moves.find((entry) => entry.id === id) ?? null;
+    },
+    listMoves() {
+      return moves;
     }
   };
 }

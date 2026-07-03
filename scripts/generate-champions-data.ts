@@ -82,10 +82,13 @@ const japaneseAliases: Record<string, string[]> = {
   fluttermane: ["ハバタクカミ"]
 };
 
-const moveAliases: Record<string, string[]> = {
+const manualMoveAliases: Record<string, string[]> = {
   earthquake: ["じしん"],
   dragonclaw: ["ドラゴンクロー"],
   rocktomb: ["がんせきふうじ"],
+  icywind: ["こごえるかぜ", "凍える風"],
+  bulldoze: ["じならし"],
+  electroweb: ["エレキネット"],
   stealthrock: ["ステルスロック"],
   sparklingaria: ["うたかたのアリア"],
   moonblast: ["ムーンフォース"],
@@ -104,6 +107,9 @@ const moveAliases: Record<string, string[]> = {
   tripleaxel: ["トリプルアクセル"],
   suckerpunch: ["ふいうち"],
   dracometeor: ["りゅうせいぐん"],
+  leafstorm: ["リーフストーム"],
+  closecombat: ["インファイト"],
+  flamecharge: ["ニトロチャージ"],
   darkpulse: ["あくのはどう"],
   flamethrower: ["かえんほうしゃ"],
   earthpower: ["だいちのちから"]
@@ -132,6 +138,65 @@ function writeJson(file: string, data: unknown) {
   fs.writeFileSync(path.join(outDir, file), `${JSON.stringify(data, null, 2)}\n`);
 }
 
+interface MoveAvailabilityFile {
+  source: {
+    name: string;
+    url: string;
+    revisionId: number | null;
+    revisionTimestamp: string | null;
+    fetchedAt: string;
+  };
+  counts: {
+    uniqueMoves: number;
+    usable: number;
+    unusable: number;
+  };
+  moves: Record<string, boolean>;
+}
+
+interface MoveJaAliasesFile {
+  source: {
+    name: string;
+    url: string;
+    assetUrl: string;
+    fetchedAt: string;
+  };
+  counts: {
+    resolvedMoves: number;
+    aliases: number;
+  };
+  moves: Record<string, string[]>;
+}
+
+function readMoveAvailability(): MoveAvailabilityFile | null {
+  const file = path.join(outDir, "move-availability.json");
+  if (!fs.existsSync(file)) return null;
+  return JSON.parse(fs.readFileSync(file, "utf8")) as MoveAvailabilityFile;
+}
+
+function readMoveJaAliases(): MoveJaAliasesFile | null {
+  const file = path.join(outDir, "move-ja-aliases.json");
+  if (!fs.existsSync(file)) return null;
+  return JSON.parse(fs.readFileSync(file, "utf8")) as MoveJaAliasesFile;
+}
+
+function mergeAliasTables(...tables: Array<Record<string, string[]> | undefined>): Record<string, string[]> {
+  const merged: Record<string, string[]> = {};
+  for (const table of tables) {
+    for (const [id, aliases] of Object.entries(table ?? {})) {
+      merged[id] ??= [];
+      for (const alias of aliases) {
+        if (!merged[id].includes(alias)) merged[id].push(alias);
+      }
+    }
+  }
+  return merged;
+}
+
+const moveAvailability = readMoveAvailability();
+const importedMoveJaAliases = readMoveJaAliases();
+const moveAliases = mergeAliasTables(importedMoveJaAliases?.moves, manualMoveAliases);
+
 const pokemon = dex.species
   .all()
   .filter((species) => species.exists && species.num > 0)
@@ -154,21 +219,37 @@ const pokemon = dex.species
 const moves = dex.moves
   .all()
   .filter((move) => move.exists && move.num > 0)
-  .map((move) => ({
-    id: move.id,
-    num: move.num,
-    name: move.name,
-    type: move.type,
-    category: move.category,
-    basePower: move.basePower,
-    accuracy: move.accuracy,
-    pp: move.pp,
-    priority: move.priority,
-    target: move.target,
-    flags: move.flags,
-    isNonstandard: move.isNonstandard ?? null,
-    aliasesJa: moveAliases[move.id] ?? []
-  }))
+  .map((move) => {
+    const usableInChampions = moveAvailability?.moves[move.id] ?? null;
+    return {
+      id: move.id,
+      num: move.num,
+      name: move.name,
+      type: move.type,
+      category: move.category,
+      basePower: move.basePower,
+      accuracy: move.accuracy,
+      pp: move.pp,
+      priority: move.priority,
+      target: move.target,
+      flags: move.flags,
+      secondary: move.secondary ?? null,
+      secondaries: move.secondaries ?? null,
+      boosts: move.boosts ?? null,
+      self: move.self ?? null,
+      status: move.status ?? null,
+      volatileStatus: move.volatileStatus ?? null,
+      forceSwitch: move.forceSwitch ?? null,
+      selfSwitch: move.selfSwitch ?? null,
+      heal: move.heal ?? null,
+      drain: move.drain ?? null,
+      recoil: move.recoil ?? null,
+      isNonstandard: move.isNonstandard ?? null,
+      usableInChampions,
+      championsAvailabilitySource: usableInChampions === null ? null : moveAvailability?.source.name ?? null,
+      aliasesJa: moveAliases[move.id] ?? []
+    };
+  })
   .sort((a, b) => a.num - b.num || a.name.localeCompare(b.name));
 
 const abilities = dex.abilities
@@ -220,7 +301,24 @@ writeJson("metadata.json", {
     dex: "@pkmn/dex",
     dexVersion: require("@pkmn/dex/package.json").version,
     dataVersion: require("@pkmn/data/package.json").version,
-    generation: 9
+    generation: 9,
+    moveAvailability: moveAvailability
+      ? {
+          name: moveAvailability.source.name,
+          url: moveAvailability.source.url,
+          revisionId: moveAvailability.source.revisionId,
+          revisionTimestamp: moveAvailability.source.revisionTimestamp,
+          fetchedAt: moveAvailability.source.fetchedAt
+        }
+      : null,
+    moveJaAliases: importedMoveJaAliases
+      ? {
+          name: importedMoveJaAliases.source.name,
+          url: importedMoveJaAliases.source.url,
+          assetUrl: importedMoveJaAliases.source.assetUrl,
+          fetchedAt: importedMoveJaAliases.source.fetchedAt
+        }
+      : null
   },
   championsRules: {
     level: 50,
@@ -238,6 +336,10 @@ writeJson("metadata.json", {
   counts: {
     pokemon: pokemon.length,
     moves: moves.length,
+    championsUsableMoves: moves.filter((move) => move.usableInChampions === true).length,
+    championsUnusableMoves: moves.filter((move) => move.usableInChampions === false).length,
+    championsUnknownMoves: moves.filter((move) => move.usableInChampions === null).length,
+    moveJaAliases: Object.values(moveAliases).reduce((sum, aliases) => sum + aliases.length, 0),
     abilities: abilities.length,
     items: items.length,
     natures: natures.length

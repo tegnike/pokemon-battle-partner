@@ -1,231 +1,16 @@
 {
-  "pokemon": {
-    "garchomp": [
-      "ガブリアス"
-    ],
-    "garchompmega": [
-      "メガガブリアス"
-    ],
-    "primarina": [
-      "アシレーヌ"
-    ],
-    "metagross": [
-      "メタグロス"
-    ],
-    "metagrossmega": [
-      "メガメタグロス"
-    ],
-    "rotomwash": [
-      "ウォッシュロトム",
-      "水ロトム",
-      "ミトム"
-    ],
-    "meowscarada": [
-      "マスカーニャ"
-    ],
-    "hydreigon": [
-      "サザンドラ"
-    ],
-    "dragonite": [
-      "カイリュー"
-    ],
-    "mimikyu": [
-      "ミミッキュ"
-    ],
-    "archaludon": [
-      "ブリジュラス",
-      "ブリジラス"
-    ],
-    "swampert": [
-      "ラグラージ"
-    ],
-    "swampertmega": [
-      "メガラグラージ"
-    ],
-    "raichu": [
-      "ライチュウ"
-    ],
-    "raichualola": [
-      "アローラライチュウ"
-    ],
-    "raichumegax": [
-      "メガライチュウX",
-      "メガライチューX"
-    ],
-    "raichumegay": [
-      "メガライチュウY",
-      "メガライチューY"
-    ],
-    "charizard": [
-      "リザードン"
-    ],
-    "gyarados": [
-      "ギャラドス"
-    ],
-    "gyaradosmega": [
-      "メガギャラドス"
-    ],
-    "basculegion": [
-      "イダイトウ",
-      "イダイトウ(オス)",
-      "イダイトウ（オス）"
-    ],
-    "delphox": [
-      "マフォクシー"
-    ],
-    "glimmora": [
-      "キラフロル"
-    ],
-    "grimmsnarl": [
-      "オーロンゲ"
-    ],
-    "gholdengo": [
-      "サーフゴー"
-    ],
-    "mawile": [
-      "クチート"
-    ],
-    "mawilemega": [
-      "メガクチート"
-    ],
-    "skeledirge": [
-      "ラウドボーン"
-    ],
-    "kingambit": [
-      "ドドゲザン"
-    ],
-    "aegislash": [
-      "ギルガルド"
-    ],
-    "scizor": [
-      "ハッサム"
-    ],
-    "scizormega": [
-      "メガハッサム"
-    ],
-    "samurotthisui": [
-      "ヒスイダイケンキ"
-    ],
-    "ceruledge": [
-      "ソウブレイズ"
-    ],
-    "volcarona": [
-      "ウルガモス"
-    ],
-    "starmie": [
-      "スターミー"
-    ],
-    "vanilluxe": [
-      "バイバニラ"
-    ],
-    "umbreon": [
-      "ブラッキー"
-    ],
-    "meganium": [
-      "メガニウム"
-    ],
-    "venusaur": [
-      "フシギバナ"
-    ],
-    "venusaurmega": [
-      "メガフシギバナ"
-    ],
-    "sneasler": [
-      "オオニューラ"
-    ],
-    "blastoise": [
-      "カメックス"
-    ],
-    "blastoisemega": [
-      "メガカメックス"
-    ],
-    "lucario": [
-      "ルカリオ"
-    ],
-    "lucariomega": [
-      "メガルカリオ"
-    ],
-    "sylveon": [
-      "ニンフィア"
-    ],
-    "mamoswine": [
-      "マンムー"
-    ],
-    "whimsicott": [
-      "エルフーン"
-    ],
-    "rotomheat": [
-      "ヒートロトム",
-      "火ロトム"
-    ],
-    "corviknight": [
-      "アーマーガア"
-    ],
-    "tinglu": [
-      "ディンルー"
-    ],
-    "annihilape": [
-      "コノヨザル"
-    ],
-    "dragapult": [
-      "ドラパルト"
-    ],
-    "hippowdon": [
-      "カバルドン"
-    ],
-    "pelipper": [
-      "ペリッパー"
-    ],
-    "stunfisk": [
-      "マッギョ"
-    ],
-    "gengar": [
-      "ゲンガー"
-    ],
-    "blaziken": [
-      "バシャーモ"
-    ],
-    "blazikenmega": [
-      "メガバシャーモ"
-    ],
-    "lopunny": [
-      "ミミロップ"
-    ],
-    "lopunnymega": [
-      "メガミミロップ"
-    ],
-    "ninetalesalola": [
-      "アローラキュウコン"
-    ],
-    "bellibolt": [
-      "ハラバリー",
-      "ハラバリ",
-      "アラバリ"
-    ],
-    "staraptor": [
-      "ムクホーク"
-    ],
-    "staraptormega": [
-      "メガムクホーク"
-    ],
-    "froslass": [
-      "ユキメノコ"
-    ],
-    "greninja": [
-      "ゲッコウガ"
-    ],
-    "chandelure": [
-      "シャンデラ"
-    ],
-    "dragalge": [
-      "ドラミドロ"
-    ],
-    "leafeon": [
-      "リーフィア"
-    ],
-    "fluttermane": [
-      "ハバタクカミ"
-    ]
+  "source": {
+    "name": "damekei",
+    "url": "https://damekei.com/moves",
+    "assetUrl": "https://damekei.com/assets/moves-ZpumTu-F.js",
+    "fetchedAt": "2026-07-02T16:52:55.361Z",
+    "note": "Used for Japanese move-name aliases; unresolved Shadow moves are not part of @pkmn/dex Gen 9."
+  },
+  "counts": {
+    "rows": 937,
+    "resolvedMoves": 901,
+    "aliases": 901,
+    "unresolved": 18
   },
   "moves": {
     "pound": [
@@ -481,9 +266,7 @@
       "でんきショック"
     ],
     "thunderbolt": [
-      "１０まんボルト",
-      "10まんボルト",
-      "10万ボルト"
+      "１０まんボルト"
     ],
     "thunderwave": [
       "でんじは"
@@ -816,8 +599,7 @@
       "ほろびのうた"
     ],
     "icywind": [
-      "こごえるかぜ",
-      "凍える風"
+      "こごえるかぜ"
     ],
     "detect": [
       "みきり"
@@ -2935,44 +2717,96 @@
       "じゃどくのくさり"
     ]
   },
-  "abilities": {
-    "roughskin": [
-      "さめはだ"
-    ],
-    "torrent": [
-      "げきりゅう"
-    ],
-    "clearbody": [
-      "クリアボディ"
-    ],
-    "toughclaws": [
-      "かたいツメ"
-    ],
-    "levitate": [
-      "ふゆう"
-    ],
-    "protean": [
-      "へんげんじざい"
-    ]
-  },
-  "items": {
-    "focussash": [
-      "きあいのタスキ"
-    ],
-    "expertbelt": [
-      "たつじんのおび"
-    ],
-    "metagrossite": [
-      "メタグロスナイト"
-    ],
-    "leftovers": [
-      "たべのこし"
-    ],
-    "lifeorb": [
-      "いのちのたま"
-    ],
-    "choicescarf": [
-      "こだわりスカーフ"
-    ]
-  }
+  "unresolved": [
+    {
+      "id": 10001,
+      "ja": "ダークラッシュ",
+      "en": "Shadow Rush"
+    },
+    {
+      "id": 10002,
+      "ja": "ダークブラスト",
+      "en": "Shadow Blast"
+    },
+    {
+      "id": 10003,
+      "ja": "ダークアタック",
+      "en": "Shadow Blitz"
+    },
+    {
+      "id": 10004,
+      "ja": "ダークサンダー",
+      "en": "Shadow Bolt"
+    },
+    {
+      "id": 10005,
+      "ja": "ダークブレイク",
+      "en": "Shadow Break"
+    },
+    {
+      "id": 10006,
+      "ja": "ダークフリーズ",
+      "en": "Shadow Chill"
+    },
+    {
+      "id": 10007,
+      "ja": "ダークエンド",
+      "en": "Shadow End"
+    },
+    {
+      "id": 10008,
+      "ja": "ダークファイア",
+      "en": "Shadow Fire"
+    },
+    {
+      "id": 10009,
+      "ja": "ダークレイブ",
+      "en": "Shadow Rave"
+    },
+    {
+      "id": 10010,
+      "ja": "ダークストーム",
+      "en": "Shadow Storm"
+    },
+    {
+      "id": 10011,
+      "ja": "ダークウェーブ",
+      "en": "Shadow Wave"
+    },
+    {
+      "id": 10012,
+      "ja": "ダークダウン",
+      "en": "Shadow Down"
+    },
+    {
+      "id": 10013,
+      "ja": "ダークハーフ",
+      "en": "Shadow Half"
+    },
+    {
+      "id": 10014,
+      "ja": "ダークホールド",
+      "en": "Shadow Hold"
+    },
+    {
+      "id": 10015,
+      "ja": "ダークミスト",
+      "en": "Shadow Mist"
+    },
+    {
+      "id": 10016,
+      "ja": "ダークパニック",
+      "en": "Shadow Panic"
+    },
+    {
+      "id": 10017,
+      "ja": "ダークリムーブ",
+      "en": "Shadow Shed"
+    },
+    {
+      "id": 10018,
+      "ja": "ダークウェザー",
+      "en": "Shadow Sky"
+    }
+  ]
 }

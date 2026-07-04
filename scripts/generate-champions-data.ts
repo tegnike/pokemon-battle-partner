@@ -87,22 +87,28 @@ const japaneseAliases: Record<string, string[]> = {
   fluttermane: ["ハバタクカミ"]
 };
 
+// 音声入力やLLM抽出では技名が漢字表記になることが多いため、公式のかな表記に加えて
+// 漢字表記も別名として登録する(例: じしん / 地震)。
 const manualMoveAliases: Record<string, string[]> = {
-  earthquake: ["じしん"],
-  dragonclaw: ["ドラゴンクロー"],
-  rocktomb: ["がんせきふうじ"],
+  earthquake: ["じしん", "地震"],
+  dragonclaw: ["ドラゴンクロー", "竜の爪", "りゅうのつめ", "りゅうの爪"],
+  dragondance: ["りゅうのまい", "竜の舞", "りゅうの舞", "竜のまい"],
+  rocktomb: ["がんせきふうじ", "岩石封じ"],
   icywind: ["こごえるかぜ", "凍える風"],
   bulldoze: ["じならし"],
   electroweb: ["エレキネット"],
   stealthrock: ["ステルスロック"],
   sparklingaria: ["うたかたのアリア"],
   moonblast: ["ムーンフォース"],
-  icebeam: ["れいとうビーム"],
+  icebeam: ["れいとうビーム", "冷凍ビーム"],
+  icepunch: ["れいとうパンチ", "冷凍パンチ"],
   energyball: ["エナジーボール"],
   ironhead: ["アイアンヘッド"],
+  irondefense: ["てっぺき", "鉄壁"],
   bulletpunch: ["バレットパンチ"],
   hammerarm: ["アームハンマー"],
-  thunderpunch: ["かみなりパンチ"],
+  thunderpunch: ["かみなりパンチ", "雷パンチ"],
+  firefang: ["ほのおのキバ", "炎の牙"],
   hydropump: ["ハイドロポンプ"],
   thunderbolt: ["10まんボルト", "10万ボルト"],
   willowisp: ["おにび"],
@@ -110,14 +116,28 @@ const manualMoveAliases: Record<string, string[]> = {
   flowertrick: ["トリックフラワー"],
   knockoff: ["はたきおとす"],
   tripleaxel: ["トリプルアクセル"],
-  suckerpunch: ["ふいうち"],
-  dracometeor: ["りゅうせいぐん"],
+  suckerpunch: ["ふいうち", "不意打ち"],
+  dracometeor: ["りゅうせいぐん", "流星群"],
   leafstorm: ["リーフストーム"],
   closecombat: ["インファイト"],
   flamecharge: ["ニトロチャージ"],
-  darkpulse: ["あくのはどう"],
-  flamethrower: ["かえんほうしゃ"],
-  earthpower: ["だいちのちから"]
+  darkpulse: ["あくのはどう", "悪の波動"],
+  flamethrower: ["かえんほうしゃ", "火炎放射"],
+  earthpower: ["だいちのちから", "大地の力"],
+  aurasphere: ["はどうだん", "波動弾"],
+  roost: ["はねやすめ", "羽休め"],
+  swordsdance: ["つるぎのまい", "剣の舞"],
+  blizzard: ["ふぶき", "吹雪"],
+  bulkup: ["ビルドアップ"],
+  slackoff: ["なまける"],
+  crunch: ["かみくだく", "噛み砕く"],
+  psychicfangs: ["サイコファング"],
+  uturn: ["とんぼがえり", "とんぼ返り"],
+  auroraveil: ["オーロラベール"],
+  trickroom: ["トリックルーム"],
+  playrough: ["じゃれつく"],
+  phantomforce: ["ゴーストダイブ"],
+  blazekick: ["ブレイズキック"]
 };
 
 const abilityAliases: Record<string, string[]> = {

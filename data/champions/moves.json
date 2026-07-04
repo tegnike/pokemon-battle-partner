@@ -295,7 +295,8 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "れいとうパンチ"
+      "れいとうパンチ",
+      "冷凍パンチ"
     ]
   },
   {
@@ -339,7 +340,8 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "かみなりパンチ"
+      "かみなりパンチ",
+      "雷パンチ"
     ]
   },
   {
@@ -517,7 +519,8 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "つるぎのまい"
+      "つるぎのまい",
+      "剣の舞"
     ]
   },
   {
@@ -2007,7 +2010,8 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "かえんほうしゃ"
+      "かえんほうしゃ",
+      "火炎放射"
     ]
   },
   {
@@ -2185,7 +2189,8 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "れいとうビーム"
+      "れいとうビーム",
+      "冷凍ビーム"
     ]
   },
   {
@@ -2228,7 +2233,8 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "ふぶき"
+      "ふぶき",
+      "吹雪"
     ]
   },
   {
@@ -3354,7 +3360,8 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "じしん"
+      "じしん",
+      "地震"
     ]
   },
   {
@@ -9589,7 +9596,8 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "かみくだく"
+      "かみくだく",
+      "噛み砕く"
     ]
   },
   {
@@ -12404,7 +12412,8 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "がんせきふうじ"
+      "がんせきふうじ",
+      "岩石封じ"
     ]
   },
   {
@@ -13060,7 +13069,8 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "てっぺき"
+      "てっぺき",
+      "鉄壁"
     ]
   },
   {
@@ -13165,7 +13175,10 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "ドラゴンクロー"
+      "ドラゴンクロー",
+      "竜の爪",
+      "りゅうのつめ",
+      "りゅうの爪"
     ]
   },
   {
@@ -13636,7 +13649,10 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "りゅうのまい"
+      "りゅうのまい",
+      "竜の舞",
+      "りゅうの舞",
+      "竜のまい"
     ]
   },
   {
@@ -13859,7 +13875,8 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "はねやすめ"
+      "はねやすめ",
+      "羽休め"
     ]
   },
   {
@@ -14347,7 +14364,8 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "とんぼがえり"
+      "とんぼがえり",
+      "とんぼ返り"
     ]
   },
   {
@@ -15059,7 +15077,8 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "ふいうち"
+      "ふいうち",
+      "不意打ち"
     ]
   },
   {
@@ -15324,7 +15343,8 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "はどうだん"
+      "はどうだん",
+      "波動弾"
     ]
   },
   {
@@ -15446,7 +15466,8 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "あくのはどう"
+      "あくのはどう",
+      "悪の波動"
     ]
   },
   {
@@ -16048,7 +16069,8 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "だいちのちから"
+      "だいちのちから",
+      "大地の力"
     ]
   },
   {
@@ -16432,7 +16454,8 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "ほのおのキバ"
+      "ほのおのキバ",
+      "炎の牙"
     ]
   },
   {
@@ -16834,7 +16857,8 @@
     "usableInChampions": true,
     "championsAvailabilitySource": "Bulbapedia",
     "aliasesJa": [
-      "りゅうせいぐん"
+      "りゅうせいぐん",
+      "流星群"
     ]
   },
   {

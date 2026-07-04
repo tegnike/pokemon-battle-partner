@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-03T21:27:06.996Z",
+  "generatedAt": "2026-07-04T22:08:26.365Z",
   "game": "Pokemon Champions",
   "source": {
     "dex": "@pkmn/dex",
@@ -45,7 +45,7 @@
     "championsUnusableMoves": 420,
     "championsUnknownMoves": 33,
     "pokemonJaAliases": 1055,
-    "moveJaAliases": 904,
+    "moveJaAliases": 928,
     "abilities": 316,
     "items": 580,
     "natures": 25

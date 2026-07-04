@@ -64,10 +64,29 @@ export interface LocalDataStore {
 }
 
 function normalizeLookupKey(value: string): string {
-  return value
-    .toLowerCase()
-    .normalize("NFKC")
-    .replace(/[・\s._'-]/g, "");
+  return foldKatakanaToHiragana(
+    value
+      .toLowerCase()
+      .normalize("NFKC")
+      .replace(/[・\s._'-]/g, "")
+  );
+}
+
+// 音声入力では同じ技名がカタカナ・ひらがなのどちらでも返るため(例: ナマケル / なまける)、
+// 照合キーではカタカナをひらがなに畳み込んで表記ゆれを吸収する。長音符「ー」は
+// カタカナ語で有意なため保持する。
+function foldKatakanaToHiragana(value: string): string {
+  let result = "";
+  for (const char of value) {
+    const code = char.codePointAt(0) ?? 0;
+    // カタカナ(ァ〜ヶ: U+30A1–U+30F6)のみを対応するひらがなへ変換する。
+    if (code >= 0x30a1 && code <= 0x30f6) {
+      result += String.fromCodePoint(code - 0x60);
+    } else {
+      result += char;
+    }
+  }
+  return result;
 }
 
 function readJson<T>(dataDir: string, file: string): T {
@@ -118,7 +137,16 @@ export function createLocalDataStore(dataDir: string): LocalDataStore {
       const alias = resolveAlias(aliases.pokemon, name);
       if (alias) return alias;
       const key = normalizeLookupKey(name);
-      return pokemon.find((entry) => entry.id === key || normalizeLookupKey(entry.name) === key)?.id ?? null;
+      const direct = pokemon.find((entry) => entry.id === key || normalizeLookupKey(entry.name) === key)?.id ?? null;
+      if (direct) return direct;
+      // 「メガスターミー」のようにメガ進化が存在しない種名にメガが付いた場合(音声認識の
+      // 産物など)は、メガ接頭辞と末尾のX/Yを外してベース種で引き直す。
+      const trimmed = name.trim();
+      if (trimmed.startsWith("メガ") && trimmed.length > 2) {
+        const base = trimmed.slice(2).replace(/[XYxyｘｙＸＹ]$/, "").trim();
+        if (base) return this.resolvePokemonId(base);
+      }
+      return null;
     },
     resolveMoveId(name: string) {
       const alias = resolveAlias(aliases.moves, name);

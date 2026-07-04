@@ -1697,7 +1697,10 @@ export function applyFactsToState(state: BattleState, rawFacts: BattleFacts, sto
   const ownMegaEvolutions = collectMegaEvolutions(store, ownMegaCandidateNamesFromFacts(rawFacts));
   const facts = rewriteOwnMegaFactReferences(rewriteOpponentMegaFactReferences(rawFacts, megaEvolutions), ownMegaEvolutions);
   let next = applyOwnMegaEvolutions(applyOpponentMegaEvolutions({ ...state }, megaEvolutions), ownMegaEvolutions);
-  if (facts.phase) next.phase = facts.phase;
+  // 同一対戦内でbattleからselectionへは戻さない。ひんし後の「次のポケモンを選んで」は交代であって再選出ではない。
+  if (facts.phase && !(state.phase === "battle" && state.status === "active" && facts.phase === "selection")) {
+    next.phase = facts.phase;
+  }
   if (facts.opponentName?.trim()) {
     next.opponentName = facts.opponentName.trim();
   }
@@ -1904,6 +1907,7 @@ function buildFactsPrompt(state: BattleState, transcript: string): string {
 - 「初手A」「Aを投げてきた」「Aを出してきた」「裏からA」は activeOpponent にもAを入れる。
 - 相手が「メガA」に進化した、または「メガA」と判明した場合は、以後その相手ポケモン名をメガAとして扱い、revealedItem に item="メガストーン" confirmed を入れる。
 - 「Aを倒した」「Aを倒せた」「Aを落とした」「Aがひんし」は faintedPokemon に入れ、side は相手を倒したなら opponent、自分が倒されたなら own。
+- 対戦が始まった後(現在stateのphaseがbattle)は、「次のポケモンを選んで」「次を出して」と言われても phase は battle のまま。これは控えへの交代であって再選出ではない。
 - 相手が「きあいのタスキ」「気合のタスキ」「きあいのハチマキ」などで持ちこたえた/耐えた場合は、相手側 hpUpdates に hpPercent=1 を入れ、revealedItem にその持ち物を confirmed で入れる。
 - 天気、フィールド、トリックルームなど全体に影響する情報は field に「全体: 雨」のように入れる。
 - ステルスロック、まきびし、どくびし、ねばねばネット、追い風、壁、しんぴのまもりなど片側の場に残る情報は、必ず「自分側: ステルスロック」「相手側: ひかりのかべ」のように、どちら側にあるかを明記して field に入れる。側が本当に不明なら「側不明: ステルスロック」と書く。

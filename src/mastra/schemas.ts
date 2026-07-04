@@ -147,6 +147,13 @@ export const battleFactsSchema = z.object({
   notes: z.array(z.string()).default([])
 });
 
+// LLMの構造化出力検証に使う緩い版。返却例が配列中心のため field が配列で返ることがあり、
+// それを弾いてワークフロー全体を落とさないよう文字列/配列の両方を受ける。
+// 正規化(normalizeBattleFactsInput)後に battleFactsSchema で厳密に検証する。
+export const battleFactsLooseSchema = battleFactsSchema.extend({
+  field: z.union([z.string(), z.array(z.string())]).optional()
+});
+
 export const workflowInputSchema = z.object({
   state: battleStateSchema,
   transcript: z.string(),

@@ -26,6 +26,7 @@ import {
 import {
   type BattleFacts,
   adviceResultSchema,
+  battleFactsLooseSchema,
   battleFactsSchema,
   battleStateSchema,
   longTermMemoryNoteSchema,
@@ -186,6 +187,31 @@ function timeoutSignal(ms: number, parentSignal?: AbortSignal): AbortSignal {
 function throwIfAborted(signal?: AbortSignal): void {
   if (!signal?.aborted) return;
   throw (signal.reason instanceof Error ? signal.reason : new Error("request aborted"));
+}
+
+// LLMの構造化出力は稀にスキーマ不一致や欠落で失敗する。1回だけリトライし、
+// それでも取れなければ null を返して呼び出し側のローカルフォールバックに委ねる。
+// ユーザー起因の中断(parentSignal)だけはリトライせずそのまま投げる。
+async function generateObjectWithRetry<T extends { object?: unknown }>(
+  attempt: () => Promise<T>,
+  parentSignal: AbortSignal | undefined,
+  label: string
+): Promise<T | null> {
+  for (let tryIndex = 0; tryIndex < 2; tryIndex += 1) {
+    try {
+      const result = await attempt();
+      throwIfAborted(parentSignal);
+      if (result.object !== undefined && result.object !== null) return result;
+      console.warn(`[battleAdviceWorkflow] ${label}: structured output missing (attempt ${tryIndex + 1}/2)`);
+    } catch (error) {
+      throwIfAborted(parentSignal);
+      console.warn(
+        `[battleAdviceWorkflow] ${label}: structured output failed (attempt ${tryIndex + 1}/2):`,
+        error instanceof Error ? error.message : error
+      );
+    }
+  }
+  return null;
 }
 
 async function timed<T extends { timings: Record<string, number> }, R>(
@@ -531,7 +557,16 @@ function normalizeBattleFactsInput(value: unknown): unknown {
     opponentSelectedPokemon: normalizeNameArray(object.opponentSelectedPokemon),
     ownMentionedPokemon: normalizeNameArray(object.ownMentionedPokemon),
     ownSelectedPokemon: normalizeNameArray(object.ownSelectedPokemon),
-    field: typeof object.field === "string" ? object.field.trim() : undefined,
+    field:
+      typeof object.field === "string"
+        ? object.field.trim()
+        : Array.isArray(object.field)
+          ? object.field
+              .filter((entry): entry is string => typeof entry === "string")
+              .map((entry) => entry.trim())
+              .filter(Boolean)
+              .join(" / ")
+          : undefined,
     statChanges: normalizeStatChangesArray(object.statChanges),
     faintedPokemon: normalizeSidePokemonArray(object.faintedPokemon, "opponent")
   };
@@ -2667,18 +2702,25 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
           );
           return { ...inputData, facts };
         }
-        const result = await extractBattleFactsAgent.generate(buildFactsPrompt(inputData.state, inputData.transcript), {
-          maxSteps: 2,
-          abortSignal: timeoutSignal(deps.requestTimeoutMs, deps.abortSignal),
-          providerOptions: sharedProviderOptions,
-          structuredOutput: {
-            schema: battleFactsSchema,
-            jsonPromptInjection: true,
-            providerOptions: sharedProviderOptions
-          }
-        });
-        throwIfAborted(deps.abortSignal);
-        const extractedFacts = battleFactsSchema.parse(normalizeBattleFactsInput(result.object));
+        const result = await generateObjectWithRetry(
+          () =>
+            extractBattleFactsAgent.generate(buildFactsPrompt(inputData.state, inputData.transcript), {
+              maxSteps: 2,
+              abortSignal: timeoutSignal(deps.requestTimeoutMs, deps.abortSignal),
+              providerOptions: sharedProviderOptions,
+              structuredOutput: {
+                schema: battleFactsLooseSchema,
+                jsonPromptInjection: true,
+                providerOptions: sharedProviderOptions
+              }
+            }),
+          deps.abortSignal,
+          "extractBattleFacts"
+        );
+        // 抽出に失敗しても、発話中のポケモン名はローカル照合(addTranscriptMentionedPokemon)で拾えるため
+        // 空のfactsで続行し、対戦相談そのものは途切れさせない。
+        const rawFactsObject = result?.object ?? { notes: ["構造化出力に失敗したため、この発話の事実抽出をスキップ"] };
+        const extractedFacts = battleFactsSchema.parse(normalizeBattleFactsInput(rawFactsObject));
         const enrichedFacts = applyKnownMoveSideEffectFacts(
           applyOpponentSurvivalItemFacts(extractedFacts, inputData.transcript, inputData.state),
           inputData.transcript,
@@ -2805,19 +2847,46 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
             };
           }
         }
-        const result = await generateCandidatesAgent.generate(buildCandidatesPrompt(inputData), {
-          maxSteps: 2,
-          abortSignal: timeoutSignal(deps.requestTimeoutMs, deps.abortSignal),
-          providerOptions: sharedProviderOptions,
-          structuredOutput: {
-            schema: z.object({
-              candidates: z.array(candidateActionSchema).min(1).max(5)
+        const result = await generateObjectWithRetry(
+          () =>
+            generateCandidatesAgent.generate(buildCandidatesPrompt(inputData), {
+              maxSteps: 2,
+              abortSignal: timeoutSignal(deps.requestTimeoutMs, deps.abortSignal),
+              providerOptions: sharedProviderOptions,
+              structuredOutput: {
+                schema: z.object({
+                  candidates: z.array(candidateActionSchema).min(1).max(5)
+                }),
+                jsonPromptInjection: true,
+                providerOptions: sharedProviderOptions
+              }
             }),
-            jsonPromptInjection: true,
-            providerOptions: sharedProviderOptions
-          }
-        });
-        throwIfAborted(deps.abortSignal);
+          deps.abortSignal,
+          "generateCandidates"
+        );
+        if (!result) {
+          // 候補生成に失敗した場合はローカル計算の候補で続行し、それも無ければ確認noteに落とす。
+          const fallbackCandidates = withoutDominatedMoveCandidates(
+            inputData.updatedState,
+            withLocalSwitchCandidate(store, inputData.updatedState, localActiveMoveCandidates(store, inputData.updatedState))
+          ).slice(0, 5);
+          return {
+            ...inputData,
+            candidates:
+              fallbackCandidates.length > 0
+                ? fallbackCandidates
+                : [
+                    {
+                      kind: "note" as const,
+                      command: "状況確認",
+                      reason: "候補生成に失敗したため、いまの盤面の確認として扱います。",
+                      risk: "もう一度盤面を教えてもらえると次の一手を出せます。",
+                      confidence: "low" as const
+                    }
+                  ],
+            candidateToolCalls: []
+          };
+        }
         const moveAwareCandidates = withoutDominatedMoveCandidates(
           inputData.updatedState,
           withLocalMoveCandidates(
@@ -2860,17 +2929,48 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
             decisionToolCalls: []
           };
         }
-        const result = await chooseFinalActionAgent.generate(buildDecisionPrompt(inputData), {
-          maxSteps: 1,
-          abortSignal: timeoutSignal(deps.requestTimeoutMs, deps.abortSignal),
-          providerOptions: sharedProviderOptions,
-          structuredOutput: {
-            schema: finalDecisionSchema,
-            jsonPromptInjection: true,
-            providerOptions: sharedProviderOptions
-          }
-        });
-        throwIfAborted(deps.abortSignal);
+        const result = await generateObjectWithRetry(
+          () =>
+            chooseFinalActionAgent.generate(buildDecisionPrompt(inputData), {
+              maxSteps: 1,
+              abortSignal: timeoutSignal(deps.requestTimeoutMs, deps.abortSignal),
+              providerOptions: sharedProviderOptions,
+              structuredOutput: {
+                schema: finalDecisionSchema,
+                jsonPromptInjection: true,
+                providerOptions: sharedProviderOptions
+              }
+            }),
+          deps.abortSignal,
+          "chooseFinalAction"
+        );
+        if (!result) {
+          // 最終判断に失敗した場合は候補の先頭(技・交代優先)をそのまま採用する。
+          // 選出フェーズの整形やphaseガードは後段のguardAdviceStepが修復する。
+          const fallbackAction =
+            inputData.candidates.find((candidate) => candidate.kind === "move" || candidate.kind === "switch") ??
+            inputData.candidates[0] ?? {
+              kind: "note" as const,
+              command: "状況確認",
+              reason: "最終判断に失敗したため、いまの盤面の確認として扱います。",
+              risk: "もう一度盤面を教えてもらえると次の一手を出せます。",
+              confidence: "low" as const
+            };
+          const advice: AdviceResult = {
+            updatedState: normalizeBattleState(inputData.updatedState),
+            action: fallbackAction,
+            speech:
+              fallbackAction.kind === "note"
+                ? "うまく判断をまとめられなかったので、もう一度いまの盤面を教えてください。"
+                : battleSpeechForAction(fallbackAction),
+            memo: fallbackAction.reason
+          };
+          return {
+            ...inputData,
+            advice,
+            decisionToolCalls: []
+          };
+        }
         const decision = finalDecisionSchema.parse(result.object);
         const selectedFromCommand = extractCommandOwnNames(decision.action.command, inputData.updatedState.ownTeam.map((pokemon) => pokemon.name));
         const selectedOwnPokemon = decision.selectedOwnPokemon?.length === 3 ? decision.selectedOwnPokemon : selectedFromCommand;

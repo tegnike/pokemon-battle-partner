@@ -17,6 +17,8 @@
     "typecheck": "tsc --noEmit",
     "test": "npm run test:knowledge && npm run test:speed && npm run test:champions-data && npm run test:field-status && npm run test:phase",
     "test:phase": "tsx tests/phase-regression.test.mjs",
+    "test:integration": "tsx tests/integration/battle-replay.integration.mjs",
+    "fixtures:replays": "tsx scripts/export-battle-replay-fixtures.ts",
     "test:knowledge": "node tests/knowledge-files.test.mjs",
     "test:speed": "tsx tests/speed-comparison.test.mjs",
     "test:champions-data": "node tests/champions-data.test.mjs",

@@ -19,6 +19,7 @@
 
 - `@pkmn/dex` / `@pkmn/data`: 種族、タイプ、種族値、特性、技、持ち物、性格などのGen 9基礎データ
 - `scripts/generate-champions-data.ts`: Pokemon Champions向けに必要な項目だけを抽出し、日本語音声入力用aliasとmetadataを付与
+- `scripts/import-pokemon-ja-aliases.ts`: PokeAPIの種族多言語名から、日本語ポケモン名aliasを取り込み
 - [src/champions/statCalc.ts](/Users/user/WorkSpace/pokemon-battle-partner/src/champions/statCalc.ts): Pokemon Champions想定のレベル50・能力ポイント式で実数値を計算
 - [src/mastra/damage.ts](/Users/user/WorkSpace/pokemon-battle-partner/src/mastra/damage.ts): ローカルの簡易ダメージ計算。現状は必要最小限のタイプ相性・能力計算を使う補助情報です
 
@@ -60,6 +61,24 @@ PORT=8790 npm run dev:server
 VITE_API_PROXY_TARGET=http://127.0.0.1:8790 npm run dev:client -- --port 5178
 ```
 
+## AITuberKit発話連携
+
+生成した `speech` は、任意で `~/WorkSpace/aituber-kit` の API に送信してキャラクターへ喋らせられます。
+
+このアプリは AITuberKit の `POST /api/v1/speak` を使います。外部連携モード（WebSocket）は、AITuberKit側が外部サーバーへ入力を送って応答を受ける用途のため、すでにこのアプリで生成済みのセリフをそのまま発話させる用途には API の direct speak が適しています。
+
+設定:
+
+```bash
+AITUBERKIT_BASE_URL=http://127.0.0.1:3000
+AITUBERKIT_API_KEY=...
+AITUBERKIT_CLIENT_ID=...
+AITUBERKIT_SPEAK_INTERRUPT=true
+AITUBERKIT_SPEAK_PRIORITY=high
+```
+
+`AITUBERKIT_API_KEY` と `AITUBERKIT_CLIENT_ID` が未設定の場合、相談結果の生成だけ行い、発話送信はスキップします。AITuberKit側では、API操作の受付を有効化し、同じAPIキーとClient IDを設定してください。
+
 ## 参照する構築文書
 
 起動時に `/Users/user/WorkSpace/nikechan/docs/pokemon-champions-ai-team.md` を読み込み、判断プロンプトに含めます。
@@ -98,6 +117,7 @@ VITE_API_PROXY_TARGET=http://127.0.0.1:8790 npm run dev:client -- --port 5178
 - `abilities.json` — 特性
 - `items.json` — 持ち物
 - `natures.json` — 性格補正
+- `pokemon-ja-aliases.json` — PokeAPIから取り込んだ日本語ポケモン名alias
 - `ja-aliases.json` — 日本語音声入力をShowdown IDへ寄せるalias
 - `metadata.json` — 生成元とChampions用ステータス計算ルール
 
@@ -108,9 +128,9 @@ Champions用ステータス計算は [src/champions/statCalc.ts](/Users/user/Wor
 - レベル50固定
 - 個体値は廃止扱いで31固定として計算
 - 能力ポイントは各能力最大32、合計66
-- 能力ポイント1につきレベル50実数値がおおむね1上がる形で `statPoints * 2` を式へ入れる
+- 実数値は `HP = 種族値 + 75 + 能力ポイント`、HP以外は `floor((種族値 + 20 + 能力ポイント) * 性格補正)` と同等になるように計算
 
-日本語名aliasは初期状態では現構築と想定上位相手中心です。未登録名が出た場合は `scripts/generate-champions-data.ts` のaliasへ追加して再生成します。
+ポケモン日本語名aliasは PokeAPI の `pokemon_species_names.csv` をローカルに取り込み、通常種族名を一括対応します。メガシンカ、リージョンフォーム、特殊フォームなどのフォーム名は、必要に応じて `scripts/generate-champions-data.ts` の手動aliasで補完します。
 
 ## Pokemon Champions ポケモン別ナレッジ
 

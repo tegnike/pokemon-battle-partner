@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "pokemon-battle-partner-server",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "PORT=8790 npm run dev:server"],
+      "port": 8790
+    },
+    {
+      "name": "pokemon-battle-partner-client",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "VITE_API_PROXY_TARGET=http://127.0.0.1:8790 npm run dev:client -- --port 5178"],
+      "port": 5178
+    }
+  ]
+}

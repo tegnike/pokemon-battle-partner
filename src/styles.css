@@ -301,6 +301,20 @@ main > * {
   color: #6b4e12;
 }
 
+.voice-delivery {
+  margin: -5px 0 0;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.voice-delivery.ok {
+  color: #0d7d72;
+}
+
+.voice-delivery.warn {
+  color: #8a6a2f;
+}
+
 .advice-reason,
 .advice-risk {
   display: flex;

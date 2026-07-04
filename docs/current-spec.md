@@ -151,6 +151,7 @@ data/champions/moves.json
 data/champions/abilities.json
 data/champions/items.json
 data/champions/natures.json
+data/champions/pokemon-ja-aliases.json
 data/champions/ja-aliases.json
 ```
 
@@ -162,6 +163,7 @@ npm run data:champions:refresh # 外部のChampions可用性・日本語技名al
 ```
 
 対戦中は外部APIを叩かず、ローカルデータを使う。タイプ、特性、種族値、技威力、技タイプはこのデータを優先する。LLMの古い一般知識よりローカルデータを優先する。
+ポケモン日本語名は `data/champions/pokemon-ja-aliases.json` の通常種族名と手動補正をマージして `ja-aliases.json` に保存する。メガシンカ、リージョンフォーム、特殊フォームなどのフォーム名は手動補正で補う。
 `moves.json` は `@pkmn/dex` Gen 9 の技データを土台にし、`data/champions/move-availability.json` から `usableInChampions` を付与する。`true` はChampionsで使用可能、`false` はChampionsで使用不可、`null` は可用性表に存在しない未確認技を表す。技データ自体は削らず、対戦判断では使用可能フラグを優先材料として扱う。
 日本語技名は `data/champions/move-ja-aliases.json` と手動補正をマージして `ja-aliases.json` に保存する。
 `moves.json` には技の `secondary` / `secondaries` / `boosts` / `self` などの追加効果も保存する。対戦ログから実際に使われた技が分かり、かつ追加効果が100%発動する能力変化・状態異常の場合だけ、deterministic に `statChanges` / `statuses` へ反映する。ランダム追加効果は自動確定しない。
@@ -234,6 +236,7 @@ data/knowledge/pokemon/gengar.md
 - Champions用ステータス計算
 - 個体値は廃止扱いだが、計算上は31固定
 - 能力ポイントは各能力最大32、合計66
+- 実数値は `HP = 種族値 + 75 + 能力ポイント`、HP以外は `floor((種族値 + 20 + 能力ポイント) * 性格補正)` 相当
 - タイプ相性は現状必要分から拡張していく
 
 対戦中は、自分の現在場ポケモンの技を相手現在場ポケモンへ当てた簡易ダメージを候補生成に使う。ゲンガー対ガブリアスのようなケースでは、`じしん` が通るかをローカルデータとダメ計で判断する。
@@ -346,6 +349,19 @@ LLM出力を返す前に deterministic guard を通す。
 - `workflowTrace`
 
 `speech` は音声再生向けのAIニケちゃんの自然文。
+
+AITuberKit連携を設定している場合、サーバーは相談結果の保存後に `speech` を AITuberKit の `POST /api/v1/speak` へ送る。外部連携モード（WebSocket）はAITuberKit側から外部サーバーへ入力を渡して応答を受ける用途なので、このアプリで生成済みのセリフを喋らせる用途ではAPI direct speakを使う。
+
+発話送信の環境変数:
+
+- `AITUBERKIT_BASE_URL` default `http://127.0.0.1:3000`
+- `AITUBERKIT_API_KEY`
+- `AITUBERKIT_CLIENT_ID`
+- `AITUBERKIT_SPEAK_INTERRUPT` default `true`
+- `AITUBERKIT_SPEAK_PRIORITY` default `high`
+- `AITUBERKIT_SPEAK_TIMEOUT_MS` default `3000`
+
+`AITUBERKIT_API_KEY` と `AITUBERKIT_CLIENT_ID` が未設定の場合は、相談結果の生成・保存を続け、発話送信だけスキップする。AITuberKit送信の結果は `/api/advise` の `voiceDelivery` に含める。
 
 履歴表示と `history.action` は一言ラベルを優先する。会話・理由説明などの長文は `選出理由` / `理由説明` / `状況確認` / `会話` のように短縮し、詳細は `memo` に残す。
 

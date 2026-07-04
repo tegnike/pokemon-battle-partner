@@ -66,6 +66,15 @@ function adviceActionLabel(advice: AdviceResult | null): string {
   return compactActionLabel(advice.action.command, `${advice.action.reason}\n${advice.memo}`);
 }
 
+function voiceDeliveryLabel(advice: AdviceResult | null): string {
+  const delivery = advice?.voiceDelivery;
+  if (!delivery) return "";
+  if (delivery.ok) return "AITuberKitへ発話送信済み";
+  if (delivery.skipped && !delivery.enabled) return "AITuberKit発話は未設定";
+  if (delivery.skipped) return delivery.message;
+  return "AITuberKit発話送信に失敗";
+}
+
 // 履歴チップの色分け（試作版と同じ配色）
 function historyChipClass(label: string): string {
   if (label.includes("選出")) return "sel";
@@ -630,6 +639,7 @@ export default function App() {
   const activeOppMon = state.opponentTeam.find((pokemon) => pokemon.active) ?? null;
   const adviceBusy = busy === "判断中";
   const adviceLabel = adviceActionLabel(advice);
+  const deliveryLabel = voiceDeliveryLabel(advice);
   const consultationDisabled = Boolean(busy) || recording || !transcript.trim();
   const statusSummary = summarizeBattleStatus(state);
 
@@ -696,6 +706,11 @@ export default function App() {
             </div>
           </div>
           <p className="speech">{advice?.speech ?? "入力後、選出相談か対戦相談を選んでください。"}</p>
+          {deliveryLabel && (
+            <p className={`voice-delivery ${advice?.voiceDelivery?.ok ? "ok" : "warn"}`} title={advice?.voiceDelivery?.error}>
+              {deliveryLabel}
+            </p>
+          )}
           {advice?.action.reason && (
             <div className="advice-reason">
               <span>理由</span>

@@ -8,11 +8,18 @@
     "dev:client": "vite --host 127.0.0.1",
     "dev:server": "tsx watch server/index.ts",
     "data:champions": "tsx scripts/generate-champions-data.ts",
+    "data:champions:refresh": "npm run data:champions:availability && npm run data:champions:move-ja-aliases && npm run data:champions:pokemon-ja-aliases && npm run data:champions",
+    "data:champions:availability": "tsx scripts/import-champions-move-availability.ts",
+    "data:champions:move-ja-aliases": "tsx scripts/import-move-ja-aliases.ts",
+    "data:champions:pokemon-ja-aliases": "tsx scripts/import-pokemon-ja-aliases.ts",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "typecheck": "tsc --noEmit",
-    "test": "npm run test:knowledge",
-    "test:knowledge": "node tests/knowledge-files.test.mjs"
+    "test": "npm run test:knowledge && npm run test:speed && npm run test:champions-data && npm run test:field-status",
+    "test:knowledge": "node tests/knowledge-files.test.mjs",
+    "test:speed": "tsx tests/speed-comparison.test.mjs",
+    "test:champions-data": "node tests/champions-data.test.mjs",
+    "test:field-status": "tsx tests/field-status.test.mjs"
   },
   "dependencies": {
     "@ai-sdk/openai": "^4.0.4",

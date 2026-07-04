@@ -1,16 +1,3087 @@
 {
   "pokemon": {
+    "bulbasaur": [
+      "フシギダネ"
+    ],
+    "ivysaur": [
+      "フシギソウ"
+    ],
+    "venusaur": [
+      "フシギバナ"
+    ],
+    "charmander": [
+      "ヒトカゲ"
+    ],
+    "charmeleon": [
+      "リザード"
+    ],
+    "charizard": [
+      "リザードン"
+    ],
+    "squirtle": [
+      "ゼニガメ"
+    ],
+    "wartortle": [
+      "カメール"
+    ],
+    "blastoise": [
+      "カメックス"
+    ],
+    "caterpie": [
+      "キャタピー"
+    ],
+    "metapod": [
+      "トランセル"
+    ],
+    "butterfree": [
+      "バタフリー"
+    ],
+    "weedle": [
+      "ビードル"
+    ],
+    "kakuna": [
+      "コクーン"
+    ],
+    "beedrill": [
+      "スピアー"
+    ],
+    "pidgey": [
+      "ポッポ"
+    ],
+    "pidgeotto": [
+      "ピジョン"
+    ],
+    "pidgeot": [
+      "ピジョット"
+    ],
+    "rattata": [
+      "コラッタ"
+    ],
+    "raticate": [
+      "ラッタ"
+    ],
+    "spearow": [
+      "オニスズメ"
+    ],
+    "fearow": [
+      "オニドリル"
+    ],
+    "ekans": [
+      "アーボ"
+    ],
+    "arbok": [
+      "アーボック"
+    ],
+    "pikachu": [
+      "ピカチュウ"
+    ],
+    "raichu": [
+      "ライチュウ"
+    ],
+    "sandshrew": [
+      "サンド"
+    ],
+    "sandslash": [
+      "サンドパン"
+    ],
+    "nidoranf": [
+      "ニドラン♀"
+    ],
+    "nidorina": [
+      "ニドリーナ"
+    ],
+    "nidoqueen": [
+      "ニドクイン"
+    ],
+    "nidoranm": [
+      "ニドラン♂"
+    ],
+    "nidorino": [
+      "ニドリーノ"
+    ],
+    "nidoking": [
+      "ニドキング"
+    ],
+    "clefairy": [
+      "ピッピ"
+    ],
+    "clefable": [
+      "ピクシー"
+    ],
+    "vulpix": [
+      "ロコン"
+    ],
+    "ninetales": [
+      "キュウコン"
+    ],
+    "jigglypuff": [
+      "プリン"
+    ],
+    "wigglytuff": [
+      "プクリン"
+    ],
+    "zubat": [
+      "ズバット"
+    ],
+    "golbat": [
+      "ゴルバット"
+    ],
+    "oddish": [
+      "ナゾノクサ"
+    ],
+    "gloom": [
+      "クサイハナ"
+    ],
+    "vileplume": [
+      "ラフレシア"
+    ],
+    "paras": [
+      "パラス"
+    ],
+    "parasect": [
+      "パラセクト"
+    ],
+    "venonat": [
+      "コンパン"
+    ],
+    "venomoth": [
+      "モルフォン"
+    ],
+    "diglett": [
+      "ディグダ"
+    ],
+    "dugtrio": [
+      "ダグトリオ"
+    ],
+    "meowth": [
+      "ニャース"
+    ],
+    "persian": [
+      "ペルシアン"
+    ],
+    "psyduck": [
+      "コダック"
+    ],
+    "golduck": [
+      "ゴルダック"
+    ],
+    "mankey": [
+      "マンキー"
+    ],
+    "primeape": [
+      "オコリザル"
+    ],
+    "growlithe": [
+      "ガーディ"
+    ],
+    "arcanine": [
+      "ウインディ"
+    ],
+    "poliwag": [
+      "ニョロモ"
+    ],
+    "poliwhirl": [
+      "ニョロゾ"
+    ],
+    "poliwrath": [
+      "ニョロボン"
+    ],
+    "abra": [
+      "ケーシィ"
+    ],
+    "kadabra": [
+      "ユンゲラー"
+    ],
+    "alakazam": [
+      "フーディン"
+    ],
+    "machop": [
+      "ワンリキー"
+    ],
+    "machoke": [
+      "ゴーリキー"
+    ],
+    "machamp": [
+      "カイリキー"
+    ],
+    "bellsprout": [
+      "マダツボミ"
+    ],
+    "weepinbell": [
+      "ウツドン"
+    ],
+    "victreebel": [
+      "ウツボット"
+    ],
+    "tentacool": [
+      "メノクラゲ"
+    ],
+    "tentacruel": [
+      "ドククラゲ"
+    ],
+    "geodude": [
+      "イシツブテ"
+    ],
+    "graveler": [
+      "ゴローン"
+    ],
+    "golem": [
+      "ゴローニャ"
+    ],
+    "ponyta": [
+      "ポニータ"
+    ],
+    "rapidash": [
+      "ギャロップ"
+    ],
+    "slowpoke": [
+      "ヤドン"
+    ],
+    "slowbro": [
+      "ヤドラン"
+    ],
+    "magnemite": [
+      "コイル"
+    ],
+    "magneton": [
+      "レアコイル"
+    ],
+    "farfetchd": [
+      "カモネギ"
+    ],
+    "doduo": [
+      "ドードー"
+    ],
+    "dodrio": [
+      "ドードリオ"
+    ],
+    "seel": [
+      "パウワウ"
+    ],
+    "dewgong": [
+      "ジュゴン"
+    ],
+    "grimer": [
+      "ベトベター"
+    ],
+    "muk": [
+      "ベトベトン"
+    ],
+    "shellder": [
+      "シェルダー"
+    ],
+    "cloyster": [
+      "パルシェン"
+    ],
+    "gastly": [
+      "ゴース"
+    ],
+    "haunter": [
+      "ゴースト"
+    ],
+    "gengar": [
+      "ゲンガー"
+    ],
+    "onix": [
+      "イワーク"
+    ],
+    "drowzee": [
+      "スリープ"
+    ],
+    "hypno": [
+      "スリーパー"
+    ],
+    "krabby": [
+      "クラブ"
+    ],
+    "kingler": [
+      "キングラー"
+    ],
+    "voltorb": [
+      "ビリリダマ"
+    ],
+    "electrode": [
+      "マルマイン"
+    ],
+    "exeggcute": [
+      "タマタマ"
+    ],
+    "exeggutor": [
+      "ナッシー"
+    ],
+    "cubone": [
+      "カラカラ"
+    ],
+    "marowak": [
+      "ガラガラ"
+    ],
+    "hitmonlee": [
+      "サワムラー"
+    ],
+    "hitmonchan": [
+      "エビワラー"
+    ],
+    "lickitung": [
+      "ベロリンガ"
+    ],
+    "koffing": [
+      "ドガース"
+    ],
+    "weezing": [
+      "マタドガス"
+    ],
+    "rhyhorn": [
+      "サイホーン"
+    ],
+    "rhydon": [
+      "サイドン"
+    ],
+    "chansey": [
+      "ラッキー"
+    ],
+    "tangela": [
+      "モンジャラ"
+    ],
+    "kangaskhan": [
+      "ガルーラ"
+    ],
+    "horsea": [
+      "タッツー"
+    ],
+    "seadra": [
+      "シードラ"
+    ],
+    "goldeen": [
+      "トサキント"
+    ],
+    "seaking": [
+      "アズマオウ"
+    ],
+    "staryu": [
+      "ヒトデマン"
+    ],
+    "starmie": [
+      "スターミー"
+    ],
+    "mrmime": [
+      "バリヤード"
+    ],
+    "scyther": [
+      "ストライク"
+    ],
+    "jynx": [
+      "ルージュラ"
+    ],
+    "electabuzz": [
+      "エレブー"
+    ],
+    "magmar": [
+      "ブーバー"
+    ],
+    "pinsir": [
+      "カイロス"
+    ],
+    "tauros": [
+      "ケンタロス"
+    ],
+    "magikarp": [
+      "コイキング"
+    ],
+    "gyarados": [
+      "ギャラドス"
+    ],
+    "lapras": [
+      "ラプラス"
+    ],
+    "ditto": [
+      "メタモン"
+    ],
+    "eevee": [
+      "イーブイ"
+    ],
+    "vaporeon": [
+      "シャワーズ"
+    ],
+    "jolteon": [
+      "サンダース"
+    ],
+    "flareon": [
+      "ブースター"
+    ],
+    "porygon": [
+      "ポリゴン"
+    ],
+    "omanyte": [
+      "オムナイト"
+    ],
+    "omastar": [
+      "オムスター"
+    ],
+    "kabuto": [
+      "カブト"
+    ],
+    "kabutops": [
+      "カブトプス"
+    ],
+    "aerodactyl": [
+      "プテラ"
+    ],
+    "snorlax": [
+      "カビゴン"
+    ],
+    "articuno": [
+      "フリーザー"
+    ],
+    "zapdos": [
+      "サンダー"
+    ],
+    "moltres": [
+      "ファイヤー"
+    ],
+    "dratini": [
+      "ミニリュウ"
+    ],
+    "dragonair": [
+      "ハクリュー"
+    ],
+    "dragonite": [
+      "カイリュー"
+    ],
+    "mewtwo": [
+      "ミュウツー"
+    ],
+    "mew": [
+      "ミュウ"
+    ],
+    "chikorita": [
+      "チコリータ"
+    ],
+    "bayleef": [
+      "ベイリーフ"
+    ],
+    "meganium": [
+      "メガニウム"
+    ],
+    "cyndaquil": [
+      "ヒノアラシ"
+    ],
+    "quilava": [
+      "マグマラシ"
+    ],
+    "typhlosion": [
+      "バクフーン"
+    ],
+    "totodile": [
+      "ワニノコ"
+    ],
+    "croconaw": [
+      "アリゲイツ"
+    ],
+    "feraligatr": [
+      "オーダイル"
+    ],
+    "sentret": [
+      "オタチ"
+    ],
+    "furret": [
+      "オオタチ"
+    ],
+    "hoothoot": [
+      "ホーホー"
+    ],
+    "noctowl": [
+      "ヨルノズク"
+    ],
+    "ledyba": [
+      "レディバ"
+    ],
+    "ledian": [
+      "レディアン"
+    ],
+    "spinarak": [
+      "イトマル"
+    ],
+    "ariados": [
+      "アリアドス"
+    ],
+    "crobat": [
+      "クロバット"
+    ],
+    "chinchou": [
+      "チョンチー"
+    ],
+    "lanturn": [
+      "ランターン"
+    ],
+    "pichu": [
+      "ピチュー"
+    ],
+    "cleffa": [
+      "ピィ"
+    ],
+    "igglybuff": [
+      "ププリン"
+    ],
+    "togepi": [
+      "トゲピー"
+    ],
+    "togetic": [
+      "トゲチック"
+    ],
+    "natu": [
+      "ネイティ"
+    ],
+    "xatu": [
+      "ネイティオ"
+    ],
+    "mareep": [
+      "メリープ"
+    ],
+    "flaaffy": [
+      "モココ"
+    ],
+    "ampharos": [
+      "デンリュウ"
+    ],
+    "bellossom": [
+      "キレイハナ"
+    ],
+    "marill": [
+      "マリル"
+    ],
+    "azumarill": [
+      "マリルリ"
+    ],
+    "sudowoodo": [
+      "ウソッキー"
+    ],
+    "politoed": [
+      "ニョロトノ"
+    ],
+    "hoppip": [
+      "ハネッコ"
+    ],
+    "skiploom": [
+      "ポポッコ"
+    ],
+    "jumpluff": [
+      "ワタッコ"
+    ],
+    "aipom": [
+      "エイパム"
+    ],
+    "sunkern": [
+      "ヒマナッツ"
+    ],
+    "sunflora": [
+      "キマワリ"
+    ],
+    "yanma": [
+      "ヤンヤンマ"
+    ],
+    "wooper": [
+      "ウパー"
+    ],
+    "quagsire": [
+      "ヌオー"
+    ],
+    "espeon": [
+      "エーフィ"
+    ],
+    "umbreon": [
+      "ブラッキー"
+    ],
+    "murkrow": [
+      "ヤミカラス"
+    ],
+    "slowking": [
+      "ヤドキング"
+    ],
+    "misdreavus": [
+      "ムウマ"
+    ],
+    "unown": [
+      "アンノーン"
+    ],
+    "wobbuffet": [
+      "ソーナンス"
+    ],
+    "girafarig": [
+      "キリンリキ"
+    ],
+    "pineco": [
+      "クヌギダマ"
+    ],
+    "forretress": [
+      "フォレトス"
+    ],
+    "dunsparce": [
+      "ノコッチ"
+    ],
+    "gligar": [
+      "グライガー"
+    ],
+    "steelix": [
+      "ハガネール"
+    ],
+    "snubbull": [
+      "ブルー"
+    ],
+    "granbull": [
+      "グランブル"
+    ],
+    "qwilfish": [
+      "ハリーセン"
+    ],
+    "scizor": [
+      "ハッサム"
+    ],
+    "shuckle": [
+      "ツボツボ"
+    ],
+    "heracross": [
+      "ヘラクロス"
+    ],
+    "sneasel": [
+      "ニューラ"
+    ],
+    "teddiursa": [
+      "ヒメグマ"
+    ],
+    "ursaring": [
+      "リングマ"
+    ],
+    "slugma": [
+      "マグマッグ"
+    ],
+    "magcargo": [
+      "マグカルゴ"
+    ],
+    "swinub": [
+      "ウリムー"
+    ],
+    "piloswine": [
+      "イノムー"
+    ],
+    "corsola": [
+      "サニーゴ"
+    ],
+    "remoraid": [
+      "テッポウオ"
+    ],
+    "octillery": [
+      "オクタン"
+    ],
+    "delibird": [
+      "デリバード"
+    ],
+    "mantine": [
+      "マンタイン"
+    ],
+    "skarmory": [
+      "エアームド"
+    ],
+    "houndour": [
+      "デルビル"
+    ],
+    "houndoom": [
+      "ヘルガー"
+    ],
+    "kingdra": [
+      "キングドラ"
+    ],
+    "phanpy": [
+      "ゴマゾウ"
+    ],
+    "donphan": [
+      "ドンファン"
+    ],
+    "porygon2": [
+      "ポリゴン２"
+    ],
+    "stantler": [
+      "オドシシ"
+    ],
+    "smeargle": [
+      "ドーブル"
+    ],
+    "tyrogue": [
+      "バルキー"
+    ],
+    "hitmontop": [
+      "カポエラー"
+    ],
+    "smoochum": [
+      "ムチュール"
+    ],
+    "elekid": [
+      "エレキッド"
+    ],
+    "magby": [
+      "ブビィ"
+    ],
+    "miltank": [
+      "ミルタンク"
+    ],
+    "blissey": [
+      "ハピナス"
+    ],
+    "raikou": [
+      "ライコウ"
+    ],
+    "entei": [
+      "エンテイ"
+    ],
+    "suicune": [
+      "スイクン"
+    ],
+    "larvitar": [
+      "ヨーギラス"
+    ],
+    "pupitar": [
+      "サナギラス"
+    ],
+    "tyranitar": [
+      "バンギラス"
+    ],
+    "lugia": [
+      "ルギア"
+    ],
+    "hooh": [
+      "ホウオウ"
+    ],
+    "celebi": [
+      "セレビィ"
+    ],
+    "treecko": [
+      "キモリ"
+    ],
+    "grovyle": [
+      "ジュプトル"
+    ],
+    "sceptile": [
+      "ジュカイン"
+    ],
+    "torchic": [
+      "アチャモ"
+    ],
+    "combusken": [
+      "ワカシャモ"
+    ],
+    "blaziken": [
+      "バシャーモ"
+    ],
+    "mudkip": [
+      "ミズゴロウ"
+    ],
+    "marshtomp": [
+      "ヌマクロー"
+    ],
+    "swampert": [
+      "ラグラージ"
+    ],
+    "poochyena": [
+      "ポチエナ"
+    ],
+    "mightyena": [
+      "グラエナ"
+    ],
+    "zigzagoon": [
+      "ジグザグマ"
+    ],
+    "linoone": [
+      "マッスグマ"
+    ],
+    "wurmple": [
+      "ケムッソ"
+    ],
+    "silcoon": [
+      "カラサリス"
+    ],
+    "beautifly": [
+      "アゲハント"
+    ],
+    "cascoon": [
+      "マユルド"
+    ],
+    "dustox": [
+      "ドクケイル"
+    ],
+    "lotad": [
+      "ハスボー"
+    ],
+    "lombre": [
+      "ハスブレロ"
+    ],
+    "ludicolo": [
+      "ルンパッパ"
+    ],
+    "seedot": [
+      "タネボー"
+    ],
+    "nuzleaf": [
+      "コノハナ"
+    ],
+    "shiftry": [
+      "ダーテング"
+    ],
+    "taillow": [
+      "スバメ"
+    ],
+    "swellow": [
+      "オオスバメ"
+    ],
+    "wingull": [
+      "キャモメ"
+    ],
+    "pelipper": [
+      "ペリッパー"
+    ],
+    "ralts": [
+      "ラルトス"
+    ],
+    "kirlia": [
+      "キルリア"
+    ],
+    "gardevoir": [
+      "サーナイト"
+    ],
+    "surskit": [
+      "アメタマ"
+    ],
+    "masquerain": [
+      "アメモース"
+    ],
+    "shroomish": [
+      "キノココ"
+    ],
+    "breloom": [
+      "キノガッサ"
+    ],
+    "slakoth": [
+      "ナマケロ"
+    ],
+    "vigoroth": [
+      "ヤルキモノ"
+    ],
+    "slaking": [
+      "ケッキング"
+    ],
+    "nincada": [
+      "ツチニン"
+    ],
+    "ninjask": [
+      "テッカニン"
+    ],
+    "shedinja": [
+      "ヌケニン"
+    ],
+    "whismur": [
+      "ゴニョニョ"
+    ],
+    "loudred": [
+      "ドゴーム"
+    ],
+    "exploud": [
+      "バクオング"
+    ],
+    "makuhita": [
+      "マクノシタ"
+    ],
+    "hariyama": [
+      "ハリテヤマ"
+    ],
+    "azurill": [
+      "ルリリ"
+    ],
+    "nosepass": [
+      "ノズパス"
+    ],
+    "skitty": [
+      "エネコ"
+    ],
+    "delcatty": [
+      "エネコロロ"
+    ],
+    "sableye": [
+      "ヤミラミ"
+    ],
+    "mawile": [
+      "クチート"
+    ],
+    "aron": [
+      "ココドラ"
+    ],
+    "lairon": [
+      "コドラ"
+    ],
+    "aggron": [
+      "ボスゴドラ"
+    ],
+    "meditite": [
+      "アサナン"
+    ],
+    "medicham": [
+      "チャーレム"
+    ],
+    "electrike": [
+      "ラクライ"
+    ],
+    "manectric": [
+      "ライボルト"
+    ],
+    "plusle": [
+      "プラスル"
+    ],
+    "minun": [
+      "マイナン"
+    ],
+    "volbeat": [
+      "バルビート"
+    ],
+    "illumise": [
+      "イルミーゼ"
+    ],
+    "roselia": [
+      "ロゼリア"
+    ],
+    "gulpin": [
+      "ゴクリン"
+    ],
+    "swalot": [
+      "マルノーム"
+    ],
+    "carvanha": [
+      "キバニア"
+    ],
+    "sharpedo": [
+      "サメハダー"
+    ],
+    "wailmer": [
+      "ホエルコ"
+    ],
+    "wailord": [
+      "ホエルオー"
+    ],
+    "numel": [
+      "ドンメル"
+    ],
+    "camerupt": [
+      "バクーダ"
+    ],
+    "torkoal": [
+      "コータス"
+    ],
+    "spoink": [
+      "バネブー"
+    ],
+    "grumpig": [
+      "ブーピッグ"
+    ],
+    "spinda": [
+      "パッチール"
+    ],
+    "trapinch": [
+      "ナックラー"
+    ],
+    "vibrava": [
+      "ビブラーバ"
+    ],
+    "flygon": [
+      "フライゴン"
+    ],
+    "cacnea": [
+      "サボネア"
+    ],
+    "cacturne": [
+      "ノクタス"
+    ],
+    "swablu": [
+      "チルット"
+    ],
+    "altaria": [
+      "チルタリス"
+    ],
+    "zangoose": [
+      "ザングース"
+    ],
+    "seviper": [
+      "ハブネーク"
+    ],
+    "lunatone": [
+      "ルナトーン"
+    ],
+    "solrock": [
+      "ソルロック"
+    ],
+    "barboach": [
+      "ドジョッチ"
+    ],
+    "whiscash": [
+      "ナマズン"
+    ],
+    "corphish": [
+      "ヘイガニ"
+    ],
+    "crawdaunt": [
+      "シザリガー"
+    ],
+    "baltoy": [
+      "ヤジロン"
+    ],
+    "claydol": [
+      "ネンドール"
+    ],
+    "lileep": [
+      "リリーラ"
+    ],
+    "cradily": [
+      "ユレイドル"
+    ],
+    "anorith": [
+      "アノプス"
+    ],
+    "armaldo": [
+      "アーマルド"
+    ],
+    "feebas": [
+      "ヒンバス"
+    ],
+    "milotic": [
+      "ミロカロス"
+    ],
+    "castform": [
+      "ポワルン"
+    ],
+    "kecleon": [
+      "カクレオン"
+    ],
+    "shuppet": [
+      "カゲボウズ"
+    ],
+    "banette": [
+      "ジュペッタ"
+    ],
+    "duskull": [
+      "ヨマワル"
+    ],
+    "dusclops": [
+      "サマヨール"
+    ],
+    "tropius": [
+      "トロピウス"
+    ],
+    "chimecho": [
+      "チリーン"
+    ],
+    "absol": [
+      "アブソル"
+    ],
+    "wynaut": [
+      "ソーナノ"
+    ],
+    "snorunt": [
+      "ユキワラシ"
+    ],
+    "glalie": [
+      "オニゴーリ"
+    ],
+    "spheal": [
+      "タマザラシ"
+    ],
+    "sealeo": [
+      "トドグラー"
+    ],
+    "walrein": [
+      "トドゼルガ"
+    ],
+    "clamperl": [
+      "パールル"
+    ],
+    "huntail": [
+      "ハンテール"
+    ],
+    "gorebyss": [
+      "サクラビス"
+    ],
+    "relicanth": [
+      "ジーランス"
+    ],
+    "luvdisc": [
+      "ラブカス"
+    ],
+    "bagon": [
+      "タツベイ"
+    ],
+    "shelgon": [
+      "コモルー"
+    ],
+    "salamence": [
+      "ボーマンダ"
+    ],
+    "beldum": [
+      "ダンバル"
+    ],
+    "metang": [
+      "メタング"
+    ],
+    "metagross": [
+      "メタグロス"
+    ],
+    "regirock": [
+      "レジロック"
+    ],
+    "regice": [
+      "レジアイス"
+    ],
+    "registeel": [
+      "レジスチル"
+    ],
+    "latias": [
+      "ラティアス"
+    ],
+    "latios": [
+      "ラティオス"
+    ],
+    "kyogre": [
+      "カイオーガ"
+    ],
+    "groudon": [
+      "グラードン"
+    ],
+    "rayquaza": [
+      "レックウザ"
+    ],
+    "jirachi": [
+      "ジラーチ"
+    ],
+    "deoxys": [
+      "デオキシス"
+    ],
+    "turtwig": [
+      "ナエトル"
+    ],
+    "grotle": [
+      "ハヤシガメ"
+    ],
+    "torterra": [
+      "ドダイトス"
+    ],
+    "chimchar": [
+      "ヒコザル"
+    ],
+    "monferno": [
+      "モウカザル"
+    ],
+    "infernape": [
+      "ゴウカザル"
+    ],
+    "piplup": [
+      "ポッチャマ"
+    ],
+    "prinplup": [
+      "ポッタイシ"
+    ],
+    "empoleon": [
+      "エンペルト"
+    ],
+    "starly": [
+      "ムックル"
+    ],
+    "staravia": [
+      "ムクバード"
+    ],
+    "staraptor": [
+      "ムクホーク"
+    ],
+    "bidoof": [
+      "ビッパ"
+    ],
+    "bibarel": [
+      "ビーダル"
+    ],
+    "kricketot": [
+      "コロボーシ"
+    ],
+    "kricketune": [
+      "コロトック"
+    ],
+    "shinx": [
+      "コリンク"
+    ],
+    "luxio": [
+      "ルクシオ"
+    ],
+    "luxray": [
+      "レントラー"
+    ],
+    "budew": [
+      "スボミー"
+    ],
+    "roserade": [
+      "ロズレイド"
+    ],
+    "cranidos": [
+      "ズガイドス"
+    ],
+    "rampardos": [
+      "ラムパルド"
+    ],
+    "shieldon": [
+      "タテトプス"
+    ],
+    "bastiodon": [
+      "トリデプス"
+    ],
+    "burmy": [
+      "ミノムッチ"
+    ],
+    "wormadam": [
+      "ミノマダム"
+    ],
+    "mothim": [
+      "ガーメイル"
+    ],
+    "combee": [
+      "ミツハニー"
+    ],
+    "vespiquen": [
+      "ビークイン"
+    ],
+    "pachirisu": [
+      "パチリス"
+    ],
+    "buizel": [
+      "ブイゼル"
+    ],
+    "floatzel": [
+      "フローゼル"
+    ],
+    "cherubi": [
+      "チェリンボ"
+    ],
+    "cherrim": [
+      "チェリム"
+    ],
+    "shellos": [
+      "カラナクシ"
+    ],
+    "gastrodon": [
+      "トリトドン"
+    ],
+    "ambipom": [
+      "エテボース"
+    ],
+    "drifloon": [
+      "フワンテ"
+    ],
+    "drifblim": [
+      "フワライド"
+    ],
+    "buneary": [
+      "ミミロル"
+    ],
+    "lopunny": [
+      "ミミロップ"
+    ],
+    "mismagius": [
+      "ムウマージ"
+    ],
+    "honchkrow": [
+      "ドンカラス"
+    ],
+    "glameow": [
+      "ニャルマー"
+    ],
+    "purugly": [
+      "ブニャット"
+    ],
+    "chingling": [
+      "リーシャン"
+    ],
+    "stunky": [
+      "スカンプー"
+    ],
+    "skuntank": [
+      "スカタンク"
+    ],
+    "bronzor": [
+      "ドーミラー"
+    ],
+    "bronzong": [
+      "ドータクン"
+    ],
+    "bonsly": [
+      "ウソハチ"
+    ],
+    "mimejr": [
+      "マネネ"
+    ],
+    "happiny": [
+      "ピンプク"
+    ],
+    "chatot": [
+      "ペラップ"
+    ],
+    "spiritomb": [
+      "ミカルゲ"
+    ],
+    "gible": [
+      "フカマル"
+    ],
+    "gabite": [
+      "ガバイト"
+    ],
     "garchomp": [
       "ガブリアス"
     ],
-    "garchompmega": [
-      "メガガブリアス"
+    "munchlax": [
+      "ゴンベ"
+    ],
+    "riolu": [
+      "リオル"
+    ],
+    "lucario": [
+      "ルカリオ"
+    ],
+    "hippopotas": [
+      "ヒポポタス"
+    ],
+    "hippowdon": [
+      "カバルドン"
+    ],
+    "skorupi": [
+      "スコルピ"
+    ],
+    "drapion": [
+      "ドラピオン"
+    ],
+    "croagunk": [
+      "グレッグル"
+    ],
+    "toxicroak": [
+      "ドクロッグ"
+    ],
+    "carnivine": [
+      "マスキッパ"
+    ],
+    "finneon": [
+      "ケイコウオ"
+    ],
+    "lumineon": [
+      "ネオラント"
+    ],
+    "mantyke": [
+      "タマンタ"
+    ],
+    "snover": [
+      "ユキカブリ"
+    ],
+    "abomasnow": [
+      "ユキノオー"
+    ],
+    "weavile": [
+      "マニューラ"
+    ],
+    "magnezone": [
+      "ジバコイル"
+    ],
+    "lickilicky": [
+      "ベロベルト"
+    ],
+    "rhyperior": [
+      "ドサイドン"
+    ],
+    "tangrowth": [
+      "モジャンボ"
+    ],
+    "electivire": [
+      "エレキブル"
+    ],
+    "magmortar": [
+      "ブーバーン"
+    ],
+    "togekiss": [
+      "トゲキッス"
+    ],
+    "yanmega": [
+      "メガヤンマ"
+    ],
+    "leafeon": [
+      "リーフィア"
+    ],
+    "glaceon": [
+      "グレイシア"
+    ],
+    "gliscor": [
+      "グライオン"
+    ],
+    "mamoswine": [
+      "マンムー"
+    ],
+    "porygonz": [
+      "ポリゴンＺ"
+    ],
+    "gallade": [
+      "エルレイド"
+    ],
+    "probopass": [
+      "ダイノーズ"
+    ],
+    "dusknoir": [
+      "ヨノワール"
+    ],
+    "froslass": [
+      "ユキメノコ"
+    ],
+    "rotom": [
+      "ロトム"
+    ],
+    "uxie": [
+      "ユクシー"
+    ],
+    "mesprit": [
+      "エムリット"
+    ],
+    "azelf": [
+      "アグノム"
+    ],
+    "dialga": [
+      "ディアルガ"
+    ],
+    "palkia": [
+      "パルキア"
+    ],
+    "heatran": [
+      "ヒードラン"
+    ],
+    "regigigas": [
+      "レジギガス"
+    ],
+    "giratina": [
+      "ギラティナ"
+    ],
+    "cresselia": [
+      "クレセリア"
+    ],
+    "phione": [
+      "フィオネ"
+    ],
+    "manaphy": [
+      "マナフィ"
+    ],
+    "darkrai": [
+      "ダークライ"
+    ],
+    "shaymin": [
+      "シェイミ"
+    ],
+    "arceus": [
+      "アルセウス"
+    ],
+    "victini": [
+      "ビクティニ"
+    ],
+    "snivy": [
+      "ツタージャ"
+    ],
+    "servine": [
+      "ジャノビー"
+    ],
+    "serperior": [
+      "ジャローダ"
+    ],
+    "tepig": [
+      "ポカブ"
+    ],
+    "pignite": [
+      "チャオブー"
+    ],
+    "emboar": [
+      "エンブオー"
+    ],
+    "oshawott": [
+      "ミジュマル"
+    ],
+    "dewott": [
+      "フタチマル"
+    ],
+    "samurott": [
+      "ダイケンキ"
+    ],
+    "patrat": [
+      "ミネズミ"
+    ],
+    "watchog": [
+      "ミルホッグ"
+    ],
+    "lillipup": [
+      "ヨーテリー"
+    ],
+    "herdier": [
+      "ハーデリア"
+    ],
+    "stoutland": [
+      "ムーランド"
+    ],
+    "purrloin": [
+      "チョロネコ"
+    ],
+    "liepard": [
+      "レパルダス"
+    ],
+    "pansage": [
+      "ヤナップ"
+    ],
+    "simisage": [
+      "ヤナッキー"
+    ],
+    "pansear": [
+      "バオップ"
+    ],
+    "simisear": [
+      "バオッキー"
+    ],
+    "panpour": [
+      "ヒヤップ"
+    ],
+    "simipour": [
+      "ヒヤッキー"
+    ],
+    "munna": [
+      "ムンナ"
+    ],
+    "musharna": [
+      "ムシャーナ"
+    ],
+    "pidove": [
+      "マメパト"
+    ],
+    "tranquill": [
+      "ハトーボー"
+    ],
+    "unfezant": [
+      "ケンホロウ"
+    ],
+    "blitzle": [
+      "シママ"
+    ],
+    "zebstrika": [
+      "ゼブライカ"
+    ],
+    "roggenrola": [
+      "ダンゴロ"
+    ],
+    "boldore": [
+      "ガントル"
+    ],
+    "gigalith": [
+      "ギガイアス"
+    ],
+    "woobat": [
+      "コロモリ"
+    ],
+    "swoobat": [
+      "ココロモリ"
+    ],
+    "drilbur": [
+      "モグリュー"
+    ],
+    "excadrill": [
+      "ドリュウズ"
+    ],
+    "audino": [
+      "タブンネ"
+    ],
+    "timburr": [
+      "ドッコラー"
+    ],
+    "gurdurr": [
+      "ドテッコツ"
+    ],
+    "conkeldurr": [
+      "ローブシン"
+    ],
+    "tympole": [
+      "オタマロ"
+    ],
+    "palpitoad": [
+      "ガマガル"
+    ],
+    "seismitoad": [
+      "ガマゲロゲ"
+    ],
+    "throh": [
+      "ナゲキ"
+    ],
+    "sawk": [
+      "ダゲキ"
+    ],
+    "sewaddle": [
+      "クルミル"
+    ],
+    "swadloon": [
+      "クルマユ"
+    ],
+    "leavanny": [
+      "ハハコモリ"
+    ],
+    "venipede": [
+      "フシデ"
+    ],
+    "whirlipede": [
+      "ホイーガ"
+    ],
+    "scolipede": [
+      "ペンドラー"
+    ],
+    "cottonee": [
+      "モンメン"
+    ],
+    "whimsicott": [
+      "エルフーン"
+    ],
+    "petilil": [
+      "チュリネ"
+    ],
+    "lilligant": [
+      "ドレディア"
+    ],
+    "basculin": [
+      "バスラオ"
+    ],
+    "sandile": [
+      "メグロコ"
+    ],
+    "krokorok": [
+      "ワルビル"
+    ],
+    "krookodile": [
+      "ワルビアル"
+    ],
+    "darumaka": [
+      "ダルマッカ"
+    ],
+    "darmanitan": [
+      "ヒヒダルマ"
+    ],
+    "maractus": [
+      "マラカッチ"
+    ],
+    "dwebble": [
+      "イシズマイ"
+    ],
+    "crustle": [
+      "イワパレス"
+    ],
+    "scraggy": [
+      "ズルッグ"
+    ],
+    "scrafty": [
+      "ズルズキン"
+    ],
+    "sigilyph": [
+      "シンボラー"
+    ],
+    "yamask": [
+      "デスマス"
+    ],
+    "cofagrigus": [
+      "デスカーン"
+    ],
+    "tirtouga": [
+      "プロトーガ"
+    ],
+    "carracosta": [
+      "アバゴーラ"
+    ],
+    "archen": [
+      "アーケン"
+    ],
+    "archeops": [
+      "アーケオス"
+    ],
+    "trubbish": [
+      "ヤブクロン"
+    ],
+    "garbodor": [
+      "ダストダス"
+    ],
+    "zorua": [
+      "ゾロア"
+    ],
+    "zoroark": [
+      "ゾロアーク"
+    ],
+    "minccino": [
+      "チラーミィ"
+    ],
+    "cinccino": [
+      "チラチーノ"
+    ],
+    "gothita": [
+      "ゴチム"
+    ],
+    "gothorita": [
+      "ゴチミル"
+    ],
+    "gothitelle": [
+      "ゴチルゼル"
+    ],
+    "solosis": [
+      "ユニラン"
+    ],
+    "duosion": [
+      "ダブラン"
+    ],
+    "reuniclus": [
+      "ランクルス"
+    ],
+    "ducklett": [
+      "コアルヒー"
+    ],
+    "swanna": [
+      "スワンナ"
+    ],
+    "vanillite": [
+      "バニプッチ"
+    ],
+    "vanillish": [
+      "バニリッチ"
+    ],
+    "vanilluxe": [
+      "バイバニラ"
+    ],
+    "deerling": [
+      "シキジカ"
+    ],
+    "sawsbuck": [
+      "メブキジカ"
+    ],
+    "emolga": [
+      "エモンガ"
+    ],
+    "karrablast": [
+      "カブルモ"
+    ],
+    "escavalier": [
+      "シュバルゴ"
+    ],
+    "foongus": [
+      "タマゲタケ"
+    ],
+    "amoonguss": [
+      "モロバレル"
+    ],
+    "frillish": [
+      "プルリル"
+    ],
+    "jellicent": [
+      "ブルンゲル"
+    ],
+    "alomomola": [
+      "ママンボウ"
+    ],
+    "joltik": [
+      "バチュル"
+    ],
+    "galvantula": [
+      "デンチュラ"
+    ],
+    "ferroseed": [
+      "テッシード"
+    ],
+    "ferrothorn": [
+      "ナットレイ"
+    ],
+    "klink": [
+      "ギアル"
+    ],
+    "klang": [
+      "ギギアル"
+    ],
+    "klinklang": [
+      "ギギギアル"
+    ],
+    "tynamo": [
+      "シビシラス"
+    ],
+    "eelektrik": [
+      "シビビール"
+    ],
+    "eelektross": [
+      "シビルドン"
+    ],
+    "elgyem": [
+      "リグレー"
+    ],
+    "beheeyem": [
+      "オーベム"
+    ],
+    "litwick": [
+      "ヒトモシ"
+    ],
+    "lampent": [
+      "ランプラー"
+    ],
+    "chandelure": [
+      "シャンデラ"
+    ],
+    "axew": [
+      "キバゴ"
+    ],
+    "fraxure": [
+      "オノンド"
+    ],
+    "haxorus": [
+      "オノノクス"
+    ],
+    "cubchoo": [
+      "クマシュン"
+    ],
+    "beartic": [
+      "ツンベアー"
+    ],
+    "cryogonal": [
+      "フリージオ"
+    ],
+    "shelmet": [
+      "チョボマキ"
+    ],
+    "accelgor": [
+      "アギルダー"
+    ],
+    "stunfisk": [
+      "マッギョ"
+    ],
+    "mienfoo": [
+      "コジョフー"
+    ],
+    "mienshao": [
+      "コジョンド"
+    ],
+    "druddigon": [
+      "クリムガン"
+    ],
+    "golett": [
+      "ゴビット"
+    ],
+    "golurk": [
+      "ゴルーグ"
+    ],
+    "pawniard": [
+      "コマタナ"
+    ],
+    "bisharp": [
+      "キリキザン"
+    ],
+    "bouffalant": [
+      "バッフロン"
+    ],
+    "rufflet": [
+      "ワシボン"
+    ],
+    "braviary": [
+      "ウォーグル"
+    ],
+    "vullaby": [
+      "バルチャイ"
+    ],
+    "mandibuzz": [
+      "バルジーナ"
+    ],
+    "heatmor": [
+      "クイタラン"
+    ],
+    "durant": [
+      "アイアント"
+    ],
+    "deino": [
+      "モノズ"
+    ],
+    "zweilous": [
+      "ジヘッド"
+    ],
+    "hydreigon": [
+      "サザンドラ"
+    ],
+    "larvesta": [
+      "メラルバ"
+    ],
+    "volcarona": [
+      "ウルガモス"
+    ],
+    "cobalion": [
+      "コバルオン"
+    ],
+    "terrakion": [
+      "テラキオン"
+    ],
+    "virizion": [
+      "ビリジオン"
+    ],
+    "tornadus": [
+      "トルネロス"
+    ],
+    "thundurus": [
+      "ボルトロス"
+    ],
+    "reshiram": [
+      "レシラム"
+    ],
+    "zekrom": [
+      "ゼクロム"
+    ],
+    "landorus": [
+      "ランドロス"
+    ],
+    "kyurem": [
+      "キュレム"
+    ],
+    "keldeo": [
+      "ケルディオ"
+    ],
+    "meloetta": [
+      "メロエッタ"
+    ],
+    "genesect": [
+      "ゲノセクト"
+    ],
+    "chespin": [
+      "ハリマロン"
+    ],
+    "quilladin": [
+      "ハリボーグ"
+    ],
+    "chesnaught": [
+      "ブリガロン"
+    ],
+    "fennekin": [
+      "フォッコ"
+    ],
+    "braixen": [
+      "テールナー"
+    ],
+    "delphox": [
+      "マフォクシー"
+    ],
+    "froakie": [
+      "ケロマツ"
+    ],
+    "frogadier": [
+      "ゲコガシラ"
+    ],
+    "greninja": [
+      "ゲッコウガ"
+    ],
+    "bunnelby": [
+      "ホルビー"
+    ],
+    "diggersby": [
+      "ホルード"
+    ],
+    "fletchling": [
+      "ヤヤコマ"
+    ],
+    "fletchinder": [
+      "ヒノヤコマ"
+    ],
+    "talonflame": [
+      "ファイアロー"
+    ],
+    "scatterbug": [
+      "コフキムシ"
+    ],
+    "spewpa": [
+      "コフーライ"
+    ],
+    "vivillon": [
+      "ビビヨン"
+    ],
+    "litleo": [
+      "シシコ"
+    ],
+    "pyroar": [
+      "カエンジシ"
+    ],
+    "flabebe": [
+      "フラベベ"
+    ],
+    "floette": [
+      "フラエッテ"
+    ],
+    "florges": [
+      "フラージェス"
+    ],
+    "skiddo": [
+      "メェークル"
+    ],
+    "gogoat": [
+      "ゴーゴート"
+    ],
+    "pancham": [
+      "ヤンチャム"
+    ],
+    "pangoro": [
+      "ゴロンダ"
+    ],
+    "furfrou": [
+      "トリミアン"
+    ],
+    "espurr": [
+      "ニャスパー"
+    ],
+    "meowstic": [
+      "ニャオニクス"
+    ],
+    "honedge": [
+      "ヒトツキ"
+    ],
+    "doublade": [
+      "ニダンギル"
+    ],
+    "aegislash": [
+      "ギルガルド"
+    ],
+    "spritzee": [
+      "シュシュプ"
+    ],
+    "aromatisse": [
+      "フレフワン"
+    ],
+    "swirlix": [
+      "ペロッパフ"
+    ],
+    "slurpuff": [
+      "ペロリーム"
+    ],
+    "inkay": [
+      "マーイーカ"
+    ],
+    "malamar": [
+      "カラマネロ"
+    ],
+    "binacle": [
+      "カメテテ"
+    ],
+    "barbaracle": [
+      "ガメノデス"
+    ],
+    "skrelp": [
+      "クズモー"
+    ],
+    "dragalge": [
+      "ドラミドロ"
+    ],
+    "clauncher": [
+      "ウデッポウ"
+    ],
+    "clawitzer": [
+      "ブロスター"
+    ],
+    "helioptile": [
+      "エリキテル"
+    ],
+    "heliolisk": [
+      "エレザード"
+    ],
+    "tyrunt": [
+      "チゴラス"
+    ],
+    "tyrantrum": [
+      "ガチゴラス"
+    ],
+    "amaura": [
+      "アマルス"
+    ],
+    "aurorus": [
+      "アマルルガ"
+    ],
+    "sylveon": [
+      "ニンフィア"
+    ],
+    "hawlucha": [
+      "ルチャブル"
+    ],
+    "dedenne": [
+      "デデンネ"
+    ],
+    "carbink": [
+      "メレシー"
+    ],
+    "goomy": [
+      "ヌメラ"
+    ],
+    "sliggoo": [
+      "ヌメイル"
+    ],
+    "goodra": [
+      "ヌメルゴン"
+    ],
+    "klefki": [
+      "クレッフィ"
+    ],
+    "phantump": [
+      "ボクレー"
+    ],
+    "trevenant": [
+      "オーロット"
+    ],
+    "pumpkaboo": [
+      "バケッチャ"
+    ],
+    "gourgeist": [
+      "パンプジン"
+    ],
+    "bergmite": [
+      "カチコール"
+    ],
+    "avalugg": [
+      "クレベース"
+    ],
+    "noibat": [
+      "オンバット"
+    ],
+    "noivern": [
+      "オンバーン"
+    ],
+    "xerneas": [
+      "ゼルネアス"
+    ],
+    "yveltal": [
+      "イベルタル"
+    ],
+    "zygarde": [
+      "ジガルデ"
+    ],
+    "diancie": [
+      "ディアンシー"
+    ],
+    "hoopa": [
+      "フーパ"
+    ],
+    "volcanion": [
+      "ボルケニオン"
+    ],
+    "rowlet": [
+      "モクロー"
+    ],
+    "dartrix": [
+      "フクスロー"
+    ],
+    "decidueye": [
+      "ジュナイパー"
+    ],
+    "litten": [
+      "ニャビー"
+    ],
+    "torracat": [
+      "ニャヒート"
+    ],
+    "incineroar": [
+      "ガオガエン"
+    ],
+    "popplio": [
+      "アシマリ"
+    ],
+    "brionne": [
+      "オシャマリ"
     ],
     "primarina": [
       "アシレーヌ"
     ],
-    "metagross": [
-      "メタグロス"
+    "pikipek": [
+      "ツツケラ"
+    ],
+    "trumbeak": [
+      "ケララッパ"
+    ],
+    "toucannon": [
+      "ドデカバシ"
+    ],
+    "yungoos": [
+      "ヤングース"
+    ],
+    "gumshoos": [
+      "デカグース"
+    ],
+    "grubbin": [
+      "アゴジムシ"
+    ],
+    "charjabug": [
+      "デンヂムシ"
+    ],
+    "vikavolt": [
+      "クワガノン"
+    ],
+    "crabrawler": [
+      "マケンカニ"
+    ],
+    "crabominable": [
+      "ケケンカニ"
+    ],
+    "oricorio": [
+      "オドリドリ"
+    ],
+    "cutiefly": [
+      "アブリー"
+    ],
+    "ribombee": [
+      "アブリボン"
+    ],
+    "rockruff": [
+      "イワンコ"
+    ],
+    "lycanroc": [
+      "ルガルガン"
+    ],
+    "wishiwashi": [
+      "ヨワシ"
+    ],
+    "mareanie": [
+      "ヒドイデ"
+    ],
+    "toxapex": [
+      "ドヒドイデ"
+    ],
+    "mudbray": [
+      "ドロバンコ"
+    ],
+    "mudsdale": [
+      "バンバドロ"
+    ],
+    "dewpider": [
+      "シズクモ"
+    ],
+    "araquanid": [
+      "オニシズクモ"
+    ],
+    "fomantis": [
+      "カリキリ"
+    ],
+    "lurantis": [
+      "ラランテス"
+    ],
+    "morelull": [
+      "ネマシュ"
+    ],
+    "shiinotic": [
+      "マシェード"
+    ],
+    "salandit": [
+      "ヤトウモリ"
+    ],
+    "salazzle": [
+      "エンニュート"
+    ],
+    "stufful": [
+      "ヌイコグマ"
+    ],
+    "bewear": [
+      "キテルグマ"
+    ],
+    "bounsweet": [
+      "アマカジ"
+    ],
+    "steenee": [
+      "アママイコ"
+    ],
+    "tsareena": [
+      "アマージョ"
+    ],
+    "comfey": [
+      "キュワワー"
+    ],
+    "oranguru": [
+      "ヤレユータン"
+    ],
+    "passimian": [
+      "ナゲツケサル"
+    ],
+    "wimpod": [
+      "コソクムシ"
+    ],
+    "golisopod": [
+      "グソクムシャ"
+    ],
+    "sandygast": [
+      "スナバァ"
+    ],
+    "palossand": [
+      "シロデスナ"
+    ],
+    "pyukumuku": [
+      "ナマコブシ"
+    ],
+    "typenull": [
+      "タイプ：ヌル"
+    ],
+    "silvally": [
+      "シルヴァディ"
+    ],
+    "minior": [
+      "メテノ"
+    ],
+    "komala": [
+      "ネッコアラ"
+    ],
+    "turtonator": [
+      "バクガメス"
+    ],
+    "togedemaru": [
+      "トゲデマル"
+    ],
+    "mimikyu": [
+      "ミミッキュ"
+    ],
+    "bruxish": [
+      "ハギギシリ"
+    ],
+    "drampa": [
+      "ジジーロン"
+    ],
+    "dhelmise": [
+      "ダダリン"
+    ],
+    "jangmoo": [
+      "ジャラコ"
+    ],
+    "hakamoo": [
+      "ジャランゴ"
+    ],
+    "kommoo": [
+      "ジャラランガ"
+    ],
+    "tapukoko": [
+      "カプ・コケコ"
+    ],
+    "tapulele": [
+      "カプ・テテフ"
+    ],
+    "tapubulu": [
+      "カプ・ブルル"
+    ],
+    "tapufini": [
+      "カプ・レヒレ"
+    ],
+    "cosmog": [
+      "コスモッグ"
+    ],
+    "cosmoem": [
+      "コスモウム"
+    ],
+    "solgaleo": [
+      "ソルガレオ"
+    ],
+    "lunala": [
+      "ルナアーラ"
+    ],
+    "nihilego": [
+      "ウツロイド"
+    ],
+    "buzzwole": [
+      "マッシブーン"
+    ],
+    "pheromosa": [
+      "フェローチェ"
+    ],
+    "xurkitree": [
+      "デンジュモク"
+    ],
+    "celesteela": [
+      "テッカグヤ"
+    ],
+    "kartana": [
+      "カミツルギ"
+    ],
+    "guzzlord": [
+      "アクジキング"
+    ],
+    "necrozma": [
+      "ネクロズマ"
+    ],
+    "magearna": [
+      "マギアナ"
+    ],
+    "marshadow": [
+      "マーシャドー"
+    ],
+    "poipole": [
+      "ベベノム"
+    ],
+    "naganadel": [
+      "アーゴヨン"
+    ],
+    "stakataka": [
+      "ツンデツンデ"
+    ],
+    "blacephalon": [
+      "ズガドーン"
+    ],
+    "zeraora": [
+      "ゼラオラ"
+    ],
+    "meltan": [
+      "メルタン"
+    ],
+    "melmetal": [
+      "メルメタル"
+    ],
+    "grookey": [
+      "サルノリ"
+    ],
+    "thwackey": [
+      "バチンキー"
+    ],
+    "rillaboom": [
+      "ゴリランダー"
+    ],
+    "scorbunny": [
+      "ヒバニー"
+    ],
+    "raboot": [
+      "ラビフット"
+    ],
+    "cinderace": [
+      "エースバーン"
+    ],
+    "sobble": [
+      "メッソン"
+    ],
+    "drizzile": [
+      "ジメレオン"
+    ],
+    "inteleon": [
+      "インテレオン"
+    ],
+    "skwovet": [
+      "ホシガリス"
+    ],
+    "greedent": [
+      "ヨクバリス"
+    ],
+    "rookidee": [
+      "ココガラ"
+    ],
+    "corvisquire": [
+      "アオガラス"
+    ],
+    "corviknight": [
+      "アーマーガア"
+    ],
+    "blipbug": [
+      "サッチムシ"
+    ],
+    "dottler": [
+      "レドームシ"
+    ],
+    "orbeetle": [
+      "イオルブ"
+    ],
+    "nickit": [
+      "クスネ"
+    ],
+    "thievul": [
+      "フォクスライ"
+    ],
+    "gossifleur": [
+      "ヒメンカ"
+    ],
+    "eldegoss": [
+      "ワタシラガ"
+    ],
+    "wooloo": [
+      "ウールー"
+    ],
+    "dubwool": [
+      "バイウールー"
+    ],
+    "chewtle": [
+      "カムカメ"
+    ],
+    "drednaw": [
+      "カジリガメ"
+    ],
+    "yamper": [
+      "ワンパチ"
+    ],
+    "boltund": [
+      "パルスワン"
+    ],
+    "rolycoly": [
+      "タンドン"
+    ],
+    "carkol": [
+      "トロッゴン"
+    ],
+    "coalossal": [
+      "セキタンザン"
+    ],
+    "applin": [
+      "カジッチュ"
+    ],
+    "flapple": [
+      "アップリュー"
+    ],
+    "appletun": [
+      "タルップル"
+    ],
+    "silicobra": [
+      "スナヘビ"
+    ],
+    "sandaconda": [
+      "サダイジャ"
+    ],
+    "cramorant": [
+      "ウッウ"
+    ],
+    "arrokuda": [
+      "サシカマス"
+    ],
+    "barraskewda": [
+      "カマスジョー"
+    ],
+    "toxel": [
+      "エレズン"
+    ],
+    "toxtricity": [
+      "ストリンダー"
+    ],
+    "sizzlipede": [
+      "ヤクデ"
+    ],
+    "centiskorch": [
+      "マルヤクデ"
+    ],
+    "clobbopus": [
+      "タタッコ"
+    ],
+    "grapploct": [
+      "オトスパス"
+    ],
+    "sinistea": [
+      "ヤバチャ"
+    ],
+    "polteageist": [
+      "ポットデス"
+    ],
+    "hatenna": [
+      "ミブリム"
+    ],
+    "hattrem": [
+      "テブリム"
+    ],
+    "hatterene": [
+      "ブリムオン"
+    ],
+    "impidimp": [
+      "ベロバー"
+    ],
+    "morgrem": [
+      "ギモー"
+    ],
+    "grimmsnarl": [
+      "オーロンゲ"
+    ],
+    "obstagoon": [
+      "タチフサグマ"
+    ],
+    "perrserker": [
+      "ニャイキング"
+    ],
+    "cursola": [
+      "サニゴーン"
+    ],
+    "sirfetchd": [
+      "ネギガナイト"
+    ],
+    "mrrime": [
+      "バリコオル"
+    ],
+    "runerigus": [
+      "デスバーン"
+    ],
+    "milcery": [
+      "マホミル"
+    ],
+    "alcremie": [
+      "マホイップ"
+    ],
+    "falinks": [
+      "タイレーツ"
+    ],
+    "pincurchin": [
+      "バチンウニ"
+    ],
+    "snom": [
+      "ユキハミ"
+    ],
+    "frosmoth": [
+      "モスノウ"
+    ],
+    "stonjourner": [
+      "イシヘンジン"
+    ],
+    "eiscue": [
+      "コオリッポ"
+    ],
+    "indeedee": [
+      "イエッサン"
+    ],
+    "morpeko": [
+      "モルペコ"
+    ],
+    "cufant": [
+      "ゾウドウ"
+    ],
+    "copperajah": [
+      "ダイオウドウ"
+    ],
+    "dracozolt": [
+      "パッチラゴン"
+    ],
+    "arctozolt": [
+      "パッチルドン"
+    ],
+    "dracovish": [
+      "ウオノラゴン"
+    ],
+    "arctovish": [
+      "ウオチルドン"
+    ],
+    "duraludon": [
+      "ジュラルドン"
+    ],
+    "dreepy": [
+      "ドラメシヤ"
+    ],
+    "drakloak": [
+      "ドロンチ"
+    ],
+    "dragapult": [
+      "ドラパルト"
+    ],
+    "zacian": [
+      "ザシアン"
+    ],
+    "zamazenta": [
+      "ザマゼンタ"
+    ],
+    "eternatus": [
+      "ムゲンダイナ"
+    ],
+    "kubfu": [
+      "ダクマ"
+    ],
+    "urshifu": [
+      "ウーラオス"
+    ],
+    "zarude": [
+      "ザルード"
+    ],
+    "regieleki": [
+      "レジエレキ"
+    ],
+    "regidrago": [
+      "レジドラゴ"
+    ],
+    "glastrier": [
+      "ブリザポス"
+    ],
+    "spectrier": [
+      "レイスポス"
+    ],
+    "calyrex": [
+      "バドレックス"
+    ],
+    "wyrdeer": [
+      "アヤシシ"
+    ],
+    "kleavor": [
+      "バサギリ"
+    ],
+    "ursaluna": [
+      "ガチグマ"
+    ],
+    "basculegion": [
+      "イダイトウ",
+      "イダイトウ(オス)",
+      "イダイトウ（オス）"
+    ],
+    "sneasler": [
+      "オオニューラ"
+    ],
+    "overqwil": [
+      "ハリーマン"
+    ],
+    "enamorus": [
+      "ラブトロス"
+    ],
+    "sprigatito": [
+      "ニャオハ"
+    ],
+    "floragato": [
+      "ニャローテ"
+    ],
+    "meowscarada": [
+      "マスカーニャ"
+    ],
+    "fuecoco": [
+      "ホゲータ"
+    ],
+    "crocalor": [
+      "アチゲータ"
+    ],
+    "skeledirge": [
+      "ラウドボーン"
+    ],
+    "quaxly": [
+      "クワッス"
+    ],
+    "quaxwell": [
+      "ウェルカモ"
+    ],
+    "quaquaval": [
+      "ウェーニバル"
+    ],
+    "lechonk": [
+      "グルトン"
+    ],
+    "oinkologne": [
+      "パフュートン"
+    ],
+    "tarountula": [
+      "タマンチュラ"
+    ],
+    "spidops": [
+      "ワナイダー"
+    ],
+    "nymble": [
+      "マメバッタ"
+    ],
+    "lokix": [
+      "エクスレッグ"
+    ],
+    "pawmi": [
+      "パモ"
+    ],
+    "pawmo": [
+      "パモット"
+    ],
+    "pawmot": [
+      "パーモット"
+    ],
+    "tandemaus": [
+      "ワッカネズミ"
+    ],
+    "maushold": [
+      "イッカネズミ"
+    ],
+    "fidough": [
+      "パピモッチ"
+    ],
+    "dachsbun": [
+      "バウッツェル"
+    ],
+    "smoliv": [
+      "ミニーブ"
+    ],
+    "dolliv": [
+      "オリーニョ"
+    ],
+    "arboliva": [
+      "オリーヴァ"
+    ],
+    "squawkabilly": [
+      "イキリンコ"
+    ],
+    "nacli": [
+      "コジオ"
+    ],
+    "naclstack": [
+      "ジオヅム"
+    ],
+    "garganacl": [
+      "キョジオーン"
+    ],
+    "charcadet": [
+      "カルボウ"
+    ],
+    "armarouge": [
+      "グレンアルマ"
+    ],
+    "ceruledge": [
+      "ソウブレイズ"
+    ],
+    "tadbulb": [
+      "ズピカ"
+    ],
+    "bellibolt": [
+      "ハラバリー",
+      "ハラバリ",
+      "アラバリ"
+    ],
+    "wattrel": [
+      "カイデン"
+    ],
+    "kilowattrel": [
+      "タイカイデン"
+    ],
+    "maschiff": [
+      "オラチフ"
+    ],
+    "mabosstiff": [
+      "マフィティフ"
+    ],
+    "shroodle": [
+      "シルシュルー"
+    ],
+    "grafaiai": [
+      "タギングル"
+    ],
+    "bramblin": [
+      "アノクサ"
+    ],
+    "brambleghast": [
+      "アノホラグサ"
+    ],
+    "toedscool": [
+      "ノノクラゲ"
+    ],
+    "toedscruel": [
+      "リククラゲ"
+    ],
+    "klawf": [
+      "ガケガニ"
+    ],
+    "capsakid": [
+      "カプサイジ"
+    ],
+    "scovillain": [
+      "スコヴィラン"
+    ],
+    "rellor": [
+      "シガロコ"
+    ],
+    "rabsca": [
+      "ベラカス"
+    ],
+    "flittle": [
+      "ヒラヒナ"
+    ],
+    "espathra": [
+      "クエスパトラ"
+    ],
+    "tinkatink": [
+      "カヌチャン"
+    ],
+    "tinkatuff": [
+      "ナカヌチャン"
+    ],
+    "tinkaton": [
+      "デカヌチャン"
+    ],
+    "wiglett": [
+      "ウミディグダ"
+    ],
+    "wugtrio": [
+      "ウミトリオ"
+    ],
+    "bombirdier": [
+      "オトシドリ"
+    ],
+    "finizen": [
+      "ナミイルカ"
+    ],
+    "palafin": [
+      "イルカマン"
+    ],
+    "varoom": [
+      "ブロロン"
+    ],
+    "revavroom": [
+      "ブロロローム"
+    ],
+    "cyclizar": [
+      "モトトカゲ"
+    ],
+    "orthworm": [
+      "ミミズズ"
+    ],
+    "glimmet": [
+      "キラーメ"
+    ],
+    "glimmora": [
+      "キラフロル"
+    ],
+    "greavard": [
+      "ボチ"
+    ],
+    "houndstone": [
+      "ハカドッグ"
+    ],
+    "flamigo": [
+      "カラミンゴ"
+    ],
+    "cetoddle": [
+      "アルクジラ"
+    ],
+    "cetitan": [
+      "ハルクジラ"
+    ],
+    "veluza": [
+      "ミガルーサ"
+    ],
+    "dondozo": [
+      "ヘイラッシャ"
+    ],
+    "tatsugiri": [
+      "シャリタツ"
+    ],
+    "annihilape": [
+      "コノヨザル"
+    ],
+    "clodsire": [
+      "ドオー"
+    ],
+    "farigiraf": [
+      "リキキリン"
+    ],
+    "dudunsparce": [
+      "ノココッチ"
+    ],
+    "kingambit": [
+      "ドドゲザン"
+    ],
+    "greattusk": [
+      "イダイナキバ"
+    ],
+    "screamtail": [
+      "サケブシッポ"
+    ],
+    "brutebonnet": [
+      "アラブルタケ"
+    ],
+    "fluttermane": [
+      "ハバタクカミ"
+    ],
+    "slitherwing": [
+      "チヲハウハネ"
+    ],
+    "sandyshocks": [
+      "スナノケガワ"
+    ],
+    "irontreads": [
+      "テツノワダチ"
+    ],
+    "ironbundle": [
+      "テツノツツミ"
+    ],
+    "ironhands": [
+      "テツノカイナ"
+    ],
+    "ironjugulis": [
+      "テツノコウベ"
+    ],
+    "ironmoth": [
+      "テツノドクガ"
+    ],
+    "ironthorns": [
+      "テツノイバラ"
+    ],
+    "frigibax": [
+      "セビエ"
+    ],
+    "arctibax": [
+      "セゴール"
+    ],
+    "baxcalibur": [
+      "セグレイブ"
+    ],
+    "gimmighoul": [
+      "コレクレー"
+    ],
+    "gholdengo": [
+      "サーフゴー"
+    ],
+    "wochien": [
+      "チオンジェン"
+    ],
+    "chienpao": [
+      "パオジアン"
+    ],
+    "tinglu": [
+      "ディンルー"
+    ],
+    "chiyu": [
+      "イーユイ"
+    ],
+    "roaringmoon": [
+      "トドロクツキ"
+    ],
+    "ironvaliant": [
+      "テツノブジン"
+    ],
+    "koraidon": [
+      "コライドン"
+    ],
+    "miraidon": [
+      "ミライドン"
+    ],
+    "walkingwake": [
+      "ウネルミナモ"
+    ],
+    "ironleaves": [
+      "テツノイサハ"
+    ],
+    "dipplin": [
+      "カミッチュ"
+    ],
+    "poltchageist": [
+      "チャデス"
+    ],
+    "sinistcha": [
+      "ヤバソチャ"
+    ],
+    "okidogi": [
+      "イイネイヌ"
+    ],
+    "munkidori": [
+      "マシマシラ"
+    ],
+    "fezandipiti": [
+      "キチキギス"
+    ],
+    "ogerpon": [
+      "オーガポン"
+    ],
+    "archaludon": [
+      "ブリジュラス",
+      "ブリジラス"
+    ],
+    "hydrapple": [
+      "カミツオロチ"
+    ],
+    "gougingfire": [
+      "ウガツホムラ"
+    ],
+    "ragingbolt": [
+      "タケルライコ"
+    ],
+    "ironboulder": [
+      "テツノイワオ"
+    ],
+    "ironcrown": [
+      "テツノカシラ"
+    ],
+    "terapagos": [
+      "テラパゴス"
+    ],
+    "pecharunt": [
+      "モモワロウ"
+    ],
+    "garchompmega": [
+      "メガガブリアス"
     ],
     "metagrossmega": [
       "メガメタグロス"
@@ -20,30 +3091,8 @@
       "水ロトム",
       "ミトム"
     ],
-    "meowscarada": [
-      "マスカーニャ"
-    ],
-    "hydreigon": [
-      "サザンドラ"
-    ],
-    "dragonite": [
-      "カイリュー"
-    ],
-    "mimikyu": [
-      "ミミッキュ"
-    ],
-    "archaludon": [
-      "ブリジュラス",
-      "ブリジラス"
-    ],
-    "swampert": [
-      "ラグラージ"
-    ],
     "swampertmega": [
       "メガラグラージ"
-    ],
-    "raichu": [
-      "ライチュウ"
     ],
     "raichualola": [
       "アローラライチュウ"
@@ -56,49 +3105,11 @@
       "メガライチュウY",
       "メガライチューY"
     ],
-    "charizard": [
-      "リザードン"
-    ],
-    "gyarados": [
-      "ギャラドス"
-    ],
     "gyaradosmega": [
       "メガギャラドス"
     ],
-    "basculegion": [
-      "イダイトウ",
-      "イダイトウ(オス)",
-      "イダイトウ（オス）"
-    ],
-    "delphox": [
-      "マフォクシー"
-    ],
-    "glimmora": [
-      "キラフロル"
-    ],
-    "grimmsnarl": [
-      "オーロンゲ"
-    ],
-    "gholdengo": [
-      "サーフゴー"
-    ],
-    "mawile": [
-      "クチート"
-    ],
     "mawilemega": [
       "メガクチート"
-    ],
-    "skeledirge": [
-      "ラウドボーン"
-    ],
-    "kingambit": [
-      "ドドゲザン"
-    ],
-    "aegislash": [
-      "ギルガルド"
-    ],
-    "scizor": [
-      "ハッサム"
     ],
     "scizormega": [
       "メガハッサム"
@@ -106,90 +3117,24 @@
     "samurotthisui": [
       "ヒスイダイケンキ"
     ],
-    "ceruledge": [
-      "ソウブレイズ"
-    ],
-    "volcarona": [
-      "ウルガモス"
-    ],
-    "starmie": [
-      "スターミー"
-    ],
-    "vanilluxe": [
-      "バイバニラ"
-    ],
-    "umbreon": [
-      "ブラッキー"
-    ],
-    "meganium": [
-      "メガニウム"
-    ],
-    "venusaur": [
-      "フシギバナ"
-    ],
     "venusaurmega": [
       "メガフシギバナ"
-    ],
-    "sneasler": [
-      "オオニューラ"
-    ],
-    "blastoise": [
-      "カメックス"
     ],
     "blastoisemega": [
       "メガカメックス"
     ],
-    "lucario": [
-      "ルカリオ"
-    ],
     "lucariomega": [
       "メガルカリオ"
-    ],
-    "sylveon": [
-      "ニンフィア"
-    ],
-    "mamoswine": [
-      "マンムー"
-    ],
-    "whimsicott": [
-      "エルフーン"
     ],
     "rotomheat": [
       "ヒートロトム",
       "火ロトム"
     ],
-    "corviknight": [
-      "アーマーガア"
-    ],
-    "tinglu": [
-      "ディンルー"
-    ],
-    "annihilape": [
-      "コノヨザル"
-    ],
-    "dragapult": [
-      "ドラパルト"
-    ],
-    "hippowdon": [
-      "カバルドン"
-    ],
-    "pelipper": [
-      "ペリッパー"
-    ],
-    "stunfisk": [
-      "マッギョ"
-    ],
-    "gengar": [
-      "ゲンガー"
-    ],
-    "blaziken": [
-      "バシャーモ"
-    ],
     "blazikenmega": [
       "メガバシャーモ"
     ],
-    "lopunny": [
-      "ミミロップ"
+    "sceptilemega": [
+      "メガジュカイン"
     ],
     "lopunnymega": [
       "メガミミロップ"
@@ -197,109 +3142,2716 @@
     "ninetalesalola": [
       "アローラキュウコン"
     ],
-    "bellibolt": [
-      "ハラバリー",
-      "ハラバリ",
-      "アラバリ"
-    ],
-    "staraptor": [
-      "ムクホーク"
-    ],
     "staraptormega": [
       "メガムクホーク"
-    ],
-    "froslass": [
-      "ユキメノコ"
-    ],
-    "greninja": [
-      "ゲッコウガ"
-    ],
-    "chandelure": [
-      "シャンデラ"
-    ],
-    "dragalge": [
-      "ドラミドロ"
-    ],
-    "leafeon": [
-      "リーフィア"
-    ],
-    "fluttermane": [
-      "ハバタクカミ"
     ]
   },
   "moves": {
-    "earthquake": [
-      "じしん"
+    "pound": [
+      "はたく"
     ],
-    "dragonclaw": [
-      "ドラゴンクロー"
+    "karatechop": [
+      "からてチョップ"
     ],
-    "rocktomb": [
-      "がんせきふうじ"
+    "doubleslap": [
+      "おうふくビンタ"
     ],
-    "stealthrock": [
-      "ステルスロック"
+    "cometpunch": [
+      "れんぞくパンチ"
     ],
-    "sparklingaria": [
-      "うたかたのアリア"
+    "megapunch": [
+      "メガトンパンチ"
     ],
-    "moonblast": [
-      "ムーンフォース"
+    "payday": [
+      "ネコにこばん"
     ],
-    "icebeam": [
-      "れいとうビーム"
+    "firepunch": [
+      "ほのおのパンチ"
     ],
-    "energyball": [
-      "エナジーボール"
-    ],
-    "ironhead": [
-      "アイアンヘッド"
-    ],
-    "bulletpunch": [
-      "バレットパンチ"
-    ],
-    "hammerarm": [
-      "アームハンマー"
+    "icepunch": [
+      "れいとうパンチ"
     ],
     "thunderpunch": [
       "かみなりパンチ"
     ],
-    "hydropump": [
-      "ハイドロポンプ"
+    "scratch": [
+      "ひっかく"
     ],
-    "thunderbolt": [
-      "10まんボルト",
-      "10万ボルト"
+    "visegrip": [
+      "はさむ"
     ],
-    "willowisp": [
-      "おにび"
+    "guillotine": [
+      "ハサミギロチン"
     ],
-    "voltswitch": [
-      "ボルトチェンジ"
+    "razorwind": [
+      "かまいたち"
     ],
-    "flowertrick": [
-      "トリックフラワー"
+    "swordsdance": [
+      "つるぎのまい"
     ],
-    "knockoff": [
-      "はたきおとす"
+    "cut": [
+      "いあいぎり"
     ],
-    "tripleaxel": [
-      "トリプルアクセル"
+    "gust": [
+      "かぜおこし"
     ],
-    "suckerpunch": [
-      "ふいうち"
+    "wingattack": [
+      "つばさでうつ"
     ],
-    "dracometeor": [
-      "りゅうせいぐん"
+    "whirlwind": [
+      "ふきとばし"
     ],
-    "darkpulse": [
-      "あくのはどう"
+    "fly": [
+      "そらをとぶ"
+    ],
+    "bind": [
+      "しめつける"
+    ],
+    "slam": [
+      "たたきつける"
+    ],
+    "vinewhip": [
+      "つるのムチ"
+    ],
+    "stomp": [
+      "ふみつけ"
+    ],
+    "doublekick": [
+      "にどげり"
+    ],
+    "megakick": [
+      "メガトンキック"
+    ],
+    "jumpkick": [
+      "とびげり"
+    ],
+    "rollingkick": [
+      "まわしげり"
+    ],
+    "sandattack": [
+      "すなかけ"
+    ],
+    "headbutt": [
+      "ずつき"
+    ],
+    "hornattack": [
+      "つのでつく"
+    ],
+    "furyattack": [
+      "みだれづき"
+    ],
+    "horndrill": [
+      "つのドリル"
+    ],
+    "tackle": [
+      "たいあたり"
+    ],
+    "bodyslam": [
+      "のしかかり"
+    ],
+    "wrap": [
+      "まきつく"
+    ],
+    "takedown": [
+      "とっしん"
+    ],
+    "thrash": [
+      "あばれる"
+    ],
+    "doubleedge": [
+      "すてみタックル"
+    ],
+    "tailwhip": [
+      "しっぽをふる"
+    ],
+    "poisonsting": [
+      "どくばり"
+    ],
+    "twineedle": [
+      "ダブルニードル"
+    ],
+    "pinmissile": [
+      "ミサイルばり"
+    ],
+    "leer": [
+      "にらみつける"
+    ],
+    "bite": [
+      "かみつく"
+    ],
+    "growl": [
+      "なきごえ"
+    ],
+    "roar": [
+      "ほえる"
+    ],
+    "sing": [
+      "うたう"
+    ],
+    "supersonic": [
+      "ちょうおんぱ"
+    ],
+    "sonicboom": [
+      "ソニックブーム"
+    ],
+    "disable": [
+      "かなしばり"
+    ],
+    "acid": [
+      "ようかいえき"
+    ],
+    "ember": [
+      "ひのこ"
     ],
     "flamethrower": [
       "かえんほうしゃ"
     ],
+    "mist": [
+      "しろいきり"
+    ],
+    "watergun": [
+      "みずでっぽう"
+    ],
+    "hydropump": [
+      "ハイドロポンプ"
+    ],
+    "surf": [
+      "なみのり"
+    ],
+    "icebeam": [
+      "れいとうビーム"
+    ],
+    "blizzard": [
+      "ふぶき"
+    ],
+    "psybeam": [
+      "サイケこうせん"
+    ],
+    "bubblebeam": [
+      "バブルこうせん"
+    ],
+    "aurorabeam": [
+      "オーロラビーム"
+    ],
+    "hyperbeam": [
+      "はかいこうせん"
+    ],
+    "peck": [
+      "つつく"
+    ],
+    "drillpeck": [
+      "ドリルくちばし"
+    ],
+    "submission": [
+      "じごくぐるま"
+    ],
+    "lowkick": [
+      "けたぐり"
+    ],
+    "counter": [
+      "カウンター"
+    ],
+    "seismictoss": [
+      "ちきゅうなげ"
+    ],
+    "strength": [
+      "かいりき"
+    ],
+    "absorb": [
+      "すいとる"
+    ],
+    "megadrain": [
+      "メガドレイン"
+    ],
+    "leechseed": [
+      "やどりぎのタネ"
+    ],
+    "growth": [
+      "せいちょう"
+    ],
+    "razorleaf": [
+      "はっぱカッター"
+    ],
+    "solarbeam": [
+      "ソーラービーム"
+    ],
+    "poisonpowder": [
+      "どくのこな"
+    ],
+    "stunspore": [
+      "しびれごな"
+    ],
+    "sleeppowder": [
+      "ねむりごな"
+    ],
+    "petaldance": [
+      "はなびらのまい"
+    ],
+    "stringshot": [
+      "いとをはく"
+    ],
+    "dragonrage": [
+      "りゅうのいかり"
+    ],
+    "firespin": [
+      "ほのおのうず"
+    ],
+    "thundershock": [
+      "でんきショック"
+    ],
+    "thunderbolt": [
+      "１０まんボルト",
+      "10まんボルト",
+      "10万ボルト"
+    ],
+    "thunderwave": [
+      "でんじは"
+    ],
+    "thunder": [
+      "かみなり"
+    ],
+    "rockthrow": [
+      "いわおとし"
+    ],
+    "earthquake": [
+      "じしん"
+    ],
+    "fissure": [
+      "じわれ"
+    ],
+    "dig": [
+      "あなをほる"
+    ],
+    "toxic": [
+      "どくどく"
+    ],
+    "confusion": [
+      "ねんりき"
+    ],
+    "psychic": [
+      "サイコキネシス"
+    ],
+    "hypnosis": [
+      "さいみんじゅつ"
+    ],
+    "meditate": [
+      "ヨガのポーズ"
+    ],
+    "agility": [
+      "こうそくいどう"
+    ],
+    "quickattack": [
+      "でんこうせっか"
+    ],
+    "rage": [
+      "いかり"
+    ],
+    "teleport": [
+      "テレポート"
+    ],
+    "nightshade": [
+      "ナイトヘッド"
+    ],
+    "mimic": [
+      "ものまね"
+    ],
+    "screech": [
+      "いやなおと"
+    ],
+    "doubleteam": [
+      "かげぶんしん"
+    ],
+    "recover": [
+      "じこさいせい"
+    ],
+    "harden": [
+      "かたくなる"
+    ],
+    "minimize": [
+      "ちいさくなる"
+    ],
+    "smokescreen": [
+      "えんまく"
+    ],
+    "confuseray": [
+      "あやしいひかり"
+    ],
+    "withdraw": [
+      "からにこもる"
+    ],
+    "defensecurl": [
+      "まるくなる"
+    ],
+    "barrier": [
+      "バリアー"
+    ],
+    "lightscreen": [
+      "ひかりのかべ"
+    ],
+    "haze": [
+      "くろいきり"
+    ],
+    "reflect": [
+      "リフレクター"
+    ],
+    "focusenergy": [
+      "きあいだめ"
+    ],
+    "bide": [
+      "がまん"
+    ],
+    "metronome": [
+      "ゆびをふる"
+    ],
+    "mirrormove": [
+      "オウムがえし"
+    ],
+    "selfdestruct": [
+      "じばく"
+    ],
+    "eggbomb": [
+      "タマゴばくだん"
+    ],
+    "lick": [
+      "したでなめる"
+    ],
+    "smog": [
+      "スモッグ"
+    ],
+    "sludge": [
+      "ヘドロこうげき"
+    ],
+    "boneclub": [
+      "ホネこんぼう"
+    ],
+    "fireblast": [
+      "だいもんじ"
+    ],
+    "waterfall": [
+      "たきのぼり"
+    ],
+    "clamp": [
+      "からではさむ"
+    ],
+    "swift": [
+      "スピードスター"
+    ],
+    "skullbash": [
+      "ロケットずつき"
+    ],
+    "spikecannon": [
+      "とげキャノン"
+    ],
+    "constrict": [
+      "からみつく"
+    ],
+    "amnesia": [
+      "ドわすれ"
+    ],
+    "kinesis": [
+      "スプーンまげ"
+    ],
+    "softboiled": [
+      "タマゴうみ"
+    ],
+    "highjumpkick": [
+      "とびひざげり"
+    ],
+    "glare": [
+      "へびにらみ"
+    ],
+    "dreameater": [
+      "ゆめくい"
+    ],
+    "poisongas": [
+      "どくガス"
+    ],
+    "barrage": [
+      "たまなげ"
+    ],
+    "leechlife": [
+      "きゅうけつ"
+    ],
+    "lovelykiss": [
+      "あくまのキッス"
+    ],
+    "skyattack": [
+      "ゴッドバード"
+    ],
+    "transform": [
+      "へんしん"
+    ],
+    "bubble": [
+      "あわ"
+    ],
+    "dizzypunch": [
+      "ピヨピヨパンチ"
+    ],
+    "spore": [
+      "キノコのほうし"
+    ],
+    "flash": [
+      "フラッシュ"
+    ],
+    "psywave": [
+      "サイコウェーブ"
+    ],
+    "splash": [
+      "はねる"
+    ],
+    "acidarmor": [
+      "とける"
+    ],
+    "crabhammer": [
+      "クラブハンマー"
+    ],
+    "explosion": [
+      "だいばくはつ"
+    ],
+    "furyswipes": [
+      "みだれひっかき"
+    ],
+    "bonemerang": [
+      "ホネブーメラン"
+    ],
+    "rest": [
+      "ねむる"
+    ],
+    "rockslide": [
+      "いわなだれ"
+    ],
+    "hyperfang": [
+      "ひっさつまえば"
+    ],
+    "sharpen": [
+      "かくばる"
+    ],
+    "conversion": [
+      "テクスチャー"
+    ],
+    "triattack": [
+      "トライアタック"
+    ],
+    "superfang": [
+      "いかりのまえば"
+    ],
+    "slash": [
+      "きりさく"
+    ],
+    "substitute": [
+      "みがわり"
+    ],
+    "struggle": [
+      "わるあがき"
+    ],
+    "sketch": [
+      "スケッチ"
+    ],
+    "triplekick": [
+      "トリプルキック"
+    ],
+    "thief": [
+      "どろぼう"
+    ],
+    "spiderweb": [
+      "クモのす"
+    ],
+    "mindreader": [
+      "こころのめ"
+    ],
+    "nightmare": [
+      "あくむ"
+    ],
+    "flamewheel": [
+      "かえんぐるま"
+    ],
+    "snore": [
+      "いびき"
+    ],
+    "curse": [
+      "のろい"
+    ],
+    "flail": [
+      "じたばた"
+    ],
+    "conversion2": [
+      "テクスチャー２"
+    ],
+    "aeroblast": [
+      "エアロブラスト"
+    ],
+    "cottonspore": [
+      "わたほうし"
+    ],
+    "reversal": [
+      "きしかいせい"
+    ],
+    "spite": [
+      "うらみ"
+    ],
+    "powdersnow": [
+      "こなゆき"
+    ],
+    "protect": [
+      "まもる"
+    ],
+    "machpunch": [
+      "マッハパンチ"
+    ],
+    "scaryface": [
+      "こわいかお"
+    ],
+    "feintattack": [
+      "だましうち"
+    ],
+    "sweetkiss": [
+      "てんしのキッス"
+    ],
+    "bellydrum": [
+      "はらだいこ"
+    ],
+    "sludgebomb": [
+      "ヘドロばくだん"
+    ],
+    "mudslap": [
+      "どろかけ"
+    ],
+    "octazooka": [
+      "オクタンほう"
+    ],
+    "spikes": [
+      "まきびし"
+    ],
+    "zapcannon": [
+      "でんじほう"
+    ],
+    "foresight": [
+      "みやぶる"
+    ],
+    "destinybond": [
+      "みちづれ"
+    ],
+    "perishsong": [
+      "ほろびのうた"
+    ],
+    "icywind": [
+      "こごえるかぜ",
+      "凍える風"
+    ],
+    "detect": [
+      "みきり"
+    ],
+    "bonerush": [
+      "ボーンラッシュ"
+    ],
+    "lockon": [
+      "ロックオン"
+    ],
+    "outrage": [
+      "げきりん"
+    ],
+    "sandstorm": [
+      "すなあらし"
+    ],
+    "gigadrain": [
+      "ギガドレイン"
+    ],
+    "endure": [
+      "こらえる"
+    ],
+    "charm": [
+      "あまえる"
+    ],
+    "rollout": [
+      "ころがる"
+    ],
+    "falseswipe": [
+      "みねうち"
+    ],
+    "swagger": [
+      "いばる"
+    ],
+    "milkdrink": [
+      "ミルクのみ"
+    ],
+    "spark": [
+      "スパーク"
+    ],
+    "furycutter": [
+      "れんぞくぎり"
+    ],
+    "steelwing": [
+      "はがねのつばさ"
+    ],
+    "meanlook": [
+      "くろいまなざし"
+    ],
+    "attract": [
+      "メロメロ"
+    ],
+    "sleeptalk": [
+      "ねごと"
+    ],
+    "healbell": [
+      "いやしのすず"
+    ],
+    "return": [
+      "おんがえし"
+    ],
+    "present": [
+      "プレゼント"
+    ],
+    "frustration": [
+      "やつあたり"
+    ],
+    "safeguard": [
+      "しんぴのまもり"
+    ],
+    "painsplit": [
+      "いたみわけ"
+    ],
+    "sacredfire": [
+      "せいなるほのお"
+    ],
+    "magnitude": [
+      "マグニチュード"
+    ],
+    "dynamicpunch": [
+      "ばくれつパンチ"
+    ],
+    "megahorn": [
+      "メガホーン"
+    ],
+    "dragonbreath": [
+      "りゅうのいぶき"
+    ],
+    "batonpass": [
+      "バトンタッチ"
+    ],
+    "encore": [
+      "アンコール"
+    ],
+    "pursuit": [
+      "おいうち"
+    ],
+    "rapidspin": [
+      "こうそくスピン"
+    ],
+    "sweetscent": [
+      "あまいかおり"
+    ],
+    "irontail": [
+      "アイアンテール"
+    ],
+    "metalclaw": [
+      "メタルクロー"
+    ],
+    "vitalthrow": [
+      "あてみなげ"
+    ],
+    "morningsun": [
+      "あさのひざし"
+    ],
+    "synthesis": [
+      "こうごうせい"
+    ],
+    "moonlight": [
+      "つきのひかり"
+    ],
+    "hiddenpower": [
+      "めざめるパワー"
+    ],
+    "crosschop": [
+      "クロスチョップ"
+    ],
+    "twister": [
+      "たつまき"
+    ],
+    "raindance": [
+      "あまごい"
+    ],
+    "sunnyday": [
+      "にほんばれ"
+    ],
+    "crunch": [
+      "かみくだく"
+    ],
+    "mirrorcoat": [
+      "ミラーコート"
+    ],
+    "psychup": [
+      "じこあんじ"
+    ],
+    "extremespeed": [
+      "しんそく"
+    ],
+    "ancientpower": [
+      "げんしのちから"
+    ],
+    "shadowball": [
+      "シャドーボール"
+    ],
+    "futuresight": [
+      "みらいよち"
+    ],
+    "rocksmash": [
+      "いわくだき"
+    ],
+    "whirlpool": [
+      "うずしお"
+    ],
+    "beatup": [
+      "ふくろだたき"
+    ],
+    "fakeout": [
+      "ねこだまし"
+    ],
+    "uproar": [
+      "さわぐ"
+    ],
+    "stockpile": [
+      "たくわえる"
+    ],
+    "spitup": [
+      "はきだす"
+    ],
+    "swallow": [
+      "のみこむ"
+    ],
+    "heatwave": [
+      "ねっぷう"
+    ],
+    "hail": [
+      "あられ"
+    ],
+    "torment": [
+      "いちゃもん"
+    ],
+    "flatter": [
+      "おだてる"
+    ],
+    "willowisp": [
+      "おにび"
+    ],
+    "memento": [
+      "おきみやげ"
+    ],
+    "facade": [
+      "からげんき"
+    ],
+    "focuspunch": [
+      "きあいパンチ"
+    ],
+    "smellingsalts": [
+      "きつけ"
+    ],
+    "followme": [
+      "このゆびとまれ"
+    ],
+    "naturepower": [
+      "しぜんのちから"
+    ],
+    "charge": [
+      "じゅうでん"
+    ],
+    "taunt": [
+      "ちょうはつ"
+    ],
+    "helpinghand": [
+      "てだすけ"
+    ],
+    "trick": [
+      "トリック"
+    ],
+    "roleplay": [
+      "なりきり"
+    ],
+    "wish": [
+      "ねがいごと"
+    ],
+    "assist": [
+      "ねこのて"
+    ],
+    "ingrain": [
+      "ねをはる"
+    ],
+    "superpower": [
+      "ばかぢから"
+    ],
+    "magiccoat": [
+      "マジックコート"
+    ],
+    "recycle": [
+      "リサイクル"
+    ],
+    "revenge": [
+      "リベンジ"
+    ],
+    "brickbreak": [
+      "かわらわり"
+    ],
+    "yawn": [
+      "あくび"
+    ],
+    "knockoff": [
+      "はたきおとす"
+    ],
+    "endeavor": [
+      "がむしゃら"
+    ],
+    "eruption": [
+      "ふんか"
+    ],
+    "skillswap": [
+      "スキルスワップ"
+    ],
+    "imprison": [
+      "ふういん"
+    ],
+    "refresh": [
+      "リフレッシュ"
+    ],
+    "grudge": [
+      "おんねん"
+    ],
+    "snatch": [
+      "よこどり"
+    ],
+    "secretpower": [
+      "ひみつのちから"
+    ],
+    "dive": [
+      "ダイビング"
+    ],
+    "armthrust": [
+      "つっぱり"
+    ],
+    "camouflage": [
+      "ほごしょく"
+    ],
+    "tailglow": [
+      "ほたるび"
+    ],
+    "lusterpurge": [
+      "ラスターパージ"
+    ],
+    "mistball": [
+      "ミストボール"
+    ],
+    "featherdance": [
+      "フェザーダンス"
+    ],
+    "teeterdance": [
+      "フラフラダンス"
+    ],
+    "blazekick": [
+      "ブレイズキック"
+    ],
+    "mudsport": [
+      "どろあそび"
+    ],
+    "iceball": [
+      "アイスボール"
+    ],
+    "needlearm": [
+      "ニードルアーム"
+    ],
+    "slackoff": [
+      "なまける"
+    ],
+    "hypervoice": [
+      "ハイパーボイス"
+    ],
+    "poisonfang": [
+      "どくどくのキバ"
+    ],
+    "crushclaw": [
+      "ブレイククロー"
+    ],
+    "blastburn": [
+      "ブラストバーン"
+    ],
+    "hydrocannon": [
+      "ハイドロカノン"
+    ],
+    "meteormash": [
+      "コメットパンチ"
+    ],
+    "astonish": [
+      "おどろかす"
+    ],
+    "weatherball": [
+      "ウェザーボール"
+    ],
+    "aromatherapy": [
+      "アロマセラピー"
+    ],
+    "faketears": [
+      "うそなき"
+    ],
+    "aircutter": [
+      "エアカッター"
+    ],
+    "overheat": [
+      "オーバーヒート"
+    ],
+    "odorsleuth": [
+      "かぎわける"
+    ],
+    "rocktomb": [
+      "がんせきふうじ"
+    ],
+    "silverwind": [
+      "ぎんいろのかぜ"
+    ],
+    "metalsound": [
+      "きんぞくおん"
+    ],
+    "grasswhistle": [
+      "くさぶえ"
+    ],
+    "tickle": [
+      "くすぐる"
+    ],
+    "cosmicpower": [
+      "コスモパワー"
+    ],
+    "waterspout": [
+      "しおふき"
+    ],
+    "signalbeam": [
+      "シグナルビーム"
+    ],
+    "shadowpunch": [
+      "シャドーパンチ"
+    ],
+    "extrasensory": [
+      "じんつうりき"
+    ],
+    "skyuppercut": [
+      "スカイアッパー"
+    ],
+    "sandtomb": [
+      "すなじごく"
+    ],
+    "sheercold": [
+      "ぜったいれいど"
+    ],
+    "muddywater": [
+      "だくりゅう"
+    ],
+    "bulletseed": [
+      "タネマシンガン"
+    ],
+    "aerialace": [
+      "つばめがえし"
+    ],
+    "iciclespear": [
+      "つららばり"
+    ],
+    "irondefense": [
+      "てっぺき"
+    ],
+    "block": [
+      "とおせんぼう"
+    ],
+    "howl": [
+      "とおぼえ"
+    ],
+    "dragonclaw": [
+      "ドラゴンクロー"
+    ],
+    "frenzyplant": [
+      "ハードプラント"
+    ],
+    "bulkup": [
+      "ビルドアップ"
+    ],
+    "bounce": [
+      "とびはねる"
+    ],
+    "mudshot": [
+      "マッドショット"
+    ],
+    "poisontail": [
+      "ポイズンテール"
+    ],
+    "covet": [
+      "ほしがる"
+    ],
+    "volttackle": [
+      "ボルテッカー"
+    ],
+    "magicalleaf": [
+      "マジカルリーフ"
+    ],
+    "watersport": [
+      "みずあそび"
+    ],
+    "calmmind": [
+      "めいそう"
+    ],
+    "leafblade": [
+      "リーフブレード"
+    ],
+    "dragondance": [
+      "りゅうのまい"
+    ],
+    "rockblast": [
+      "ロックブラスト"
+    ],
+    "shockwave": [
+      "でんげきは"
+    ],
+    "waterpulse": [
+      "みずのはどう"
+    ],
+    "doomdesire": [
+      "はめつのねがい"
+    ],
+    "psychoboost": [
+      "サイコブースト"
+    ],
+    "roost": [
+      "はねやすめ"
+    ],
+    "gravity": [
+      "じゅうりょく"
+    ],
+    "miracleeye": [
+      "ミラクルアイ"
+    ],
+    "wakeupslap": [
+      "めざましビンタ"
+    ],
+    "hammerarm": [
+      "アームハンマー"
+    ],
+    "gyroball": [
+      "ジャイロボール"
+    ],
+    "healingwish": [
+      "いやしのねがい"
+    ],
+    "brine": [
+      "しおみず"
+    ],
+    "naturalgift": [
+      "しぜんのめぐみ"
+    ],
+    "feint": [
+      "フェイント"
+    ],
+    "pluck": [
+      "ついばむ"
+    ],
+    "tailwind": [
+      "おいかぜ"
+    ],
+    "acupressure": [
+      "つぼをつく"
+    ],
+    "metalburst": [
+      "メタルバースト"
+    ],
+    "uturn": [
+      "とんぼがえり"
+    ],
+    "closecombat": [
+      "インファイト"
+    ],
+    "payback": [
+      "しっぺがえし"
+    ],
+    "assurance": [
+      "ダメおし"
+    ],
+    "embargo": [
+      "さしおさえ"
+    ],
+    "fling": [
+      "なげつける"
+    ],
+    "psychoshift": [
+      "サイコシフト"
+    ],
+    "trumpcard": [
+      "きりふだ"
+    ],
+    "healblock": [
+      "かいふくふうじ"
+    ],
+    "wringout": [
+      "しぼりとる"
+    ],
+    "powertrick": [
+      "パワートリック"
+    ],
+    "gastroacid": [
+      "いえき"
+    ],
+    "luckychant": [
+      "おまじない"
+    ],
+    "mefirst": [
+      "さきどり"
+    ],
+    "copycat": [
+      "まねっこ"
+    ],
+    "powerswap": [
+      "パワースワップ"
+    ],
+    "guardswap": [
+      "ガードスワップ"
+    ],
+    "punishment": [
+      "おしおき"
+    ],
+    "lastresort": [
+      "とっておき"
+    ],
+    "worryseed": [
+      "なやみのタネ"
+    ],
+    "suckerpunch": [
+      "ふいうち"
+    ],
+    "toxicspikes": [
+      "どくびし"
+    ],
+    "heartswap": [
+      "ハートスワップ"
+    ],
+    "aquaring": [
+      "アクアリング"
+    ],
+    "magnetrise": [
+      "でんじふゆう"
+    ],
+    "flareblitz": [
+      "フレアドライブ"
+    ],
+    "forcepalm": [
+      "はっけい"
+    ],
+    "aurasphere": [
+      "はどうだん"
+    ],
+    "rockpolish": [
+      "ロックカット"
+    ],
+    "poisonjab": [
+      "どくづき"
+    ],
+    "darkpulse": [
+      "あくのはどう"
+    ],
+    "nightslash": [
+      "つじぎり"
+    ],
+    "aquatail": [
+      "アクアテール"
+    ],
+    "seedbomb": [
+      "タネばくだん"
+    ],
+    "airslash": [
+      "エアスラッシュ"
+    ],
+    "xscissor": [
+      "シザークロス"
+    ],
+    "bugbuzz": [
+      "むしのさざめき"
+    ],
+    "dragonpulse": [
+      "りゅうのはどう"
+    ],
+    "dragonrush": [
+      "ドラゴンダイブ"
+    ],
+    "powergem": [
+      "パワージェム"
+    ],
+    "drainpunch": [
+      "ドレインパンチ"
+    ],
+    "vacuumwave": [
+      "しんくうは"
+    ],
+    "focusblast": [
+      "きあいだま"
+    ],
+    "energyball": [
+      "エナジーボール"
+    ],
+    "bravebird": [
+      "ブレイブバード"
+    ],
     "earthpower": [
       "だいちのちから"
+    ],
+    "switcheroo": [
+      "すりかえ"
+    ],
+    "gigaimpact": [
+      "ギガインパクト"
+    ],
+    "nastyplot": [
+      "わるだくみ"
+    ],
+    "bulletpunch": [
+      "バレットパンチ"
+    ],
+    "avalanche": [
+      "ゆきなだれ"
+    ],
+    "iceshard": [
+      "こおりのつぶて"
+    ],
+    "shadowclaw": [
+      "シャドークロー"
+    ],
+    "thunderfang": [
+      "かみなりのキバ"
+    ],
+    "icefang": [
+      "こおりのキバ"
+    ],
+    "firefang": [
+      "ほのおのキバ"
+    ],
+    "shadowsneak": [
+      "かげうち"
+    ],
+    "mudbomb": [
+      "どろばくだん"
+    ],
+    "psychocut": [
+      "サイコカッター"
+    ],
+    "zenheadbutt": [
+      "しねんのずつき"
+    ],
+    "mirrorshot": [
+      "ミラーショット"
+    ],
+    "flashcannon": [
+      "ラスターカノン"
+    ],
+    "rockclimb": [
+      "ロッククライム"
+    ],
+    "defog": [
+      "きりばらい"
+    ],
+    "trickroom": [
+      "トリックルーム"
+    ],
+    "dracometeor": [
+      "りゅうせいぐん"
+    ],
+    "discharge": [
+      "ほうでん"
+    ],
+    "lavaplume": [
+      "ふんえん"
+    ],
+    "leafstorm": [
+      "リーフストーム"
+    ],
+    "powerwhip": [
+      "パワーウィップ"
+    ],
+    "rockwrecker": [
+      "がんせきほう"
+    ],
+    "crosspoison": [
+      "クロスポイズン"
+    ],
+    "gunkshot": [
+      "ダストシュート"
+    ],
+    "ironhead": [
+      "アイアンヘッド"
+    ],
+    "magnetbomb": [
+      "マグネットボム"
+    ],
+    "stoneedge": [
+      "ストーンエッジ"
+    ],
+    "captivate": [
+      "ゆうわく"
+    ],
+    "stealthrock": [
+      "ステルスロック"
+    ],
+    "grassknot": [
+      "くさむすび"
+    ],
+    "chatter": [
+      "おしゃべり"
+    ],
+    "judgment": [
+      "さばきのつぶて"
+    ],
+    "bugbite": [
+      "むしくい"
+    ],
+    "chargebeam": [
+      "チャージビーム"
+    ],
+    "woodhammer": [
+      "ウッドハンマー"
+    ],
+    "aquajet": [
+      "アクアジェット"
+    ],
+    "attackorder": [
+      "こうげきしれい"
+    ],
+    "defendorder": [
+      "ぼうぎょしれい"
+    ],
+    "healorder": [
+      "かいふくしれい"
+    ],
+    "headsmash": [
+      "もろはのずつき"
+    ],
+    "doublehit": [
+      "ダブルアタック"
+    ],
+    "roaroftime": [
+      "ときのほうこう"
+    ],
+    "spacialrend": [
+      "あくうせつだん"
+    ],
+    "lunardance": [
+      "みかづきのまい"
+    ],
+    "crushgrip": [
+      "にぎりつぶす"
+    ],
+    "magmastorm": [
+      "マグマストーム"
+    ],
+    "darkvoid": [
+      "ダークホール"
+    ],
+    "seedflare": [
+      "シードフレア"
+    ],
+    "ominouswind": [
+      "あやしいかぜ"
+    ],
+    "shadowforce": [
+      "シャドーダイブ"
+    ],
+    "honeclaws": [
+      "つめとぎ"
+    ],
+    "wideguard": [
+      "ワイドガード"
+    ],
+    "guardsplit": [
+      "ガードシェア"
+    ],
+    "powersplit": [
+      "パワーシェア"
+    ],
+    "wonderroom": [
+      "ワンダールーム"
+    ],
+    "psyshock": [
+      "サイコショック"
+    ],
+    "venoshock": [
+      "ベノムショック"
+    ],
+    "autotomize": [
+      "ボディパージ"
+    ],
+    "ragepowder": [
+      "いかりのこな"
+    ],
+    "telekinesis": [
+      "テレキネシス"
+    ],
+    "magicroom": [
+      "マジックルーム"
+    ],
+    "smackdown": [
+      "うちおとす"
+    ],
+    "stormthrow": [
+      "やまあらし"
+    ],
+    "flameburst": [
+      "はじけるほのお"
+    ],
+    "sludgewave": [
+      "ヘドロウェーブ"
+    ],
+    "quiverdance": [
+      "ちょうのまい"
+    ],
+    "heavyslam": [
+      "ヘビーボンバー"
+    ],
+    "synchronoise": [
+      "シンクロノイズ"
+    ],
+    "electroball": [
+      "エレキボール"
+    ],
+    "soak": [
+      "みずびたし"
+    ],
+    "flamecharge": [
+      "ニトロチャージ"
+    ],
+    "coil": [
+      "とぐろをまく"
+    ],
+    "lowsweep": [
+      "ローキック"
+    ],
+    "acidspray": [
+      "アシッドボム"
+    ],
+    "foulplay": [
+      "イカサマ"
+    ],
+    "simplebeam": [
+      "シンプルビーム"
+    ],
+    "entrainment": [
+      "なかまづくり"
+    ],
+    "afteryou": [
+      "おさきにどうぞ"
+    ],
+    "round": [
+      "りんしょう"
+    ],
+    "echoedvoice": [
+      "エコーボイス"
+    ],
+    "chipaway": [
+      "なしくずし"
+    ],
+    "clearsmog": [
+      "クリアスモッグ"
+    ],
+    "storedpower": [
+      "アシストパワー"
+    ],
+    "quickguard": [
+      "ファストガード"
+    ],
+    "allyswitch": [
+      "サイドチェンジ"
+    ],
+    "scald": [
+      "ねっとう"
+    ],
+    "shellsmash": [
+      "からをやぶる"
+    ],
+    "healpulse": [
+      "いやしのはどう"
+    ],
+    "hex": [
+      "たたりめ"
+    ],
+    "skydrop": [
+      "フリーフォール"
+    ],
+    "shiftgear": [
+      "ギアチェンジ"
+    ],
+    "circlethrow": [
+      "ともえなげ"
+    ],
+    "incinerate": [
+      "やきつくす"
+    ],
+    "quash": [
+      "さきおくり"
+    ],
+    "acrobatics": [
+      "アクロバット"
+    ],
+    "reflecttype": [
+      "ミラータイプ"
+    ],
+    "retaliate": [
+      "かたきうち"
+    ],
+    "finalgambit": [
+      "いのちがけ"
+    ],
+    "bestow": [
+      "ギフトパス"
+    ],
+    "inferno": [
+      "れんごく"
+    ],
+    "waterpledge": [
+      "みずのちかい"
+    ],
+    "firepledge": [
+      "ほのおのちかい"
+    ],
+    "grasspledge": [
+      "くさのちかい"
+    ],
+    "voltswitch": [
+      "ボルトチェンジ"
+    ],
+    "strugglebug": [
+      "むしのていこう"
+    ],
+    "bulldoze": [
+      "じならし"
+    ],
+    "frostbreath": [
+      "こおりのいぶき"
+    ],
+    "dragontail": [
+      "ドラゴンテール"
+    ],
+    "workup": [
+      "ふるいたてる"
+    ],
+    "electroweb": [
+      "エレキネット"
+    ],
+    "wildcharge": [
+      "ワイルドボルト"
+    ],
+    "drillrun": [
+      "ドリルライナー"
+    ],
+    "dualchop": [
+      "ダブルチョップ"
+    ],
+    "heartstamp": [
+      "ハートスタンプ"
+    ],
+    "hornleech": [
+      "ウッドホーン"
+    ],
+    "sacredsword": [
+      "せいなるつるぎ"
+    ],
+    "razorshell": [
+      "シェルブレード"
+    ],
+    "heatcrash": [
+      "ヒートスタンプ"
+    ],
+    "leaftornado": [
+      "グラスミキサー"
+    ],
+    "steamroller": [
+      "ハードローラー"
+    ],
+    "cottonguard": [
+      "コットンガード"
+    ],
+    "nightdaze": [
+      "ナイトバースト"
+    ],
+    "psystrike": [
+      "サイコブレイク"
+    ],
+    "tailslap": [
+      "スイープビンタ"
+    ],
+    "hurricane": [
+      "ぼうふう"
+    ],
+    "headcharge": [
+      "アフロブレイク"
+    ],
+    "geargrind": [
+      "ギアソーサー"
+    ],
+    "searingshot": [
+      "かえんだん"
+    ],
+    "technoblast": [
+      "テクノバスター"
+    ],
+    "relicsong": [
+      "いにしえのうた"
+    ],
+    "secretsword": [
+      "しんぴのつるぎ"
+    ],
+    "glaciate": [
+      "こごえるせかい"
+    ],
+    "boltstrike": [
+      "らいげき"
+    ],
+    "blueflare": [
+      "あおいほのお"
+    ],
+    "fierydance": [
+      "ほのおのまい"
+    ],
+    "freezeshock": [
+      "フリーズボルト"
+    ],
+    "iceburn": [
+      "コールドフレア"
+    ],
+    "snarl": [
+      "バークアウト"
+    ],
+    "iciclecrash": [
+      "つららおとし"
+    ],
+    "vcreate": [
+      "Ｖジェネレート"
+    ],
+    "fusionflare": [
+      "クロスフレイム"
+    ],
+    "fusionbolt": [
+      "クロスサンダー"
+    ],
+    "flyingpress": [
+      "フライングプレス"
+    ],
+    "matblock": [
+      "たたみがえし"
+    ],
+    "belch": [
+      "ゲップ"
+    ],
+    "rototiller": [
+      "たがやす"
+    ],
+    "stickyweb": [
+      "ねばねばネット"
+    ],
+    "fellstinger": [
+      "とどめばり"
+    ],
+    "phantomforce": [
+      "ゴーストダイブ"
+    ],
+    "trickortreat": [
+      "ハロウィン"
+    ],
+    "nobleroar": [
+      "おたけび"
+    ],
+    "iondeluge": [
+      "プラズマシャワー"
+    ],
+    "paraboliccharge": [
+      "パラボラチャージ"
+    ],
+    "forestscurse": [
+      "もりののろい"
+    ],
+    "petalblizzard": [
+      "はなふぶき"
+    ],
+    "freezedry": [
+      "フリーズドライ"
+    ],
+    "disarmingvoice": [
+      "チャームボイス"
+    ],
+    "partingshot": [
+      "すてゼリフ"
+    ],
+    "topsyturvy": [
+      "ひっくりかえす"
+    ],
+    "drainingkiss": [
+      "ドレインキッス"
+    ],
+    "craftyshield": [
+      "トリックガード"
+    ],
+    "flowershield": [
+      "フラワーガード"
+    ],
+    "grassyterrain": [
+      "グラスフィールド"
+    ],
+    "mistyterrain": [
+      "ミストフィールド"
+    ],
+    "electrify": [
+      "そうでん"
+    ],
+    "playrough": [
+      "じゃれつく"
+    ],
+    "fairywind": [
+      "ようせいのかぜ"
+    ],
+    "moonblast": [
+      "ムーンフォース"
+    ],
+    "boomburst": [
+      "ばくおんぱ"
+    ],
+    "fairylock": [
+      "フェアリーロック"
+    ],
+    "kingsshield": [
+      "キングシールド"
+    ],
+    "playnice": [
+      "なかよくする"
+    ],
+    "confide": [
+      "ないしょばなし"
+    ],
+    "diamondstorm": [
+      "ダイヤストーム"
+    ],
+    "steameruption": [
+      "スチームバースト"
+    ],
+    "hyperspacehole": [
+      "いじげんホール"
+    ],
+    "watershuriken": [
+      "みずしゅりけん"
+    ],
+    "mysticalfire": [
+      "マジカルフレイム"
+    ],
+    "spikyshield": [
+      "ニードルガード"
+    ],
+    "aromaticmist": [
+      "アロマミスト"
+    ],
+    "eerieimpulse": [
+      "かいでんぱ"
+    ],
+    "venomdrench": [
+      "ベノムトラップ"
+    ],
+    "powder": [
+      "ふんじん"
+    ],
+    "geomancy": [
+      "ジオコントロール"
+    ],
+    "magneticflux": [
+      "じばそうさ"
+    ],
+    "happyhour": [
+      "ハッピータイム"
+    ],
+    "electricterrain": [
+      "エレキフィールド"
+    ],
+    "dazzlinggleam": [
+      "マジカルシャイン"
+    ],
+    "celebrate": [
+      "おいわい"
+    ],
+    "holdhands": [
+      "てをつなぐ"
+    ],
+    "babydolleyes": [
+      "つぶらなひとみ"
+    ],
+    "nuzzle": [
+      "ほっぺすりすり"
+    ],
+    "holdback": [
+      "てかげん"
+    ],
+    "infestation": [
+      "まとわりつく"
+    ],
+    "poweruppunch": [
+      "グロウパンチ"
+    ],
+    "oblivionwing": [
+      "デスウイング"
+    ],
+    "thousandarrows": [
+      "サウザンアロー"
+    ],
+    "thousandwaves": [
+      "サウザンウェーブ"
+    ],
+    "landswrath": [
+      "グランドフォース"
+    ],
+    "lightofruin": [
+      "はめつのひかり"
+    ],
+    "originpulse": [
+      "こんげんのはどう"
+    ],
+    "precipiceblades": [
+      "だんがいのつるぎ"
+    ],
+    "dragonascent": [
+      "ガリョウテンセイ"
+    ],
+    "hyperspacefury": [
+      "いじげんラッシュ"
+    ],
+    "breakneckblitz": [
+      "ウルトラダッシュアタック"
+    ],
+    "alloutpummeling": [
+      "ぜんりょくむそうげきれつけん"
+    ],
+    "supersonicskystrike": [
+      "ファイナルダイブクラッシュ"
+    ],
+    "aciddownpour": [
+      "アシッドポイズンデリート"
+    ],
+    "tectonicrage": [
+      "ライジングランドオーバー"
+    ],
+    "continentalcrush": [
+      "ワールズエンドフォール"
+    ],
+    "savagespinout": [
+      "ぜったいほしょくかいてんざん"
+    ],
+    "neverendingnightmare": [
+      "むげんあんやへのいざない"
+    ],
+    "corkscrewcrash": [
+      "ちょうぜつらせんれんげき"
+    ],
+    "infernooverdrive": [
+      "ダイナミックフルフレイム"
+    ],
+    "hydrovortex": [
+      "スーパーアクアトルネード"
+    ],
+    "bloomdoom": [
+      "ブルームシャインエクストラ"
+    ],
+    "gigavolthavoc": [
+      "スパーキングギガボルト"
+    ],
+    "shatteredpsyche": [
+      "マキシマムサイブレイカー"
+    ],
+    "subzeroslammer": [
+      "レイジングジオフリーズ"
+    ],
+    "devastatingdrake": [
+      "アルティメットドラゴンバーン"
+    ],
+    "blackholeeclipse": [
+      "ブラックホールイクリプス"
+    ],
+    "twinkletackle": [
+      "ラブリースターインパクト"
+    ],
+    "catastropika": [
+      "ひっさつのピカチュート"
+    ],
+    "shoreup": [
+      "すなあつめ"
+    ],
+    "firstimpression": [
+      "であいがしら"
+    ],
+    "banefulbunker": [
+      "トーチカ"
+    ],
+    "spiritshackle": [
+      "かげぬい"
+    ],
+    "darkestlariat": [
+      "ＤＤラリアット"
+    ],
+    "sparklingaria": [
+      "うたかたのアリア"
+    ],
+    "icehammer": [
+      "アイスハンマー"
+    ],
+    "floralhealing": [
+      "フラワーヒール"
+    ],
+    "highhorsepower": [
+      "１０まんばりき"
+    ],
+    "strengthsap": [
+      "ちからをすいとる"
+    ],
+    "solarblade": [
+      "ソーラーブレード"
+    ],
+    "leafage": [
+      "このは"
+    ],
+    "spotlight": [
+      "スポットライト"
+    ],
+    "toxicthread": [
+      "どくのいと"
+    ],
+    "laserfocus": [
+      "とぎすます"
+    ],
+    "gearup": [
+      "アシストギア"
+    ],
+    "throatchop": [
+      "じごくづき"
+    ],
+    "pollenpuff": [
+      "かふんだんご"
+    ],
+    "anchorshot": [
+      "アンカーショット"
+    ],
+    "psychicterrain": [
+      "サイコフィールド"
+    ],
+    "lunge": [
+      "とびかかる"
+    ],
+    "firelash": [
+      "ほのおのムチ"
+    ],
+    "powertrip": [
+      "つけあがる"
+    ],
+    "burnup": [
+      "もえつきる"
+    ],
+    "speedswap": [
+      "スピードスワップ"
+    ],
+    "smartstrike": [
+      "スマートホーン"
+    ],
+    "purify": [
+      "じょうか"
+    ],
+    "revelationdance": [
+      "めざめるダンス"
+    ],
+    "coreenforcer": [
+      "コアパニッシャー"
+    ],
+    "tropkick": [
+      "トロピカルキック"
+    ],
+    "instruct": [
+      "さいはい"
+    ],
+    "beakblast": [
+      "くちばしキャノン"
+    ],
+    "clangingscales": [
+      "スケイルノイズ"
+    ],
+    "dragonhammer": [
+      "ドラゴンハンマー"
+    ],
+    "brutalswing": [
+      "ぶんまわす"
+    ],
+    "auroraveil": [
+      "オーロラベール"
+    ],
+    "sinisterarrowraid": [
+      "シャドーアローズストライク"
+    ],
+    "maliciousmoonsault": [
+      "ハイパーダーククラッシャー"
+    ],
+    "oceanicoperetta": [
+      "わだつみのシンフォニア"
+    ],
+    "guardianofalola": [
+      "ガーディアン・デ・アローラ"
+    ],
+    "soulstealing7starstrike": [
+      "しちせいだっこんたい"
+    ],
+    "stokedsparksurfer": [
+      "ライトニングサーフライド"
+    ],
+    "pulverizingpancake": [
+      "ほんきをだす　こうげき"
+    ],
+    "extremeevoboost": [
+      "ナインエボルブースト"
+    ],
+    "genesissupernova": [
+      "オリジンズスーパーノヴァ"
+    ],
+    "shelltrap": [
+      "トラップシェル"
+    ],
+    "fleurcannon": [
+      "フルールカノン"
+    ],
+    "psychicfangs": [
+      "サイコファング"
+    ],
+    "stompingtantrum": [
+      "じだんだ"
+    ],
+    "shadowbone": [
+      "シャドーボーン"
+    ],
+    "accelerock": [
+      "アクセルロック"
+    ],
+    "liquidation": [
+      "アクアブレイク"
+    ],
+    "prismaticlaser": [
+      "プリズムレーザー"
+    ],
+    "spectralthief": [
+      "シャドースチール"
+    ],
+    "sunsteelstrike": [
+      "メテオドライブ"
+    ],
+    "moongeistbeam": [
+      "シャドーレイ"
+    ],
+    "tearfullook": [
+      "なみだめ"
+    ],
+    "zingzap": [
+      "びりびりちくちく"
+    ],
+    "naturesmadness": [
+      "しぜんのいかり"
+    ],
+    "multiattack": [
+      "マルチアタック"
+    ],
+    "10000000voltthunderbolt": [
+      "１０００まんボルト"
+    ],
+    "mindblown": [
+      "ビックリヘッド"
+    ],
+    "plasmafists": [
+      "プラズマフィスト"
+    ],
+    "photongeyser": [
+      "フォトンゲイザー"
+    ],
+    "lightthatburnsthesky": [
+      "てんこがすめつぼうのひかり"
+    ],
+    "searingsunrazesmash": [
+      "サンシャインスマッシャー"
+    ],
+    "menacingmoonrazemaelstrom": [
+      "ムーンライトブラスター"
+    ],
+    "letssnuggleforever": [
+      "ぽかぼかフレンドタイム"
+    ],
+    "splinteredstormshards": [
+      "ラジアルエッジストーム"
+    ],
+    "clangoroussoulblaze": [
+      "ブレイジングソウルビート"
+    ],
+    "zippyzap": [
+      "ばちばちアクセル"
+    ],
+    "splishysplash": [
+      "ざぶざぶサーフ"
+    ],
+    "floatyfall": [
+      "ふわふわフォール"
+    ],
+    "pikapapow": [
+      "ピカピカサンダー"
+    ],
+    "bouncybubble": [
+      "いきいきバブル"
+    ],
+    "buzzybuzz": [
+      "びりびりエレキ"
+    ],
+    "sizzlyslide": [
+      "めらめらバーン"
+    ],
+    "glitzyglow": [
+      "どばどばオーラ"
+    ],
+    "baddybad": [
+      "わるわるゾーン"
+    ],
+    "sappyseed": [
+      "すくすくボンバー"
+    ],
+    "freezyfrost": [
+      "こちこちフロスト"
+    ],
+    "sparklyswirl": [
+      "きらきらストーム"
+    ],
+    "veeveevolley": [
+      "ブイブイブレイク"
+    ],
+    "doubleironbash": [
+      "ダブルパンツァー"
+    ],
+    "maxguard": [
+      "ダイウォール"
+    ],
+    "dynamaxcannon": [
+      "ダイマックスほう"
+    ],
+    "snipeshot": [
+      "ねらいうち"
+    ],
+    "jawlock": [
+      "くらいつく"
+    ],
+    "stuffcheeks": [
+      "ほおばる"
+    ],
+    "noretreat": [
+      "はいすいのじん"
+    ],
+    "tarshot": [
+      "タールショット"
+    ],
+    "magicpowder": [
+      "まほうのこな"
+    ],
+    "dragondarts": [
+      "ドラゴンアロー"
+    ],
+    "teatime": [
+      "おちゃかい"
+    ],
+    "octolock": [
+      "たこがため"
+    ],
+    "boltbeak": [
+      "でんげきくちばし"
+    ],
+    "fishiousrend": [
+      "エラがみ"
+    ],
+    "courtchange": [
+      "コートチェンジ"
+    ],
+    "maxflare": [
+      "ダイバーン"
+    ],
+    "maxflutterby": [
+      "ダイワーム"
+    ],
+    "maxlightning": [
+      "ダイサンダー"
+    ],
+    "maxstrike": [
+      "ダイアタック"
+    ],
+    "maxknuckle": [
+      "ダイナックル"
+    ],
+    "maxphantasm": [
+      "ダイホロウ"
+    ],
+    "maxhailstorm": [
+      "ダイアイス"
+    ],
+    "maxooze": [
+      "ダイアシッド"
+    ],
+    "maxgeyser": [
+      "ダイストリーム"
+    ],
+    "maxairstream": [
+      "ダイジェット"
+    ],
+    "maxstarfall": [
+      "ダイフェアリー"
+    ],
+    "maxwyrmwind": [
+      "ダイドラグーン"
+    ],
+    "maxmindstorm": [
+      "ダイサイコ"
+    ],
+    "maxrockfall": [
+      "ダイロック"
+    ],
+    "maxquake": [
+      "ダイアース"
+    ],
+    "maxdarkness": [
+      "ダイアーク"
+    ],
+    "maxovergrowth": [
+      "ダイソウゲン"
+    ],
+    "maxsteelspike": [
+      "ダイスチル"
+    ],
+    "clangoroussoul": [
+      "ソウルビート"
+    ],
+    "bodypress": [
+      "ボディプレス"
+    ],
+    "decorate": [
+      "デコレーション"
+    ],
+    "drumbeating": [
+      "ドラムアタック"
+    ],
+    "snaptrap": [
+      "トラバサミ"
+    ],
+    "pyroball": [
+      "かえんボール"
+    ],
+    "behemothblade": [
+      "きょじゅうざん"
+    ],
+    "behemothbash": [
+      "きょじゅうだん"
+    ],
+    "aurawheel": [
+      "オーラぐるま"
+    ],
+    "breakingswipe": [
+      "ワイドブレイカー"
+    ],
+    "branchpoke": [
+      "えだづき"
+    ],
+    "overdrive": [
+      "オーバードライブ"
+    ],
+    "appleacid": [
+      "りんごさん"
+    ],
+    "gravapple": [
+      "Ｇのちから"
+    ],
+    "spiritbreak": [
+      "ソウルクラッシュ"
+    ],
+    "strangesteam": [
+      "ワンダースチーム"
+    ],
+    "lifedew": [
+      "いのちのしずく"
+    ],
+    "obstruct": [
+      "ブロッキング"
+    ],
+    "falsesurrender": [
+      "どげざつき"
+    ],
+    "meteorassault": [
+      "スターアサルト"
+    ],
+    "eternabeam": [
+      "ムゲンダイビーム"
+    ],
+    "steelbeam": [
+      "てっていこうせん"
+    ],
+    "expandingforce": [
+      "ワイドフォース"
+    ],
+    "steelroller": [
+      "アイアンローラー"
+    ],
+    "scaleshot": [
+      "スケイルショット"
+    ],
+    "meteorbeam": [
+      "メテオビーム"
+    ],
+    "shellsidearm": [
+      "シェルアームズ"
+    ],
+    "mistyexplosion": [
+      "ミストバースト"
+    ],
+    "grassyglide": [
+      "グラススライダー"
+    ],
+    "risingvoltage": [
+      "ライジングボルト"
+    ],
+    "terrainpulse": [
+      "だいちのはどう"
+    ],
+    "skittersmack": [
+      "はいよるいちげき"
+    ],
+    "burningjealousy": [
+      "しっとのほのお"
+    ],
+    "lashout": [
+      "うっぷんばらし"
+    ],
+    "poltergeist": [
+      "ポルターガイスト"
+    ],
+    "corrosivegas": [
+      "ふしょくガス"
+    ],
+    "coaching": [
+      "コーチング"
+    ],
+    "flipturn": [
+      "クイックターン"
+    ],
+    "tripleaxel": [
+      "トリプルアクセル"
+    ],
+    "dualwingbeat": [
+      "ダブルウイング"
+    ],
+    "scorchingsands": [
+      "ねっさのだいち"
+    ],
+    "junglehealing": [
+      "ジャングルヒール"
+    ],
+    "wickedblow": [
+      "あんこくきょうだ"
+    ],
+    "surgingstrikes": [
+      "すいりゅうれんだ"
+    ],
+    "thundercage": [
+      "サンダープリズン"
+    ],
+    "dragonenergy": [
+      "ドラゴンエナジー"
+    ],
+    "freezingglare": [
+      "いてつくしせん"
+    ],
+    "fierywrath": [
+      "もえあがるいかり"
+    ],
+    "thunderouskick": [
+      "らいめいげり"
+    ],
+    "glaciallance": [
+      "ブリザードランス"
+    ],
+    "astralbarrage": [
+      "アストラルビット"
+    ],
+    "eeriespell": [
+      "ぶきみなじゅもん"
+    ],
+    "direclaw": [
+      "フェイタルクロー"
+    ],
+    "psyshieldbash": [
+      "バリアーラッシュ"
+    ],
+    "powershift": [
+      "パワーシフト"
+    ],
+    "stoneaxe": [
+      "がんせきアックス"
+    ],
+    "springtidestorm": [
+      "はるのあらし"
+    ],
+    "mysticalpower": [
+      "しんぴのちから"
+    ],
+    "ragingfury": [
+      "だいふんげき"
+    ],
+    "wavecrash": [
+      "ウェーブタックル"
+    ],
+    "chloroblast": [
+      "クロロブラスト"
+    ],
+    "mountaingale": [
+      "ひょうざんおろし"
+    ],
+    "victorydance": [
+      "しょうりのまい"
+    ],
+    "headlongrush": [
+      "ぶちかまし"
+    ],
+    "barbbarrage": [
+      "どくばりセンボン"
+    ],
+    "esperwing": [
+      "オーラウイング"
+    ],
+    "bittermalice": [
+      "うらみつらみ"
+    ],
+    "shelter": [
+      "たてこもる"
+    ],
+    "triplearrows": [
+      "３ぼんのや"
+    ],
+    "infernalparade": [
+      "ひゃっきやこう"
+    ],
+    "ceaselessedge": [
+      "ひけん・ちえなみ"
+    ],
+    "bleakwindstorm": [
+      "こがらしあらし"
+    ],
+    "wildboltstorm": [
+      "かみなりあらし"
+    ],
+    "sandsearstorm": [
+      "ねっさのあらし"
+    ],
+    "lunarblessing": [
+      "みかづきのいのり"
+    ],
+    "takeheart": [
+      "ブレイブチャージ"
+    ],
+    "terablast": [
+      "テラバースト"
+    ],
+    "silktrap": [
+      "スレッドトラップ"
+    ],
+    "axekick": [
+      "かかとおとし"
+    ],
+    "lastrespects": [
+      "おはかまいり"
+    ],
+    "luminacrash": [
+      "ルミナコリジョン"
+    ],
+    "orderup": [
+      "いっちょうあがり"
+    ],
+    "jetpunch": [
+      "ジェットパンチ"
+    ],
+    "spicyextract": [
+      "ハバネロエキス"
+    ],
+    "spinout": [
+      "ホイールスピン"
+    ],
+    "populationbomb": [
+      "ネズミざん"
+    ],
+    "icespinner": [
+      "アイススピナー"
+    ],
+    "glaiverush": [
+      "きょけんとつげき"
+    ],
+    "revivalblessing": [
+      "さいきのいのり"
+    ],
+    "saltcure": [
+      "しおづけ"
+    ],
+    "tripledive": [
+      "トリプルダイブ"
+    ],
+    "mortalspin": [
+      "キラースピン"
+    ],
+    "doodle": [
+      "うつしえ"
+    ],
+    "filletaway": [
+      "みをけずる"
+    ],
+    "kowtowcleave": [
+      "ドゲザン"
+    ],
+    "flowertrick": [
+      "トリックフラワー"
+    ],
+    "torchsong": [
+      "フレアソング"
+    ],
+    "aquastep": [
+      "アクアステップ"
+    ],
+    "ragingbull": [
+      "レイジングブル"
+    ],
+    "makeitrain": [
+      "ゴールドラッシュ"
+    ],
+    "psyblade": [
+      "サイコブレイド "
+    ],
+    "hydrosteam": [
+      "ハイドロスチーム"
+    ],
+    "ruination": [
+      "カタストロフィ"
+    ],
+    "collisioncourse": [
+      "アクセルブレイク"
+    ],
+    "electrodrift": [
+      "イナズマドライブ"
+    ],
+    "shedtail": [
+      "しっぽきり"
+    ],
+    "chillyreception": [
+      "さむいギャグ"
+    ],
+    "tidyup": [
+      "おかたづけ"
+    ],
+    "snowscape": [
+      "ゆきげしき"
+    ],
+    "pounce": [
+      "とびつく"
+    ],
+    "trailblaze": [
+      "くさわけ"
+    ],
+    "chillingwater": [
+      "ひやみず"
+    ],
+    "hyperdrill": [
+      "ハイパードリル"
+    ],
+    "twinbeam": [
+      "ツインビーム"
+    ],
+    "ragefist": [
+      "ふんどのこぶし"
+    ],
+    "armorcannon": [
+      "アーマーキャノン"
+    ],
+    "bitterblade": [
+      "むねんのつるぎ"
+    ],
+    "doubleshock": [
+      "でんこうそうげき"
+    ],
+    "gigatonhammer": [
+      "デカハンマー"
+    ],
+    "comeuppance": [
+      "ほうふく"
+    ],
+    "aquacutter": [
+      "アクアカッター"
+    ],
+    "blazingtorque": [
+      "バーンアクセル"
+    ],
+    "wickedtorque": [
+      "ダークアクセル"
+    ],
+    "noxioustorque": [
+      "ポイズンアクセル"
+    ],
+    "combattorque": [
+      "ファイトアクセル"
+    ],
+    "magicaltorque": [
+      "マジカルアクセル"
+    ],
+    "bloodmoon": [
+      "ブラッドムーン"
+    ],
+    "matchagotcha": [
+      "シャカシャカほう"
+    ],
+    "syrupbomb": [
+      "みずあめボム"
+    ],
+    "ivycudgel": [
+      "ツタこんぼう"
+    ],
+    "electroshot": [
+      "エレクトロビーム"
+    ],
+    "terastarstorm": [
+      "テラクラスター"
+    ],
+    "ficklebeam": [
+      "きまぐレーザー"
+    ],
+    "burningbulwark": [
+      "かえんのまもり"
+    ],
+    "thunderclap": [
+      "じんらい"
+    ],
+    "mightycleave": [
+      "パワフルエッジ"
+    ],
+    "tachyoncutter": [
+      "タキオンカッター"
+    ],
+    "hardpress": [
+      "ハードプレス"
+    ],
+    "dragoncheer": [
+      "ドラゴンエール"
+    ],
+    "alluringvoice": [
+      "みわくのボイス"
+    ],
+    "temperflare": [
+      "やけっぱち"
+    ],
+    "supercellslam": [
+      "サンダーダイブ"
+    ],
+    "psychicnoise": [
+      "サイコノイズ"
+    ],
+    "upperhand": [
+      "はやてがえし"
+    ],
+    "malignantchain": [
+      "じゃどくのくさり"
     ]
   },
   "abilities": {

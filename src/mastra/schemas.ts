@@ -68,7 +68,18 @@ export const battleFactsSchema = z.object({
   opponentName: z.string().optional(),
   opponentMentionedPokemon: z.array(z.string()).default([]),
   opponentSelectedPokemon: z.array(z.string()).default([]),
+  ownMentionedPokemon: z.array(z.string()).default([]),
   ownSelectedPokemon: z.array(z.string()).default([]),
+  field: z.string().optional(),
+  statChanges: z
+    .array(
+      z.object({
+        side: z.enum(["own", "opponent"]),
+        pokemon: z.string(),
+        changes: z.string()
+      })
+    )
+    .default([]),
   activeOwn: z.string().optional(),
   activeOpponent: z.string().optional(),
   hpUpdates: z
@@ -170,7 +181,8 @@ export const workflowTraceSchema = z.object({
     valid: z.boolean(),
     repaired: z.boolean(),
     errors: z.array(z.string())
-  })
+  }),
+  factsWarnings: z.array(z.string()).optional()
 });
 
 export const workflowOutputSchema = adviceResultSchema.extend({

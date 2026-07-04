@@ -9,7 +9,7 @@ import {
   Swords,
   Users
 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   type AdviceResult,
   type BattlePhase,
@@ -20,6 +20,7 @@ import {
   createInitialBattleState,
   normalizeBattleState
 } from "./domain";
+import { type BattleStatusSummary, type FieldStatusItem, summarizeBattleStatus } from "./fieldStatus";
 
 const STORAGE_KEY = "pokemon-battle-partner-state";
 const ACTIVE_BATTLE_KEY = "pokemon-battle-partner-active-battle";
@@ -45,6 +46,12 @@ interface BattleSummary {
 
 type ConsultationMode = "selection" | "battle" | "chat" | "review";
 
+interface SpeechOverlayState {
+  text: string;
+  updatedAt: string | null;
+  source: string;
+}
+
 function compactActionLabel(action: string, memo = ""): string {
   const trimmed = action.trim();
   const combined = `${trimmed}\n${memo}`;
@@ -57,6 +64,21 @@ function compactActionLabel(action: string, memo = ""): string {
   if (combined.includes("覚えて")) return "記憶";
   if (combined.includes("反省")) return "反省会";
   return "会話";
+}
+
+function adviceActionLabel(advice: AdviceResult | null): string {
+  if (!advice) return "状況確認";
+  if (advice.action.kind === "selection") return "選出理由";
+  return compactActionLabel(advice.action.command, `${advice.action.reason}\n${advice.memo}`);
+}
+
+function voiceDeliveryLabel(advice: AdviceResult | null): string {
+  const delivery = advice?.voiceDelivery;
+  if (!delivery) return "";
+  if (delivery.ok) return "AITuberKitへ発話送信済み";
+  if (delivery.skipped && !delivery.enabled) return "AITuberKit発話は未設定";
+  if (delivery.skipped) return delivery.message;
+  return "AITuberKit発話送信に失敗";
 }
 
 // 履歴チップの色分け（試作版と同じ配色）
@@ -245,6 +267,151 @@ function PokemonPanel({ pokemon, side }: { pokemon: PokemonState; side: "own" | 
   );
 }
 
+function statusItemClass(item: FieldStatusItem): string {
+  return `status-chip status-${item.category}`;
+}
+
+function StatusChip({ item }: { item: FieldStatusItem }) {
+  return (
+    <span className={statusItemClass(item)}>
+      <b>{item.label}</b>
+      {item.detail && <small>{item.detail}</small>}
+    </span>
+  );
+}
+
+function StatusGroup({
+  title,
+  items,
+  tone
+}: {
+  title: string;
+  items: FieldStatusItem[];
+  tone: "global" | "own" | "opponent" | "unknown" | "pokemon";
+}) {
+  return (
+    <div className={`status-group ${tone}`}>
+      <div className="status-group-head">
+        <span>{title}</span>
+        <em>{items.length ? `${items.length}件` : "なし"}</em>
+      </div>
+      <div className="status-chip-row">
+        {items.length > 0 ? (
+          items.map((item, index) => <StatusChip key={`${item.label}-${item.detail}-${index}`} item={item} />)
+        ) : (
+          <span className="status-empty">なし</span>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function BattleStatusBoard({ summary }: { summary: BattleStatusSummary }) {
+  const hasAnyStatus =
+    summary.rawField ||
+    summary.global.length > 0 ||
+    summary.own.length > 0 ||
+    summary.opponent.length > 0 ||
+    summary.unknown.length > 0 ||
+    summary.pokemon.length > 0;
+
+  return (
+    <section className="status-board">
+      <div className="section-title">
+        <span className="kicker">FIELD STATUS</span>
+        <h2>場の状態</h2>
+        <span className="count">{hasAnyStatus ? "反映中" : "なし"}</span>
+      </div>
+      <div className="status-board-grid">
+        <StatusGroup title="全体" items={summary.global} tone="global" />
+        <StatusGroup title="自分側" items={summary.own} tone="own" />
+        <StatusGroup title="相手側" items={summary.opponent} tone="opponent" />
+        <StatusGroup title="側不明・その他" items={summary.unknown} tone="unknown" />
+      </div>
+      <StatusGroup title="ポケモン状態・能力変化" items={summary.pokemon} tone="pokemon" />
+      {summary.rawField && (
+        <div className="status-raw">
+          <span>元メモ</span>
+          <p>{summary.rawField}</p>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function fitSingleLineText(box: HTMLDivElement, text: HTMLSpanElement): void {
+  const availableWidth = Math.max(0, box.clientWidth - 32);
+  const availableHeight = Math.max(0, box.clientHeight - 12);
+  const minSize = 16;
+  const maxSize = 72;
+  let best = minSize;
+  let low = minSize;
+  let high = maxSize;
+
+  for (let step = 0; step < 10; step += 1) {
+    const next = Math.floor((low + high) / 2);
+    text.style.fontSize = `${next}px`;
+    if (text.scrollWidth <= availableWidth && text.scrollHeight <= availableHeight) {
+      best = next;
+      low = next + 1;
+    } else {
+      high = next - 1;
+    }
+  }
+  text.style.fontSize = `${best}px`;
+  const scaleX = text.scrollWidth > availableWidth && availableWidth > 0
+    ? Math.max(0.4, availableWidth / text.scrollWidth)
+    : 1;
+  text.style.transform = scaleX < 1 ? `scaleX(${scaleX})` : "";
+}
+
+function ObsSpeechOverlay() {
+  const [speech, setSpeech] = useState<SpeechOverlayState>({ text: "", updatedAt: null, source: "startup" });
+  const boxRef = useRef<HTMLDivElement | null>(null);
+  const textRef = useRef<HTMLSpanElement | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function loadSpeech() {
+      try {
+        const response = await fetch("/api/speech", { cache: "no-store" });
+        if (!response.ok) return;
+        const json = (await response.json()) as SpeechOverlayState;
+        if (!cancelled) setSpeech(json);
+      } catch {
+        // OBS表示を止めないため、取得失敗時は前回表示を維持する。
+      }
+    }
+    void loadSpeech();
+    const interval = window.setInterval(loadSpeech, 700);
+    return () => {
+      cancelled = true;
+      window.clearInterval(interval);
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    const box = boxRef.current;
+    const text = textRef.current;
+    if (!box || !text) return;
+    const fit = () => fitSingleLineText(box, text);
+    fit();
+    const observer = new ResizeObserver(fit);
+    observer.observe(box);
+    return () => observer.disconnect();
+  }, [speech.text]);
+
+  return (
+    <div className="obs-page">
+      <div className="obs-speech-box" ref={boxRef}>
+        <span className="obs-speech-text" ref={textRef}>
+          {speech.text}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 // 現在の対面を大きく表示するバンド（自分＝左 / 相手＝右）
 function MatchupBand({ own, opponent }: { own: PokemonState | null; opponent: PokemonState | null }) {
   if (!own && !opponent) return null;
@@ -335,7 +502,7 @@ function SelectionStrip({
   );
 }
 
-export default function App() {
+function BattlePartnerApp() {
   const [state, setState] = useState<BattleState>(() => loadInitialState());
   const [battles, setBattles] = useState<BattleSummary[]>([]);
   const [opponentNameDraft, setOpponentNameDraft] = useState(() => state.opponentName);
@@ -489,7 +656,7 @@ export default function App() {
   }
 
   async function requestAdvice(mode: ConsultationMode) {
-    if (!transcript.trim()) return;
+    if (recording || busy || !transcript.trim()) return;
     const requestId = adviceRequestIdRef.current + 1;
     adviceRequestIdRef.current = requestId;
     adviceAbortRef.current?.abort();
@@ -550,6 +717,10 @@ export default function App() {
   const activeOwnMon = state.ownTeam.find((pokemon) => pokemon.active) ?? null;
   const activeOppMon = state.opponentTeam.find((pokemon) => pokemon.active) ?? null;
   const adviceBusy = busy === "判断中";
+  const adviceLabel = adviceActionLabel(advice);
+  const deliveryLabel = voiceDeliveryLabel(advice);
+  const consultationDisabled = Boolean(busy) || recording || !transcript.trim();
+  const statusSummary = summarizeBattleStatus(state);
 
   return (
     <main>
@@ -605,10 +776,20 @@ export default function App() {
             {activeOwnMon && <PokemonIcon name={activeOwnMon.name} />}
             <div>
               <div className="advice-kicker">推奨アクション</div>
-              <h2>{advice?.action.command ?? "状況を入力してください"}</h2>
+              <span
+                className={`advice-action-chip ${historyChipClass(adviceLabel)}`}
+                title={advice?.action.command}
+              >
+                {advice ? adviceLabel : "状況を入力してください"}
+              </span>
             </div>
           </div>
           <p className="speech">{advice?.speech ?? "入力後、選出相談か対戦相談を選んでください。"}</p>
+          {deliveryLabel && (
+            <p className={`voice-delivery ${advice?.voiceDelivery?.ok ? "ok" : "warn"}`} title={advice?.voiceDelivery?.error}>
+              {deliveryLabel}
+            </p>
+          )}
           {advice?.action.reason && (
             <div className="advice-reason">
               <span>理由</span>
@@ -645,7 +826,8 @@ export default function App() {
             <button
               className="primary selection-submit"
               onClick={() => void requestAdvice("selection")}
-              disabled={Boolean(busy) || !transcript.trim()}
+              disabled={consultationDisabled}
+              title={recording ? "録音中は相談できません" : undefined}
             >
               {busy ? <LoaderCircle className="spin" size={18} /> : <Users size={18} />}
               選出相談
@@ -653,7 +835,8 @@ export default function App() {
             <button
               className="primary battle-submit"
               onClick={() => void requestAdvice("battle")}
-              disabled={Boolean(busy) || !transcript.trim()}
+              disabled={consultationDisabled}
+              title={recording ? "録音中は相談できません" : undefined}
             >
               {busy ? <LoaderCircle className="spin" size={18} /> : <Swords size={18} />}
               対戦相談
@@ -661,7 +844,8 @@ export default function App() {
             <button
               className="primary chat-submit"
               onClick={() => void requestAdvice("chat")}
-              disabled={Boolean(busy) || !transcript.trim()}
+              disabled={consultationDisabled}
+              title={recording ? "録音中は相談できません" : undefined}
             >
               {busy ? <LoaderCircle className="spin" size={18} /> : <MessageSquareText size={18} />}
               会話
@@ -669,7 +853,8 @@ export default function App() {
             <button
               className="primary review-submit"
               onClick={() => void requestAdvice("review")}
-              disabled={Boolean(busy) || !transcript.trim()}
+              disabled={consultationDisabled}
+              title={recording ? "録音中は相談できません" : undefined}
             >
               {busy ? <LoaderCircle className="spin" size={18} /> : <MessageSquareText size={18} />}
               反省会
@@ -689,6 +874,8 @@ export default function App() {
       </section>
 
       <MatchupBand own={activeOwnMon} opponent={activeOppMon} />
+
+      <BattleStatusBoard summary={statusSummary} />
 
       <section className="layout">
         <div className="column own">
@@ -764,4 +951,11 @@ export default function App() {
       </section>
     </main>
   );
+}
+
+export default function App() {
+  if (window.location.pathname === "/obs") {
+    return <ObsSpeechOverlay />;
+  }
+  return <BattlePartnerApp />;
 }

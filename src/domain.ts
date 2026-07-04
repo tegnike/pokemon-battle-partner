@@ -65,6 +65,19 @@ export interface AdviceResult {
   };
   speech: string;
   memo: string;
+  voiceDelivery?: VoiceDeliveryResult;
+}
+
+export interface VoiceDeliveryResult {
+  provider: "aituber-kit";
+  enabled: boolean;
+  ok: boolean;
+  skipped?: boolean;
+  status?: number;
+  message: string;
+  queued?: string[];
+  count?: number;
+  error?: string;
 }
 
 export function emptyKnownValue(): KnownValue {
@@ -144,7 +157,7 @@ export function createOwnTeam(): PokemonState[] {
       id: "own-primarina",
       name: "アシレーヌ",
       ability: "げきりゅう",
-      item: "たつじんのおび",
+      item: "オボンのみ",
       moves: ["うたかたのアリア", "ムーンフォース", "れいとうビーム", "エナジーボール"],
       notes: "ひかえめ / H32 C32 B2",
       baseStats: { hp: 80, atk: 74, def: 74, spa: 126, spd: 116, spe: 60 },
@@ -156,10 +169,10 @@ export function createOwnTeam(): PokemonState[] {
       name: "メタグロス",
       ability: "クリアボディ",
       item: "メタグロスナイト",
-      moves: ["アイアンヘッド", "バレットパンチ", "アームハンマー", "かみなりパンチ"],
-      notes: "ようき / A32 S32 B2",
+      moves: ["じしん", "れいとうパンチ", "サイコファング", "バレットパンチ"],
+      notes: "ようき / H8 A32 S26",
       baseStats: { hp: 80, atk: 135, def: 130, spa: 95, spd: 90, spe: 70 },
-      statPoints: { atk: 32, spe: 32, def: 2 },
+      statPoints: { hp: 8, atk: 32, spe: 26 },
       nature: { plus: "spe", minus: "spa" }
     }),
     createOwnPokemon({
@@ -189,7 +202,7 @@ export function createOwnTeam(): PokemonState[] {
       name: "サザンドラ",
       ability: "ふゆう",
       item: "こだわりスカーフ",
-      moves: ["りゅうせいぐん", "あくのはどう", "かえんほうしゃ", "だいちのちから"],
+      moves: ["りゅうせいぐん", "あくのはどう", "かえんほうしゃ", "とんぼがえり"],
       notes: "ひかえめ / C32 S32 H2",
       baseStats: { hp: 92, atk: 105, def: 90, spa: 125, spd: 90, spe: 98 },
       statPoints: { spa: 32, spe: 32, hp: 2 },

@@ -6,7 +6,7 @@ import process from "node:process";
 import multer from "multer";
 import OpenAI, { toFile } from "openai";
 import type { ReasoningEffort } from "openai/resources/shared";
-import { normalizeBattleState, type BattleState, type BattleStatus } from "../src/domain";
+import { normalizeBattleState, type BattleState, type BattleStatus, type VoiceDeliveryResult } from "../src/domain";
 import {
   createBattleSession,
   listBattleSessions,
@@ -37,6 +37,17 @@ const teamDocPath =
   process.env.TEAM_DOC_PATH ?? "/Users/user/WorkSpace/nikechan/docs/pokemon-champions-ai-team.md";
 const logDir = path.join(appRoot, "data", "battles");
 const championsDataDir = path.join(appRoot, "data", "champions");
+const aituberKitBaseUrl = process.env.AITUBERKIT_BASE_URL ?? "http://127.0.0.1:3000";
+const aituberKitApiKey = process.env.AITUBERKIT_API_KEY ?? "";
+const aituberKitClientId = process.env.AITUBERKIT_CLIENT_ID ?? "";
+const aituberKitSpeakTimeoutMs = Number(process.env.AITUBERKIT_SPEAK_TIMEOUT_MS ?? 3_000);
+const aituberKitSpeakInterrupt = (process.env.AITUBERKIT_SPEAK_INTERRUPT ?? "true") === "true";
+const aituberKitSpeakPriority = process.env.AITUBERKIT_SPEAK_PRIORITY === "normal" ? "normal" : "high";
+const latestSpeech = {
+  text: "",
+  updatedAt: null as string | null,
+  source: "startup"
+};
 
 app.use(express.json({ limit: "2mb" }));
 
@@ -88,6 +99,92 @@ function withTimeout<T>(promise: Promise<T>, ms: number, label: string): Promise
       setTimeout(() => reject(new Error(`${label} request timed out after ${ms}ms`)), ms);
     })
   ]);
+}
+
+async function sendSpeechToAituberKit(speech: string, parentSignal?: AbortSignal): Promise<VoiceDeliveryResult> {
+  const text = speech.trim();
+  if (!aituberKitApiKey || !aituberKitClientId) {
+    return {
+      provider: "aituber-kit",
+      enabled: false,
+      ok: false,
+      skipped: true,
+      message: "AITuberKit API連携は未設定です。"
+    };
+  }
+  if (!text) {
+    return {
+      provider: "aituber-kit",
+      enabled: true,
+      ok: false,
+      skipped: true,
+      message: "発話するspeechが空だったため送信しませんでした。"
+    };
+  }
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(new Error("AITuberKit speak request timed out")), aituberKitSpeakTimeoutMs);
+  const abortFromParent = () => controller.abort(parentSignal?.reason);
+  if (parentSignal?.aborted) abortFromParent();
+  else parentSignal?.addEventListener("abort", abortFromParent, { once: true });
+
+  try {
+    const url = new URL("/api/v1/speak/", aituberKitBaseUrl);
+    url.searchParams.set("clientId", aituberKitClientId);
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${aituberKitApiKey}`
+      },
+      body: JSON.stringify({
+        text,
+        priority: aituberKitSpeakPriority,
+        interrupt: aituberKitSpeakInterrupt
+      }),
+      signal: controller.signal
+    });
+    const rawBody = await response.text();
+    let body: unknown = null;
+    if (rawBody) {
+      try {
+        body = JSON.parse(rawBody);
+      } catch {
+        body = rawBody;
+      }
+    }
+    if (!response.ok) {
+      return {
+        provider: "aituber-kit",
+        enabled: true,
+        ok: false,
+        status: response.status,
+        message: "AITuberKitへの発話送信に失敗しました。",
+        error: typeof body === "string" ? body : JSON.stringify(body)
+      };
+    }
+    const payload = body as { queued?: unknown; count?: unknown };
+    return {
+      provider: "aituber-kit",
+      enabled: true,
+      ok: true,
+      status: response.status,
+      message: "AITuberKitへ発話を送信しました。",
+      queued: Array.isArray(payload?.queued) ? payload.queued.filter((item): item is string => typeof item === "string") : undefined,
+      count: typeof payload?.count === "number" ? payload.count : undefined
+    };
+  } catch (error) {
+    return {
+      provider: "aituber-kit",
+      enabled: true,
+      ok: false,
+      message: "AITuberKitへの発話送信に失敗しました。",
+      error: String(error)
+    };
+  } finally {
+    clearTimeout(timeout);
+    parentSignal?.removeEventListener("abort", abortFromParent);
+  }
 }
 
 function isRetryableModelError(error: unknown): boolean {
@@ -169,6 +266,28 @@ function compactActionLabel(action: string, kind?: string, memo = ""): string {
   if (combined.includes("理由")) return "理由説明";
   return "会話";
 }
+
+function publishSpeech(text: string, source: string): void {
+  const trimmed = text.trim();
+  if (!trimmed) return;
+  latestSpeech.text = trimmed;
+  latestSpeech.updatedAt = new Date().toISOString();
+  latestSpeech.source = source;
+}
+
+app.get("/api/speech", (_req, res) => {
+  res.json(latestSpeech);
+});
+
+app.post("/api/speech", (req, res) => {
+  const { text, source } = req.body as { text?: string; source?: string };
+  if (typeof text !== "string") {
+    res.status(400).json({ error: "text is required" });
+    return;
+  }
+  publishSpeech(text, typeof source === "string" ? source : "manual");
+  res.json(latestSpeech);
+});
 
 app.get("/api/team-doc", (_req, res) => {
   res.json({ path: teamDocPath, markdown: readTeamDoc() });
@@ -341,9 +460,17 @@ app.post("/api/advise", async (req, res) => {
       latestMemo: result.memo,
       history: [...result.updatedState.history.slice(-19), turnEntry]
     });
-    const persistedResult = { ...result, updatedState: persistedState };
-    appendConversationTurn(appRoot, normalizedState, transcript, persistedResult);
+    const resultForMemory = { ...result, updatedState: persistedState };
+    const [voiceDelivery] = await Promise.all([
+      sendSpeechToAituberKit(result.speech, abortController.signal),
+      Promise.resolve().then(() => appendConversationTurn(appRoot, normalizedState, transcript, resultForMemory))
+    ]);
+    if (voiceDelivery.enabled && !voiceDelivery.ok && !abortController.signal.aborted) {
+      console.warn("[aituber-kit] speech delivery failed:", voiceDelivery.error ?? voiceDelivery.message);
+    }
     if (abortController.signal.aborted) return;
+    publishSpeech(result.speech, "advice");
+    const persistedResult = { ...resultForMemory, voiceDelivery };
     res.json(persistedResult);
   } catch (error) {
     if (abortController.signal.aborted) {

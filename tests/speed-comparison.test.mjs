@@ -9,8 +9,11 @@ import {
   localActiveMoveCandidates,
   isExecutionAcknowledgement,
   isPositiveFeedback,
+  localReplacementCandidates,
   localSwitchCandidate,
+  repairInvalidBattleAdvice,
   sanitizeBattleCandidates,
+  sanitizeSpeechForVoice,
   speedComparisonCandidate,
   speedComparisonSpeech
 } from "../src/mastra/battleWorkflow.ts";
@@ -422,6 +425,41 @@ assert.deepEqual(
   ["ガブリアス", "アシレーヌ", "メタグロス"]
 );
 
+const preservedBattleSelectionAgainstThreeNames = applyFactsToState(
+  vaporeonWallState,
+  emptyFacts({
+    phase: "battle",
+    ownSelectedPokemon: ["アシレーヌ", "メタグロス", "サザンドラ"],
+    activeOwn: "メタグロス",
+    activeOpponent: "シャワーズ"
+  }),
+  store
+);
+assert.deepEqual(
+  preservedBattleSelectionAgainstThreeNames.ownTeam.filter((pokemon) => pokemon.selected).map((pokemon) => pokemon.name),
+  ["ガブリアス", "アシレーヌ", "メタグロス"]
+);
+assert.equal(preservedBattleSelectionAgainstThreeNames.activeOwn, "メタグロス");
+
+const garchompMirrorState = createInitialBattleState("キラッチ");
+garchompMirrorState.phase = "battle";
+garchompMirrorState.status = "active";
+garchompMirrorState.activeOwn = "アシレーヌ";
+garchompMirrorState.activeOpponent = "ガブリアス";
+garchompMirrorState.ownTeam = garchompMirrorState.ownTeam.map((pokemon) => ({
+  ...pokemon,
+  selected: ["ガブリアス", "アシレーヌ", "メタグロス"].includes(pokemon.name),
+  active: pokemon.name === "アシレーヌ"
+}));
+garchompMirrorState.opponentTeam = garchompMirrorState.opponentTeam.map((pokemon, index) => ({
+  ...pokemon,
+  name: index === 0 ? "ガブリアス" : pokemon.name,
+  selected: index === 0,
+  active: index === 0,
+  hpPercent: index === 0 ? 100 : pokemon.hpPercent
+}));
+assert.equal(localSwitchCandidate(store, garchompMirrorState), null);
+
 const yawnFacts = applyKnownMoveSideEffectFacts(
   emptyFacts(),
   "シャワーズはあくびをせんたく",
@@ -462,6 +500,40 @@ const sanitizedSwitches = sanitizeBattleCandidates(primarinaVsCeruledgeState, [
 assert.equal(sanitizedSwitches.some((candidate) => candidate.command === "ウォッシュロトム"), false);
 assert.equal(sanitizedSwitches.some((candidate) => candidate.command === "メタグロス"), true);
 
+const megaStarmieTypoState = createInitialBattleState("あばたん");
+megaStarmieTypoState.phase = "battle";
+megaStarmieTypoState.status = "active";
+megaStarmieTypoState.activeOwn = "メタグロス";
+megaStarmieTypoState.activeOpponent = "メガスターミ";
+megaStarmieTypoState.ownTeam = megaStarmieTypoState.ownTeam.map((pokemon) => ({
+  ...pokemon,
+  selected: ["ガブリアス", "アシレーヌ", "メタグロス"].includes(pokemon.name),
+  active: pokemon.name === "メタグロス"
+}));
+megaStarmieTypoState.opponentTeam = megaStarmieTypoState.opponentTeam.map((pokemon, index) => ({
+  ...pokemon,
+  name: index === 0 ? "メガスターミ" : pokemon.name,
+  selected: index === 0,
+  active: index === 0,
+  hpPercent: index === 0 ? 13 : pokemon.hpPercent
+}));
+const resolvedMegaStarmieState = applyFactsToState(
+  megaStarmieTypoState,
+  emptyFacts({
+    phase: "battle",
+    activeOwn: "メタグロス",
+    activeOpponent: "メガスターミー",
+    faintedPokemon: [{ side: "opponent", pokemon: "メガスターミー" }]
+  }),
+  store
+);
+assert.deepEqual(
+  resolvedMegaStarmieState.opponentTeam.filter((pokemon) => pokemon.name.includes("スターミ")).map((pokemon) => pokemon.name),
+  ["メガスターミー"]
+);
+assert.equal(resolvedMegaStarmieState.opponentTeam.find((pokemon) => pokemon.name === "メガスターミー")?.condition, "ひんし");
+assert.equal(resolvedMegaStarmieState.activeOpponent, "");
+
 const lowHpCeruledgeState = {
   ...ceruledgeState,
   opponentTeam: ceruledgeState.opponentTeam.map((pokemon) =>
@@ -471,5 +543,98 @@ const lowHpCeruledgeState = {
 const lowHpMetagrossMoves = localActiveMoveCandidates(store, lowHpCeruledgeState);
 assert.equal(lowHpMetagrossMoves[0]?.command, "バレットパンチ");
 assert.equal(lowHpMetagrossMoves[0]?.moveMatchup?.priority, 1);
+
+const mistakenSelectionAdvice = repairInvalidBattleAdvice(
+  {
+    updatedState: {
+      ...primarinaVsCeruledgeState,
+      phase: "selection",
+      activeOwn: "ガブリアス",
+      ownTeam: primarinaVsCeruledgeState.ownTeam.map((pokemon) => ({
+        ...pokemon,
+        selected: ["ガブリアス", "ウォッシュロトム", "サザンドラ"].includes(pokemon.name),
+        active: pokemon.name === "ガブリアス"
+      }))
+    },
+    action: {
+      kind: "selection",
+      command: "ガブリアス、ウォッシュロトム、サザンドラ",
+      reason: "誤って選出をやり直している。",
+      risk: "対戦中に選出へ戻ってしまう。",
+      confidence: "medium"
+    },
+    speech: "ここはガブリアス、ウォッシュロトム、サザンドラでいきましょう。",
+    memo: "誤った選出指示"
+  },
+  primarinaVsCeruledgeState,
+  localActiveMoveCandidates(store, primarinaVsCeruledgeState)
+);
+assert.notEqual(mistakenSelectionAdvice.action.kind, "selection");
+assert.equal(mistakenSelectionAdvice.updatedState.phase, "battle");
+assert.deepEqual(
+  mistakenSelectionAdvice.updatedState.ownTeam.filter((pokemon) => pokemon.selected).map((pokemon) => pokemon.name),
+  ["ガブリアス", "アシレーヌ", "メタグロス"]
+);
+assert.equal(mistakenSelectionAdvice.updatedState.activeOwn, "アシレーヌ");
+assert.equal(/先発|対戦よろしく|選出/.test(mistakenSelectionAdvice.speech), false);
+
+const replacementNeededState = {
+  ...primarinaVsCeruledgeState,
+  activeOwn: "",
+  ownTeam: primarinaVsCeruledgeState.ownTeam.map((pokemon) => ({
+    ...pokemon,
+    active: false,
+    selected: ["ガブリアス", "アシレーヌ", "メタグロス"].includes(pokemon.name),
+    condition: pokemon.name === "アシレーヌ" ? "ひんし" : pokemon.condition,
+    hpPercent: pokemon.name === "アシレーヌ" ? 0 : pokemon.hpPercent
+  }))
+};
+const replacementCandidates = localReplacementCandidates(replacementNeededState);
+assert.deepEqual(replacementCandidates.map((candidate) => candidate.command), ["ガブリアス", "メタグロス"]);
+const repairedReplacement = repairInvalidBattleAdvice(
+  {
+    updatedState: { ...replacementNeededState, phase: "selection" },
+    action: {
+      kind: "selection",
+      command: "ガブリアス、ウォッシュロトム、サザンドラ",
+      reason: "誤って3体を選び直している。",
+      risk: "対戦中に選出へ戻ってしまう。",
+      confidence: "medium"
+    },
+    speech: "ここはガブリアス、ウォッシュロトム、サザンドラでいきましょう。先発はガブリアスです。",
+    memo: "誤った選出指示"
+  },
+  replacementNeededState,
+  replacementCandidates
+);
+assert.equal(repairedReplacement.action.kind, "switch");
+assert.equal(["ガブリアス", "メタグロス"].includes(repairedReplacement.action.command), true);
+assert.equal(/先発|対戦よろしく|選出/.test(repairedReplacement.speech), false);
+
+const selectionLikeSpeechAdvice = repairInvalidBattleAdvice(
+  {
+    updatedState: primarinaVsCeruledgeState,
+    action: {
+      kind: "move",
+      command: "うたかたのアリア",
+      reason: "ソウブレイズに水打点で押す。",
+      risk: "交代される可能性があります。",
+      confidence: "high"
+    },
+    speech: "ここはガブリアス、アシレーヌ、メタグロスでいきましょう。先発はガブリアスです。対戦よろしくお願いします。",
+    memo: "セリフだけ選出文"
+  },
+  primarinaVsCeruledgeState,
+  primarinaMoves
+);
+assert.equal(selectionLikeSpeechAdvice.action.kind, "move");
+assert.equal(selectionLikeSpeechAdvice.speech.includes("うたかたのアリア"), true);
+assert.equal(/先発|対戦よろしく|選出/.test(selectionLikeSpeechAdvice.speech), false);
+
+const sanitizedSpeech = sanitizeSpeechForVoice(
+  "ここはじしんです。概算203.7-240%入るので、相手HP13%なら確実に圏内です。"
+);
+assert.equal(sanitizedSpeech.includes("%"), false);
+assert.match(sanitizedSpeech, /倒し切れる火力|圏内|削れた状態/);
 
 console.log("Validated speed comparison guard.");

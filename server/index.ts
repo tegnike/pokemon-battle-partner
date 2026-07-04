@@ -43,6 +43,11 @@ const aituberKitClientId = process.env.AITUBERKIT_CLIENT_ID ?? "";
 const aituberKitSpeakTimeoutMs = Number(process.env.AITUBERKIT_SPEAK_TIMEOUT_MS ?? 3_000);
 const aituberKitSpeakInterrupt = (process.env.AITUBERKIT_SPEAK_INTERRUPT ?? "true") === "true";
 const aituberKitSpeakPriority = process.env.AITUBERKIT_SPEAK_PRIORITY === "normal" ? "normal" : "high";
+const latestSpeech = {
+  text: "",
+  updatedAt: null as string | null,
+  source: "startup"
+};
 
 app.use(express.json({ limit: "2mb" }));
 
@@ -262,6 +267,28 @@ function compactActionLabel(action: string, kind?: string, memo = ""): string {
   return "会話";
 }
 
+function publishSpeech(text: string, source: string): void {
+  const trimmed = text.trim();
+  if (!trimmed) return;
+  latestSpeech.text = trimmed;
+  latestSpeech.updatedAt = new Date().toISOString();
+  latestSpeech.source = source;
+}
+
+app.get("/api/speech", (_req, res) => {
+  res.json(latestSpeech);
+});
+
+app.post("/api/speech", (req, res) => {
+  const { text, source } = req.body as { text?: string; source?: string };
+  if (typeof text !== "string") {
+    res.status(400).json({ error: "text is required" });
+    return;
+  }
+  publishSpeech(text, typeof source === "string" ? source : "manual");
+  res.json(latestSpeech);
+});
+
 app.get("/api/team-doc", (_req, res) => {
   res.json({ path: teamDocPath, markdown: readTeamDoc() });
 });
@@ -442,6 +469,7 @@ app.post("/api/advise", async (req, res) => {
       console.warn("[aituber-kit] speech delivery failed:", voiceDelivery.error ?? voiceDelivery.message);
     }
     if (abortController.signal.aborted) return;
+    publishSpeech(result.speech, "advice");
     const persistedResult = { ...resultForMemory, voiceDelivery };
     res.json(persistedResult);
   } catch (error) {

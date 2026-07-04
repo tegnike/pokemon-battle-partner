@@ -568,6 +568,20 @@ function uniqueNames(names: string[]): string[] {
   return [...new Set(names.filter((name) => name.trim().length > 0))];
 }
 
+function pokemonNameKey(name: string): string {
+  return name
+    .trim()
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/[・\s._'’`´-]/g, "")
+    .replace(/ー/g, "");
+}
+
+function samePokemonName(left: string, right: string): boolean {
+  if (!left || !right) return false;
+  return left === right || pokemonNameKey(left) === pokemonNameKey(right);
+}
+
 function mentionedOwnNamesFromText(state: BattleState, transcript: string): string[] {
   return state.ownTeam
     .map((pokemon) => pokemon.name)
@@ -603,11 +617,13 @@ function addTranscriptMentionedPokemon(facts: BattleFacts, state: BattleState, t
   const ownMentioned = mentionedOwnNamesFromText(state, transcript);
   const opponentMentioned = mentionedOpponentNamesFromText(state, transcript);
   const opponentPartyMentioned = inferOpponentPartyPokemonFromText(store, transcript);
-  if (ownMentioned.length === 0 && opponentMentioned.length === 0 && opponentPartyMentioned.length === 0) return facts;
+  const activeOwn = facts.activeOwn || inferActiveOwnFromTranscript(state, transcript);
+  if (ownMentioned.length === 0 && opponentMentioned.length === 0 && opponentPartyMentioned.length === 0 && !activeOwn) return facts;
   const ownSet = new Set(ownMentioned);
   const keepOwnNamesAsOpponent = new Set(opponentPartyMentioned);
   return {
     ...facts,
+    activeOwn,
     ownMentionedPokemon: uniqueNames([...facts.ownMentionedPokemon, ...ownMentioned]),
     opponentMentionedPokemon: uniqueNames([
       ...facts.opponentMentionedPokemon.filter((name) => !ownSet.has(name) || keepOwnNamesAsOpponent.has(name)),
@@ -1001,7 +1017,8 @@ function detectFactsAnomalies(
 }
 
 function findPokemon(team: PokemonState[], name: string): PokemonState | undefined {
-  return team.find((pokemon) => pokemon.name === name || pokemon.id === name);
+  return team.find((pokemon) => pokemon.name === name || pokemon.id === name) ??
+    team.find((pokemon) => samePokemonName(pokemon.name, name));
 }
 
 function ownsMove(pokemon: PokemonState, command: string): boolean {
@@ -1019,6 +1036,22 @@ function firstOwnNameInText(state: BattleState, text: string): string | undefine
     .filter((entry) => entry.index >= 0)
     .sort((left, right) => left.index - right.index);
   return matches[0]?.name;
+}
+
+function inferActiveOwnFromTranscript(state: BattleState, transcript: string): string | undefined {
+  if (isOpponentPartyListText(transcript)) return undefined;
+  const normalized = transcript.replace(/\s+/g, "");
+  const candidates = state.ownTeam.filter((pokemon) => pokemon.selected || pokemon.active);
+  const contextualMatches = candidates.filter((pokemon) => {
+    const name = pokemon.name;
+    if (!name || !normalized.includes(name)) return false;
+    return [
+      new RegExp(`(?:場|場には|場は|今|現在|こちらは|自分は)[^。！？?]*${name}`),
+      new RegExp(`${name}[^。！？?]*(?:場にいる|場にいます|出しました|出します|出ています|出して|交換しました|交代しました|投げました)`),
+      new RegExp(`${name}(?:は|で)?(?:何を|どうすれば|どうしたら)`)
+    ].some((pattern) => pattern.test(normalized));
+  });
+  return contextualMatches.length === 1 ? contextualMatches[0].name : undefined;
 }
 
 function getActiveOwnPokemon(state: BattleState): PokemonState | undefined {
@@ -1074,11 +1107,29 @@ function isBattleReadyPokemon(pokemon: PokemonState): boolean {
   return pokemon.hpPercent !== 0 && pokemon.condition !== "ひんし";
 }
 
+function hasActiveBattleReadyOwnPokemon(state: BattleState): boolean {
+  const active = getActiveOwnPokemon(state);
+  return Boolean(active && isBattleReadyPokemon(active));
+}
+
 function selectedBenchPokemon(state: BattleState): PokemonState[] {
   const active = getActiveOwnPokemon(state);
   return state.ownTeam.filter(
     (pokemon) => pokemon.selected && pokemon.name !== active?.name && isBattleReadyPokemon(pokemon)
   );
+}
+
+export function localReplacementCandidates(state: BattleState): CandidateAction[] {
+  if (state.phase !== "battle" || state.status !== "active" || hasActiveBattleReadyOwnPokemon(state)) return [];
+  return state.ownTeam
+    .filter((pokemon) => pokemon.selected && isBattleReadyPokemon(pokemon))
+    .map((pokemon) => ({
+      kind: "switch" as const,
+      command: pokemon.name,
+      reason: `場のポケモンが不在またはひんしのため、控えでまだ動ける${pokemon.name}を出します。`,
+      risk: "相手の次の技や交代先によって受け出し負荷は変わります。",
+      confidence: "medium" as const
+    }));
 }
 
 function firstDamageAssumption(
@@ -1356,6 +1407,17 @@ export function localSwitchCandidate(store: LocalDataStore, state: BattleState):
 
   switchOptions.sort((left, right) => right.damage.percentMax - left.damage.percentMax);
   const best = switchOptions[0];
+  const opponent = activeOpponentPokemon(state);
+  const opponentHp = opponent?.hpPercent ?? null;
+  if (
+    activeDamage &&
+    (
+      activeDamage.percentMax >= 100 ||
+      (opponentHp !== null && activeDamage.percentMin >= opponentHp)
+    )
+  ) {
+    return null;
+  }
   const activeDamageText = activeDamage
     ? `場の${activeOwn.name}の最大打点は${activeDamage.move}で約${activeDamage.percentMin}-${activeDamage.percentMax}%です。`
     : `場の${activeOwn.name}はローカル簡易計算で有効な攻撃打点を確認できていません。`;
@@ -1576,6 +1638,16 @@ export function speedComparisonSpeech(candidate: SpeedComparisonAction): string 
 function ensureOpponentPokemon(state: BattleState, name: string): BattleState {
   if (!name.trim()) return state;
   if (state.opponentTeam.some((pokemon) => pokemon.name === name)) return state;
+  const similar = state.opponentTeam.find((pokemon) => pokemon.name && samePokemonName(pokemon.name, name));
+  if (similar) {
+    return {
+      ...state,
+      activeOpponent: samePokemonName(state.activeOpponent, similar.name) ? name : state.activeOpponent,
+      opponentTeam: state.opponentTeam.map((pokemon) => (
+        pokemon.id === similar.id ? { ...pokemon, name } : pokemon
+      ))
+    };
+  }
   const emptyIndex = state.opponentTeam.findIndex((pokemon) => !pokemon.name);
   if (emptyIndex < 0) return state;
   const next = [...state.opponentTeam];
@@ -1584,7 +1656,9 @@ function ensureOpponentPokemon(state: BattleState, name: string): BattleState {
 }
 
 function updateTeamPokemon(team: PokemonState[], name: string, update: (pokemon: PokemonState) => PokemonState) {
-  return team.map((pokemon) => (pokemon.name === name || pokemon.id === name ? update(pokemon) : pokemon));
+  return team.map((pokemon) => (
+    pokemon.name === name || pokemon.id === name || samePokemonName(pokemon.name, name) ? update(pokemon) : pokemon
+  ));
 }
 
 function mergeKnownValue(current: KnownValue, next: KnownValue): KnownValue {
@@ -1640,10 +1714,13 @@ export function applyFactsToState(state: BattleState, rawFacts: BattleFacts, sto
   if (facts.ownSelectedPokemon.length > 0) {
     const selected = new Set(facts.ownSelectedPokemon.filter((name) => findPokemon(next.ownTeam, name)));
     const currentSelectedCount = next.ownTeam.filter((pokemon) => pokemon.selected).length;
-    const shouldReplaceSelection = next.phase === "selection" || selected.size === 3 || currentSelectedCount === 0;
+    const shouldReplaceSelection = next.phase === "selection" || currentSelectedCount === 0;
+    const shouldMergeSelection = next.phase !== "selection" && currentSelectedCount > 0 && selected.size < 3;
     next.ownTeam = next.ownTeam.map((pokemon) => ({
       ...pokemon,
-      selected: shouldReplaceSelection ? selected.has(pokemon.name) : pokemon.selected || selected.has(pokemon.name)
+      selected: shouldReplaceSelection
+        ? selected.has(pokemon.name)
+        : pokemon.selected || (shouldMergeSelection && selected.has(pokemon.name))
     }));
   }
 
@@ -1668,11 +1745,12 @@ export function applyFactsToState(state: BattleState, rawFacts: BattleFacts, sto
   }
   if (facts.activeOpponent) {
     next = ensureOpponentPokemon(next, facts.activeOpponent);
-    next.activeOpponent = facts.activeOpponent;
+    const activeOpponent = findPokemon(next.opponentTeam, facts.activeOpponent)?.name ?? facts.activeOpponent;
+    next.activeOpponent = activeOpponent;
     next.opponentTeam = next.opponentTeam.map((pokemon) => ({
       ...pokemon,
-      active: pokemon.name === facts.activeOpponent,
-      selected: pokemon.selected || pokemon.name === facts.activeOpponent
+      active: samePokemonName(pokemon.name, activeOpponent),
+      selected: pokemon.selected || samePokemonName(pokemon.name, activeOpponent)
     }));
   }
 
@@ -1711,11 +1789,12 @@ export function applyFactsToState(state: BattleState, rawFacts: BattleFacts, sto
     const replacement = facts.opponentSelectedPokemon.find((pokemon) => !faintedOpponentNames.has(pokemon));
     if (replacement) {
       next = ensureOpponentPokemon(next, replacement);
-      next.activeOpponent = replacement;
+      const activeOpponent = findPokemon(next.opponentTeam, replacement)?.name ?? replacement;
+      next.activeOpponent = activeOpponent;
       next.opponentTeam = next.opponentTeam.map((pokemon) => ({
         ...pokemon,
-        active: pokemon.name === replacement,
-        selected: pokemon.selected || pokemon.name === replacement
+        active: samePokemonName(pokemon.name, activeOpponent),
+        selected: pokemon.selected || samePokemonName(pokemon.name, activeOpponent)
       }));
     }
   }
@@ -1921,6 +2000,37 @@ function battleTurnTeamDoc(doc: string): string {
   return doc.replace(/## 最終パーティ[\s\S]*?(?=\n\n## |$)/, "").trim();
 }
 
+function damagePercentPhrase(maxPercent: number): string {
+  if (maxPercent >= 100) return "倒し切れる火力";
+  if (maxPercent >= 70) return "大きく削れる火力";
+  if (maxPercent >= 40) return "しっかり削れる火力";
+  if (maxPercent >= 15) return "削りは控えめ";
+  return "かなり削れている状態";
+}
+
+export function sanitizeSpeechForVoice(speech: string): string {
+  return speech
+    .replace(/HP\s*(?:は)?\s*\d+(?:\.\d+)?\s*%/g, "HPはかなり削れた状態")
+    .replace(
+      /(?:概算|約)?\d+(?:\.\d+)?\s*[-〜~－]\s*\d+(?:\.\d+)?\s*%/g,
+      (match) => {
+        const values = [...match.matchAll(/\d+(?:\.\d+)?/g)].map((entry) => Number(entry[0]));
+        return damagePercentPhrase(Math.max(...values));
+      }
+    )
+    .replace(
+      /(?:概算|約)?\d+(?:\.\d+)?\s*%/g,
+      (match) => {
+        const value = Number(match.match(/\d+(?:\.\d+)?/)?.[0] ?? 0);
+        return damagePercentPhrase(value);
+      }
+    )
+    .replace(/火力まで/g, "ところまで")
+    .replace(/状態まで/g, "ところまで")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function buildDecisionPrompt(payload: z.infer<typeof candidatesPayloadSchema>): string {
   const ownNames = payload.updatedState.ownTeam.map((pokemon) => pokemon.name).join(" / ");
   const isActiveBattleTurn =
@@ -1955,6 +2065,7 @@ function buildDecisionPrompt(payload: z.infer<typeof candidatesPayloadSchema>): 
     "マスターの好みや過去会話に関係する場合は、会話記憶を判断材料にする。",
     "speech はAIニケちゃんとしてマスターにそのまま話すセリフ。音声再生される前提で、自然な日本語1〜3文にする。",
     `speech には command だけでなく、「なぜそうするか」を短く含める。例: 「ペリッパーとラグラージの雨展開が見えるので、ここはガブリアス、アシレーヌ、メタグロスでいきましょう！」`,
+    "speech には細かいダメージ%や計算値を入れない。「大きく削れる」「倒し切れる火力」「圏内」のような自然な言い方にする。",
     "Pokemon Championsローカルデータを優先する。ローカルポケモンデータに書かれていないタイプ・特性・無効耐性を昔の知識で補完してはいけない。",
     "ポケモン別ナレッジは見出しに書かれたポケモン専用。現在対面やリスク説明で別ポケモンのナレッジを流用しない。",
     "候補理由にローカルデータの型・特性・相性が書かれている場合、それと矛盾する説明をしてはいけない。",
@@ -2375,11 +2486,64 @@ function repairOutOfCandidateBattleAdvice(
   };
 }
 
-function repairInvalidBattleAdvice(
+function isSelectionLikeBattleSpeech(speech: string, state: BattleState): boolean {
+  const normalized = speech.replace(/\s+/g, "");
+  if (/(先発は|対戦よろしくお願いします|選出)/.test(normalized)) return true;
+  const mentionedOwnNames = state.ownTeam.filter((pokemon) => pokemon.name && normalized.includes(pokemon.name)).length;
+  return mentionedOwnNames >= 3 && /(ここは|でいきましょう|で行きましょう)/.test(normalized);
+}
+
+function battleSpeechForAction(action: CandidateAction): string {
+  if (action.kind === "move") return `ここは${action.command}でいきましょう。${action.reason}`;
+  if (action.kind === "switch") return `ここは${action.command}を出しましょう。${action.reason}`;
+  return "対戦中なので、いまの盤面の確認として扱います。";
+}
+
+function repairSelectionLikeBattleSpeech(
   advice: AdviceResult,
   fallbackState: BattleState,
   candidates: CandidateAction[]
 ): AdviceResult {
+  if (fallbackState.phase !== "battle" || fallbackState.status !== "active") return advice;
+  if (!isSelectionLikeBattleSpeech(advice.speech, fallbackState)) return advice;
+  const fallbackAction =
+    candidates.find((candidate) => candidate.kind === advice.action.kind && candidate.command === advice.action.command) ??
+    candidates.find((candidate) => candidate.kind === "move" || candidate.kind === "switch") ??
+    candidates.find((candidate) => candidate.kind === "note");
+  return {
+    ...advice,
+    updatedState: fallbackState,
+    ...(fallbackAction ? { action: fallbackAction } : {}),
+    speech: fallbackAction ? battleSpeechForAction(fallbackAction) : "対戦中なので、いまの盤面の確認として扱います。",
+    memo: fallbackAction?.reason ?? advice.memo
+  };
+}
+
+export function repairInvalidBattleAdvice(
+  advice: AdviceResult,
+  fallbackState: BattleState,
+  candidates: CandidateAction[]
+): AdviceResult {
+  if (fallbackState.phase === "battle" && fallbackState.status === "active" && advice.action.kind === "selection") {
+    const fallbackAction = candidates.find((candidate) => candidate.kind === "move" || candidate.kind === "switch") ??
+      candidates.find((candidate) => candidate.kind === "note") ?? {
+        kind: "note" as const,
+        command: "状況確認",
+        reason: "対戦中に選出指示が返ったため、対戦状態を維持して確認に戻しました。",
+        risk: "盤面説明をもう一度入れると精度が上がります。",
+        confidence: "low" as const
+      };
+    return {
+      ...advice,
+      updatedState: fallbackState,
+      action: fallbackAction,
+      speech:
+        fallbackAction.kind === "note"
+          ? "対戦中なので、いまの盤面の確認として扱います。"
+          : battleSpeechForAction(fallbackAction),
+      memo: fallbackAction.reason
+    };
+  }
   const activeMoveAdvice = repairInvalidActiveMoveAdvice(advice, fallbackState, candidates);
   if (activeMoveAdvice !== advice) return activeMoveAdvice;
   const activeSwitchAdvice = repairInvalidActiveSwitchAdvice(advice, fallbackState, candidates);
@@ -2388,8 +2552,11 @@ function repairInvalidBattleAdvice(
   if (outOfCandidateAdvice !== advice) return outOfCandidateAdvice;
   const battleNoteAdvice = repairBattleNoteAdvice(advice, fallbackState, candidates);
   if (battleNoteAdvice !== advice) return battleNoteAdvice;
+  const speechAdvice = repairSelectionLikeBattleSpeech(advice, fallbackState, candidates);
+  if (speechAdvice !== advice) return speechAdvice;
   if (fallbackState.phase !== "battle" || advice.action.kind !== "selection") return advice;
-  const fallbackAction = candidates.find((candidate) => candidate.kind !== "selection") ?? {
+  const fallbackAction = candidates.find((candidate) => candidate.kind === "move" || candidate.kind === "switch") ??
+    candidates.find((candidate) => candidate.kind !== "selection") ?? {
     kind: "note" as const,
     command: "状況確認",
     reason: "対戦中に選出指示が返ったため、対戦状態を維持して確認に戻しました。",
@@ -2402,8 +2569,8 @@ function repairInvalidBattleAdvice(
     action: fallbackAction,
     speech:
       fallbackAction.kind === "note"
-        ? "対戦中なので選出には戻さず、いまの盤面確認として扱います。"
-        : `ここは${fallbackAction.command}でいきましょう。${fallbackAction.reason}`,
+        ? "対戦中なので、いまの盤面の確認として扱います。"
+        : battleSpeechForAction(fallbackAction),
     memo: advice.memo || fallbackAction.reason
   };
 }
@@ -2614,6 +2781,14 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
           inputData.updatedState.phase === "battle" &&
           inputData.updatedState.status === "active";
         if (isFastBattleTurn) {
+          const replacementCandidates = localReplacementCandidates(inputData.updatedState).slice(0, 5);
+          if (replacementCandidates.length > 0) {
+            return {
+              ...inputData,
+              candidates: replacementCandidates,
+              candidateToolCalls: []
+            };
+          }
           const localCandidates = withoutDominatedMoveCandidates(
             inputData.updatedState,
             withLocalSwitchCandidate(store, inputData.updatedState, localActiveMoveCandidates(store, inputData.updatedState))
@@ -2696,7 +2871,7 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
         const selectedFromCommand = extractCommandOwnNames(decision.action.command, inputData.updatedState.ownTeam.map((pokemon) => pokemon.name));
         const selectedOwnPokemon = decision.selectedOwnPokemon?.length === 3 ? decision.selectedOwnPokemon : selectedFromCommand;
         const updatedState =
-          decision.action.kind === "selection" && selectedOwnPokemon.length === 3
+          inputData.updatedState.phase === "selection" && decision.action.kind === "selection" && selectedOwnPokemon.length === 3
             ? normalizeBattleState({
                 ...inputData.updatedState,
                 activeOwn: selectedOwnPokemon[0],
@@ -2745,10 +2920,14 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
       const errors = noteMode ? [] : validateSelectionAdvice(guardedAdvice);
       const repaired = noteMode || errors.length > 0;
       const advice = errors.length > 0 ? repairSelectionAdvice(guardedAdvice, inputData.updatedState, inputData.candidates) : guardedAdvice;
-      const finalErrors = noteMode ? [] : validateSelectionAdvice(advice);
+      const sanitizedAdvice = {
+        ...advice,
+        speech: sanitizeSpeechForVoice(advice.speech)
+      };
+      const finalErrors = noteMode ? [] : validateSelectionAdvice(sanitizedAdvice);
       const factsWarnings = detectFactsAnomalies(inputData.updatedState, inputData.facts, inputData.resolvedNames);
       const output = {
-        ...advice,
+        ...sanitizedAdvice,
         model: deps.adviceModel,
         workflowTraceId: inputData.traceId,
         workflowTrace: {

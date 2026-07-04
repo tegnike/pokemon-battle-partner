@@ -79,6 +79,16 @@ AITUBERKIT_SPEAK_PRIORITY=high
 
 `AITUBERKIT_API_KEY` と `AITUBERKIT_CLIENT_ID` が未設定の場合、相談結果の生成だけ行い、発話送信はスキップします。AITuberKit側では、API操作の受付を有効化し、同じAPIキーとClient IDを設定してください。
 
+## OBS用セリフ表示
+
+OBSのブラウザソースには、次のURLを指定します。
+
+```text
+http://127.0.0.1:5178/obs
+```
+
+最新のAIニケちゃんの `speech` を、白背景・黒文字・1行で枠内に表示します。表示内容は `/api/advise` の成功時に更新されます。動作確認だけなら `/api/speech` へ `{"text":"表示したいセリフ"}` をPOSTして更新できます。
+
 ## 参照する構築文書
 
 起動時に `/Users/user/WorkSpace/nikechan/docs/pokemon-champions-ai-team.md` を読み込み、判断プロンプトに含めます。

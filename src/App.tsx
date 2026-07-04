@@ -9,7 +9,7 @@ import {
   Swords,
   Users
 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   type AdviceResult,
   type BattlePhase,
@@ -45,6 +45,12 @@ interface BattleSummary {
 }
 
 type ConsultationMode = "selection" | "battle" | "chat" | "review";
+
+interface SpeechOverlayState {
+  text: string;
+  updatedAt: string | null;
+  source: string;
+}
 
 function compactActionLabel(action: string, memo = ""): string {
   const trimmed = action.trim();
@@ -333,6 +339,79 @@ function BattleStatusBoard({ summary }: { summary: BattleStatusSummary }) {
   );
 }
 
+function fitSingleLineText(box: HTMLDivElement, text: HTMLSpanElement): void {
+  const availableWidth = Math.max(0, box.clientWidth - 32);
+  const availableHeight = Math.max(0, box.clientHeight - 12);
+  const minSize = 16;
+  const maxSize = 72;
+  let best = minSize;
+  let low = minSize;
+  let high = maxSize;
+
+  for (let step = 0; step < 10; step += 1) {
+    const next = Math.floor((low + high) / 2);
+    text.style.fontSize = `${next}px`;
+    if (text.scrollWidth <= availableWidth && text.scrollHeight <= availableHeight) {
+      best = next;
+      low = next + 1;
+    } else {
+      high = next - 1;
+    }
+  }
+  text.style.fontSize = `${best}px`;
+  const scaleX = text.scrollWidth > availableWidth && availableWidth > 0
+    ? Math.max(0.4, availableWidth / text.scrollWidth)
+    : 1;
+  text.style.transform = scaleX < 1 ? `scaleX(${scaleX})` : "";
+}
+
+function ObsSpeechOverlay() {
+  const [speech, setSpeech] = useState<SpeechOverlayState>({ text: "", updatedAt: null, source: "startup" });
+  const boxRef = useRef<HTMLDivElement | null>(null);
+  const textRef = useRef<HTMLSpanElement | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function loadSpeech() {
+      try {
+        const response = await fetch("/api/speech", { cache: "no-store" });
+        if (!response.ok) return;
+        const json = (await response.json()) as SpeechOverlayState;
+        if (!cancelled) setSpeech(json);
+      } catch {
+        // OBS表示を止めないため、取得失敗時は前回表示を維持する。
+      }
+    }
+    void loadSpeech();
+    const interval = window.setInterval(loadSpeech, 700);
+    return () => {
+      cancelled = true;
+      window.clearInterval(interval);
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    const box = boxRef.current;
+    const text = textRef.current;
+    if (!box || !text) return;
+    const fit = () => fitSingleLineText(box, text);
+    fit();
+    const observer = new ResizeObserver(fit);
+    observer.observe(box);
+    return () => observer.disconnect();
+  }, [speech.text]);
+
+  return (
+    <div className="obs-page">
+      <div className="obs-speech-box" ref={boxRef}>
+        <span className="obs-speech-text" ref={textRef}>
+          {speech.text}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 // 現在の対面を大きく表示するバンド（自分＝左 / 相手＝右）
 function MatchupBand({ own, opponent }: { own: PokemonState | null; opponent: PokemonState | null }) {
   if (!own && !opponent) return null;
@@ -423,7 +502,7 @@ function SelectionStrip({
   );
 }
 
-export default function App() {
+function BattlePartnerApp() {
   const [state, setState] = useState<BattleState>(() => loadInitialState());
   const [battles, setBattles] = useState<BattleSummary[]>([]);
   const [opponentNameDraft, setOpponentNameDraft] = useState(() => state.opponentName);
@@ -872,4 +951,11 @@ export default function App() {
       </section>
     </main>
   );
+}
+
+export default function App() {
+  if (window.location.pathname === "/obs") {
+    return <ObsSpeechOverlay />;
+  }
+  return <BattlePartnerApp />;
 }

@@ -181,7 +181,8 @@ export const workflowTraceSchema = z.object({
     valid: z.boolean(),
     repaired: z.boolean(),
     errors: z.array(z.string())
-  })
+  }),
+  factsWarnings: z.array(z.string()).optional()
 });
 
 export const workflowOutputSchema = adviceResultSchema.extend({

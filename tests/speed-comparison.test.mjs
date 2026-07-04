@@ -2,12 +2,15 @@ import assert from "node:assert/strict";
 import path from "node:path";
 import { createInitialBattleState } from "../src/domain.ts";
 import {
+  applyFactsToState,
   applyKnownMoveSideEffectFacts,
   buildLocalKnowledge,
   inferOpponentPartyPokemonFromText,
+  localActiveMoveCandidates,
   isExecutionAcknowledgement,
   isPositiveFeedback,
   localSwitchCandidate,
+  sanitizeBattleCandidates,
   speedComparisonCandidate,
   speedComparisonSpeech
 } from "../src/mastra/battleWorkflow.ts";
@@ -15,6 +18,25 @@ import { createLocalDataStore } from "../src/mastra/localData.ts";
 
 const store = createLocalDataStore(path.resolve("data/champions"));
 const state = createInitialBattleState("ササミ");
+
+function emptyFacts(overrides = {}) {
+  return {
+    opponentMentionedPokemon: [],
+    opponentSelectedPokemon: [],
+    ownMentionedPokemon: [],
+    ownSelectedPokemon: [],
+    hpUpdates: [],
+    faintedPokemon: [],
+    statuses: [],
+    revealedMoves: [],
+    revealedAbility: [],
+    revealedItem: [],
+    statChanges: [],
+    damageCalcRequests: [],
+    notes: [],
+    ...overrides
+  };
+}
 
 const opponentNames = ["ゲンガー", "ガブリアス", "ユキメノコ", "ペリッパー", "ブリジュラス", "ラグラージ"];
 state.opponentTeam = state.opponentTeam.map((pokemon, index) => ({
@@ -294,5 +316,160 @@ assert.deepEqual(
   ),
   ["ゲンガー", "ガブリアス", "ミミッキュ", "ブリジュラス", "ペリッパー", "マスカーニャ"]
 );
+
+const ceruledgeState = createInitialBattleState("ルフィ");
+ceruledgeState.phase = "battle";
+ceruledgeState.status = "active";
+ceruledgeState.activeOwn = "メタグロス";
+ceruledgeState.activeOpponent = "ソウブレイズ";
+ceruledgeState.ownTeam = ceruledgeState.ownTeam.map((pokemon) => ({
+  ...pokemon,
+  selected: ["ガブリアス", "アシレーヌ", "メタグロス"].includes(pokemon.name),
+  active: pokemon.name === "メタグロス"
+}));
+ceruledgeState.opponentTeam = ceruledgeState.opponentTeam.map((pokemon, index) => ({
+  ...pokemon,
+  name: index === 0 ? "ソウブレイズ" : pokemon.name,
+  selected: index === 0,
+  active: index === 0
+}));
+
+const metagrossMoves = localActiveMoveCandidates(store, ceruledgeState);
+assert.equal(metagrossMoves[0]?.command, "じしん");
+assert.equal(metagrossMoves[0]?.moveMatchup?.effectiveness, 2);
+assert.equal(
+  metagrossMoves.find((candidate) => candidate.command === "バレットパンチ")?.moveMatchup?.effectiveness,
+  0.5
+);
+assert.equal(metagrossMoves[0]?.moveMatchup?.userMovesFirstBySpeed, true);
+
+const primarinaVsCeruledgeState = {
+  ...ceruledgeState,
+  activeOwn: "アシレーヌ",
+  ownTeam: ceruledgeState.ownTeam.map((pokemon) => ({
+    ...pokemon,
+    active: pokemon.name === "アシレーヌ"
+  }))
+};
+const primarinaMoves = localActiveMoveCandidates(store, primarinaVsCeruledgeState);
+assert.equal(primarinaMoves[0]?.command, "うたかたのアリア");
+assert.equal(primarinaMoves[0]?.moveMatchup?.effectiveness, 2);
+assert.equal(
+  primarinaMoves.find((candidate) => candidate.command === "ムーンフォース")?.moveMatchup?.effectiveness,
+  0.5
+);
+
+const sceptileState = createInitialBattleState("ヨン");
+sceptileState.phase = "battle";
+sceptileState.status = "active";
+sceptileState.activeOwn = "ガブリアス";
+sceptileState.activeOpponent = "ジュカイン";
+sceptileState.ownTeam = sceptileState.ownTeam.map((pokemon) => ({
+  ...pokemon,
+  selected: ["ガブリアス", "アシレーヌ", "メタグロス"].includes(pokemon.name),
+  active: pokemon.name === "ガブリアス"
+}));
+sceptileState.opponentTeam = sceptileState.opponentTeam.map((pokemon, index) => ({
+  ...pokemon,
+  name: index === 0 ? "ジュカイン" : pokemon.name,
+  selected: index === 0,
+  active: index === 0
+}));
+const garchompVsSceptileMoves = localActiveMoveCandidates(store, sceptileState);
+assert.equal(garchompVsSceptileMoves[0]?.command, "ドラゴンクロー");
+assert.equal(
+  garchompVsSceptileMoves.find((candidate) => candidate.command === "じしん")?.moveMatchup?.effectiveness,
+  0.5
+);
+
+const vaporeonWallState = createInitialBattleState("ミカにゃん");
+vaporeonWallState.phase = "battle";
+vaporeonWallState.status = "active";
+vaporeonWallState.activeOwn = "ガブリアス";
+vaporeonWallState.activeOpponent = "シャワーズ";
+vaporeonWallState.field = "相手側: リフレクター、相手側: ひかりのかべ";
+vaporeonWallState.ownTeam = vaporeonWallState.ownTeam.map((pokemon) => ({
+  ...pokemon,
+  selected: ["ガブリアス", "アシレーヌ", "メタグロス"].includes(pokemon.name),
+  active: pokemon.name === "ガブリアス",
+  statChanges: pokemon.name === "ガブリアス" ? "こうげき-1 / とくこう-1" : pokemon.statChanges
+}));
+vaporeonWallState.opponentTeam = vaporeonWallState.opponentTeam.map((pokemon, index) => ({
+  ...pokemon,
+  name: index === 0 ? "シャワーズ" : pokemon.name,
+  selected: index === 0,
+  active: index === 0,
+  hpPercent: index === 0 ? 44 : pokemon.hpPercent
+}));
+const vaporeonWallMoves = localActiveMoveCandidates(store, vaporeonWallState);
+const earthquakeVsVaporeon = vaporeonWallMoves.find((candidate) => candidate.command === "じしん");
+assert.ok(earthquakeVsVaporeon, "expected earthquake candidate against Vaporeon");
+assert.equal(earthquakeVsVaporeon.moveMatchup.percentMax, 24.9);
+assert.match(earthquakeVsVaporeon.moveMatchup.note, /攻撃-1、相手側リフレクター込み/);
+
+const preservedSelectionState = applyFactsToState(
+  vaporeonWallState,
+  emptyFacts({
+    phase: "battle",
+    ownSelectedPokemon: ["ガブリアス"],
+    activeOwn: "ガブリアス",
+    activeOpponent: "シャワーズ"
+  }),
+  store
+);
+assert.deepEqual(
+  preservedSelectionState.ownTeam.filter((pokemon) => pokemon.selected).map((pokemon) => pokemon.name),
+  ["ガブリアス", "アシレーヌ", "メタグロス"]
+);
+
+const yawnFacts = applyKnownMoveSideEffectFacts(
+  emptyFacts(),
+  "シャワーズはあくびをせんたく",
+  vaporeonWallState,
+  store
+);
+assert.deepEqual(yawnFacts.revealedMoves, [{ pokemon: "シャワーズ", move: "あくび", certainty: "confirmed" }]);
+assert.deepEqual(yawnFacts.statuses, [{ side: "own", pokemon: "ガブリアス", condition: "あくび" }]);
+
+const earthquakeHomophoneFacts = applyKnownMoveSideEffectFacts(
+  emptyFacts({
+    activeOwn: "ガブリアス",
+    activeOpponent: "シャワーズ",
+    hpUpdates: [{ side: "own", pokemon: "ガブリアス", hpPercent: 79 }]
+  }),
+  "リフレクターをされました。自身で79%まで削れました。",
+  vaporeonWallState,
+  store
+);
+assert.deepEqual(earthquakeHomophoneFacts.hpUpdates, [{ side: "opponent", pokemon: "シャワーズ", hpPercent: 79 }]);
+
+const sanitizedSwitches = sanitizeBattleCandidates(primarinaVsCeruledgeState, [
+  {
+    kind: "switch",
+    command: "ウォッシュロトム",
+    reason: "未選出のため通してはいけない候補。",
+    risk: "選出外。",
+    confidence: "medium"
+  },
+  {
+    kind: "switch",
+    command: "メタグロス",
+    reason: "選出済みの控えなので有効。",
+    risk: "受け出し負荷。",
+    confidence: "medium"
+  }
+]);
+assert.equal(sanitizedSwitches.some((candidate) => candidate.command === "ウォッシュロトム"), false);
+assert.equal(sanitizedSwitches.some((candidate) => candidate.command === "メタグロス"), true);
+
+const lowHpCeruledgeState = {
+  ...ceruledgeState,
+  opponentTeam: ceruledgeState.opponentTeam.map((pokemon) =>
+    pokemon.name === "ソウブレイズ" ? { ...pokemon, hpPercent: 1 } : pokemon
+  )
+};
+const lowHpMetagrossMoves = localActiveMoveCandidates(store, lowHpCeruledgeState);
+assert.equal(lowHpMetagrossMoves[0]?.command, "バレットパンチ");
+assert.equal(lowHpMetagrossMoves[0]?.moveMatchup?.priority, 1);
 
 console.log("Validated speed comparison guard.");

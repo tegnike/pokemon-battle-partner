@@ -68,6 +68,11 @@ const japaneseAliases: Record<string, string[]> = {
   gengar: ["ゲンガー"],
   blaziken: ["バシャーモ"],
   "blazikenmega": ["メガバシャーモ"],
+  gliscor: ["グライオン"],
+  malamar: ["カラマネロ"],
+  excadrill: ["ドリュウズ"],
+  sceptile: ["ジュカイン"],
+  "sceptilemega": ["メガジュカイン"],
   lopunny: ["ミミロップ"],
   "lopunnymega": ["メガミミロップ"],
   ninetalesalola: ["アローラキュウコン"],
@@ -168,6 +173,21 @@ interface MoveJaAliasesFile {
   moves: Record<string, string[]>;
 }
 
+interface PokemonJaAliasesFile {
+  source: {
+    name: string;
+    speciesUrl: string;
+    speciesNamesUrl: string;
+    fetchedAt: string;
+  };
+  counts: {
+    resolvedPokemon: number;
+    aliases: number;
+    unresolved: number;
+  };
+  pokemon: Record<string, string[]>;
+}
+
 function readMoveAvailability(): MoveAvailabilityFile | null {
   const file = path.join(outDir, "move-availability.json");
   if (!fs.existsSync(file)) return null;
@@ -178,6 +198,12 @@ function readMoveJaAliases(): MoveJaAliasesFile | null {
   const file = path.join(outDir, "move-ja-aliases.json");
   if (!fs.existsSync(file)) return null;
   return JSON.parse(fs.readFileSync(file, "utf8")) as MoveJaAliasesFile;
+}
+
+function readPokemonJaAliases(): PokemonJaAliasesFile | null {
+  const file = path.join(outDir, "pokemon-ja-aliases.json");
+  if (!fs.existsSync(file)) return null;
+  return JSON.parse(fs.readFileSync(file, "utf8")) as PokemonJaAliasesFile;
 }
 
 function mergeAliasTables(...tables: Array<Record<string, string[]> | undefined>): Record<string, string[]> {
@@ -195,6 +221,8 @@ function mergeAliasTables(...tables: Array<Record<string, string[]> | undefined>
 
 const moveAvailability = readMoveAvailability();
 const importedMoveJaAliases = readMoveJaAliases();
+const importedPokemonJaAliases = readPokemonJaAliases();
+const pokemonAliases = mergeAliasTables(importedPokemonJaAliases?.pokemon, japaneseAliases);
 const moveAliases = mergeAliasTables(importedMoveJaAliases?.moves, manualMoveAliases);
 
 const pokemon = dex.species
@@ -212,7 +240,7 @@ const pokemon = dex.species
     weightkg: species.weightkg,
     isMega: Boolean(species.isMega),
     isNonstandard: species.isNonstandard ?? null,
-    aliasesJa: japaneseAliases[species.id] ?? []
+    aliasesJa: pokemonAliases[species.id] ?? []
   }))
   .sort((a, b) => a.num - b.num || a.name.localeCompare(b.name));
 
@@ -288,7 +316,7 @@ const natures = dex.natures.all().map((nature) => ({
 }));
 
 const aliases = {
-  pokemon: japaneseAliases,
+  pokemon: pokemonAliases,
   moves: moveAliases,
   abilities: abilityAliases,
   items: itemAliases
@@ -318,6 +346,14 @@ writeJson("metadata.json", {
           assetUrl: importedMoveJaAliases.source.assetUrl,
           fetchedAt: importedMoveJaAliases.source.fetchedAt
         }
+      : null,
+    pokemonJaAliases: importedPokemonJaAliases
+      ? {
+          name: importedPokemonJaAliases.source.name,
+          speciesUrl: importedPokemonJaAliases.source.speciesUrl,
+          speciesNamesUrl: importedPokemonJaAliases.source.speciesNamesUrl,
+          fetchedAt: importedPokemonJaAliases.source.fetchedAt
+        }
       : null
   },
   championsRules: {
@@ -339,6 +375,7 @@ writeJson("metadata.json", {
     championsUsableMoves: moves.filter((move) => move.usableInChampions === true).length,
     championsUnusableMoves: moves.filter((move) => move.usableInChampions === false).length,
     championsUnknownMoves: moves.filter((move) => move.usableInChampions === null).length,
+    pokemonJaAliases: Object.values(pokemonAliases).reduce((sum, aliases) => sum + aliases.length, 0),
     moveJaAliases: Object.values(moveAliases).reduce((sum, aliases) => sum + aliases.length, 0),
     abilities: abilities.length,
     items: items.length,

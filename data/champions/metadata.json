@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T16:52:55.731Z",
+  "generatedAt": "2026-07-03T21:27:06.996Z",
   "game": "Pokemon Champions",
   "source": {
     "dex": "@pkmn/dex",
@@ -18,6 +18,12 @@
       "url": "https://damekei.com/moves",
       "assetUrl": "https://damekei.com/assets/moves-ZpumTu-F.js",
       "fetchedAt": "2026-07-02T16:52:55.361Z"
+    },
+    "pokemonJaAliases": {
+      "name": "PokeAPI",
+      "speciesUrl": "https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/csv/pokemon_species.csv",
+      "speciesNamesUrl": "https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/csv/pokemon_species_names.csv",
+      "fetchedAt": "2026-07-03T21:26:51.857Z"
     }
   },
   "championsRules": {
@@ -38,6 +44,7 @@
     "championsUsableMoves": 498,
     "championsUnusableMoves": 420,
     "championsUnknownMoves": 33,
+    "pokemonJaAliases": 1055,
     "moveJaAliases": 904,
     "abilities": 316,
     "items": 580,

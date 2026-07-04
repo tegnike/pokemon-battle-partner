@@ -9,6 +9,7 @@ const projectRoot = path.resolve(__dirname, "..");
 const dataDir = path.join(projectRoot, "data", "champions");
 
 const metadata = JSON.parse(fs.readFileSync(path.join(dataDir, "metadata.json"), "utf8"));
+const pokemon = JSON.parse(fs.readFileSync(path.join(dataDir, "pokemon.json"), "utf8"));
 const moves = JSON.parse(fs.readFileSync(path.join(dataDir, "moves.json"), "utf8"));
 const availability = JSON.parse(fs.readFileSync(path.join(dataDir, "move-availability.json"), "utf8"));
 const aliases = JSON.parse(fs.readFileSync(path.join(dataDir, "ja-aliases.json"), "utf8"));
@@ -25,6 +26,7 @@ assert.equal(
   metadata.counts.moves
 );
 assert.ok(metadata.counts.championsUsableMoves >= availability.counts.usable);
+assert.ok(metadata.counts.pokemonJaAliases >= 1000, "Japanese Pokemon aliases should cover base species names");
 assert.equal(byId.get("earthquake").usableInChampions, true);
 assert.equal(byId.get("pound").usableInChampions, false);
 assert.equal(byId.get("gmaxwildfire").usableInChampions, null);
@@ -32,5 +34,14 @@ assert.equal(byId.get("icywind").secondary.boosts.spe, -1);
 assert.ok(aliases.moves.earthquake.includes("じしん"));
 assert.ok(aliases.moves.icywind.includes("こごえるかぜ"));
 assert.ok(aliases.moves.closecombat.includes("インファイト"));
+assert.ok(aliases.pokemon.sceptile.includes("ジュカイン"));
+assert.ok(aliases.pokemon.gliscor.includes("グライオン"));
+assert.ok(aliases.pokemon.malamar.includes("カラマネロ"));
+assert.ok(aliases.pokemon.excadrill.includes("ドリュウズ"));
+assert.deepEqual(
+  pokemon.filter((entry) => !entry.forme && !entry.isNonstandard && entry.aliasesJa.length === 0).map((entry) => entry.id),
+  [],
+  "Every standard base species should have a Japanese alias"
+);
 
 console.log("champions-data tests passed");

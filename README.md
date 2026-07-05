@@ -169,6 +169,8 @@ npm run test:knowledge
 
 現在の実装仕様は [docs/current-spec.md](/Users/user/WorkSpace/pokemon-battle-partner/docs/current-spec.md) にまとめています。
 
+コード構造、APIエンドポイント、LLMリトライ/フォールバック、名前解決、テスト構成などの実装アーキテクチャは [docs/architecture.md](/Users/user/WorkSpace/pokemon-battle-partner/docs/architecture.md) にまとめています。
+
 参照API:
 
 - `GET /api/champions-data/metadata`

@@ -257,4 +257,5 @@ facts抽出
 ## 関連ドキュメント
 
 - [current-spec.md](/Users/user/WorkSpace/pokemon-battle-partner/docs/current-spec.md)
+- [architecture.md](/Users/user/WorkSpace/pokemon-battle-partner/docs/architecture.md)
 - [README.md](/Users/user/WorkSpace/pokemon-battle-partner/README.md)

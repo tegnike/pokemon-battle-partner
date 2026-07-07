@@ -8,3 +8,4 @@ data/battles/*.png
 data/audio/
 data/memory/
 data/battle-sessions/
+docs/assets/*.png

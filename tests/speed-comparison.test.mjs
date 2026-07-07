@@ -545,6 +545,7 @@ assert.equal(lowHpMetagrossMoves[0]?.command, "バレットパンチ");
 assert.equal(lowHpMetagrossMoves[0]?.moveMatchup?.priority, 1);
 
 const mistakenSelectionAdvice = repairInvalidBattleAdvice(
+  store,
   {
     updatedState: {
       ...primarinaVsCeruledgeState,
@@ -592,6 +593,7 @@ const replacementNeededState = {
 const replacementCandidates = localReplacementCandidates(replacementNeededState);
 assert.deepEqual(replacementCandidates.map((candidate) => candidate.command), ["ガブリアス", "メタグロス"]);
 const repairedReplacement = repairInvalidBattleAdvice(
+  store,
   {
     updatedState: { ...replacementNeededState, phase: "selection" },
     action: {
@@ -612,6 +614,7 @@ assert.equal(["ガブリアス", "メタグロス"].includes(repairedReplacement
 assert.equal(/先発|対戦よろしく|選出/.test(repairedReplacement.speech), false);
 
 const selectionLikeSpeechAdvice = repairInvalidBattleAdvice(
+  store,
   {
     updatedState: primarinaVsCeruledgeState,
     action: {

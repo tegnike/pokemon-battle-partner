@@ -17,14 +17,16 @@ export interface BattleStatusSummary {
   rawField: string;
 }
 
-interface FieldDefinition {
+export interface FieldDefinition {
   label: string;
   category: FieldStatusItem["category"];
   scope: "global" | "side";
   patterns: RegExp[];
 }
 
-const fieldDefinitions: FieldDefinition[] = [
+// 場の効果の正規定義。UI表示(summarizeBattleStatus)と構造化FieldState(fieldState.ts)の
+// 両方がこのテーブルだけを参照する。場の効果の追加はここに1回書けばよい。
+export const fieldDefinitions: FieldDefinition[] = [
   {
     label: "晴れ",
     category: "weather",
@@ -211,14 +213,14 @@ function normalizeText(value: string): string {
   return value.normalize("NFKC").trim();
 }
 
-function fieldSegments(field: string): string[] {
+export function fieldSegments(field: string): string[] {
   return normalizeText(field)
     .split(/\n|\/|、|，|,|。|；|;/)
     .map((segment) => segment.trim())
     .filter(Boolean);
 }
 
-function sideFromSegment(segment: string): "own" | "opponent" | "both" | null {
+export function sideFromSegment(segment: string): "own" | "opponent" | "both" | null {
   const text = normalizeText(segment);
   const own = /自分|こちら|こっち|味方|自陣|自分側|こちら側|own|ally/i.test(text);
   const opponent = /相手|敵|相手側|相手の場|相手場|敵陣|向こう|opponent|enemy/i.test(text);

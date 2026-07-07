@@ -13,6 +13,7 @@ import {
   normalizeBattleState
 } from "../domain";
 import { calculateChampionsStats, type NatureModifiers, type StatPoints } from "../champions/statCalc";
+import { fieldWeatherLabel, mergeFieldText, sideHasFieldEffect, sideHasTailwind } from "../fieldState";
 import { calculateLocalDamage, typeEffectiveness } from "./damage";
 import { createLocalDataStore, type LocalDataStore, type LocalPokemon, type LocalMove, type StatBoosts } from "./localData";
 import {
@@ -34,6 +35,13 @@ import {
   workflowOutputSchema
 } from "./schemas";
 import { createDamageCalcTool, createMoveLookupTool, createPokemonLookupTool } from "./tools";
+import {
+  type ThreatReport,
+  buildThreatReport,
+  parseStatProfile,
+  summarizeThreatReport,
+  utilityMoveCandidates
+} from "./turnEvaluation";
 
 export interface BattleAdviceWorkflowDeps {
   championsDataDir: string;
@@ -69,7 +77,8 @@ const resolvedPayloadSchema = factsPayloadSchema.extend({
 
 const updatedPayloadSchema = resolvedPayloadSchema.extend({
   updatedState: battleStateSchema,
-  damageCalcs: z.array(z.unknown())
+  damageCalcs: z.array(z.unknown()),
+  threatReport: z.unknown()
 });
 
 const moveMatchupSchema = z.object({
@@ -270,48 +279,6 @@ function compactPokemonForPrompt(pokemon: PokemonState, side: "own" | "opponent"
     moves: pokemon.moves.map((move) => move.value).filter(Boolean),
     notes: pokemon.notes || undefined
   };
-}
-
-const natureByJaName: Record<string, NatureModifiers> = {
-  いじっぱり: { plus: "atk", minus: "spa" },
-  ひかえめ: { plus: "spa", minus: "atk" },
-  ずぶとい: { plus: "def", minus: "atk" },
-  おくびょう: { plus: "spe", minus: "atk" },
-  ようき: { plus: "spe", minus: "spa" },
-  わんぱく: { plus: "def", minus: "spa" },
-  おだやか: { plus: "spd", minus: "atk" },
-  しんちょう: { plus: "spd", minus: "spa" },
-  のんき: { plus: "def", minus: "spe" },
-  れいせい: { plus: "spa", minus: "spe" },
-  なまいき: { plus: "spd", minus: "spe" },
-  ゆうかん: { plus: "atk", minus: "spe" }
-};
-
-const statPointKeyByLabel: Record<string, keyof StatPoints> = {
-  H: "hp",
-  A: "atk",
-  B: "def",
-  C: "spa",
-  D: "spd",
-  S: "spe"
-};
-
-function parseStatProfile(notes: string): { nature?: NatureModifiers; statPoints: StatPoints } {
-  const statPoints: StatPoints = {};
-  for (const [natureName, nature] of Object.entries(natureByJaName)) {
-    if (notes.includes(natureName)) {
-      for (const match of notes.matchAll(/\b([HABCDS])(\d{1,2})\b/g)) {
-        const key = statPointKeyByLabel[match[1]];
-        if (key) statPoints[key] = Number(match[2]);
-      }
-      return { nature, statPoints };
-    }
-  }
-  for (const match of notes.matchAll(/\b([HABCDS])(\d{1,2})\b/g)) {
-    const key = statPointKeyByLabel[match[1]];
-    if (key) statPoints[key] = Number(match[2]);
-  }
-  return { statPoints };
 }
 
 function maxUnboostedSpeed(pokemon: LocalPokemon): number {
@@ -1245,31 +1212,18 @@ function parseBattleStatStage(statChanges: string, stat: "atk" | "spa"): number 
   return 0;
 }
 
-function fieldSideHasEffect(field: string, side: "own" | "opponent", effect: string): boolean {
-  const normalized = field.normalize("NFKC");
-  if (!normalized.includes(effect)) return false;
-  const sidePattern = side === "own" ? "(?:自分|こちら|味方|自軍)" : "(?:相手|敵)";
-  const matcher = new RegExp(
-    `(?:${sidePattern})(?:側)?[^。/、,]*${effect}|${effect}[^。/、,]*(?:${sidePattern})(?:側)?`,
-    "i"
-  );
-  return matcher.test(normalized);
-}
-
-function damageAdjustmentNotes(state: BattleState | undefined, attacker: PokemonState, move: LocalMove): string[] {
-  if (!state) return [];
-  const notes: string[] = [];
-  const attackStage = parseBattleStatStage(attacker.statChanges ?? "", move.category === "Physical" ? "atk" : "spa");
-  if (attackStage !== 0) {
-    notes.push(`${move.category === "Physical" ? "攻撃" : "特攻"}${attackStage > 0 ? `+${attackStage}` : attackStage}`);
+// 天候によるタイプ補正 (雨: みず1.5/ほのお0.5、晴れ: その逆)。
+function weatherMoveMultiplier(field: string, moveType: string): { multiplier: number; note: string } {
+  const weather = fieldWeatherLabel(field);
+  if (weather === "雨" || weather === "強い雨") {
+    if (moveType === "Water") return { multiplier: 1.5, note: "雨でみず強化" };
+    if (moveType === "Fire") return { multiplier: 0.5, note: "雨でほのお減衰" };
   }
-  if (move.category === "Physical" && fieldSideHasEffect(state.field, "opponent", "リフレクター")) {
-    notes.push("相手側リフレクター");
+  if (weather === "晴れ" || weather === "強い日差し") {
+    if (moveType === "Fire") return { multiplier: 1.5, note: "晴れでほのお強化" };
+    if (moveType === "Water") return { multiplier: 0.5, note: "晴れでみず減衰" };
   }
-  if (move.category === "Special" && fieldSideHasEffect(state.field, "opponent", "ひかりのかべ")) {
-    notes.push("相手側ひかりのかべ");
-  }
-  return notes;
+  return { multiplier: 1, note: "" };
 }
 
 function adjustDamagePercentForBattleState(
@@ -1280,15 +1234,29 @@ function adjustDamagePercentForBattleState(
   move: LocalMove
 ): { percentMin: number; percentMax: number; notes: string[] } {
   if (!state) return { percentMin, percentMax, notes: [] };
+  const notes: string[] = [];
   const attackStage = parseBattleStatStage(attacker.statChanges ?? "", move.category === "Physical" ? "atk" : "spa");
   let multiplier = stageMultiplier(attackStage);
-  if (move.category === "Physical" && fieldSideHasEffect(state.field, "opponent", "リフレクター")) {
-    multiplier *= 0.5;
+  if (attackStage !== 0) {
+    notes.push(`${move.category === "Physical" ? "攻撃" : "特攻"}${attackStage > 0 ? `+${attackStage}` : attackStage}`);
   }
-  if (move.category === "Special" && fieldSideHasEffect(state.field, "opponent", "ひかりのかべ")) {
+  if (move.category === "Physical" && sideHasFieldEffect(state.field, "opponent", "リフレクター")) {
     multiplier *= 0.5;
+    notes.push("相手側リフレクター");
   }
-  const notes = damageAdjustmentNotes(state, attacker, move);
+  if (move.category === "Special" && sideHasFieldEffect(state.field, "opponent", "ひかりのかべ")) {
+    multiplier *= 0.5;
+    notes.push("相手側ひかりのかべ");
+  }
+  if (sideHasFieldEffect(state.field, "opponent", "オーロラベール")) {
+    multiplier *= 0.5;
+    notes.push("相手側オーロラベール");
+  }
+  const weather = weatherMoveMultiplier(state.field, move.type);
+  if (weather.multiplier !== 1) {
+    multiplier *= weather.multiplier;
+    notes.push(weather.note);
+  }
   return {
     percentMin: Number((percentMin * multiplier).toFixed(1)),
     percentMax: Number((percentMax * multiplier).toFixed(1)),
@@ -1479,6 +1447,15 @@ function withLocalSwitchCandidate(
   return [...base.slice(0, 4), switchCandidate];
 }
 
+// 対戦中のローカル候補一式: ダメージ技(劣位刈り込み済み) + 補助技 + 交代材料。
+// ダメージ%順だけで候補を独占させず、補助技と交代を必ず比較対象に残す。
+export function localBattleCandidates(store: LocalDataStore, state: BattleState): CandidateAction[] {
+  const damageMoves = withoutDominatedMoveCandidates(state, localActiveMoveCandidates(store, state));
+  const utility = utilityMoveCandidates(store, state);
+  const merged = [...damageMoves.slice(0, utility.length > 0 ? 3 : 5), ...utility];
+  return withLocalSwitchCandidate(store, state, merged).slice(0, 5);
+}
+
 export function sanitizeBattleCandidates(state: BattleState, candidates: CandidateAction[]): CandidateAction[] {
   if (state.phase !== "battle" || state.status !== "active") return candidates;
   const safeCandidates = candidates.filter((candidate) => candidate.kind !== "selection" && isValidBattleCandidate(state, candidate));
@@ -1542,15 +1519,6 @@ function parseSpeedStage(statChanges: string): number {
   if (/(?:素早さ|すばやさ|スピード).*(?:ぐーん|2段階|二段階).*(?:下が|下降)/.test(normalized)) return -2;
   if (/(?:素早さ|すばやさ|スピード).*(?:下が|下降)/.test(normalized)) return -1;
   return 0;
-}
-
-function sideHasTailwind(field: string, side: "own" | "opponent"): boolean {
-  const normalized = field.normalize("NFKC");
-  if (!/追い風|おいかぜ/i.test(normalized)) return false;
-  const ownPattern = /(?:こちら|自分|味方|自軍)[^。/]*?(?:追い風|おいかぜ)|(?:追い風|おいかぜ)[^。/]*?(?:こちら|自分|味方|自軍)/i;
-  const opponentPattern = /(?:相手|敵)[^。/]*?(?:追い風|おいかぜ)|(?:追い風|おいかぜ)[^。/]*?(?:相手|敵)/i;
-  if (side === "own") return ownPattern.test(normalized);
-  return opponentPattern.test(normalized);
 }
 
 function effectiveSpeed(baseSpeed: number, state: BattleState, pokemon: PokemonState | undefined, side: "own" | "opponent"): number {
@@ -1740,7 +1708,8 @@ export function applyFactsToState(state: BattleState, rawFacts: BattleFacts, sto
     next.opponentName = facts.opponentName.trim();
   }
   if (facts.field?.trim()) {
-    next.field = facts.field.trim();
+    // 全置換すると「雨になった」だけで設置物や壁の記録が消えるため、構造化マージで反映する。
+    next.field = mergeFieldText(next.field, facts.field.trim());
   }
 
   for (const name of facts.opponentMentionedPokemon) {
@@ -1946,6 +1915,8 @@ function buildFactsPrompt(state: BattleState, transcript: string): string {
 - 相手が「きあいのタスキ」「気合のタスキ」「きあいのハチマキ」などで持ちこたえた/耐えた場合は、相手側 hpUpdates に hpPercent=1 を入れ、revealedItem にその持ち物を confirmed で入れる。
 - 天気、フィールド、トリックルームなど全体に影響する情報は field に「全体: 雨」のように入れる。
 - ステルスロック、まきびし、どくびし、ねばねばネット、追い風、壁、しんぴのまもりなど片側の場に残る情報は、必ず「自分側: ステルスロック」「相手側: ひかりのかべ」のように、どちら側にあるかを明記して field に入れる。側が本当に不明なら「側不明: ステルスロック」と書く。
+- field は既存の記録へ自動でマージされる。今回の発話で新しく判明・変化した場の情報だけを書けばよい(既存の設置物や天候を書き写す必要はない)。
+- 場の効果が消えた・切れた・割れた場合は「相手側: リフレクター解除」「全体: 雨がやんだ」のように、消えたことが分かる表現で field に入れる。
 - 「Aの素早さが上がった」「S+1」「Aの攻撃が下がった」など能力ランク変化は statChanges に入れる。pokemon は対象、changes は「素早さ+1」「攻撃-1」など短く書く。
 - まひ、やけど、ねむり、こおり、どく、こんらん、みがわり、ちょうはつ、アンコール、かなしばり、ほろびのうた、やどりぎ、のろいなどポケモン個別に残る状態は statuses に入れる。
 - 確定していない技・特性・持ち物は suspected、発話で明確なら confirmed。
@@ -2027,6 +1998,9 @@ ${payload.localKnowledge}
 ダメージ計算:
 ${JSON.stringify(payload.damageCalcs)}
 
+相手からの被弾見積もり:
+${summarizeThreatReport(payload.threatReport as ThreatReport)}
+
 現在state:
 ${JSON.stringify(compactStateForPrompt(payload.updatedState))}
 
@@ -2080,7 +2054,11 @@ function buildDecisionPrompt(payload: z.infer<typeof candidatesPayloadSchema>): 
     ...(isActiveBattleTurn
       ? [
           "会話intent が battle、対戦ステータスが active、現在phaseがbattleのため、短い盤面報告、確認、実行宣言に見える発話でも候補から技または交代の一手を返す。",
-          "原則として action.kind は move または switch にする。note は候補が作れない場合だけにする。"
+          "原則として action.kind は move または switch にする。note は候補が作れない場合だけにする。",
+          "候補はローカル計算の判断材料であり、場の自分ポケモンが覚えている技であれば候補一覧に無い技(補助技を含む)を選んでもよい。ただし相手に無効(0倍)の技は選ばない。",
+          "「相手からの被弾見積もり」がある場合は必ず考慮する。こちらが先に大きく削られる・倒される見込みなら、最大打点の押し付けだけでなく、補助技(やけど等)・交代・確実に倒し切れる技を比較して選ぶ。",
+          "交代を選ぶ・勧める場合は「交代先が受け出しした場合の最大被弾」データで安全を確認する。データ上大きく削られる交代先を「受けられる」「安定する」と説明してはいけない。",
+          "先手・後手の説明は、被弾見積もりの「行動順」注記と moveMatchup の userMovesFirstBySpeed に必ず従う。トリックルーム中は遅い方が先に動く。データと矛盾する行動順を speech や reason に書かない。"
         ]
       : [
           `会話intent が chat または memory の場合は、必ず action.kind = "note" にして、選出・技・交代の新規指示を出さない。`,
@@ -2139,6 +2117,9 @@ ${payload.localKnowledge}
 
 ダメージ計算:
 ${JSON.stringify(payload.damageCalcs)}
+
+相手からの被弾見積もり:
+${summarizeThreatReport(payload.threatReport as ThreatReport)}
 
 候補:
 ${JSON.stringify(payload.candidates)}
@@ -2503,24 +2484,30 @@ function repairInvalidActiveSwitchAdvice(
   };
 }
 
-function repairOutOfCandidateBattleAdvice(
+// かつては「候補プールに無い技・交代」をすべて候補先頭へ差し替えていたが、その規則だと
+// ローカル候補が火力技しか作らない限り補助技(おにび等)が構造的に選べなくなる。
+// 正当性チェック(場のポケモンが覚えている・選出済みへの交代)は前段の repair が担うため、
+// ここでは「相手に無効(0倍)と分かっている技」だけを差し替える。
+function repairImmuneMoveBattleAdvice(
+  store: LocalDataStore,
   advice: AdviceResult,
   fallbackState: BattleState,
   candidates: CandidateAction[]
 ): AdviceResult {
   if (fallbackState.phase !== "battle" || fallbackState.status !== "active") return advice;
-  if (advice.action.kind !== "move" && advice.action.kind !== "switch") return advice;
-  const candidateMatch = candidates.some(
-    (candidate) => candidate.kind === advice.action.kind && candidate.command === advice.action.command
+  if (advice.action.kind !== "move") return advice;
+  const matchup = moveMatchupForActiveMove(store, fallbackState, advice.action.command);
+  if (!matchup || matchup.effectiveness !== 0) return advice;
+  const fallbackAction = candidates.find(
+    (candidate) =>
+      (candidate.kind === "move" && candidate.command !== advice.action.command) || candidate.kind === "switch"
   );
-  if (candidateMatch) return advice;
-  const fallbackAction = candidates.find((candidate) => candidate.kind === "move" || candidate.kind === "switch");
   if (!fallbackAction) return advice;
   return {
     ...advice,
     updatedState: fallbackState,
     action: fallbackAction,
-    speech: `ここは${fallbackAction.command}にします。${fallbackAction.reason}`,
+    speech: `${advice.action.command}は${matchup.defender}に無効なので、ここは${fallbackAction.command}にします。${fallbackAction.reason}`,
     memo: fallbackAction.reason
   };
 }
@@ -2559,6 +2546,7 @@ function repairSelectionLikeBattleSpeech(
 }
 
 export function repairInvalidBattleAdvice(
+  store: LocalDataStore,
   advice: AdviceResult,
   fallbackState: BattleState,
   candidates: CandidateAction[]
@@ -2587,8 +2575,8 @@ export function repairInvalidBattleAdvice(
   if (activeMoveAdvice !== advice) return activeMoveAdvice;
   const activeSwitchAdvice = repairInvalidActiveSwitchAdvice(advice, fallbackState, candidates);
   if (activeSwitchAdvice !== advice) return activeSwitchAdvice;
-  const outOfCandidateAdvice = repairOutOfCandidateBattleAdvice(advice, fallbackState, candidates);
-  if (outOfCandidateAdvice !== advice) return outOfCandidateAdvice;
+  const immuneMoveAdvice = repairImmuneMoveBattleAdvice(store, advice, fallbackState, candidates);
+  if (immuneMoveAdvice !== advice) return immuneMoveAdvice;
   const battleNoteAdvice = repairBattleNoteAdvice(advice, fallbackState, candidates);
   if (battleNoteAdvice !== advice) return battleNoteAdvice;
   const speechAdvice = repairSelectionLikeBattleSpeech(advice, fallbackState, candidates);
@@ -2779,11 +2767,17 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
     id: "updateBattleState",
     inputSchema: resolvedPayloadSchema,
     outputSchema: updatedPayloadSchema,
-    execute: async ({ inputData }) => ({
-      ...inputData,
-      updatedState: applyFactsToState(inputData.state, inputData.facts, store),
-      damageCalcs: []
-    })
+    execute: async ({ inputData }) => {
+      const updatedState = applyFactsToState(inputData.state, inputData.facts, store);
+      return {
+        ...inputData,
+        updatedState,
+        damageCalcs: [],
+        // 相手→自分方向の被弾見積もりと交代先の受け出しリスク。
+        // 候補生成と最終判断の両方に材料として渡す。
+        threatReport: buildThreatReport(store, updatedState)
+      };
+    }
   });
 
   const damageCalcStep = createStep({
@@ -2835,10 +2829,7 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
               candidateToolCalls: []
             };
           }
-          const localCandidates = withoutDominatedMoveCandidates(
-            inputData.updatedState,
-            withLocalSwitchCandidate(store, inputData.updatedState, localActiveMoveCandidates(store, inputData.updatedState))
-          ).slice(0, 5);
+          const localCandidates = localBattleCandidates(store, inputData.updatedState);
           if (localCandidates.length > 0) {
             return {
               ...inputData,
@@ -2866,10 +2857,7 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
         );
         if (!result) {
           // 候補生成に失敗した場合はローカル計算の候補で続行し、それも無ければ確認noteに落とす。
-          const fallbackCandidates = withoutDominatedMoveCandidates(
-            inputData.updatedState,
-            withLocalSwitchCandidate(store, inputData.updatedState, localActiveMoveCandidates(store, inputData.updatedState))
-          ).slice(0, 5);
+          const fallbackCandidates = localBattleCandidates(store, inputData.updatedState);
           return {
             ...inputData,
             candidates:
@@ -3020,7 +3008,7 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
         : inputData.advice;
       const guardedAdvice = noteMode
         ? baseAdvice
-        : repairInvalidBattleAdvice(baseAdvice, inputData.updatedState, inputData.candidates);
+        : repairInvalidBattleAdvice(store, baseAdvice, inputData.updatedState, inputData.candidates);
       const errors = noteMode ? [] : validateSelectionAdvice(guardedAdvice);
       const repaired = noteMode || errors.length > 0;
       const advice = errors.length > 0 ? repairSelectionAdvice(guardedAdvice, inputData.updatedState, inputData.candidates) : guardedAdvice;
@@ -3038,6 +3026,7 @@ export function createBattleAdviceWorkflow(deps: BattleAdviceWorkflowDeps) {
           facts: inputData.facts,
           resolvedNames: inputData.resolvedNames,
           damageCalcs: inputData.damageCalcs,
+          threatReport: inputData.threatReport,
           timings: inputData.timings,
           localKnowledge: inputData.localKnowledge,
           memoryContext: inputData.memoryContext,

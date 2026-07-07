@@ -1,0 +1,2459 @@
+{
+  "label": "baseline-logged",
+  "createdAt": "2026-07-06T11:35:53.967Z",
+  "gitRev": "2369fa9",
+  "mode": "logged",
+  "adviceModel": "(logged)",
+  "judgeModel": "gpt-5.4-mini",
+  "judgeEffort": "low",
+  "panel": 1,
+  "summary": {
+    "turnCount": 63,
+    "judgedTurnCount": 63,
+    "tactics": 4.06,
+    "safety": 3.71,
+    "consistency": 4.35,
+    "overall": 4.04,
+    "verdictBetterRate": 0.02,
+    "verdictWorseRate": 0.43,
+    "invariantViolationTurns": 20,
+    "noteInActiveBattleTurns": 0,
+    "dominatedMoveTurns": 7,
+    "errorTurns": 0
+  },
+  "turns": [
+    {
+      "label": "あばたん戦 turn 3",
+      "battleId": "77b0adbe-a730-417a-a2e1-e4fa2867a28f",
+      "turnIndex": 3,
+      "transcript": "ではクボアバタさん対戦よろしくお願いします。相手のポケモンはソーブレイズ、ガブリアス、タブンネ、スターミー、カビゴン、サザンドラです。ではニケちゃん選出お願いします。",
+      "advice": {
+        "kind": "selection",
+        "command": "ガブリアス、アシレーヌ、メタグロス",
+        "reason": "選出ガードで、画面表示・内部state・セリフが同じ3体になるように揃えました。",
+        "risk": "スターミー先発やサザンドラ絡みでテンポを取られるとやや苦しい。",
+        "speech": "ここはガブリアス、アシレーヌ、メタグロスでいきましょう。先発はガブリアスです。 Nanoさん、対戦よろしくお願いします。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ガブリアス・マスカーニャ・ウォッシュロトム。先手を取りやすいマスカーニャとボルチェンでテンポを作れるロトムを軸に、ガブリアスでサザンドラやガブリアスへの圧を確保します。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "worse",
+          "critique": "AI助言はメタグロスが遅く、相手のスターミーやサザンドラに対する行動順の優位を取りにくい点でテンポ面が弱いです。ガブリアス＋アシレーヌ自体は通る場面もありますが、火力効率と先手圧力を最重視するなら、より速いマスカーニャとロトムで押し込む選出の方が安定します。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 6545
+    },
+    {
+      "label": "あばたん戦 turn 4",
+      "battleId": "77b0adbe-a730-417a-a2e1-e4fa2867a28f",
+      "turnIndex": 4,
+      "transcript": "対戦相手の最初のポケモンはソーブレイズでした。ガブリアスは何をすればいいでしょうか?",
+      "advice": {
+        "kind": "move",
+        "command": "じしん",
+        "reason": "ソウブレイズにはじしんが2倍で最も安定して大きく削れます。素早さ比較でもガブリアスが先手想定なので、まずは確実に圧をかけます。",
+        "risk": "相手がまもる・交代・持ち物で耐える場合は削り切れない可能性があります。",
+        "speech": "ここはガブリアスのじしんで押しましょう！ソウブレイズには2倍で入りますし、こちらが先手想定なので安定して削れます。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "じしん。ソウブレイズに対してタイプ相性で有利かつ、ガブリアスが最速想定ソウブレイズより先に動けるため、火力効率とダメージレースを最優先するなら最適。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "じしんの2倍打点と先手想定は盤面に合っており、火力効率の面で妥当です。リスク面でも、相手のまもる等は不確定要素ですが致命的な矛盾や悪手ではありません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 10852
+    },
+    {
+      "label": "あばたん戦 turn 5",
+      "battleId": "77b0adbe-a730-417a-a2e1-e4fa2867a28f",
+      "turnIndex": 5,
+      "transcript": "相手はカビゴンを出してきました。ソーブレイズは倒してガブリアスはまだ一もダメージ食らってません。次は何をすればいいでしょうか。",
+      "advice": {
+        "kind": "move",
+        "command": "じしん",
+        "reason": "ガブリアスは先手でカビゴンに安定して等倍高打点を押せます。候補内でもじしんが最も削り性能が高いです。",
+        "risk": "相手が耐久振りや回復技を持っていると確定では落としきれません。",
+        "speech": "ここはじしんで押します。カビゴンに安定して大きく削れて、ガブリアスもまだ無傷なので対面継続が強いです。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "じしん",
+          "percentMax": 164,
+          "bestCommand": "じしん",
+          "bestPercentMax": 164
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "じしん：カビゴンに対して候補内で最も火力効率が高く、等倍でも最大打点を押し付けられるため。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "盤面上、カビゴンへの確定情報に矛盾せず、火力効率の面でもじしんが最優先です。耐久振りや回復の可能性を踏まえても、他技より削り期待値が高く、判断は妥当です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 3904
+    },
+    {
+      "label": "あばたん戦 turn 6",
+      "battleId": "77b0adbe-a730-417a-a2e1-e4fa2867a28f",
+      "turnIndex": 6,
+      "transcript": "カビゴンにダメージが入りました。カビゴンの残りHPは67%です。ただカビゴンはあくびをしたので、ガブリアスが眠気状態になってしまいました。",
+      "advice": {
+        "kind": "move",
+        "command": "じしん",
+        "reason": "ローカル評価: じしんはカビゴンに等倍、概算51.9-61.3%、素早さではこちらが先手想定です。",
+        "risk": "相手の持ち物、積み技、交代で実ダメージは変動します。",
+        "speech": "ここはじしんにします。ローカル評価: じしんはカビゴンに等倍、概算51.9-61.3%、素早さではこちらが先手想定です。"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "raw percentage leaked into speech"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "じしん",
+          "percentMax": 61.3,
+          "bestCommand": "じしん",
+          "bestPercentMax": 61.3
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "じしん：カビゴンをさらに削って押し切るのが最も火力効率が高く、あくびはこのターン即眠りではないため先手で有利を取りやすい。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "じしん継続は、現在の67%からのダメージレースで最も効率がよく、先手想定とも整合します。あくびによる将来の眠りリスクはあるものの、このターンに切るべき行動としては妥当です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 4903
+    },
+    {
+      "label": "あばたん戦 turn 7",
+      "battleId": "77b0adbe-a730-417a-a2e1-e4fa2867a28f",
+      "turnIndex": 7,
+      "transcript": "ガブリアスの地震とか諸々でカビゴンは倒せたんですけど、あくびのせいでガブリアスは眠ってしまいました。そして最後の相手のポケモンはスターミーです。",
+      "advice": {
+        "kind": "switch",
+        "command": "アシレーヌ",
+        "reason": "ガブリアスはねむりで動けないため、スターミーに対して等倍以上で押し返せるアシレーヌへ交代します。",
+        "risk": "交代読みの打点や、こちらの受け出し先への負荷はあります。",
+        "speech": "ガブリアスは眠っているので、ここはアシレーヌに引いてスターミーを見ます。スターミーはアシレーヌの草打点で押し返しやすいです。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ウォッシュロトムに交代。スターミーの水技を受けやすく、電気打点で火力勝負に持ち込みやすい。",
+          "tactics": 4,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "worse",
+          "critique": "アシレーヌへの交代自体はスターミーに打点を持てるので筋は通りますが、理由の「草打点」は技構成と矛盾しています。行動順ではスターミーに先手を取られやすく、より明確に受けて押し返す意図なら他候補の方が自然です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.33
+      },
+      "elapsedMs": 7681
+    },
+    {
+      "label": "あばたん戦 turn 8",
+      "battleId": "77b0adbe-a730-417a-a2e1-e4fa2867a28f",
+      "turnIndex": 8,
+      "transcript": "相手のメガスターミの攻撃でこちらのアシレーヌは残りHPが86まで削れてしまっています。アシレーヌのエナジーボールで相手のスターミは13%まで削れました。",
+      "advice": {
+        "kind": "move",
+        "command": "ムーンフォース",
+        "reason": "メガスターミは残り13%なので、一致高火力でそのまま押し切るのが最も安全です。追加効果狙いより確実な処理を優先します。",
+        "risk": "外しても相手は低HPですが、居座りなら反撃を受ける可能性があります。",
+        "speech": "ここはムーンフォースで押し切りましょう。相手のメガスターミはあと少しなので、一致火力で確実に落としにいきます。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ムーンフォース：スターミーは残り13%で、等倍のエナジーボールより一致技のムーンフォースの方が火力効率が高く、そのまま押し切る期待が最も高い。",
+          "tactics": 5,
+          "safety": 5,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "ムーンフォース選択は、盤面上で確認できる技・相性・残HPから見て最も高火力で、ダメージレース上も妥当です。確定情報と矛盾もなく、こちらの選択と同等でした。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 5,
+        "consistency": 5,
+        "overall": 5
+      },
+      "elapsedMs": 4842
+    },
+    {
+      "label": "あばたん戦 turn 9",
+      "battleId": "77b0adbe-a730-417a-a2e1-e4fa2867a28f",
+      "turnIndex": 9,
+      "transcript": "あーっとアシレーヌ倒れてしまいました。次はどうすればいいでしょう。",
+      "advice": {
+        "kind": "switch",
+        "command": "メタグロス",
+        "reason": "メガスターミ残り13%を先制技のバレットパンチで取り切りやすく、アシレーヌが倒れた今いちばん安定です。",
+        "risk": "相手が交代や補助に動くと噛み合いはあるが、削れ量的には押し切りが本線です。",
+        "speech": "ここはメタグロスに交代でいきましょう。メガスターミが13%まで削れているので、バレットパンチでかなり安全に締めにいけます。"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "raw percentage leaked into speech"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "メタグロスへ交代し、バレットパンチ圏内でメガスターミを先制処理する。13%まで削れていて先手で締めやすいのが最も効率的。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "13%のメガスターミに対して、バレットパンチで先手処理を狙う判断は火力効率と行動順の両面で妥当です。相手の最後っぽい想定とあくび状態も踏まえると、盤面情報と矛盾しません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 10107
+    },
+    {
+      "label": "しめさば戦 turn 1",
+      "battleId": "9fe400e6-8ec2-4944-8071-f362ecd09bbe",
+      "turnIndex": 1,
+      "transcript": "では、しめさばさん、対戦よろしくお願いします。相手のポケモンは、ガブリアス、アローラキュウコン、ドドゲザン、サーフゴー、ギャラドス、バシャーモの6体です。それではポケモンを選んでください。",
+      "advice": {
+        "kind": "selection",
+        "command": "ガブリアス、ウォッシュロトム、メタグロス",
+        "reason": "ガブリアスで初手圧をかけつつ、ロトムでギャラドスとバシャーモを見て、メタグロスでドドゲザンやサーフゴーへの打点も持てます。",
+        "risk": "アローラキュウコンの展開やサーフゴーの受け回しは少し重いです。",
+        "speech": "先発はガブリアスです。ギャラドスとバシャーモを見られるウォッシュロトム、受け回しに圧をかけるメタグロスでいきましょう。しめさばさん、対戦よろしくお願いします。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "アシレーヌ、ウォッシュロトム、メタグロス：アシレーヌでアローラキュウコンやガブリアスに強く、ロトムでギャラドス・バシャーモを高効率に見て、メタグロスでサーフゴーやドドゲザンへの圧を維持します。",
+          "tactics": 4,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "better",
+          "critique": "審査対象案はガブリアスを含めて初手圧はあるものの、相手のアローラキュウコンに対する不利とギャラドス・バシャーモへの即応力がやや不安です。アシレーヌ採用の方が盤面上の対面効率とダメージレースの安定感が高いです。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.33
+      },
+      "elapsedMs": 10471
+    },
+    {
+      "label": "しめさば戦 turn 2",
+      "battleId": "9fe400e6-8ec2-4944-8071-f362ecd09bbe",
+      "turnIndex": 2,
+      "transcript": "相手の先発はアローラキュウコンです。",
+      "advice": {
+        "kind": "move",
+        "command": "じしん",
+        "reason": "アローラキュウコンには等倍で安定して削れ、候補の中では最も火力が高いです。",
+        "risk": "相手のオーロラベールや行動次第で確定数は変わります。",
+        "speech": "ここはじしんで押します。アローラキュウコンに安定して大きく削れて、展開される前に圧をかけやすいです！"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "じしん。アローラキュウコンを大きく削って先手は取れない前提でも、タスキで一撃耐えつつ最も火力効率が高いです。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "相手のアローラキュウコンに対して、判明技内ではじしんが最もダメージ効率に優れ、オーロラベール展開前後の圧力も高いです。先手は取れませんが、こちらはきあいのタスキで行動保証があるため、助言は盤面と矛盾せず妥当です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 4079
+    },
+    {
+      "label": "しめさば戦 turn 3",
+      "battleId": "9fe400e6-8ec2-4944-8071-f362ecd09bbe",
+      "turnIndex": 3,
+      "transcript": "相手のアローラキュウコンはオーロラベールをしてきて、防御に厚くなりました。場面は雪降らしのおかげで雪異常剤になっています。こちらの地震は相手のアローラキュウコンに79%入りました。",
+      "advice": {
+        "kind": "move",
+        "command": "じしん",
+        "reason": "オーロラベール下でもアローラキュウコンを大きく削れており、ここは最も安定して押し切りを狙えるためです。素早さではこちらが後手ですが、火力優先で問題ありません。",
+        "risk": "相手が交代するとダメージが分散します。とはいえ今の盤面では削り切りを優先します。",
+        "speech": "オーロラベールが貼られても、じしんでかなり削れているのでここは押し切りにいきましょう。交代されても盤面は悪くなりにくいです！"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "じしん",
+          "percentMax": 87.2,
+          "bestCommand": "じしん",
+          "bestPercentMax": 87.2
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "じしん：アローラキュウコンは79%削れており、今の最速想定でもこちらは後手ですが、先に大きく削れている相手を確実に落としにいくのが最も火力効率が高いです。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "79%入っているなら、続けてじしんで押し切る判断はダメージレース上かなり妥当です。交代先のリスクはあるものの、盤面情報だけでは最も自然な高火力行動で矛盾もありません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 5231
+    },
+    {
+      "label": "しめさば戦 turn 4",
+      "battleId": "9fe400e6-8ec2-4944-8071-f362ecd09bbe",
+      "turnIndex": 4,
+      "transcript": "相手のアローラキュウコンの吹雪でガブリアスのHPは残り1。そしてガブリアスの攻撃はアローラキュウコンに対して60%まで入りました。",
+      "advice": {
+        "kind": "move",
+        "command": "じしん",
+        "reason": "ガブリアスはタスキで耐えていて、アローラキュウコンはすでに大きく削れているので、ここは押し切りを優先します。",
+        "risk": "相手がオーロラベール下で耐える場合や、こちらが先に落ちる展開はあります。",
+        "speech": "ここはじしんで押し切りましょう。ガブリアスが残り1でも、もう十分削れているので、相手のキュウコンを落とし切るのが一番です！"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "じしん",
+          "percentMax": 87.2,
+          "bestCommand": "じしん",
+          "bestPercentMax": 87.2
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "がんせきふうじ — 相手のアローラキュウコンに対して地震より高効率で、残り1HPのガブリアスでも最後に最大打点を入れる判断。",
+          "tactics": 5,
+          "safety": 2,
+          "consistency": 5,
+          "verdict": "worse",
+          "critique": "相手への相性が盤面で明記されている以上、じしん(x1)よりがんせきふうじ(x2)の方が火力効率が高く、1HPの状況ではダメージレース上こちらを優先すべきです。『タスキで耐えている』という前提は盤面とマスター発話のどちらにもなく、判断根拠として不正確です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 2,
+        "consistency": 5,
+        "overall": 4
+      },
+      "elapsedMs": 5079
+    },
+    {
+      "label": "しめさば戦 turn 5",
+      "battleId": "9fe400e6-8ec2-4944-8071-f362ecd09bbe",
+      "turnIndex": 5,
+      "transcript": "ガブリアスはそのまま倒されてしまいました。次のポケモンをお願いします。",
+      "advice": {
+        "kind": "selection",
+        "command": "アシレーヌ、メタグロス、ウォッシュロトム",
+        "reason": "選出ガードで、画面表示・内部state・セリフが同じ3体になるように揃えました。",
+        "risk": "オーロラベール下での特殊技や交換先には押し切られる可能性があります。",
+        "speech": "ここはアシレーヌ、メタグロス、ウォッシュロトムでいきましょう。先発はアシレーヌです。 しめさばさん、対戦よろしくお願いします。"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "selection action returned mid-battle"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "メタグロスを出す。バリア下でもバレットパンチでアローラキュウコンに4倍圧をかけられ、先手で削り切りやすいから。",
+          "tactics": 2,
+          "safety": 3,
+          "consistency": 5,
+          "verdict": "worse",
+          "critique": "アシレーヌ自体は悪くないものの、この局面ではメタグロスのバレットパンチが最も火力効率と行動順に優れます。3体の並び自体は成立していますが、先発指定が盤面の即応性にやや劣ります。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 2,
+        "safety": 3,
+        "consistency": 5,
+        "overall": 3.33
+      },
+      "elapsedMs": 12326
+    },
+    {
+      "label": "しめさば戦 turn 6",
+      "battleId": "9fe400e6-8ec2-4944-8071-f362ecd09bbe",
+      "turnIndex": 6,
+      "transcript": "すいません、ポケモン変えないで。今ガブリアス倒されて残りはメタグロスとウォッシュロトムです。場にはメタグロスがいます。どうすればいいですか?",
+      "advice": {
+        "kind": "move",
+        "command": "ムーンフォース",
+        "reason": "ローカル評価: ムーンフォースはアローラキュウコンに等倍、概算58.8-69.6%、素早さは未確定です。",
+        "risk": "相手の持ち物、積み技、交代で実ダメージは変動します。",
+        "speech": "さっきの技指示は場のポケモンと合わないので、ここはムーンフォースに修正します。ローカル評価: ムーンフォースはアローラキュウコンに等倍、概算58.8-69.6%、素早さは未確定です。"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "raw percentage leaked into speech"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "メタグロスでサイコファング。先手は取れないが、鋼技の4倍先制技より火力が高く、60%残りのアローラキュウコンを削り切る期待値を優先する。",
+          "tactics": 4,
+          "safety": 4,
+          "consistency": 1,
+          "verdict": "worse",
+          "critique": "ムーンフォースはメタグロスの技として成立せず、場のポケモンとも矛盾しています。火力面でもこの盤面では一致高火力のサイコファングやバレットパンチを優先すべきです。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 4,
+        "consistency": 1,
+        "overall": 3
+      },
+      "elapsedMs": 9594
+    },
+    {
+      "label": "しめさば戦 turn 7",
+      "battleId": "9fe400e6-8ec2-4944-8071-f362ecd09bbe",
+      "turnIndex": 7,
+      "transcript": "修正します。場はメタグロスでガブリアスは倒されて、残りの手持ちはウォッシュロトムです。",
+      "advice": {
+        "kind": "move",
+        "command": "バレットパンチ",
+        "reason": "アローラキュウコンは残り60%で、候補ではバレットパンチが最も高火力です。雪とベール下でも圧をかけやすく、まず倒し切りを狙うのが安定です。",
+        "risk": "相手の交代や耐え調整、追加の行動で取りこぼす可能性があります。",
+        "speech": "ここはバレットパンチで押し切りを狙いましょう。残りがまだある相手ですが、メタグロスの鋼打点がいちばん素直に圧をかけられます。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "じしん：バレットパンチより火力効率が高く、アローラキュウコンを大きく削る/倒す期待値が最も高い。メタグロスは雪下でも氷半減で耐えやすく、先手を取られやすい相手でも等倍以下で受けてからの高打点が有利。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "worse",
+          "critique": "バレットパンチは先手を取れる利点はあるものの、この場面ではじしんの方が明確に高火力で、オーロラベール下でもダメージレースを進めやすいです。提示された情報内では相手の反撃も氷技が中心で、メタグロスが受けやすいので安全面でもじしん優位です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 6905
+    },
+    {
+      "label": "しめさば戦 turn 8",
+      "battleId": "9fe400e6-8ec2-4944-8071-f362ecd09bbe",
+      "turnIndex": 8,
+      "transcript": "メタグロス、バレットパンチを押したら相手はドドゲザンに返ってきました。ドドゲザンは残りHP94%です。",
+      "advice": {
+        "kind": "move",
+        "command": "じしん",
+        "reason": "メタグロスの地震がドドゲザンに最も素直に通り、素早さ面でも先手を取れる想定です。ベール下でも削りを優先して押し切りを狙います。",
+        "risk": "相手が交代や耐久振りだと一撃では落ちず、反撃やふいうち圏内調整をされる可能性があります。",
+        "speech": "ここはじしんで押します。ドドゲザンには素直に通せて、先手で大きく削って主導権を取りやすいです。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "じしん",
+          "percentMax": 59.5,
+          "bestCommand": "バレットパンチ",
+          "bestPercentMax": 145.9
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "じしん。ドドゲザンに対して一致高火力より通りがよく、メタグロスS127で最速想定S112のドドゲザンより先に動けるため、ダメージレースを取りやすいと判断します。",
+          "tactics": 4,
+          "safety": 4,
+          "consistency": 4,
+          "verdict": "equal",
+          "critique": "じしんは通りと先手の両面で筋がよく、ベール下でも削り優先の方針は妥当です。明確な誤りは少ないですが、確定一発級とまでは言えないため満点ではありません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 4,
+        "consistency": 4,
+        "overall": 4
+      },
+      "elapsedMs": 6318
+    },
+    {
+      "label": "しめさば戦 turn 9",
+      "battleId": "9fe400e6-8ec2-4944-8071-f362ecd09bbe",
+      "turnIndex": 9,
+      "transcript": "相手はドドゲザンからギャラドスに変えてきました。ギャラドスは飛んでいるので地震は無効化されました。",
+      "advice": {
+        "kind": "move",
+        "command": "サイコファング",
+        "reason": "ギャラドスにはじしんが通らないので、こちらが先手で大きく削れるサイコファングを押します。",
+        "risk": "相手が交代や積み技を選ぶと削り切れない可能性があります。",
+        "speech": "ギャラドスには地震が効かないので、ここはサイコファングで押しましょう。先手でかなり削れるので、展開を止めやすいです！"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "サイコファング",
+          "percentMax": 0,
+          "bestCommand": "じしん",
+          "bestPercentMax": 68.6
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "サイコファング：地震無効のギャラドスに等倍で入る中打点で、バレットパンチより明確に火力効率が高い。",
+          "tactics": 4,
+          "safety": 3,
+          "consistency": 3,
+          "verdict": "equal",
+          "critique": "技選択自体は妥当ですが、メタグロスがギャラドスに先手を取れる前提は盤面の実Sからは支持されません。サイコファング採用は整合的で、地震を押すより明確に良い判断です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 3,
+        "consistency": 3,
+        "overall": 3.33
+      },
+      "elapsedMs": 5655
+    },
+    {
+      "label": "しめさば戦 turn 10",
+      "battleId": "9fe400e6-8ec2-4944-8071-f362ecd09bbe",
+      "turnIndex": 10,
+      "transcript": "サイコファングはエスパー技なので、メガ進化したメガギャラドスには効果がありませんでした。相手はメガギャラドスで竜の舞を積みました。",
+      "advice": {
+        "kind": "move",
+        "command": "バレットパンチ",
+        "reason": "メガギャラドスは竜の舞で加速していますが、いま一番安全に即座の負担をかけられるのは先制で削れるバレットパンチです。じしんより通りは悪いものの、積み後の高火力反撃を受ける前に少しでも圧をかけます。",
+        "risk": "等倍での削りが小さく、次のターンに押し切られる可能性があります。",
+        "speech": "ここはバレットパンチで少しでも先制で削ります。竜の舞でかなり危ないので、まずは相手の圏内を作るのを優先しましょう。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "バレットパンチ",
+          "percentMax": 15.3,
+          "bestCommand": "サイコファング",
+          "bestPercentMax": 63.5
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "バレットパンチ：竜の舞後でも先制でき、メガギャラドスに確実に最低限の削りを入れてダメージレースを維持する。",
+          "tactics": 4,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "バレットパンチは等倍以下で火力は低いものの、竜の舞後のメガギャラドスに先制できる点が大きく、行動順重視の観点では妥当です。盤面情報と矛盾もなく、相手の圏内管理を優先する判断として整合的です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.33
+      },
+      "elapsedMs": 7974
+    },
+    {
+      "label": "しめさば戦 turn 11",
+      "battleId": "9fe400e6-8ec2-4944-8071-f362ecd09bbe",
+      "turnIndex": 11,
+      "transcript": "バレットパンチは相手に6パーしか入りませんでした。残りHP94%。で、あちらのかみくだくでメガメタグロスは倒されてしまいました。残りロトムしかいません。",
+      "advice": {
+        "kind": "move",
+        "command": "10まんボルト",
+        "reason": "メガギャラドスに最も通りがよく、候補の中では最大打点です。雪とベール下でも削り優先で、まずは確実に圏内を広げます。",
+        "risk": "相手がりゅうのまいを重ねると次のターン以降の処理が不安定になります。",
+        "speech": "ここは10まんボルトで押します。メガギャラドスに一番しっかり通るので、まず削りを優先して圏内を広げましょう！"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "10まんボルト：現状の残り1体ロトムでは、メガギャラドスに最も火力効率が高い確定打点を押してダメージレースを取るしかない。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "10まんボルトは盤面上、メガギャラドスへの最大打点であり、削り優先の判断として妥当です。相手のりゅうのまい後で先手が怪しい点はあるものの、他の技より明確に通りがよく、情報矛盾もありません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 3673
+    },
+    {
+      "label": "しめさば戦 turn 12",
+      "battleId": "9fe400e6-8ec2-4944-8071-f362ecd09bbe",
+      "turnIndex": 12,
+      "transcript": "ギャラドスは残りHP68%、ロトムは64しか残っていません。",
+      "advice": {
+        "kind": "move",
+        "command": "10まんボルト",
+        "reason": "メガギャラドスへの最大打点で、削り優先なら最も通しやすいです。交代しても等倍以上の圧を残せます。",
+        "risk": "相手がりゅうのまいを重ねると返しが厳しくなる可能性があります。",
+        "speech": "ここは10まんボルトで押します。メガギャラドスに大きく削りを入れられて、雪とベール下でも主導権を取りやすいです。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "10まんボルト",
+          "percentMax": 61.8,
+          "bestCommand": "10まんボルト",
+          "bestPercentMax": 61.8
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "アシレーヌに交代。判明技だけを見ると相手の主攻撃はかみくだくで、フェアリーのアシレーヌなら受け性能が高く、次の返しで詰めやすい。",
+          "tactics": 2,
+          "safety": 2,
+          "consistency": 3,
+          "verdict": "worse",
+          "critique": "10まんボルト自体は通るものの、相手はすでに素早さ+1でこちらのロトムは64しかなく、先に大きく削られるリスクが高いです。判明技ベースではアシレーヌ引きの方が被弾管理と勝ち筋維持に優れます。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 2,
+        "safety": 2,
+        "consistency": 3,
+        "overall": 2.33
+      },
+      "elapsedMs": 10450
+    },
+    {
+      "label": "キラッチ戦 turn 1",
+      "battleId": "c306a3be-9e97-4a0f-9672-d94d50a8d1aa",
+      "turnIndex": 1,
+      "transcript": "対戦相手はキラッチさんです。よろしくお願いします。ポケモンは上からミミッキュ、アーマーガア、ブリジュラス、ガブリアス、ムクホーク、アローラキュウコンの6体です。では選出お願いします。",
+      "advice": {
+        "kind": "selection",
+        "command": "ガブリアス、アシレーヌ、メタグロス",
+        "reason": "選出ガードで、画面表示・内部state・セリフが同じ3体になるように揃えました。",
+        "risk": "アローラキュウコンの展開を許すと少し押し返されやすい。",
+        "speech": "ここはガブリアス、アシレーヌ、メタグロスでいきましょう。先発はガブリアスです。 キラッチさん、対戦よろしくお願いします。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ガブリアス・ウォッシュロトム・メタグロス：先手圧と対面火力を両立しつつ、ミミッキュ/アローラキュウコン/アーマーガア/ブリジュラス/ガブリアスに広く打点を持てる組み合わせ。",
+          "tactics": 4,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "ガブリアス・アシレーヌ・メタグロスは、ミミッキュとアローラキュウコンへの耐性を確保しつつ、対面火力も十分で盤面情報と矛盾しません。選出の方向性もダメージレース重視として妥当で、私の案と大きな差はありません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.33
+      },
+      "elapsedMs": 6004
+    },
+    {
+      "label": "キラッチ戦 turn 3",
+      "battleId": "c306a3be-9e97-4a0f-9672-d94d50a8d1aa",
+      "turnIndex": 3,
+      "transcript": "相手の初手ポケモンはガブリアスでした。ガブリアスの対面ですね。ではこちらのガブリアスは何をすればいいでしょうか?",
+      "advice": {
+        "kind": "switch",
+        "command": "アシレーヌ",
+        "reason": "場のガブリアスの最大打点はドラゴンクローで約79.2-93.4%です。控えのアシレーヌはガブリアスへれいとうビームで約139.3-163.9%を見込めるため、最終判断AIが比較するための交代材料です。",
+        "risk": "交代ターンに相手の積み技や交代読み打点を受けるリスクがあります。交代すべきかは、相手の自然な行動、HP管理、温存価値を含めて最終判断します。",
+        "speech": "ここはアシレーヌにします。場のガブリアスの最大打点はドラゴンクローで約79.2-93.4%です。控えのアシレーヌはガブリアスへれいとうビームで約139.3-163.9%を見込めるため、最終判断AIが比較するための交代材料です。"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "raw percentage leaked into speech"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "アシレーヌに交代。相手ガブリアスに対してれいとうビームで即座に大きな火力圧をかけられ、先手後手の不確定を避けつつダメージレースを有利にできます。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "相手ガブリアスを一撃圏に収めやすく、こちらのガブリアスを温存しながら主導権を取りやすいので戦術的に妥当です。交代読みのリスクはあるものの、盤面情報だけでは居座りより不利とまでは言えません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 3572
+    },
+    {
+      "label": "キラッチ戦 turn 4",
+      "battleId": "c306a3be-9e97-4a0f-9672-d94d50a8d1aa",
+      "turnIndex": 4,
+      "transcript": "ありがとうございます。アシレーヌに交換しました。ただ、あちらのガブリアスは剣の舞で攻撃を上げてきました。こちらは何をすればいいですか?",
+      "advice": {
+        "kind": "switch",
+        "command": "メタグロス",
+        "reason": "場のアシレーヌの最大打点はれいとうビームで約139.3-163.9%です。控えのメタグロスはガブリアスへれいとうパンチで約107.7-126.8%を見込めるため、最終判断AIが比較するための交代材料です。",
+        "risk": "交代ターンに相手の積み技や交代読み打点を受けるリスクがあります。交代すべきかは、相手の自然な行動、HP管理、温存価値を含めて最終判断します。",
+        "speech": "ここはメタグロスにします。場のアシレーヌの最大打点はれいとうビームで約139.3-163.9%です。控えのメタグロスはガブリアスへれいとうパンチで約107.7-126.8%を見込めるため、最終判断AIが比較するための交代材料です。"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "raw percentage leaked into speech"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ガブリアスに戻す。自分のガブリアスは実S169で相手の最速想定ガブリアス(S162)より速く、きあいのタスキで一発耐えも見込めるので、+2でも先に処理しやすい。",
+          "tactics": 2,
+          "safety": 2,
+          "consistency": 3,
+          "verdict": "worse",
+          "critique": "メタグロスは切り返し火力自体は魅力ですが、+2ガブリアス相手に後出しで受ける前提が重く、行動順の面で不利です。アシレーヌの火力比較を示すだけで、今このターンの最善手としての正当化が弱いです。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 2,
+        "safety": 2,
+        "consistency": 3,
+        "overall": 2.33
+      },
+      "elapsedMs": 12591
+    },
+    {
+      "label": "キラッチ戦 turn 5",
+      "battleId": "c306a3be-9e97-4a0f-9672-d94d50a8d1aa",
+      "turnIndex": 5,
+      "transcript": "こちらはメタグロスに交換しました。相手もムクホークに変えてきました。",
+      "advice": {
+        "kind": "move",
+        "command": "れいとうパンチ",
+        "reason": "ムクホークに2倍で高打点を入れられ、素早さでもこちらが先手想定なので一番分かりやすく処理を狙えます。",
+        "risk": "いかくや耐久振り、持ち物次第で落とし切れない可能性があります。",
+        "speech": "ここはれいとうパンチで押しましょう。ムクホークに2倍で入って、こちらが先に動ける想定なので素直に処理を狙えます！"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "れいとうパンチ：ムクホークへの等倍ではなく2倍打点で最大火力を取り、先手は取れなくてもダメージレースを最も進めやすい。",
+          "tactics": 4,
+          "safety": 3,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "れいとうパンチはムクホークへの明確な高打点で、盤面の情報だけでも妥当です。先手想定の断定は怪しいですが、行動順の不確実性を除けば助言内容は大きく外れていません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 3,
+        "consistency": 5,
+        "overall": 4
+      },
+      "elapsedMs": 4492
+    },
+    {
+      "label": "キラッチ戦 turn 6",
+      "battleId": "c306a3be-9e97-4a0f-9672-d94d50a8d1aa",
+      "turnIndex": 6,
+      "transcript": "アイケンのムクホークはブレイズキックをしてきましたが外しました。こちらは間違えてメガ進化せずにメタグロスのまま冷凍パンチをしてムクホークを14%まで削りました。素早さは今はムクホークの方が早かったです。どうすればいいでしょうか?",
+      "advice": {
+        "kind": "move",
+        "command": "バレットパンチ",
+        "reason": "ムクホークは14%まで削れており、ここは先制技で確実に縛るのが最も安全です。相手の残りHPが低いので、外しや交代の余地を与えにくいです。",
+        "risk": "相手が交代すると読み違いになりますが、残HP的に居座りが最も自然です。",
+        "speech": "ここはバレットパンチで詰めましょう。ムクホークが14%なら、先制で落とし切るのが一番安全です！"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "raw percentage leaked into speech"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "バレットパンチ",
+          "percentMax": 35.6,
+          "bestCommand": "れいとうパンチ",
+          "bestPercentMax": 87.5
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "バレットパンチ：先制技でムクホークをそのまま処理しにいく。相手は14%まで削れていて、こちらは素早さで負けているので、行動順を取り返せるこの一手が最も火力効率とダメージレースに合っています。",
+          "tactics": 5,
+          "safety": 5,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "盤面上、バレットパンチは先制でムクホークを縛りにいける最適解で、火力効率と行動順の両面で妥当です。相手の居座りが自然という前提にも矛盾がなく、確定情報だけで十分に正当化できます。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 5,
+        "consistency": 5,
+        "overall": 5
+      },
+      "elapsedMs": 4642
+    },
+    {
+      "label": "キラッチ戦 turn 7",
+      "battleId": "c306a3be-9e97-4a0f-9672-d94d50a8d1aa",
+      "turnIndex": 7,
+      "transcript": "エムクホーク無事倒せました。相手はガブリアスに交換してきました。メタグロスはどうすればいいでしょうか。",
+      "advice": {
+        "kind": "switch",
+        "command": "アシレーヌ",
+        "reason": "場のメタグロスの最大打点はれいとうパンチで約107.7-126.8%です。控えのアシレーヌはガブリアスへれいとうビームで約139.3-163.9%を見込めるため、最終判断AIが比較するための交代材料です。",
+        "risk": "交代ターンに相手の積み技や交代読み打点を受けるリスクがあります。交代すべきかは、相手の自然な行動、HP管理、温存価値を含めて最終判断します。",
+        "speech": "ここはアシレーヌにします。場のメタグロスの最大打点はれいとうパンチで約107.7-126.8%です。控えのアシレーヌはガブリアスへれいとうビームで約139.3-163.9%を見込めるため、最終判断AIが比較するための交代材料です。"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "raw percentage leaked into speech"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "れいとうパンチ。ガブリアスは等倍で受けにくく、提示済みの火力計算でもほぼ確実に一撃圏なので、最もダメージ効率が高く行動順の不利も気にせず処理を狙えます。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "worse",
+          "critique": "ガブリアスへの対面継続で最大打点のれいとうパンチを押す方が、ダメージレース上も明確に有利です。アシレーヌへの交代は、相手の積み展開や交代読みを許してテンポを落とすため、この局面では不利です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 3682
+    },
+    {
+      "label": "キラッチ戦 turn 8",
+      "battleId": "c306a3be-9e97-4a0f-9672-d94d50a8d1aa",
+      "turnIndex": 8,
+      "transcript": "相手のガブリアスは炎の牙をしてきました。アシレーヌは残りHP161です。アシレーヌは何をすればいいですか?",
+      "advice": {
+        "kind": "switch",
+        "command": "メタグロス",
+        "reason": "場のアシレーヌの最大打点はれいとうビームで約139.3-163.9%です。控えのメタグロスはガブリアスへれいとうパンチで約107.7-126.8%を見込めるため、最終判断AIが比較するための交代材料です。",
+        "risk": "交代ターンに相手の積み技や交代読み打点を受けるリスクがあります。交代すべきかは、相手の自然な行動、HP管理、温存価値を含めて最終判断します。",
+        "speech": "ここはメタグロスにします。場のアシレーヌの最大打点はれいとうビームで約139.3-163.9%です。控えのメタグロスはガブリアスへれいとうパンチで約107.7-126.8%を見込めるため、最終判断AIが比較するための交代材料です。"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "raw percentage leaked into speech"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "れいとうビームで攻撃。ガブリアスは炎の牙でもアシレーヌを大きく崩せず、4倍弱点でそのまま倒し切るのが最も火力効率が高い。",
+          "tactics": 1,
+          "safety": 2,
+          "consistency": 5,
+          "verdict": "worse",
+          "critique": "アシレーヌは耐えつつガブリアスをほぼ確実に処理できる局面なので、交代でテンポを捨てるのは不利です。提示理由のダメージ自体は整合的ですが、この盤面では最終判断としての価値が低いです。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 1,
+        "safety": 2,
+        "consistency": 5,
+        "overall": 2.67
+      },
+      "elapsedMs": 6069
+    },
+    {
+      "label": "キラッチ戦 turn 9",
+      "battleId": "c306a3be-9e97-4a0f-9672-d94d50a8d1aa",
+      "turnIndex": 9,
+      "transcript": "相手はブリジュラスに交代してきて、こちらはメタグロスに交換しました。何をすればいいですか?",
+      "advice": {
+        "kind": "move",
+        "command": "じしん",
+        "reason": "メタグロスのじしんがブリジュラスに2倍で大きく削れ、素早さ比較でもこちらが先手想定です。",
+        "risk": "相手が耐久振りや持ち物で耐える可能性、交代読みで受けを合わせられる可能性があります。",
+        "speech": "ここはメタグロスのじしんで押します。ブリジュラスには等倍ではなく2倍で入って、こちらが先に動ける想定なので削りを優先です！"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "じしん：ブリジュラスへ等倍ではなく地面2倍で最大打点を押しつける。こちらは先手を取れない想定でも、最も効率よく削れる一手。",
+          "tactics": 4,
+          "safety": 3,
+          "consistency": 2,
+          "verdict": "worse",
+          "critique": "じしん選択自体は妥当ですが、提示されている実数値ではメタグロスS127に対してブリジュラスはS150想定で先手想定は不自然です。ダメージ重視の方針は合っていますが、行動順の説明が盤面情報と矛盾しています。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 3,
+        "consistency": 2,
+        "overall": 3
+      },
+      "elapsedMs": 3953
+    },
+    {
+      "label": "キラッチ戦 turn 10",
+      "battleId": "c306a3be-9e97-4a0f-9672-d94d50a8d1aa",
+      "turnIndex": 10,
+      "transcript": "相手はブリジラスからガブリアスにポケモンを変えてきました。こちらのメタグロスの地震が入って、相手のガブリアスの残りHPは54%です。次の指示をお願いします。",
+      "advice": {
+        "kind": "switch",
+        "command": "アシレーヌ",
+        "reason": "場のメタグロスの最大打点はれいとうパンチで約107.7-126.8%です。控えのアシレーヌはガブリアスへれいとうビームで約139.3-163.9%を見込めるため、最終判断AIが比較するための交代材料です。",
+        "risk": "交代ターンに相手の積み技や交代読み打点を受けるリスクがあります。交代すべきかは、相手の自然な行動、HP管理、温存価値を含めて最終判断します。",
+        "speech": "ここはアシレーヌにします。場のメタグロスの最大打点はれいとうパンチで約107.7-126.8%です。控えのアシレーヌはガブリアスへれいとうビームで約139.3-163.9%を見込めるため、最終判断AIが比較するための交代材料です。"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "raw percentage leaked into speech"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "れいとうパンチ。相手のガブリアスは54%まで削れており、メタグロス側は4倍弱点を突いてそのままダメージレースを取りにいくのが最も効率的です。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "worse",
+          "critique": "この局面で交代すると、相手の残り54%ガブリアスに対して最速の処理圧を失い、テンポ損になりやすいです。メタグロスのれいとうパンチが盤面情報上もっとも自然な高火力打点で、助言の交代は火力効率の面で劣ります。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 5329
+    },
+    {
+      "label": "キラッチ戦 turn 11",
+      "battleId": "c306a3be-9e97-4a0f-9672-d94d50a8d1aa",
+      "turnIndex": 11,
+      "transcript": "こちらはアシレーヌに交代しました。相手のガブリアスはステルスロックをして、こちらの場にステルスロックが撒かれました。アシレーヌは何をすればいいですか?",
+      "advice": {
+        "kind": "switch",
+        "command": "メタグロス",
+        "reason": "場のアシレーヌの最大打点はれいとうビームで約139.3-163.9%です。控えのメタグロスはガブリアスへれいとうパンチで約107.7-126.8%を見込めるため、最終判断AIが比較するための交代材料です。",
+        "risk": "交代ターンに相手の積み技や交代読み打点を受けるリスクがあります。交代すべきかは、相手の自然な行動、HP管理、温存価値を含めて最終判断します。",
+        "speech": "ここはメタグロスにします。場のアシレーヌの最大打点はれいとうビームで約139.3-163.9%です。控えのメタグロスはガブリアスへれいとうパンチで約107.7-126.8%を見込めるため、最終判断AIが比較するための交代材料です。"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "raw percentage leaked into speech"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "うたかたのアリアではなくれいとうビームで居座り。相手ガブリアスは54%まで削れており、氷技ならそのまま押し切れる可能性が高いので、火力効率とテンポを優先する。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "worse",
+          "critique": "アシレーヌからメタグロスへ下がると、ガブリアスに対する即時決着の期待値と行動順の圧が落ちます。盤面上はアシレーヌのれいとうビームで十分に処理圏内が見えており、交代を選ぶ合理性が薄いです。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 4116
+    },
+    {
+      "label": "キラッチ戦 turn 12",
+      "battleId": "c306a3be-9e97-4a0f-9672-d94d50a8d1aa",
+      "turnIndex": 12,
+      "transcript": "メタグロスは何をすればいいですか?",
+      "advice": {
+        "kind": "switch",
+        "command": "メタグロス",
+        "reason": "こちらのアシレーヌはガブリアスへの安定打点があり、メタグロスは対面処理と終盤の圧力を維持しやすいです。ステルスロック下でも、次の展開でガブリアスを押し切る狙いが立ちます。",
+        "risk": "交代読みで相手が地震以外の強打点や積み技を選ぶと、受け負ける可能性があります。",
+        "speech": "ここはメタグロスに交代です。アシレーヌでも削れますが、メタグロスなら対面圧を保ちながらガブリアスを詰めやすいです。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "れいとうパンチ。相手ガブリアスは既に54%まで削れており、4倍弱点を最短で取り切るのが最も火力効率が高いです。",
+          "tactics": 2,
+          "safety": 3,
+          "consistency": 2,
+          "verdict": "worse",
+          "critique": "この局面での助言は「メタグロスに交代」で、すでにメタグロスが場にいる前提の質問に対しては手順が噛み合っていません。火力面でも、今必要なのは交代ではなくガブリアスを直接処理する行動であり、ダメージレースの観点で遅れます。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 2,
+        "safety": 3,
+        "consistency": 2,
+        "overall": 2.33
+      },
+      "elapsedMs": 7800
+    },
+    {
+      "label": "キラッチ戦 turn 13",
+      "battleId": "c306a3be-9e97-4a0f-9672-d94d50a8d1aa",
+      "turnIndex": 13,
+      "transcript": "メタグロスの冷凍パンチでガブリアスを倒せました。ただし、メタグロスの残りHPは15まで削れました。相手はブリジュラスです",
+      "advice": {
+        "kind": "switch",
+        "command": "ガブリアス",
+        "reason": "メタグロスは残り15%で、ブリジュラス相手に居座っても不安が大きいです。ガブリアスなら先手圏でじしんを押しつけやすく、処理ルートを作れます。",
+        "risk": "交代読みのりゅうせいぐんやステルスロック追加、持ち物次第では確定で落とし切れない可能性があります。",
+        "speech": "メタグロスはかなり削れているので、ここはガブリアスに引いて対面を作り直しましょう。ブリジュラスには先手じしんで圧をかけるのが安定です！"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ガブリアスに交代して、上からじしんでブリジュラスに圧をかける。メタグロスは残り15で居座れず、素早さ169で150想定のブリジュラスより先に動けるのが大きい。",
+          "tactics": 4,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "メタグロスを引いて高速アタッカーのガブリアスで対面を作り直す方針は、行動順と火力効率の両面で妥当です。ステルスロック込みでもガブリアスは十分に仕事ができ、盤面情報と矛盾もありません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.33
+      },
+      "elapsedMs": 6756
+    },
+    {
+      "label": "キラッチ戦 turn 14",
+      "battleId": "c306a3be-9e97-4a0f-9672-d94d50a8d1aa",
+      "turnIndex": 14,
+      "transcript": "相手のブリジュラスの波動弾でガブリアスの残りHPは83です。ガブリアスは何をすればいいですか?",
+      "advice": {
+        "kind": "move",
+        "command": "じしん",
+        "reason": "ブリジュラスにはじしんが2倍で最も安定して削れます。こちらは素早さでも先手想定なので、交代せず圧をかけるのが良いです。",
+        "risk": "相手の交代先が浮遊や無効耐性を持つ場合は外れます。",
+        "speech": "ここはじしんで押します！ブリジュラスには等倍以上でしっかり通るうえ、こちらが先に動ける想定なので、素直に削るのが一番です。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "じしん",
+          "percentMax": 67.9,
+          "bestCommand": "じしん",
+          "bestPercentMax": 67.9
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "じしん。S169のガブリアスならブリジュラスS150想定に先手を取りやすく、2倍弱点の最も高火力な技でそのまま削るのが最善です。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "火力効率と行動順の両面でじしんが最適で、盤面情報とも矛盾しません。相手の交代先が地面無効だと外れる点はあるものの、現対面のブリジュラスに対しては妥当です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 5637
+    },
+    {
+      "label": "キラッチ戦 turn 16",
+      "battleId": "c306a3be-9e97-4a0f-9672-d94d50a8d1aa",
+      "turnIndex": 16,
+      "transcript": "メタグロスをこちらは出しました。相手のブリジラスに対して何をすればいいですか?",
+      "advice": {
+        "kind": "move",
+        "command": "じしん",
+        "reason": "ブリジュラスには等倍で最も安定して高めの打点です。こちらは先手想定なので、削れている今でも確実に押し切りを狙います。",
+        "risk": "相手が交代や耐久型だと落とし切れない可能性があります。",
+        "speech": "ここはじしんで押しましょう。ブリジュラスには十分な打点で、こちらが先手想定なので削り切りを狙えます！"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "バレットパンチ。相手のブリジュラスはHP10%なので、優先度で先手を取りつつ確実に取り切ることを優先します。",
+          "tactics": 2,
+          "safety": 4,
+          "consistency": 2,
+          "verdict": "worse",
+          "critique": "じしんは火力は十分でも、S150のブリジュラスに対して先手を失う前提なのでダメージレース上の価値が低いです。HP10%相手なら優先度技で取り切る方が自然で、助言は行動順の観点で弱いです。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 2,
+        "safety": 4,
+        "consistency": 2,
+        "overall": 2.67
+      },
+      "elapsedMs": 6644
+    },
+    {
+      "label": "ナノ戦 turn 1",
+      "battleId": "c3096bff-1015-4e1c-bd0e-a833f7ffdad8",
+      "turnIndex": 1,
+      "transcript": "お相手はナノさんです。対戦よろしくお願いします。ポケモンは上からライチュウ、アーマーガー、サザンドラ、カビゴン、スピアーとルチャブルの6体です。では選出お願いします。",
+      "advice": {
+        "kind": "selection",
+        "command": "ガブリアス、メタグロス、ウォッシュロトム",
+        "reason": "選出ガードで、画面表示・内部state・セリフが同じ3体になるように揃えました。",
+        "risk": "カビゴンに対しては押し切り性能がやや低く、受け回しで長引くと不利になりやすい。",
+        "speech": "ここはガブリアス、メタグロス、ウォッシュロトムでいきましょう。先発はガブリアスです。 ナノさん、対戦よろしくお願いします。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ガブリアス・ウォッシュロトム・サザンドラ。先手性能のあるスカーフサザンドラでダメージレースを取りつつ、ガブリアスとロトムWでライチュウ/アーマーガー/ルチャブル/スピアー系に圧をかけます。",
+          "tactics": 4,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "worse",
+          "critique": "ガブリアス＋ロトムWは相手の電気・鋼・飛行に明確に噛み合いますが、3枠目のメタグロスは判明技だと役割集中が弱く、速度面でもサザンドラほどダメージレースを押しやすくありません。特にこの相手並びなら、上から圧をかけられるスカーフサザンドラの採用価値が高く、助言はやや効率面で劣ります。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.33
+      },
+      "elapsedMs": 7421
+    },
+    {
+      "label": "ナノ戦 turn 3",
+      "battleId": "c3096bff-1015-4e1c-bd0e-a833f7ffdad8",
+      "turnIndex": 3,
+      "transcript": "なるほど、ありがとうございます。相手の先発はアーマーガアです。私は何をすればいいでしょうか。",
+      "advice": {
+        "kind": "switch",
+        "command": "ウォッシュロトム",
+        "reason": "アーマーガアにはガブリアスの地面技が通らないため、ロトムに引いて10まんボルト圧をかけるのが安定です。",
+        "risk": "交代読みの補助技や先制のとんぼがえりはありえます。",
+        "speech": "ここはウォッシュロトムに引きます。アーマーガア相手にガブリアスの地面技は通らないので、10まんボルト圧で見るのが安定です！"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ガブリアスで「がんせきふうじ」：アーマーガアに等倍以上で削りつつS操作もでき、きあいのタスキも活かせる。",
+          "tactics": 4,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "worse",
+          "critique": "アーマーガアに対してウォッシュロトムへ引くのは悪くはないですが、ガブリアスはタスキ持ちで岩技が等倍以上に通るため、まず殴ってテンポを取る方が火力効率と行動順の面で優位です。相手の補助技やとんぼがえり警戒は理解できますが、この盤面では交代より居座りのほうが損失が少ないです。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.33
+      },
+      "elapsedMs": 7417
+    },
+    {
+      "label": "ナノ戦 turn 4",
+      "battleId": "c3096bff-1015-4e1c-bd0e-a833f7ffdad8",
+      "turnIndex": 4,
+      "transcript": "相手のアーマーガアはビルドアップで攻撃と防御を上げてきました。こちらのロトムは何をすればいいですか?",
+      "advice": {
+        "kind": "move",
+        "command": "10まんボルト",
+        "reason": "ローカル評価: 10まんボルトはアーマーガアに2倍、概算71.7-85%、素早さは未確定です。",
+        "risk": "相手の持ち物、積み技、交代で実ダメージは変動します。",
+        "speech": "ここは10まんボルトにします。ローカル評価: 10まんボルトはアーマーガアに2倍、概算71.7-85%、素早さは未確定です。"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "raw percentage leaked into speech"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "10まんボルト：アーマーガアに2倍で安定打点。ビルドアップは防御上昇なので特殊電気技でそのまま押すのが最も効率的です。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "相手のビルドアップは攻撃・防御上昇なので、特殊電気打点を選ぶ判断は火力効率とダメージレースの観点で妥当です。素早さは不明でもこの局面では最安定の高打点で、盤面情報との矛盾もありません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 3243
+    },
+    {
+      "label": "ナノ戦 turn 5",
+      "battleId": "c3096bff-1015-4e1c-bd0e-a833f7ffdad8",
+      "turnIndex": 5,
+      "transcript": "相手はサザンドラに変えてきました。サザンドラには効果今一つなので、攻撃は20%しか入らずサザンドラは残り80%です。次は何をすればいいですか?",
+      "advice": {
+        "kind": "switch",
+        "command": "ガブリアス",
+        "reason": "ウォッシュロトムの打点はサザンドラに半減で押し切りにくいです。ガブリアスならドラゴンクローで大きく削れて、対面性能も高いです。",
+        "risk": "交代読みの攻撃や流星群を受ける可能性があります。",
+        "speech": "ここはガブリアスに引きます。ロトムの打点だとサザンドラを押し切りにくいので、ドラゴンクロー圏内を作りにいきます！"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ウォッシュロトムのまま10まんボルト。サザンドラへの安定打点を維持しつつ、無駄な交代リスクを避ける。",
+          "tactics": 4,
+          "safety": 2,
+          "consistency": 2,
+          "verdict": "worse",
+          "critique": "ガブリアスへの交代は、サザンドラ側のドラゴン技を含む高火力打点を受けるリスクが大きく、ダメージレース上の優位も薄いです。盤面上の確定情報だけを見ると、ロトムのまま上から継続打点を入れる方が素直で整合的です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 2,
+        "consistency": 2,
+        "overall": 2.67
+      },
+      "elapsedMs": 10141
+    },
+    {
+      "label": "ナノ戦 turn 6",
+      "battleId": "c3096bff-1015-4e1c-bd0e-a833f7ffdad8",
+      "turnIndex": 6,
+      "transcript": "相手のサザンドラはガブリアスに効果抜群の流星群をしてきました。こちらは気合のタスキで耐えましたが残りのHPは1です。サザンドラは特攻が2段階下がっています。",
+      "advice": {
+        "kind": "move",
+        "command": "ドラゴンクロー",
+        "reason": "相手サザンドラは特攻-2で圧が落ちており、こちらは素早さでも先手想定です。等倍のじしんよりドラゴンクローのほうが確実に押し切りやすいです。",
+        "risk": "相手が交代する場合は無駄打ちになります。",
+        "speech": "ここはドラゴンクローで押し切りましょう！相手のサザンドラは特攻が下がっているので、先手で倒し切るのがいちばん安定です。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ドラゴンクロー。等倍のじしんよりもサザンドラに対して火力効率が高く、1発で倒し切る期待値を最優先する。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "ドラゴンクロー選択は、サザンドラへの相性と火力効率の面で妥当です。特攻-2でも相手の反撃リスクは残るが、他の攻撃より押し切り性能が高く、盤面と矛盾しません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 5898
+    },
+    {
+      "label": "ナノ戦 turn 7",
+      "battleId": "c3096bff-1015-4e1c-bd0e-a833f7ffdad8",
+      "turnIndex": 7,
+      "transcript": "相手はアーマーガアにポケモンを替えてきました。こちらのドラゴンクローは今一つなので77%までしか削れませんでした。",
+      "advice": {
+        "kind": "move",
+        "command": "がんせきふうじ",
+        "reason": "ローカル評価: がんせきふうじはアーマーガアに等倍、概算19.7-23.1%、素早さではこちらが先手想定です。",
+        "risk": "相手の持ち物、積み技、交代で実ダメージは変動します。",
+        "speech": "さっきの技指示は場のポケモンと合わないので、ここはがんせきふうじに修正します。ローカル評価: がんせきふうじはアーマーガアに等倍、概算19.7-23.1%、素早さではこちらが先手想定です。"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "raw percentage leaked into speech"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "がんせきふうじ",
+          "percentMax": 26.9,
+          "bestCommand": "ドラゴンクロー",
+          "bestPercentMax": 107.8
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "がんせきふうじ：アーマーガアに等倍で、先手なら1HPのガブリアスでも即座に少しでも削れる。",
+          "tactics": 4,
+          "safety": 3,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "がんせきふうじはアーマーガアに対して等倍で、先手を取れる前提ならダメージレース上は妥当です。1HPのガブリアスでできる最善手として、盤面情報と矛盾もありません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 3,
+        "consistency": 5,
+        "overall": 4
+      },
+      "elapsedMs": 8385
+    },
+    {
+      "label": "ナノ戦 turn 8",
+      "battleId": "c3096bff-1015-4e1c-bd0e-a833f7ffdad8",
+      "turnIndex": 8,
+      "transcript": "岩石封じは等倍だったのですが、アーマーガアは硬いので64%までしかダメージが入りませんでした。相手のアーマーガアはビルドアップを再度積み、攻撃と防御が1段階上がっています。",
+      "advice": {
+        "kind": "switch",
+        "command": "ウォッシュロトム",
+        "reason": "アーマーガアがビルドアップを重ねていて、ガブリアスの等倍打点では押し切りにくいです。ロトムなら10まんボルトで圧をかけやすく、対面を立て直せます。",
+        "risk": "交代読みでちょうはつや攻撃を受ける可能性があります。",
+        "speech": "アーマーガアが積みを重ねているので、ここはウォッシュロトムに引いて電気打点で圧をかけます。ガブリアスでは押し切りにくいので、対面を立て直しましょう。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ウォッシュロトムに交代し、次のターンから10まんボルトでアーマーガアに圧をかける。ガブリアスは残り1HPで即死圏なので、ここで温存価値のある交代先に繋ぐ。",
+          "tactics": 4,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "ロトム交代は、ビルドアップを重ねたアーマーガアに対して火力効率と行動順の両面で妥当です。ガブリアスを1HPで切るよりも、後続の電気打点でダメージレースを立て直しやすいです。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.33
+      },
+      "elapsedMs": 11957
+    },
+    {
+      "label": "ナノ戦 turn 9",
+      "battleId": "c3096bff-1015-4e1c-bd0e-a833f7ffdad8",
+      "turnIndex": 9,
+      "transcript": "相手のアーマーガアのアイアンヘッドでこちらのロトムは今HP149まで削れました。",
+      "advice": {
+        "kind": "move",
+        "command": "10まんボルト",
+        "reason": "アーマーガアはビルドアップ2回で硬いですが、今の盤面では等倍のハイドロポンプより電気打点の方が安定して削れます。こちらのロトムはまだ十分HPがあり、まずは圧を継続するのが得です。",
+        "risk": "相手がはねやすめや交代で受け回す可能性があります。",
+        "speech": "ここは10まんボルトで押します！アーマーガアは積んでいて硬いけど、まずは安定して削って主導権を取りたいです。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "10まんボルト：アーマーガアへの一致より優先度は同じで、飛行弱点を突けるため最もダメージ効率が高い。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "10まんボルトはアーマーガアに対して明確に高火力で、ダメージレース上もっとも筋が良いです。ロトムの残HPも十分で、技選択として盤面情報と矛盾しません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 4073
+    },
+    {
+      "label": "ナノ戦 turn 10",
+      "battleId": "c3096bff-1015-4e1c-bd0e-a833f7ffdad8",
+      "turnIndex": 10,
+      "transcript": "相手はサザンドラに変えてきました。効果今一つなので10万ボルトで62%までしか削れていません。ロトムは食べ残しで回復して今HPマックス157です。",
+      "advice": {
+        "kind": "switch",
+        "command": "ガブリアス",
+        "reason": "ウォッシュロトムの一致技はサザンドラに半減で削りが足りず、ガブリアスのドラゴンクローで大きく圧をかけられます。こちらはHP温存もでき、対面処理の筋が最も良いです。",
+        "risk": "相手がりゅうせいぐんやあくのはどうを選んでいると交代先が削れる可能性があります。",
+        "speech": "ここはガブリアスに引きます。ロトムの電気技ではサザンドラを押し切りにくいので、ドラゴンクロー圧をかけるのがいちばん自然です！"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "10まんボルトで継続攻撃。サザンドラへの打点はロトムでも十分で、交代の損失を出さずにそのままダメージレースを詰めるのが最優先です。",
+          "tactics": 4,
+          "safety": 4,
+          "consistency": 2,
+          "verdict": "worse",
+          "critique": "ガブリアスはHP2で、受け出しに使うにはあまりにも危険です。ロトム居座りでの10まんボルトの方が、火力効率と行動順の両面で自然です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 4,
+        "consistency": 2,
+        "overall": 3.33
+      },
+      "elapsedMs": 9120
+    },
+    {
+      "label": "ナノ戦 turn 11",
+      "battleId": "c3096bff-1015-4e1c-bd0e-a833f7ffdad8",
+      "turnIndex": 11,
+      "transcript": "相手のサザンドラの流星群でガブリアスは倒れてしまいました。次のポケモンを選んでください。",
+      "advice": {
+        "kind": "selection",
+        "command": "アシレーヌ、メタグロス、サザンドラ",
+        "reason": "選出ガードで、画面表示・内部state・セリフが同じ3体になるように揃えました。",
+        "risk": "あくのはどうやかえんほうしゃの裏択があると負荷を受ける可能性があります。",
+        "speech": "ここはアシレーヌ、メタグロス、サザンドラでいきましょう。先発はアシレーヌです。 ナノさん、対戦よろしくお願いします。"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "selection action returned mid-battle"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "アシレーヌを繰り出す。サザンドラに対してドラゴン技・悪技を受けやすい相手なので、等倍以下で受けつつムーンフォースで返せるのが最も火力効率とダメージレースに合う。",
+          "tactics": 5,
+          "safety": 5,
+          "consistency": 5,
+          "verdict": "worse",
+          "critique": "審査対象の助言は「サザンドラ」を自分側の選出に含めており、盤面上ありえない提案です。残り2体の組み方としても整合しておらず、戦術面・安全面の前提が崩れています。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 5,
+        "consistency": 5,
+        "overall": 5
+      },
+      "elapsedMs": 10823
+    },
+    {
+      "label": "ナノ戦 turn 12",
+      "battleId": "c3096bff-1015-4e1c-bd0e-a833f7ffdad8",
+      "turnIndex": 12,
+      "transcript": "今対戦中なのでポケモン変えられませんよ。ガブリアスが今倒れていて、残りはウォッシュロトム、ロトムとメタグロスの2体です。今メタグロス出しました。何をすればいいですか?",
+      "advice": {
+        "kind": "move",
+        "command": "れいとうパンチ",
+        "reason": "サザンドラに2倍で最も通りがよく、素早さもこちらが上回るので押し切りを狙えます。",
+        "risk": "相手の交代や耐久振り、こだわりトリック系の不意打ちがあると削り切れない可能性があります。",
+        "speech": "ここはれいとうパンチで押します。サザンドラに一番通って、素早さでもこちらが先に動けるので、そのまま圧をかけましょう！"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "バレットパンチ：サザンドラは残り62%で、こちらは素早さで上を取れないため、優先度で先に削ってダメージレースを取りに行く。",
+          "tactics": 2,
+          "safety": 4,
+          "consistency": 2,
+          "verdict": "worse",
+          "critique": "れいとうパンチは打点自体は高いですが、この盤面ではメタグロスがサザンドラより遅いので「素早さもこちらが上」という理由が誤りです。優先度を無視して先手を前提にしている点で、火力効率と行動順の観点からは不安定です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 2,
+        "safety": 4,
+        "consistency": 2,
+        "overall": 2.67
+      },
+      "elapsedMs": 9201
+    },
+    {
+      "label": "ナノ戦 turn 13",
+      "battleId": "c3096bff-1015-4e1c-bd0e-a833f7ffdad8",
+      "turnIndex": 13,
+      "transcript": "相手はサザンドラからライチュウに交代してきました。こちらはメガメタグロスにメガ進化して冷凍パンチを打ちます。相手のライチュウは残り16%です。",
+      "advice": {
+        "kind": "move",
+        "command": "れいとうパンチ",
+        "reason": "相手はライチュウ残り16%で、候補の中ではれいとうパンチが最も火力と確実性を取りやすいです。先手も取れている見込みなので、交代よりそのまま処理を優先します。",
+        "risk": "きあいのタスキや交代先への受け回しがあると倒し切れない可能性があります。",
+        "speech": "ここはれいとうパンチで押し切りましょう！ライチュウはもう16%なので、交代よりそのまま処理するのがいちばん安全です。"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "raw percentage leaked into speech"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "れいとうパンチ",
+          "percentMax": 69.5,
+          "bestCommand": "れいとうパンチ",
+          "bestPercentMax": 69.5
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "バレットパンチ：相手ライチュウは残り16%なので、先制で確実に削り切る期待が高く、被弾前に処理できる可能性を最優先する。",
+          "tactics": 4,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "worse",
+          "critique": "れいとうパンチは火力はあるが、行動順の面でライチュウに先手を取られるリスクを残す。残り16%という盤面では、優先度付きで仕留めに行く方がダメージレース上より妥当です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.33
+      },
+      "elapsedMs": 5508
+    },
+    {
+      "label": "ナノ戦 turn 14",
+      "battleId": "c3096bff-1015-4e1c-bd0e-a833f7ffdad8",
+      "turnIndex": 14,
+      "transcript": "相手はライチュウからアーマーガアに交換してきて、冷凍パンチはアーマーガアに当たり、アーマーガアは残り32%です。何をすればいいですか?",
+      "advice": {
+        "kind": "move",
+        "command": "れいとうパンチ",
+        "reason": "アーマーガアは32%まで削れていて、れいとうパンチは等倍で押し切りに向きます。こちらは素早さでも先手が取れる見込みなので、ここは継続して削るのが安定です。",
+        "risk": "相手がはねやすめや交代を絡めると倒し切れない可能性があります。",
+        "speech": "ここはそのままれいとうパンチで押し切りましょう。アーマーガアはもう32%まで削れていて、先手でさらに圧をかけられます！"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "raw percentage leaked into speech"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "れいとうパンチ",
+          "percentMax": 69.5,
+          "bestCommand": "れいとうパンチ",
+          "bestPercentMax": 69.5
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "れいとうパンチ。アーマーガアは氷打点が最も通り、メガシンカ後なら先手で押し切れる可能性が高いので継続攻撃が最善。",
+          "tactics": 4,
+          "safety": 4,
+          "consistency": 4,
+          "verdict": "equal",
+          "critique": "れいとうパンチ継続は、現状の削れ具合から火力効率と対面圧の両方で妥当です。先手断定はやや強めですが、メガメタグロスの速度優位を見込むなら大きな矛盾ではありません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 4,
+        "consistency": 4,
+        "overall": 4
+      },
+      "elapsedMs": 8668
+    },
+    {
+      "label": "ナノ戦 turn 15",
+      "battleId": "c3096bff-1015-4e1c-bd0e-a833f7ffdad8",
+      "turnIndex": 15,
+      "transcript": "冷凍パンチが決まりアーマーが倒せました。相手はサザンドラを出してきました。サザンドラの残りHPは62%です。",
+      "advice": {
+        "kind": "move",
+        "command": "れいとうパンチ",
+        "reason": "メタグロスはサザンドラに先手が取れ、ローカル評価でもれいとうパンチが等倍地震より高火力です。62%から大きく削れて、落とし切りも十分狙えます。",
+        "risk": "相手が交代すると負荷先がずれる可能性はありますが、この対面はまず最大打点で押すのが安定です。",
+        "speech": "ここはメタグロスのれいとうパンチで押しましょう！サザンドラには先手が取れて、地震よりしっかり削れます。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "れいとうパンチ",
+          "percentMax": 29.5,
+          "bestCommand": "れいとうパンチ",
+          "bestPercentMax": 29.5
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "れいとうパンチ：サザンドラはメタグロスより速い可能性が高いが、等倍のバレットパンチより通りと火力が明確に上で、62%から大きく削ってダメージレースを有利にする。",
+          "tactics": 4,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "盤面上、メタグロスがサザンドラへ最大効率で削るなられいとうパンチが最も自然で、相手の素早さを踏まえても火力優先の判断は妥当です。助言は先手主張にやや曖昧さがあるものの、技選択自体は明記情報と矛盾しません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.33
+      },
+      "elapsedMs": 6070
+    },
+    {
+      "label": "ナノ戦 turn 16",
+      "battleId": "c3096bff-1015-4e1c-bd0e-a833f7ffdad8",
+      "turnIndex": 16,
+      "transcript": "相手のサザンドラは先攻、おそらくこだわりスカーフを持っていたと思いますが、悪の波動でメタグロスは30HPほどまで削れてしまいました。ただしこちらの冷凍パンチでサザンドラは倒せました。相手は残りHP16%のライチュウです。",
+      "advice": {
+        "kind": "move",
+        "command": "バレットパンチ",
+        "reason": "相手ライチュウは残り16%なので、先制技でそのまま処理を狙うのが最も安定です。",
+        "risk": "わずかに残る可能性はあるけど、現状はこれが一番安全です。",
+        "speech": "ここはバレットパンチです！ライチュウは残り16%なので、先制でそのまま落としにいきましょう。"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "raw percentage leaked into speech"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "バレットパンチ",
+          "percentMax": 27.5,
+          "bestCommand": "れいとうパンチ",
+          "bestPercentMax": 69.5
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "バレットパンチ：相手ライチュウは残り16%でこちらは先制技を持ち、上から確実にダメージレースを取りにいくのが最善。",
+          "tactics": 5,
+          "safety": 5,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "残り16%のライチュウに対して、先制技のバレットパンチで処理を狙う判断は火力効率・行動順ともに妥当です。盤面情報と矛盾する点もなく、リスク管理の面でも最も素直な一手です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 5,
+        "consistency": 5,
+        "overall": 5
+      },
+      "elapsedMs": 3824
+    },
+    {
+      "label": "ケンタ戦 turn 2",
+      "battleId": "f6df38b5-959c-4920-ad0e-81b5e828c948",
+      "turnIndex": 2,
+      "transcript": "次の相手はケンタさんです。上からクチート、バシャーモ、サザンドラ、アーマーガア、ヤドラン、ハラバリーの6体です。",
+      "advice": {
+        "kind": "selection",
+        "command": "アシレーヌ、ウォッシュロトム、マスカーニャ",
+        "reason": "選出ガードで、画面表示・内部state・セリフが同じ3体になるように揃えました。",
+        "risk": "バシャーモの高速展開には少し後手になりやすいです。",
+        "speech": "ここはアシレーヌ、ウォッシュロトム、マスカーニャでいきましょう。先発はアシレーヌです。 ケンタさん、対戦よろしくお願いします。"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "selection action returned mid-battle"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ガブリアス・ウォッシュロトム・マスカーニャを選出。バシャーモとハラバリーに対して先手を取りやすく、ガブリアスの高火力地面打点とマスカーニャの高速圧力でダメージレースを作る。",
+          "tactics": 3,
+          "safety": 3,
+          "consistency": 2,
+          "verdict": "worse",
+          "critique": "アシレーヌ採用はサザンドラやバシャーモへの受け先としては理解できますが、火力効率と行動順を最重視するとガブリアスを外すのは重く、全体の圧力が落ちます。理由の「画面表示・内部state・セリフを揃える」は対戦判断として無関係で、選出根拠としての整合性も弱いです。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 3,
+        "safety": 3,
+        "consistency": 2,
+        "overall": 2.67
+      },
+      "elapsedMs": 8638
+    },
+    {
+      "label": "ケンタ戦 turn 4",
+      "battleId": "f6df38b5-959c-4920-ad0e-81b5e828c948",
+      "turnIndex": 4,
+      "transcript": "相手の先発はクチートでした。こちらはアシレーヌ、何をすればいいでしょうか。",
+      "advice": {
+        "kind": "move",
+        "command": "うたかたのアリア",
+        "reason": "クチートには等倍で大きく削れ、候補内でも最も火力が高いです。半減のムーンフォースより通りがよく、対面処理を狙えます。",
+        "risk": "相手のじゃれつくやふいうち、交代先によっては受けられる可能性があります。",
+        "speech": "ここはうたかたのアリアで押します。クチートには一番通りがよくて、しっかり削り切る圏内を狙えます！"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "うたかたのアリア：クチートにはみず等倍で通り、ムーンフォースより明確に火力効率が高いので対面削りを優先する。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "盤面上、クチートに対してムーンフォースは鋼で強く受かるため、うたかたのアリア選択は火力面で妥当です。相手の先制技や反撃の可能性は残るものの、提示情報と矛盾はありません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 3879
+    },
+    {
+      "label": "ケンタ戦 turn 5",
+      "battleId": "f6df38b5-959c-4920-ad0e-81b5e828c948",
+      "turnIndex": 5,
+      "transcript": "相手はハラバリーに変えてきました。こちらのうたかたのアリアでハラバリーの残りHPは66%です。",
+      "advice": {
+        "kind": "move",
+        "command": "ムーンフォース",
+        "reason": "ハラバリーへの最大打点で、残り66%から大きく削って押し切りを狙えるためです。",
+        "risk": "相手の交代や耐久振り、こちらの受け出し先への圧は読めません。",
+        "speech": "ここはムーンフォースで押します。ハラバリーに一番しっかり圧がかかって、残りを大きく削れるからです！"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "ムーンフォース",
+          "percentMax": 65.6,
+          "bestCommand": "うたかたのアリア",
+          "bestPercentMax": 124.8
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ムーンフォース：ハラバリーに対してこちらの4技の中で最も打点が高く、等倍同士なら火力効率が一番よい。",
+          "tactics": 5,
+          "safety": 5,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "ハラバリーへの明確な情報がない中では、等倍で最大威力のムーンフォースを押す判断は妥当です。盤面上の確定情報と矛盾もなく、火力レース重視の観点でも優先度が高いです。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 5,
+        "consistency": 5,
+        "overall": 5
+      },
+      "elapsedMs": 3760
+    },
+    {
+      "label": "ケンタ戦 turn 6",
+      "battleId": "f6df38b5-959c-4920-ad0e-81b5e828c948",
+      "turnIndex": 6,
+      "transcript": "こちらのムーンフォース当たりましたが、ハラバリーはナマケルでHP80%まで回復されてしまいました。",
+      "advice": {
+        "kind": "move",
+        "command": "ムーンフォース",
+        "reason": "ハラバリーはナマケルで回復しても80%止まりなので、まずは最大打点でさらに削って圏内を作るのが安定です。",
+        "risk": "相手が回復や交代を重ねると処理が長引きます。",
+        "speech": "ここはムーンフォースを続けましょう。ハラバリーはまだ削り切れていないので、まず圏内を作るのが大事です！"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "ムーンフォース",
+          "percentMax": 65.8,
+          "bestCommand": "ムーンフォース",
+          "bestPercentMax": 65.8
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ムーンフォース：この4技では一致補正が乗り、他の3技と比べて同等以上の安定打点なので、回復後のハラバリーに最も素直に圧力をかける。",
+          "tactics": 4,
+          "safety": 5,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "提示情報の範囲では、回復後の80%ハラバリーに対してムーンフォース継続は最も自然で、火力効率の面でも筋が通っています。相手の回復で長引くリスクへの言及も盤面と矛盾せず、重大な問題はありません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 5,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 4051
+    },
+    {
+      "label": "ケンタ戦 turn 7",
+      "battleId": "f6df38b5-959c-4920-ad0e-81b5e828c948",
+      "turnIndex": 7,
+      "transcript": "相手のハラバリはパラボラチャージでHPが75%まで回復、こちらのアシレーヌはオボンのみを使って99までHPが回復しています。",
+      "advice": {
+        "kind": "move",
+        "command": "ムーンフォース",
+        "reason": "ハラバリーに最も安定して圧力をかけられ、等倍の中では一番まとまった削りが期待できます。今はアシレーヌの体力も戻っているので、素直に押してよいです。",
+        "risk": "相手の回復や交代で押し切れない可能性があります。",
+        "speech": "ここはムーンフォースでいきましょう。ハラバリーに安定して大きく圧をかけられて、回復されても次の圏内を作りやすいです。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "ムーンフォース",
+          "percentMax": 65.8,
+          "bestCommand": "ムーンフォース",
+          "bestPercentMax": 65.8
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ムーンフォースを選択。等倍で最も高い打点を出しつつ、ハラバリーの回復に対してダメージレースを維持できるため。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "ムーンフォースは盤面上の確定情報だけで見て最も火力効率がよく、相手の回復後でも継続して圧力をかけられます。交代よりも即時打点を優先する判断は自然で、記載情報との矛盾もありません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 5146
+    },
+    {
+      "label": "ケンタ戦 turn 8",
+      "battleId": "f6df38b5-959c-4920-ad0e-81b5e828c948",
+      "turnIndex": 8,
+      "transcript": "ハラバリーのパラボラチャージでアシレーヌは倒されました。ハラバリー残り63%です。",
+      "advice": {
+        "kind": "switch",
+        "command": "マスカーニャ",
+        "reason": "ハラバリーは残り63%で、こちらはアシレーヌが倒れているため、素早い草打点で一気に圧をかけるのが最善です。マスカーニャなら上からトリックフラワーで処理圏を狙えます。",
+        "risk": "相手が炎技持ちや交換で受け回してくる可能性があります。",
+        "speech": "ここはマスカーニャに交代です！ハラバリーは草打点で大きく削れる圏内なので、テンポを取り返しにいきましょう。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "マスカーニャに交代。最速で上から動けるうえ、命の珠つきの高打点でハラバリーを素早く処理圏に押し込みやすい。",
+          "tactics": 2,
+          "safety": 3,
+          "consistency": 2,
+          "verdict": "equal",
+          "critique": "マスカーニャ交代自体は速度面とダメージレースの観点で十分正当化できますが、草打点はハラバリーにタイプ一致ではなく『大きく削れる圏内』という断定はやや強めです。とはいえ盤面上の確定情報だけでは、最速で圧をかける意図は妥当です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 2,
+        "safety": 3,
+        "consistency": 2,
+        "overall": 2.33
+      },
+      "elapsedMs": 6898
+    },
+    {
+      "label": "ケンタ戦 turn 9",
+      "battleId": "f6df38b5-959c-4920-ad0e-81b5e828c948",
+      "turnIndex": 9,
+      "transcript": "マスカーニャに変えました。何を打ちますか。",
+      "advice": {
+        "kind": "move",
+        "command": "トリックフラワー",
+        "reason": "ハラバリーにはマスカーニャの草打点が最も安定して通り、先手でしっかり削れます。ふいうちより総合火力が高く、居座りや交代にも対応しやすいです。",
+        "risk": "相手がアーマーガアなどの草受けに交代すると通りが落ちます。",
+        "speech": "ここはトリックフラワーでいきましょう！ハラバリーにしっかり圧をかけられて、交代にも比較的強いです。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "トリックフラワー。マスカーニャは確実に先手で取れ、ハラバリー63%に対して最も火力効率が高い草打点で押し切りを狙えます。",
+          "tactics": 5,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "先手で最大打点を押し込む判断は盤面と一致しており、ダメージレース上も最善級です。相手交代の可能性はあるものの、現状の対面処理としては自然で矛盾もありません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.67
+      },
+      "elapsedMs": 3732
+    },
+    {
+      "label": "ケンタ戦 turn 10",
+      "battleId": "f6df38b5-959c-4920-ad0e-81b5e828c948",
+      "turnIndex": 10,
+      "transcript": "こちらトリックルームは打ちましたが、相手はアーマーガアに変えてきました。かなり今一つなのでダメージは90%までしか減りませんでした。",
+      "advice": {
+        "kind": "move",
+        "command": "ふいうち",
+        "reason": "トリックルーム下でも、アーマーガアに対しては今の場で一番素直に削れる先制打点です。交代よりもまず確実に圏内へ寄せます。",
+        "risk": "相手がはねやすめや交代で受け直すと、削りが伸びにくいです。",
+        "speech": "ここはふいうちで削りを入れます！トリックルーム下でも、まずアーマーガアを圏内に寄せるのが大事です。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "ふいうち",
+          "percentMax": 35.9,
+          "bestCommand": "トリックフラワー",
+          "bestPercentMax": 35.9
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "トリプルアクセル：アーマーガアに対して明確に等倍以上で最も火力効率が高く、トリックルーム下でも削りを最優先するならこれ。",
+          "tactics": 4,
+          "safety": 4,
+          "consistency": 2,
+          "verdict": "worse",
+          "critique": "ふいうちはアーマーガアが攻撃技を選ばないと不発になりやすく、トリックルーム下では特に行動保証が弱いです。盤面上はトリプルアクセルの方が相性と火力の面で素直に削れます。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 4,
+        "consistency": 2,
+        "overall": 3.33
+      },
+      "elapsedMs": 6705
+    },
+    {
+      "label": "ケンタ戦 turn 11",
+      "battleId": "f6df38b5-959c-4920-ad0e-81b5e828c948",
+      "turnIndex": 11,
+      "transcript": "こちらはF打ちで相手のアーマー側のHPを74%まで削りました。ただし相手はトンボ返りでマスカーネャに21までダメージを減らせています。相手はクチートに交換してきました。",
+      "advice": {
+        "kind": "move",
+        "command": "トリックフラワー",
+        "reason": "トリックルーム下でも、クチートに対して半減でも最も安定して削れます。ふいうち読みの温存より、まず確実に圏内を作るのが優先です。",
+        "risk": "相手のじゃれつくやふいうち圏内に入ると反撃で落ちる可能性があります。",
+        "speech": "クチートにはトリックフラワーで押します！半減でもいちばん素直に削れて、相手の後続を詰めやすくなるからです。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "トリックフラワー",
+          "percentMax": 8.1,
+          "bestCommand": "ふいうち",
+          "bestPercentMax": 33.5
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ふいうち：トリックルーム下でも優先度で先に動けるため、21HPのマスカーニャが押し切られる前に最大火力を出しにいく。",
+          "tactics": 2,
+          "safety": 2,
+          "consistency": 4,
+          "verdict": "worse",
+          "critique": "トリックフラワーは一致技でもクチートへの打点効率が低く、トリックルーム下では先手を取れないためダメージレースで不利です。ふいうちの失敗リスクはあるものの、この盤面では先制で削れる価値が高く、助言より実戦的です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 2,
+        "safety": 2,
+        "consistency": 4,
+        "overall": 2.67
+      },
+      "elapsedMs": 11241
+    },
+    {
+      "label": "ケンタ戦 turn 12",
+      "battleId": "f6df38b5-959c-4920-ad0e-81b5e828c948",
+      "turnIndex": 12,
+      "transcript": "相手は再度アーマーガーに変えてきました。アーマーガーの残りHPは64%です。マスカーニャは命の珠の効果も相まって残りHP6まで減っています。",
+      "advice": {
+        "kind": "move",
+        "command": "ふいうち",
+        "reason": "トリックルーム下で先手を取りやすく、相手のアーマーガアに対して削りを入れられます。こちらは残りHPが少ないので、最大火力より先制で確実に仕事をするのが安定です。",
+        "risk": "アーマーガアには半減されやすく、はねやすめや交代で受け流される可能性があります。",
+        "speech": "ここはふいうちで削りを入れましょう。トリックルーム下でも先に動けて、残り6のマスカーニャで最低限の仕事ができます！"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "ふいうち",
+          "percentMax": 28,
+          "bestCommand": "トリックフラワー",
+          "bestPercentMax": 28
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "はたきおとす — 先制はできないが、ふいうちの不発リスクを避けつつ、相手の交代・はねやすめ・非攻撃行動にも安定して最低限の打点を入れられる。",
+          "tactics": 3,
+          "safety": 3,
+          "consistency": 5,
+          "verdict": "worse",
+          "critique": "ふいうちはトリックルーム下でも優先度で先に動けるため、即座の削りとしては筋が通っています。ただし相手の行動次第で不発し得るため、安定打点を優先するならやや不安が残ります。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 3,
+        "safety": 3,
+        "consistency": 5,
+        "overall": 3.67
+      },
+      "elapsedMs": 9475
+    },
+    {
+      "label": "ケンタ戦 turn 13",
+      "battleId": "f6df38b5-959c-4920-ad0e-81b5e828c948",
+      "turnIndex": 13,
+      "transcript": "こちら封印としたのですが、相手は羽休めをしてきたので透かされてしまいました。相手のアーマー側残りHP100%です。",
+      "advice": {
+        "kind": "move",
+        "command": "ふいうち",
+        "reason": "ローカル評価: ふいうちはアーマーガアに等倍、概算28.3-33.5%、素早さではこちらが先手想定です。",
+        "risk": "相手の持ち物、積み技、交代で実ダメージは変動します。",
+        "speech": "ここはふいうちにします。ローカル評価: ふいうちはアーマーガアに等倍、概算28.3-33.5%、素早さではこちらが先手想定です。"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "raw percentage leaked into speech"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "ふいうち",
+          "percentMax": 28,
+          "bestCommand": "トリックフラワー",
+          "bestPercentMax": 28
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ふいうち：トリックルーム下でも優先度+1で先手を取りやすく、アーマーガアに等倍でまとまった削りを入れられる。",
+          "tactics": 4,
+          "safety": 4,
+          "consistency": 4,
+          "verdict": "equal",
+          "critique": "ふいうちは等倍で火力効率もまずまず、優先度で行動順を確保できるのでこの盤面に合っています。説明の「素早さでは先手」は厳密には不適切ですが、結論自体は盤面と矛盾しません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 4,
+        "consistency": 4,
+        "overall": 4
+      },
+      "elapsedMs": 8338
+    },
+    {
+      "label": "ケンタ戦 turn 14",
+      "battleId": "f6df38b5-959c-4920-ad0e-81b5e828c948",
+      "turnIndex": 14,
+      "transcript": "こちら不一致したのですが、相手は鉄壁を選んだので透かされてしまいました。鉄壁のおかげでアーマーガアは防御が2段階上昇しています。",
+      "advice": {
+        "kind": "move",
+        "command": "ふいうち",
+        "reason": "ローカル評価: ふいうちはアーマーガアに等倍、概算28.3-33.5%、素早さではこちらが先手想定です。",
+        "risk": "相手の持ち物、積み技、交代で実ダメージは変動します。",
+        "speech": "ここはふいうちにします。ローカル評価: ふいうちはアーマーガアに等倍、概算28.3-33.5%、素早さではこちらが先手想定です。"
+      },
+      "deterministic": {
+        "invariantViolations": [
+          "raw percentage leaked into speech"
+        ],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "ふいうち",
+          "percentMax": 33.5,
+          "bestCommand": "ふいうち",
+          "bestPercentMax": 33.5
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "トリプルアクセル — 直前までのF打ちより通りがよく、鉄壁でさらに下がったアーマーガアの受けを崩すには単発高威力より総火力を取りにいく方がまだ勝ち筋がある。",
+          "tactics": 2,
+          "safety": 3,
+          "consistency": 5,
+          "verdict": "worse",
+          "critique": "ふいうちは優先度で先手を取れても、相手の鉄壁で防御が上がった後は打点がかなり落ち、ダメージレース上の価値が低いです。残りHP6のマスカーニャはどの選択でも危険ですが、この盤面では少なくともより高い実ダメージを狙う行動の方が合理的です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 2,
+        "safety": 3,
+        "consistency": 5,
+        "overall": 3.33
+      },
+      "elapsedMs": 6427
+    },
+    {
+      "label": "ケンタ戦 turn 15",
+      "battleId": "f6df38b5-959c-4920-ad0e-81b5e828c948",
+      "turnIndex": 15,
+      "transcript": "こちら不意打ちで相手のアーマーガアは97%まで削れました。ただしマスカーニャは倒れてしまいました。ロトムを出します。",
+      "advice": {
+        "kind": "move",
+        "command": "10まんボルト",
+        "reason": "アーマーガアに2倍で最も安定して削れます。トリックルーム下でも火力重視で押し切りにいきます。",
+        "risk": "相手がはねやすめや交代で受け回す可能性があります。",
+        "speech": "ここは10まんボルトで押します！アーマーガアにしっかり圧をかけて、受け回しの余地を減らします。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": null
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "10まんボルト：トリックルーム下でもアーマーガアに対する最も素直な高打点で、削り切りの火力レースを優先。",
+          "tactics": 4,
+          "safety": 4,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "10まんボルトは盤面上で明確に通る主力打点で、相手の残りHP97%ならまず削りに行く判断は妥当です。トリックルーム下での行動順リスクや羽休め・交代の可能性にも触れており、内容は矛盾していません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 4,
+        "consistency": 5,
+        "overall": 4.33
+      },
+      "elapsedMs": 5026
+    },
+    {
+      "label": "ケンタ戦 turn 16",
+      "battleId": "f6df38b5-959c-4920-ad0e-81b5e828c948",
+      "turnIndex": 16,
+      "transcript": "アーマーガアはHP残り59%まで削れました。ただし、アーマーガアのとんぼがえりでポケモンはクチートに交換しています。",
+      "advice": {
+        "kind": "move",
+        "command": "ハイドロポンプ",
+        "reason": "クチートに等倍で最も削りが大きく、トリックルーム中でも圧を維持できます。",
+        "risk": "外しと、相手の交代先次第で無駄打ちになる点です。",
+        "speech": "クチートにはここはハイドロポンプで強く削ります。等倍でも一番圧が高く、トリックルーム中に主導権を取りやすいです。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "ハイドロポンプ",
+          "percentMax": 52,
+          "bestCommand": "10まんボルト",
+          "bestPercentMax": 85
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ハイドロポンプ：クチートに対して等倍でも最高火力で、トリックルーム下でも短い手数で削り切る圧を維持できるため。",
+          "tactics": 5,
+          "safety": 3,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "クチート相手に10まんボルトと比較してもハイドロポンプの方が火力効率が高く、提示情報と矛盾しません。外しはあるものの、トリックルーム下でのダメージレースを優先する判断として妥当です。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 5,
+        "safety": 3,
+        "consistency": 5,
+        "overall": 4.33
+      },
+      "elapsedMs": 3605
+    },
+    {
+      "label": "ケンタ戦 turn 17",
+      "battleId": "f6df38b5-959c-4920-ad0e-81b5e828c948",
+      "turnIndex": 17,
+      "transcript": "相手のクチートはじゃれつくでロトムのHPを49まで減らしました。こちらの攻撃はクチートを56%まで減らしています。",
+      "advice": {
+        "kind": "move",
+        "command": "ハイドロポンプ",
+        "reason": "クチートを56%まで削れていて、トリックルーム下では最大打点で押し切りを狙うのが最も自然です。",
+        "risk": "外しで削りが止まる点と、相手のじゃれつくでこちらがさらに落ちる可能性があります。",
+        "speech": "ここはハイドロポンプで押し切りを狙いましょう！ すでにクチートをかなり削れているので、トリックルームのうちに最大打点で詰めるのが一番安全です。"
+      },
+      "deterministic": {
+        "invariantViolations": [],
+        "noteInActiveBattle": false,
+        "damageGap": {
+          "command": "ハイドロポンプ",
+          "percentMax": 99.2,
+          "bestCommand": "ハイドロポンプ",
+          "bestPercentMax": 99.2
+        }
+      },
+      "judge": [
+        {
+          "lens": "火力効率と行動順(先手後手・ダメージレース)を最重視する審査員",
+          "ownPick": "ハイドロポンプ: トリックルーム下で先に動けない可能性はあるが、クチートを56%まで削れており最大打点で落とし切りを狙うのが最も火力効率が高い。",
+          "tactics": 4,
+          "safety": 3,
+          "consistency": 5,
+          "verdict": "equal",
+          "critique": "トリックルーム下でのダメージレースを重視して最大打点を選ぶ判断は盤面と整合しています。 ただしロトムがかなり削れており、先にクチートの攻撃を受けて倒れるリスクは無視できません。"
+        }
+      ],
+      "judgeMean": {
+        "tactics": 4,
+        "safety": 3,
+        "consistency": 5,
+        "overall": 4
+      },
+      "elapsedMs": 6431
+    }
+  ]
+}

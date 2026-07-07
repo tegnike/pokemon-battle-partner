@@ -172,6 +172,7 @@ export const workflowTraceSchema = z.object({
   facts: battleFactsSchema,
   resolvedNames: z.record(z.string(), z.string().nullable()),
   damageCalcs: z.array(z.unknown()),
+  threatReport: z.unknown().optional(),
   timings: z.record(z.string(), z.number()).optional(),
   localKnowledge: z.string().optional(),
   memoryContext: z.string().optional(),

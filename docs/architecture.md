@@ -23,7 +23,8 @@ src/
 ├── main.tsx              # Reactエントリ。`/obs` パスでObsSpeechOverlayに分岐
 ├── App.tsx               # メインUI (対戦セレクタ、相談エリア、対面表示、チーム欄、履歴)
 ├── domain.ts             # BattleState/PokemonState定義、normalizeBattleState、createOwnTeam(固定6体)
-├── fieldStatus.ts        # field文字列を天候/フィールド/設置物/壁などへ分類するパーサ
+├── fieldStatus.ts        # 場の効果の正規定義テーブル(fieldDefinitions)とUI向けサマリ
+├── fieldState.ts         # 構造化FieldState。field文字列のparse/serialize/観測マージ(全置換しない)
 ├── battles/store.ts      # data/battle-sessions/{battleId}.json のCRUD
 ├── memory/store.ts       # 会話記憶 (recent-turns / notes / summaries) の保存と簡易検索
 ├── champions/statCalc.ts # Champions式ステータス計算 (Lv50、個体値31固定、能力ポイント)
@@ -33,11 +34,13 @@ src/
     ├── localData.ts      # ローカルデータストア。名前解決 (alias + fuzzy + メガfallback)
     ├── megaEvolution.ts  # メガシンカ名の解釈とチーム状態への適用
     ├── damage.ts         # 簡易ダメージ計算 (タイプ相性表を含む)
+    ├── turnEvaluation.ts # 両面ターン評価。被弾見積もり・交代先受け出しリスク・補助技候補
     └── tools.ts          # Mastra tool定義
 
 server/index.ts           # Express。全APIエンドポイント、文字起こし、AITuberKit送信、ログ追記
 
 scripts/
+├── eval-advice.ts                      # 助言品質評価ハーネス (docs/advice-eval.md 参照)
 ├── generate-champions-data.ts          # @pkmn/dexからdata/champions/*.jsonを生成
 ├── import-champions-move-availability.ts # Champions技可用性の取り込み
 ├── import-move-ja-aliases.ts           # 日本語技名aliasの取り込み
@@ -145,6 +148,12 @@ stepごとのフォールバック:
 | `tests/field-status.test.mjs` | field文字列の分類 (天候/設置物/壁など) |
 | `tests/phase-regression.test.mjs` | 対戦中に選出フェーズへ巻き戻らないguard |
 | `tests/name-resolution.test.mjs` | かな/カナ折りたたみ、漢字技名alias、メガfallback |
+| `tests/field-state.test.mjs` | 構造化FieldStateのマージ(天候でも設置物が消えない)、解除、壁・天候のダメ計反映 |
+| `tests/turn-evaluation.test.mjs` | 被弾見積もり(特性無効・トリックルーム)、交代先リスク、補助技候補、無効技ガード |
+
+### 助言品質評価 (`npm run eval:advice`)
+
+統合テストが「壊れていないこと」の下限検査であるのに対し、`scripts/eval-advice.ts` は「助言が良くなったか/悪くなったか」を数値化してブランチ間比較する測定器。決断ターン63件を対象に、決定的メトリクス(不変条件違反・対戦中note率・劣位技選択)と判定モデルのルーブリック採点(戦術/安全/整合)を出す。詳細は [advice-eval.md](advice-eval.md)、ベースラインは `reports/eval/`。
 
 ### 実API統合テスト (`npm run test:integration`)
 
